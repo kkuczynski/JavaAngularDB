@@ -21,7 +21,7 @@ public class AdoptionHousesManager {
         return adoptionHousesRepo.findById(id);
     }
 
-    public Iterable<AdoptionHouses> findAll(Integer id){
+    public Iterable<AdoptionHouses> findAll(){
         return adoptionHousesRepo.findAll();
     }
 

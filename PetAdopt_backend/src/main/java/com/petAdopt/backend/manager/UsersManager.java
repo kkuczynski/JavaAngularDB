@@ -24,7 +24,7 @@ public class UsersManager {
         return usersRepo.findById(id);
     }
 
-    public Iterable<Users> findAll(Integer id){
+    public Iterable<Users> findAll(){
         return usersRepo.findAll();
     }
 

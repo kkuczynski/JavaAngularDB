@@ -23,7 +23,7 @@ public class PetsManager {
         return petsRepo.findById(id);
     }
 
-    public Iterable<Pets> findAll(Integer id){
+    public Iterable<Pets> findAll(){
         return petsRepo.findAll();
     }
 

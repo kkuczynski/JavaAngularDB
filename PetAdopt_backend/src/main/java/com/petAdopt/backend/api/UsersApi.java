@@ -1,6 +1,7 @@
 package com.petAdopt.backend.api;
 
 import com.petAdopt.backend.dao.entity.Users;
+import com.petAdopt.backend.manager.UsersManager;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Optional;
@@ -8,37 +9,35 @@ import java.util.Vector;
 @RestController
 @RequestMapping("/api/users")
 public class UsersApi {
-    private Vector<Users> usersVector;
+    UsersManager usersManager;
 
-    public UsersApi(){
-        usersVector = new Vector<>();
+    public UsersApi(UsersManager usersManager){
+        this.usersManager = usersManager;
     }
 
     @GetMapping("/allusers")
-    public Vector<Users> getAll(){
-        return usersVector;
+    public Iterable<Users> getAll(){
+        return usersManager.findAll();
     }
 
     @GetMapping
-    public Users getById(@RequestParam int index){
-        Optional<Users> first = usersVector.stream().
-                filter(element->element.getId() == index).findFirst();
-        return first.get();
+    public Optional<Users> getById(@RequestParam Integer index){
+       return usersManager.findById(index);
     }
 
     @PostMapping
-    public boolean addUsers(@RequestBody Users user){
-        return usersVector.add(user);
+    public Users addUsers(@RequestBody Users user){
+        return usersManager.save(user);
     }
 
     @PutMapping
-    public boolean updateUsers(@RequestBody Users user){
-        return usersVector.add(user);
+    public Users updateUsers(@RequestBody Users user){
+        return usersManager.save(user);
     }
 
     @DeleteMapping
-    public boolean deleteUsers(@RequestParam int index){
-        return usersVector.removeIf(element -> element.getId() == index);
+    public void deleteUsers(@RequestParam int index){
+       usersManager.deleteById(index);
     }
 }
 

@@ -1,6 +1,8 @@
 package com.petAdopt.backend.api;
 
 import com.petAdopt.backend.dao.entity.Pets;
+import com.petAdopt.backend.manager.PetsManager;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Optional;
@@ -10,37 +12,35 @@ import java.util.Vector;
 @RestController
 @RequestMapping("/api/pets")
 public class PetsApi {
-    private Vector<Pets> petsVector;
-
-    public PetsApi(){
-        petsVector = new Vector<>();
+    private PetsManager petsManager;
+    @Autowired
+    public PetsApi(PetsManager petsManager){
+        this.petsManager = petsManager;
     }
 
     @GetMapping("/allpets")
-    public Vector<Pets> getAll(){
-        return petsVector;
+    public Iterable<Pets> getAll(){
+        return petsManager.findAll();
     }
 
     @GetMapping
-    public Pets getById(@RequestParam int index){
-        Optional<Pets> first = petsVector.stream().
-                filter(element->element.getId() == index).findFirst();
-        return first.get();
+    public Optional<Pets> getById(@RequestParam Integer index){
+        return petsManager.findById(index);
     }
 
     @PostMapping
-    public boolean addPets(@RequestBody Pets pet){
-        return petsVector.add(pet);
+    public Pets addPets(@RequestBody Pets pet){
+        return petsManager.save(pet);
     }
 
     @PutMapping
-    public boolean updatePets(@RequestBody Pets pet){
-        return petsVector.add(pet);
+    public Pets updatePets(@RequestBody Pets pet){
+        return petsManager.save(pet);
     }
 
     @DeleteMapping
-    public boolean deletePets(@RequestParam int index){
-        return petsVector.removeIf(element -> element.getId() == index);
+    public void deletePets(@RequestParam int index){
+        petsManager.deleteById(index);
     }
 }
 
