@@ -1,10 +1,32 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="BranchesTreeState">
+    <expand>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="LOCAL_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="GROUP_NODE:origin" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+    </expand>
+    <select />
+  </component>
   <component name="ChangeListManager">
     <list default="true" id="3fe8e951-d2a5-4ef1-8ef6-abb9e4e0f359" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/dbnavigator.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dbnavigator.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/petAdopt/backend/model/AdoptionHousesApi.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/petAdopt/backend/model/AdoptionHousesApi.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/petAdopt/backend/model/PetsApi.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/petAdopt/backend/model/PetsApi.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/petAdopt/backend/model/UsersApi.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/petAdopt/backend/model/UsersApi.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/petAdopt/model/dto/AdoptionHousesDto.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/petAdopt/model/dto/PetsDto.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/petAdopt/model/dto/UsersDto.java" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -29,6 +51,11 @@
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CreateClassDialog.RecentsKey">
+      <recent name="com.petAdopt.backend.model" />
+    </key>
   </component>
   <component name="RunManager">
     <configuration name="BackendApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
@@ -63,15 +90,35 @@
     </task>
     <servers />
   </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="oldMeFiltersMigrated" value="true" />
+  </component>
   <component name="WindowStateProjectService">
-    <state x="1245" y="207" key="#com.intellij.ide.util.MemberChooser" timestamp="1593680082635">
+    <state x="1245" y="207" key="#com.intellij.ide.util.MemberChooser" timestamp="1593688079516">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="1245" y="207" key="#com.intellij.ide.util.MemberChooser/0.0.1920.1040@0.0.1920.1040" timestamp="1593680082635" />
+    <state x="1245" y="207" key="#com.intellij.ide.util.MemberChooser/0.0.1920.1040@0.0.1920.1040" timestamp="1593688079516" />
     <state x="380" y="460" key="#com.intellij.refactoring.move.MoveHandler.SelectRefactoringDialog" timestamp="1593674703119">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="380" y="460" key="#com.intellij.refactoring.move.MoveHandler.SelectRefactoringDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1593674703119" />
+    <state x="98" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog" timestamp="1593687377663">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="98" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1593687377663" />
+    <state x="1198" y="270" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1593687675858">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="1198" y="270" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1593687675858" />
     <state x="328" y="251" key="DBNavigator.DatasetFilterDialog" timestamp="1593677395377">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -80,21 +127,21 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="205" y="182" key="DBNavigator.ProjectSettingsDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1593677356891" />
-    <state width="1164" height="257" key="GridCell.Tab.0.bottom" timestamp="1593685253162">
+    <state width="858" height="257" key="GridCell.Tab.0.bottom" timestamp="1593687708767">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1164" height="257" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1593685253162" />
-    <state width="1164" height="257" key="GridCell.Tab.0.center" timestamp="1593685253162">
+    <state width="858" height="257" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1593687708767" />
+    <state width="858" height="257" key="GridCell.Tab.0.center" timestamp="1593687708767">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1164" height="257" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1593685253162" />
-    <state width="1164" height="257" key="GridCell.Tab.0.left" timestamp="1593685253161">
+    <state width="858" height="257" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1593687708767" />
+    <state width="858" height="257" key="GridCell.Tab.0.left" timestamp="1593687708767">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1164" height="257" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1593685253161" />
-    <state width="1164" height="257" key="GridCell.Tab.0.right" timestamp="1593685253162">
+    <state width="858" height="257" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1593687708767" />
+    <state width="858" height="257" key="GridCell.Tab.0.right" timestamp="1593687708767">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1164" height="257" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1593685253162" />
+    <state width="858" height="257" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1593687708767" />
   </component>
 </project>
