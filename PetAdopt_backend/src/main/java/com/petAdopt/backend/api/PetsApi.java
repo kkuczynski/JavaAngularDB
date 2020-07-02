@@ -1,5 +1,6 @@
-package com.petAdopt.backend.model;
+package com.petAdopt.backend.api;
 
+import com.petAdopt.backend.dao.entity.Pets;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Optional;

@@ -1,6 +1,8 @@
-package com.petAdopt.backend.model;
+package com.petAdopt.backend.api;
 
 
+import com.petAdopt.backend.dao.entity.AdoptionHouses;
+import com.petAdopt.backend.manager.AdoptionHousesManager;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Optional;
@@ -9,9 +11,7 @@ import java.util.Vector;
 @RequestMapping("/api/adoptionhouses")
 public class AdoptionHousesApi {
     private Vector<AdoptionHouses> adoptionHousesVector;
-    public AdoptionHousesApi(){
-        adoptionHousesVector = new Vector<>();
-    }
+    private AdoptionHousesManager adoptionHousesManager;
 
     @GetMapping("/alladoptionhouses")
     public Vector<AdoptionHouses> getAll(){

@@ -1,12 +1,16 @@
-package com.petAdopt.backend.model;
+package com.petAdopt.backend.dao.entity;
 
-import com.sun.org.apache.xpath.internal.operations.Bool;
-
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import java.sql.Date;
-
+@Entity
 public class Pets {
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Id
 
-    private int id;
+    private Integer id;
     private String name;
     private String spieces; //dog, cat etc
     private String race;//race of the spieces

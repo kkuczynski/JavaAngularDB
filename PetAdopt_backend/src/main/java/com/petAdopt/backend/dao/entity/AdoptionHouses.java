@@ -1,7 +1,16 @@
-package com.petAdopt.backend.model;
+package com.petAdopt.backend.dao.entity;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+
+@Entity
 public class AdoptionHouses {
-    private int id;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Id
+
+    private Integer id;
     private String address;
     private String city;
     private String postcode;

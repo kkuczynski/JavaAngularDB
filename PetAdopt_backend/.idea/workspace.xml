@@ -20,13 +20,21 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="3fe8e951-d2a5-4ef1-8ef6-abb9e4e0f359" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/petAdopt/backend/dao/AdoptionHousesRepo.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/petAdopt/backend/dao/PetsRepo.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/petAdopt/backend/dao/UsersRepo.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/petAdopt/backend/manager/AdoptionHousesManager.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/petAdopt/backend/manager/PetsManager.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/petAdopt/backend/manager/UsersManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dbnavigator.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dbnavigator.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/petAdopt/backend/model/AdoptionHousesApi.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/petAdopt/backend/model/AdoptionHousesApi.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/petAdopt/backend/model/PetsApi.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/petAdopt/backend/model/PetsApi.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/petAdopt/backend/model/UsersApi.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/petAdopt/backend/model/UsersApi.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/petAdopt/model/dto/AdoptionHousesDto.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/petAdopt/model/dto/PetsDto.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/petAdopt/model/dto/UsersDto.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/petAdopt/backend/model/AdoptionHouses.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/petAdopt/backend/dao/entity/AdoptionHouses.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/petAdopt/backend/model/AdoptionHousesApi.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/petAdopt/backend/api/AdoptionHousesApi.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/petAdopt/backend/model/BackendApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/petAdopt/backend/BackendApplication.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/petAdopt/backend/model/Pets.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/petAdopt/backend/dao/entity/Pets.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/petAdopt/backend/model/PetsApi.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/petAdopt/backend/api/PetsApi.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/petAdopt/backend/model/Users.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/petAdopt/backend/dao/entity/Users.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/petAdopt/backend/model/UsersApi.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/petAdopt/backend/api/UsersApi.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -36,6 +44,7 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
+        <option value="Interface" />
         <option value="Class" />
       </list>
     </option>
@@ -53,17 +62,23 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
   </component>
   <component name="RecentsManager">
+    <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
+      <recent name="com.petAdopt.backend" />
+    </key>
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="com.petAdopt.backend.dao" />
+    </key>
     <key name="CreateClassDialog.RecentsKey">
       <recent name="com.petAdopt.backend.model" />
     </key>
   </component>
   <component name="RunManager">
     <configuration name="BackendApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="com.petAdopt.backend.model.BackendApplication" />
+      <option name="MAIN_CLASS_NAME" value="com.petAdopt.backend.BackendApplication" />
       <module name="backend" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="com.petAdopt.backend.model.*" />
+          <option name="PATTERN" value="com.petAdopt.backend.dao.entity.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -111,6 +126,10 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="380" y="460" key="#com.intellij.refactoring.move.MoveHandler.SelectRefactoringDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1593674703119" />
+    <state x="743" y="388" width="433" height="269" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.classes" timestamp="1593689303627">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="743" y="388" width="433" height="269" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.classes/0.0.1920.1040@0.0.1920.1040" timestamp="1593689303627" />
     <state x="98" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog" timestamp="1593687377663">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -119,10 +138,10 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="1198" y="270" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1593687675858" />
-    <state x="328" y="251" key="DBNavigator.DatasetFilterDialog" timestamp="1593677395377">
+    <state x="328" y="251" key="DBNavigator.DatasetFilterDialog" timestamp="1593689673348">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="328" y="251" key="DBNavigator.DatasetFilterDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1593677395377" />
+    <state x="328" y="251" key="DBNavigator.DatasetFilterDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1593689673348" />
     <state x="205" y="182" key="DBNavigator.ProjectSettingsDialog" timestamp="1593677356891">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>

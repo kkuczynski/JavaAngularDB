@@ -1,4 +1,4 @@
-package com.petAdopt.backend.model;
+package com.petAdopt.backend;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
