@@ -5,8 +5,25 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import java.sql.Date;
+import java.time.LocalDate;
+
 @Entity
 public class Pets {
+    public Pets(Integer id, String name, String spieces, String race, int age, String health, String sex, Boolean sterilized, Boolean adopted, LocalDate adopt_date, Boolean temporary_adopted, int tmp_adopt_for_days){
+        this.id = id;
+        this.name = name;
+        this.spieces = spieces;
+        this.race = race;
+        this.age = age;
+        this.health = health;
+        this.sex = sex;
+        this.sterilized = sterilized;
+        this.adopted = adopted;
+        this.adopt_date = adopt_date;
+        this.temporary_adopted = temporary_adopted;
+        this.tmp_adopt_for_days = tmp_adopt_for_days;
+    }
+
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
 
@@ -19,7 +36,7 @@ public class Pets {
     private String sex;//male/female
     private Boolean sterilized;
     private Boolean adopted;
-    private Date adopt_date;//if adopted permanently
+    private LocalDate adopt_date;
     private Boolean temporary_adopted;
     private int tmp_adopt_for_days;//when permanently adopted set to -1
 
@@ -95,11 +112,11 @@ public class Pets {
         this.adopted = adopted;
     }
 
-    public Date getAdopt_date(){
+    public LocalDate getAdopt_date(){
         return adopt_date;
     }
 
-    public void setAdopt_date(Date adopt_date){
+    public void setAdopt_date(LocalDate adopt_date){
         this.adopt_date = adopt_date;
     }
 

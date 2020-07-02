@@ -7,9 +7,18 @@ import javax.persistence.Id;
 import java.sql.Timestamp;
 @Entity
 public class Users {
+    public Users(Integer id, String full_name, Timestamp created_at, int role, String login, String pass){
+        this.id = id;
+        this.full_name = full_name;
+        this.created_at = created_at;
+        this.role = role;
+        this.login = login;
+        this.pass = pass;
+    }
 
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
+
     private Integer id;
     private String full_name;
     private Timestamp created_at;

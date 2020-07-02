@@ -7,6 +7,16 @@ import javax.persistence.Id;
 
 @Entity
 public class AdoptionHouses {
+    public AdoptionHouses(Integer id, String address, String city, String postcode, int user_id, int pets_id, String conditions){
+        this.id = id;
+        this.address = address;
+        this.city = city;
+        this.postcode = postcode;
+        this.user_id = user_id;
+        this.pets_id = pets_id;
+        this.conditions = conditions;
+    }
+
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
 

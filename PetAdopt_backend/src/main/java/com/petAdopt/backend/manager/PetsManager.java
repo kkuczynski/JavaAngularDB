@@ -1,12 +1,12 @@
 package com.petAdopt.backend.manager;
 
-import com.petAdopt.backend.dao.AdoptionHousesRepo;
 import com.petAdopt.backend.dao.PetsRepo;
-import com.petAdopt.backend.dao.entity.AdoptionHouses;
 import com.petAdopt.backend.dao.entity.Pets;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
+import org.springframework.boot.context.event.ApplicationReadyEvent;
+import org.springframework.context.event.EventListener;
 
+import java.time.LocalDate;
 import java.util.Optional;
 
 
@@ -34,4 +34,10 @@ public class PetsManager {
     public void deleteById (Integer id){
         petsRepo.deleteById(id);
     }
+    @EventListener(ApplicationReadyEvent.class)
+    public void testFillDB(){
+        save(new Pets(1,"Jasper","dog","mixed",13,"healthy","male", true, false, LocalDate.of(2019,6,8), true, 180));
+        save(new Pets(2,"Lena", "cat", "russian gray", 28, "healthy", "female", true, true, LocalDate.of(2017,12,10), false, -1));
+    }
+
 }
