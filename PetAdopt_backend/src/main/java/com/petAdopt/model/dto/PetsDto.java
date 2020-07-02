@@ -91,6 +91,6 @@ public
     }
     void setTmp_adopt_for_days()
     {
-        
+
     }
 }
