@@ -22,8 +22,8 @@
     <list default="true" id="3fe8e951-d2a5-4ef1-8ef6-abb9e4e0f359" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/petAdopt/backend/BackendApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/petAdopt/backend/BackendApplication.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/petAdopt/backend/api/UsersApi.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/petAdopt/backend/api/UsersApi.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/petAdopt/backend/dao/entity/AdoptionHouses.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/petAdopt/backend/dao/entity/AdoptionHouses.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/petAdopt/backend/dao/entity/Pets.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/petAdopt/backend/dao/entity/Pets.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/petAdopt/backend/dao/entity/Users.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/petAdopt/backend/dao/entity/Users.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/petAdopt/backend/manager/PetsManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/petAdopt/backend/manager/PetsManager.java" afterDir="false" />
     </list>
@@ -51,6 +51,7 @@
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
   </component>
   <component name="RecentsManager">
     <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
@@ -137,22 +138,26 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="205" y="182" key="DBNavigator.ProjectSettingsDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1593677356891" />
-    <state width="1877" height="348" key="GridCell.Tab.0.bottom" timestamp="1593697447548">
+    <state x="740" y="275" key="FileChooserDialogImpl" timestamp="1593760363756">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="348" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1593697447548" />
-    <state width="1877" height="348" key="GridCell.Tab.0.center" timestamp="1593697447548">
+    <state x="740" y="275" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1593760363756" />
+    <state width="1877" height="282" key="GridCell.Tab.0.bottom" timestamp="1593760307323">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="348" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1593697447548" />
-    <state width="1877" height="348" key="GridCell.Tab.0.left" timestamp="1593697447548">
+    <state width="1877" height="282" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1593760307323" />
+    <state width="1877" height="282" key="GridCell.Tab.0.center" timestamp="1593760307323">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="348" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1593697447548" />
-    <state width="1877" height="348" key="GridCell.Tab.0.right" timestamp="1593697447548">
+    <state width="1877" height="282" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1593760307323" />
+    <state width="1877" height="282" key="GridCell.Tab.0.left" timestamp="1593760307323">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="348" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1593697447548" />
+    <state width="1877" height="282" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1593760307323" />
+    <state width="1877" height="282" key="GridCell.Tab.0.right" timestamp="1593760307323">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1877" height="282" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1593760307323" />
     <state width="1877" height="348" key="GridCell.Tab.1.bottom" timestamp="1593697447548">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
