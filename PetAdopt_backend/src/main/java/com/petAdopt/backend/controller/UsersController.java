@@ -25,7 +25,7 @@ public class UsersController {
     }
 
 
-    @GetMapping("/{idUser}")
+    @GetMapping("/byId")
     public Users getById(@RequestParam Integer index) throws Exception{
        return usersService.findById(index);
     }

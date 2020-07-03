@@ -4,9 +4,7 @@ import com.petAdopt.backend.repo.AdoptionHousesRepo;
 import com.petAdopt.backend.dao.entity.AdoptionHouses;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
 import java.util.List;
-
 
 @Service
 public class AdoptionHousesService {

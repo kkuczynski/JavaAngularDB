@@ -8,7 +8,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 
 /*
-* Do wywalenia zostawiamy sam @SpringBootApplication
 * Struktura katalogowa:
 * backend:
 * 	controller

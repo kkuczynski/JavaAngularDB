@@ -25,7 +25,7 @@ public class AdoptionHousesController {
         return adoptionHousesService.findAll();
     }
 
-    @GetMapping("/{idAdoptionHouse}")
+    @GetMapping("/byId")
     public AdoptionHouses getById(@RequestParam Integer index)throws Exception{
         return adoptionHousesService.findById(index);
 

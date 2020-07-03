@@ -9,7 +9,7 @@ import java.time.LocalDate;
 @Entity
 public class Pets {
 
-    public Pets(Integer id, String name, String spieces, String race, int age, String health, String sex, Boolean sterilized, Boolean adopted, LocalDate adopt_date, Boolean temporary_adopted, int tmp_adopt_for_days){
+    public Pets(Integer id, String name, String spieces, String race, int age, String health, String sex, Boolean sterilized, Boolean adopted, LocalDate adoptDate, Boolean temporaryAdopted, int tmpAdoptForDays){
         this.id = id;
         this.name = name;
         this.spieces = spieces;
@@ -19,9 +19,12 @@ public class Pets {
         this.sex = sex;
         this.sterilized = sterilized;
         this.adopted = adopted;
-        this.adopt_date = adopt_date;
-        this.temporary_adopted = temporary_adopted;
-        this.tmp_adopt_for_days = tmp_adopt_for_days;
+        this.adoptDate = adoptDate;
+        this.temporaryAdopted = temporaryAdopted;
+        this.tmpAdoptForDays = tmpAdoptForDays;
+    }
+
+    public Pets(){
     }
 
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -36,9 +39,9 @@ public class Pets {
     private String sex;//male/female
     private Boolean sterilized;
     private Boolean adopted;
-    private LocalDate adopt_date;
-    private Boolean temporary_adopted;
-    private int tmp_adopt_for_days;//when permanently adopted set to -1
+    private LocalDate adoptDate;
+    private Boolean temporaryAdopted;
+    private int tmpAdoptForDays;//when permanently adopted set to -1
 
     public int getId(){
         return id;
@@ -112,28 +115,28 @@ public class Pets {
         this.adopted = adopted;
     }
 
-    public LocalDate getAdopt_date(){
-        return adopt_date;
+    public LocalDate getAdoptDate(){
+        return adoptDate;
     }
 
-    public void setAdopt_date(LocalDate adopt_date){
-        this.adopt_date = adopt_date;
+    public void setAdoptDate(LocalDate adoptDate){
+        this.adoptDate = adoptDate;
     }
 
-    public Boolean getTemporary_adopted(){
-        return temporary_adopted;
+    public Boolean getTemporaryAdopted(){
+        return temporaryAdopted;
     }
 
-    public void setTemporary_adopted(Boolean temporary_adopted){
-        this.temporary_adopted = temporary_adopted;
+    public void setTemporaryAdopted(Boolean temporaryAdopted){
+        this.temporaryAdopted = temporaryAdopted;
     }
 
-    public int getTmp_adopt_for_days(){
-        return tmp_adopt_for_days;
+    public int getTmpAdoptForDays(){
+        return tmpAdoptForDays;
     }
 
-    public void setTmp_adopt_for_days(int tmp_adopt_for_days){
-        this.tmp_adopt_for_days = tmp_adopt_for_days;
+    public void setTmpAdoptForDays(int tmpAdoptForDays){
+        this.tmpAdoptForDays = tmpAdoptForDays;
     }
 }
 

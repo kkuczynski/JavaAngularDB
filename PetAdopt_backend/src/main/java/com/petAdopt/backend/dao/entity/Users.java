@@ -8,21 +8,24 @@ import java.sql.Date;
 
 @Entity
 public class Users {
-    public Users(Integer id, String full_name, Date created_at, Role givenRole, String login, String pass){
+    public Users(Integer id, String fullName, Date createdAt, Role givenRole, String login, String pass){
         this.id = id;
-        this.full_name = full_name;
-        this.created_at = created_at;
+        this.fullName = fullName;
+        this.createdAt = createdAt;
         this.givenRole = givenRole;
         this.login = login;
         this.pass = pass;
+    }
+
+    public Users(){
     }
 
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
 
     private Integer id;
-    private String full_name;
-    private Date created_at;
+    private String fullName;
+    private Date createdAt;
     private enum Role {
         ADMIN, COMMON_USER, EMPLOYEE;
     }
@@ -38,20 +41,20 @@ public class Users {
         this.id = id;
     }
 
-    public String getFull_name(){
-        return full_name;
+    public String getFullName(){
+        return fullName;
     }
 
-    public void setFull_name(String full_name){
-        this.full_name = full_name;
+    public void setFullName(String fullName){
+        this.fullName = fullName;
     }
 
-    public Date getCreated_at(){
-        return created_at;
+    public Date getCreatedAt(){
+        return createdAt;
     }
 
-    public void setCreated_at(Date created_at){
-        this.created_at = created_at;
+    public void setCreatedAt(Date createdAt){
+        this.createdAt = createdAt;
     }
 
     public Role getRole(){

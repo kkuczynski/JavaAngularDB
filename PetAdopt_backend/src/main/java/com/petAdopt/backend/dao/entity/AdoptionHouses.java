@@ -17,6 +17,9 @@ public class AdoptionHouses {
         this.conditions = conditions;
     }
 
+    public AdoptionHouses(){
+    }
+
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
     private Integer id;

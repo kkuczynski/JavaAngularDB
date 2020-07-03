@@ -3,14 +3,10 @@ package com.petAdopt.backend.service;
 import com.petAdopt.backend.repo.PetsRepo;
 import com.petAdopt.backend.dao.entity.Pets;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.context.event.ApplicationReadyEvent;
-import org.springframework.context.event.EventListener;
-
-import java.time.LocalDate;
+import org.springframework.stereotype.Service;
 import java.util.List;
 
-
-
+@Service
 public class PetsService {
 
     private PetsRepo petsRepo;

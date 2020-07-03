@@ -4,14 +4,11 @@ import com.petAdopt.backend.dao.entity.Pets;
 import com.petAdopt.backend.service.PetsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-
 import java.time.LocalDate;
 import java.util.List;
 
-
-
 @RestController
-@RequestMapping
+@RequestMapping("/pets")
 public class PetsController {
 
     private PetsService petsService;
@@ -19,8 +16,8 @@ public class PetsController {
     @Autowired
     public PetsController(PetsService petsService){
         this.petsService = petsService;
-        new Pets(1,"Jasper","dog","mixed",13,"healthy","male", true, false, LocalDate.of(2019,6,8), true, 180);
-        new Pets(2,"Lena", "cat", "russian gray", 28, "healthy", "female", true, true, LocalDate.of(2017,12,10), false, -1);
+//        new Pets(1,"Jasper","dog","mixed",13,"healthy","male", true, false, LocalDate.of(2019,6,8), true, 180));
+//        new Pets(2,"Lena", "cat", "russian gray", 28, "healthy", "female", true, true, LocalDate.of(2017,12,10), false, -1));
     }
 
     @GetMapping("/test")
@@ -32,7 +29,7 @@ public class PetsController {
         return petsService.findAll();
     }
 
-    @GetMapping("/{idPet}")
+    @GetMapping("/byId")
     public Pets getById(@RequestParam Integer index) throws Exception{
         return petsService.findById(index);
     }
