@@ -1,4 +1,4 @@
-package com.petAdopt.backend.dao;
+package com.petAdopt.backend.repo;
 
 
 import com.petAdopt.backend.dao.entity.AdoptionHouses;

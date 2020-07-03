@@ -1,31 +1,29 @@
-package com.petAdopt.backend.manager;
+package com.petAdopt.backend.service;
 
-import com.petAdopt.backend.dao.PetsRepo;
-import com.petAdopt.backend.dao.UsersRepo;
-import com.petAdopt.backend.dao.entity.Pets;
+import com.petAdopt.backend.repo.UsersRepo;
 import com.petAdopt.backend.dao.entity.Users;
-import org.aspectj.apache.bcel.classfile.Module;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Optional;
 
 @Service
-public class UsersManager {
+public class UsersService {
 
     private UsersRepo usersRepo;
 
     @Autowired
-    public UsersManager(UsersRepo usersRepo){
+    public UsersService(UsersRepo usersRepo){
         this.usersRepo = usersRepo;
     }
 
-    public Optional<Users> findById(Integer id){
-        return usersRepo.findById(id);
+    public Users findById(Integer id) throws Exception{
+        return usersRepo.findById(id).orElseThrow(Exception::new);
     }
 
-    public Iterable<Users> findAll(){
-        return usersRepo.findAll();
+    public List<Users> findAll(){
+        return (List<Users>) usersRepo.findAll();
     }
 
     public Users save (Users users){

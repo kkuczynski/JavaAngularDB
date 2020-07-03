@@ -20,12 +20,21 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="3fe8e951-d2a5-4ef1-8ef6-abb9e4e0f359" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/dbnavigator.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dbnavigator.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/petAdopt/backend/BackendApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/petAdopt/backend/BackendApplication.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/petAdopt/backend/api/UsersApi.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/petAdopt/backend/api/UsersApi.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/petAdopt/backend/api/AdoptionHousesApi.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/petAdopt/backend/controller/AdoptionHousesController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/petAdopt/backend/api/PetsApi.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/petAdopt/backend/controller/PetsController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/petAdopt/backend/api/UsersApi.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/petAdopt/backend/controller/UsersController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/petAdopt/backend/dao/AdoptionHousesRepo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/petAdopt/backend/repo/AdoptionHousesRepo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/petAdopt/backend/dao/PetsRepo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/petAdopt/backend/repo/PetsRepo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/petAdopt/backend/dao/UsersRepo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/petAdopt/backend/repo/UsersRepo.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/petAdopt/backend/dao/entity/AdoptionHouses.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/petAdopt/backend/dao/entity/AdoptionHouses.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/petAdopt/backend/dao/entity/Pets.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/petAdopt/backend/dao/entity/Pets.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/petAdopt/backend/dao/entity/Users.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/petAdopt/backend/dao/entity/Users.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/petAdopt/backend/manager/PetsManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/petAdopt/backend/manager/PetsManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/petAdopt/backend/manager/AdoptionHousesManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/petAdopt/backend/service/AdoptionHousesService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/petAdopt/backend/manager/PetsManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/petAdopt/backend/service/PetsService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/petAdopt/backend/manager/UsersManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/petAdopt/backend/service/UsersService.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -122,10 +131,10 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="743" y="388" width="433" height="269" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.classes/0.0.1920.1040@0.0.1920.1040" timestamp="1593689303627" />
-    <state x="98" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog" timestamp="1593692617157">
+    <state x="98" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog" timestamp="1593761569285">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="98" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1593692617157" />
+    <state x="98" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1593761569285" />
     <state x="1198" y="270" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1593687675858">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -142,22 +151,22 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="740" y="275" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1593760363756" />
-    <state width="1877" height="282" key="GridCell.Tab.0.bottom" timestamp="1593760307323">
+    <state width="1877" height="342" key="GridCell.Tab.0.bottom" timestamp="1593762566267">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="282" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1593760307323" />
-    <state width="1877" height="282" key="GridCell.Tab.0.center" timestamp="1593760307323">
+    <state width="1877" height="342" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1593762566267" />
+    <state width="1877" height="342" key="GridCell.Tab.0.center" timestamp="1593762566267">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="282" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1593760307323" />
-    <state width="1877" height="282" key="GridCell.Tab.0.left" timestamp="1593760307323">
+    <state width="1877" height="342" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1593762566267" />
+    <state width="1877" height="342" key="GridCell.Tab.0.left" timestamp="1593762566267">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="282" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1593760307323" />
-    <state width="1877" height="282" key="GridCell.Tab.0.right" timestamp="1593760307323">
+    <state width="1877" height="342" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1593762566267" />
+    <state width="1877" height="342" key="GridCell.Tab.0.right" timestamp="1593762566267">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="282" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1593760307323" />
+    <state width="1877" height="342" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1593762566267" />
     <state width="1877" height="348" key="GridCell.Tab.1.bottom" timestamp="1593697447548">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>

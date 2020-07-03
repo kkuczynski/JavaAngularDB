@@ -4,14 +4,15 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import java.sql.Timestamp;
+import java.sql.Date;
+
 @Entity
 public class Users {
-    public Users(Integer id, String full_name, Timestamp created_at, int role, String login, String pass){
+    public Users(Integer id, String full_name, Date created_at, Role givenRole, String login, String pass){
         this.id = id;
         this.full_name = full_name;
         this.created_at = created_at;
-        this.role = role;
+        this.givenRole = givenRole;
         this.login = login;
         this.pass = pass;
     }
@@ -21,11 +22,11 @@ public class Users {
 
     private Integer id;
     private String full_name;
-//    Może Date?
-    private Timestamp created_at;
-
-//   Na enumie takie rzeczy
-    private int role; //0 - admin, 1 - employee, 2 - common user
+    private Date created_at;
+    private enum Role {
+        ADMIN, COMMON_USER, EMPLOYEE;
+    }
+    private Role givenRole;
     private String login;
     private String pass;
 
@@ -45,20 +46,20 @@ public class Users {
         this.full_name = full_name;
     }
 
-    public Timestamp getCreated_at(){
+    public Date getCreated_at(){
         return created_at;
     }
 
-    public void setCreated_at(Timestamp created_at){
+    public void setCreated_at(Date created_at){
         this.created_at = created_at;
     }
 
-    public int getRole(){
-        return role;
+    public Role getRole(){
+        return givenRole;
     }
 
-    public void setRole(int role){
-        this.role = role;
+    public void setRole(Role givenRole){
+        this.givenRole=givenRole;
     }
 
     public String getLogin(){

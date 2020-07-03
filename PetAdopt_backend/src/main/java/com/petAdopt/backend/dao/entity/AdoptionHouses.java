@@ -17,8 +17,6 @@ public class AdoptionHouses {
         this.conditions = conditions;
     }
 
-//    Czepianie się clean codu ale zostawiaj odstęp linijki pomiędzy polami
-//    Poczytaj na temat Lomboka - ułatwi Ci prace
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
     private Integer id;

@@ -4,11 +4,11 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import java.sql.Date;
 import java.time.LocalDate;
 
 @Entity
 public class Pets {
+
     public Pets(Integer id, String name, String spieces, String race, int age, String health, String sex, Boolean sterilized, Boolean adopted, LocalDate adopt_date, Boolean temporary_adopted, int tmp_adopt_for_days){
         this.id = id;
         this.name = name;
