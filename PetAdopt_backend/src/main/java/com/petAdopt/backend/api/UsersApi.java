@@ -9,8 +9,17 @@ import java.util.Vector;
 @RestController
 @RequestMapping("/api/users")
 public class UsersApi {
+
+
+    /*
+    * @GetMapping pobierający wszystkich userów powinnien byc wolny
+    * @GetMapping pobierający konkretnego usera powinnien mieć w PATH id czyli @GetMapping("/{idUser}")
+     */
     UsersManager usersManager;
 
+    /* UserController*
+    * UsersManager -> UsersService
+     */
     public UsersApi(UsersManager usersManager){
         this.usersManager = usersManager;
     }
@@ -19,6 +28,7 @@ public class UsersApi {
     public Iterable<Users> getAll(){
         return usersManager.findAll();
     }
+
 
     @GetMapping
     public Optional<Users> getById(@RequestParam Integer index){

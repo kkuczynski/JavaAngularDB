@@ -21,7 +21,10 @@ public class Users {
 
     private Integer id;
     private String full_name;
+//    Może Date?
     private Timestamp created_at;
+
+//   Na enumie takie rzeczy
     private int role; //0 - admin, 1 - employee, 2 - common user
     private String login;
     private String pass;
