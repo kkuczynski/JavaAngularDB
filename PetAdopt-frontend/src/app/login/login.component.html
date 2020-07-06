@@ -1,13 +1,19 @@
+
+     
+
+
 <div style="text-align: right;" *ngIf="!logged">
+     
     login:<input #login type="text">
     <br>
     password:<input #password type="password">
     <br>
-    <button (click)="SignUp(login.value, password.value)">Sign up </button>
+    <button (click)="signUp(login.value, password.value)">Sign up </button>
     <button (click)="signIn(login.value, password.value)">Sign in </button>
+
 </div>
 <div style="text-align: right;" *ngIf="logged">
-    Logged in
+    Signed in <button (click)="signOut()">Sign out</button>
     
 
 </div>

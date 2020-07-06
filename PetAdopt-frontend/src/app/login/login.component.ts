@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
   selector: 'app-login',
@@ -7,6 +7,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LoginComponent implements OnInit {
 
+  public date = new Date();
   public logged = false;
   public username = '';
   public password = '';
@@ -16,10 +17,13 @@ export class LoginComponent implements OnInit {
     console.log('pass: ' + givenPassword);
     this.username = givenUsername;
     this.password = givenPassword;
-    this.logged = !this.logged;
+    this.logged = true;
   }
   signUp() {
 
+  }
+  signOut() {
+    this.logged = false;
   }
   ngOnInit() {
   }
