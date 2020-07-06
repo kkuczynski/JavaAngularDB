@@ -1,1 +1,17 @@
 /* You can add global styles to this file, and also import other style files */
+button {
+    background-color: gray;
+    border-style: solid;    
+    border-radius: 3px;
+    border-color: white;
+    border-width: 2px;
+    color: white;
+    padding: 11px 24px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 14px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    cursor: pointer;
+    border-radius: 10px;  
+  }
