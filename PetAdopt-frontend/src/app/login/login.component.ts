@@ -1,4 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
+import * as globals from 'globals';
 
 @Component({
   selector: 'app-login',
@@ -13,6 +14,10 @@ export class LoginComponent implements OnInit {
   public isEmplyee = false;
   public username = '';
   public password = '';
+  loggedAsAdmin(){
+    globals.isAdmin = true;
+    globals.isEmpoee = true;
+  }
   constructor() { }
   signIn(givenUsername, givenPassword) {
     console.log('login: ' + givenUsername);
@@ -20,6 +25,7 @@ export class LoginComponent implements OnInit {
     this.username = givenUsername;
     this.password = givenPassword;
     this.logged = true;
+    this.loggedAsAdmin();
   }
   signUp() {
 

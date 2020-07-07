@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { PetsService } from './pets.service';
+import * as globals from 'globals';
+
 
 
 @Component({
@@ -9,6 +11,9 @@ import { PetsService } from './pets.service';
 })
 export class PetsComponent implements OnInit {
 
+public isAdmin = globals.isAdmin;
+
+public isEmployee = globals.isEmployee;
 public pets = [];
 public currentDate = new Date();
 public month = this.currentDate.getMonth();
@@ -36,7 +41,4 @@ public month = this.currentDate.getMonth();
       console.log(pet.name);
     }
   }
-  
- 
-
 }
