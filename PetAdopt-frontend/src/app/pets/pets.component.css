@@ -1,0 +1,22 @@
+table{
+    min-width: 800px;
+    
+    
+}
+.left{
+    text-align: right;
+    
+}
+.right{
+    text-align:left;
+}
+td{
+    min-width: 400px;
+    margin-top: 0px;
+}
+h4{
+    line-height: 80%;
+}
+.noHome{
+    color: darkred;
+}

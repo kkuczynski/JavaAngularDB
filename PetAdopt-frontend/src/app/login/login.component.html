@@ -4,9 +4,9 @@
 
 <div style="text-align: right;" *ngIf="!logged">
      
-    login:<input #login type="text">
+    <input #login type="text" placeholder="username">
     <br>
-    password:<input #password type="password">
+   <input #password type="password" placeholder="password">
     <br>
     <button (click)="signUp()">Sign up </button>
     <button (click)="signIn(login.value, password.value)">Sign in </button>

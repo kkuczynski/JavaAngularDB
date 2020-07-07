@@ -9,6 +9,8 @@ export class LoginComponent implements OnInit {
 
   public date = new Date();
   public logged = false;
+  public isAdmin = false;
+  public isEmplyee = false;
   public username = '';
   public password = '';
   constructor() { }

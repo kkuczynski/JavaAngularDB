@@ -21,14 +21,16 @@ button {
   }
 
   input[type=text] {
-    border: 2px solid gray;
+    border: 1px solid gray;
     border-radius: 5px;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
     font-size: 15px;     
+    height: 35px; 
   }
   input[type=password] {
-    border: 2px solid gray;
+    border: 1px solid gray;
     border-radius: 5px;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
-    font-size: 15px;    
+    font-size: 15px; 
+    height: 35px;   
   }

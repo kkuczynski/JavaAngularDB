@@ -3,10 +3,17 @@ package com.petAdopt.backend.controller;
 import com.petAdopt.backend.dao.entity.Pets;
 import com.petAdopt.backend.service.PetsService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
+import java.net.URI;
+import java.net.URISyntaxException;
 import java.time.LocalDate;
 import java.util.List;
 
+@CrossOrigin(origins = "http://localhost:4200")
 @RestController
 @RequestMapping("/pets")
 public class PetsController {
@@ -16,10 +23,16 @@ public class PetsController {
     @Autowired
     public PetsController(PetsService petsService){
         this.petsService = petsService;
-//        new Pets(1,"Jasper","dog","mixed",13,"healthy","male", true, false, LocalDate.of(2019,6,8), true, 180));
-//        new Pets(2,"Lena", "cat", "russian gray", 28, "healthy", "female", true, true, LocalDate.of(2017,12,10), false, -1));
-    }
 
+    }
+    @RequestMapping("/handle")
+    public ResponseEntity<String> handle() throws URISyntaxException{
+        URI location = new URI("http://localhost:4200");
+        HttpHeaders responseHeaders = new HttpHeaders();
+        responseHeaders.setLocation(location);
+        responseHeaders.set("Access-Control-Allow-Origin", "Access-Control-Allow-Origin");
+        return new ResponseEntity<String>("Hello World", responseHeaders, HttpStatus.CREATED);
+    }
     @GetMapping("/test")
     public String getAll(){
         return "test";

@@ -5,7 +5,7 @@ import com.petAdopt.backend.service.UsersService;
 import org.springframework.web.bind.annotation.*;
 
 
-
+@CrossOrigin(origins = "http://localhost:4200")
 @RestController
 @RequestMapping("/users")
 public class UsersController {

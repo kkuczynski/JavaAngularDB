@@ -1,1 +1,115 @@
-<p>pets works!</p>
+<div *ngFor="let pet of pets">
+    <!--<div *ngIf="!pet.adopted">-->
+
+    <table>
+        <tr>
+            <td>
+                <div class="left">
+                    name:
+
+                </div>
+            </td>
+            <td>
+                <div class="right">
+                    <h2>
+                        {{pet.name}}
+                    </h2>
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <div class="left">
+                    age:
+                </div>
+            </td>
+
+            <td>
+                <div class="right">
+                    <h4>
+                        {{pet.age}} month<ng-template [ngIf]="pet.age!=1">s</ng-template>
+                    </h4>
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <div class="left">
+                    race:
+                </div>
+            </td>
+
+            <td>
+                <div class="right">
+                    <h4>
+                        {{pet.race}}
+                    </h4>
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <div class="left">
+                    sex:
+                </div>
+            </td>
+
+            <td>
+                <div class="right">
+                    <h4>
+                        {{pet.sex}}
+                    </h4>
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <div class="left">
+                    sterilized:
+                </div>
+            </td>
+
+            <td>
+                <div class="right">
+                    <h4 *ngIf="pet.sterilized">
+                        yes
+                    </h4>
+                    <h4 *ngIf="!pet.sterilized">
+                        no
+                    </h4>
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <div class="left">
+                    home:
+                </div>
+            </td>
+
+            <td>
+                <div class="right">
+                    <h4>
+                        <div *ngIf="!pet.adopted">
+                            <ng-template [ngIf]="compareDates(pet.adoptDate, pet.tmpAdoptForDays, currentDate)">
+                                until {{addDays(pet.adoptDate, pet.tmpAdoptForDays) | date:'longDate'}}
+                            </ng-template>
+                            <ng-template [ngIf]="!compareDates(pet.adoptDate, pet.tmpAdoptForDays, currentDate)">
+                                <div class="noHome">no...</div>
+                            </ng-template>
+
+                        </div>
+                        <div *ngIf="pet.adopted">
+                            I've found a new home!
+                        </div>
+                    </h4>
+                </div>
+            </td>
+        </tr>
+
+
+
+    </table>
+    <hr>
+    <!--</div>-->
+</div>

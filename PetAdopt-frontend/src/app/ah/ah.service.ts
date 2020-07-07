@@ -11,7 +11,7 @@ export class AHService {
   private url = 'http://localhost:8088/adoptionhouses';
 
   constructor(private http: HttpClient) { }
-  getUsers(): Observable<AHInterface[]> {
+  getAH(): Observable<AHInterface[]> {
     return this.http.get<AHInterface[]>(this.url);
   }
 }

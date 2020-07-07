@@ -11,7 +11,7 @@ export class PetsService {
   private url = 'http://localhost:8088/pets';
 
   constructor(private http: HttpClient) { }
-  getUsers(): Observable<PetsInterface[]> {
+  getPets(): Observable<PetsInterface[]> {
     return this.http.get<PetsInterface[]>(this.url);
   }
 }

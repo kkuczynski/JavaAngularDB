@@ -8,6 +8,7 @@ import { HttpClientModule} from '@angular/common/http';
 import { UsersComponent } from './users/users.component';
 import { PetsComponent } from './pets/pets.component';
 import { AHComponent } from './ah/ah.component';
+import { LeftMenuComponent } from './left-menu/left-menu.component';
 
 @NgModule({
   declarations: [
@@ -15,7 +16,8 @@ import { AHComponent } from './ah/ah.component';
     LoginComponent,
     UsersComponent,
     PetsComponent,
-    AHComponent
+    AHComponent,
+    LeftMenuComponent
   ],
   imports: [
     BrowserModule,
