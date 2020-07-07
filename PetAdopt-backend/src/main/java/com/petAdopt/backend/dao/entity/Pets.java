@@ -9,12 +9,13 @@ import java.time.LocalDate;
 @Entity
 public class Pets {
 
-    public Pets(Integer id, String name, String spieces, String race, int age, String health, String sex, Boolean sterilized, Boolean adopted, LocalDate adoptDate, Boolean temporaryAdopted, int tmpAdoptForDays){
+    public Pets(Integer id, String name, String spieces, String race, int age, LocalDate addedAt, String health, String sex, Boolean sterilized, Boolean adopted, LocalDate adoptDate, Boolean temporaryAdopted, int tmpAdoptForDays){
         this.id = id;
         this.name = name;
         this.spieces = spieces;
         this.race = race;
         this.age = age;
+        this.addedAt = addedAt;
         this.health = health;
         this.sex = sex;
         this.sterilized = sterilized;
@@ -22,6 +23,18 @@ public class Pets {
         this.adoptDate = adoptDate;
         this.temporaryAdopted = temporaryAdopted;
         this.tmpAdoptForDays = tmpAdoptForDays;
+    }
+
+    public void setId(Integer id){
+        this.id = id;
+    }
+
+    public LocalDate getAddedAt(){
+        return addedAt;
+    }
+
+    public void setAddedAt(LocalDate addedAt){
+        this.addedAt = addedAt;
     }
 
     public Pets(){
@@ -35,6 +48,7 @@ public class Pets {
     private String spieces; //dog, cat etc
     private String race;//race of the spieces
     private int age;//age of the pet given in months
+    private LocalDate addedAt; //when the pet was added to db
     private String health;//the description of health status of the pet
     private String sex;//male/female
     private Boolean sterilized;

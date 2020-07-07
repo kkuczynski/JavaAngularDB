@@ -3,6 +3,48 @@ div{
     color: gray
 }
 footer{
+  position: absolute;
+    bottom: 1%;
+    right: 0;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
     color: gray
 }
+.split {
+    height: 100%;
+    width: 20%;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    overflow-x: hidden;
+    padding-top: 20px;
+  }
+  .splitted {
+    height: 100%;
+    width: 60%;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    overflow-y: hidden;
+    padding-top: 20px;
+    overflow: scroll;
+  }
+  .left {
+    left: 0;
+    background-color: whitesmoke;
+  }
+  .right{
+      right: 0;
+      background-color: whitesmoke;
+      overflow: hidden;
+  }
+  .middle{
+      
+left: 20%
+  }
+  .centered {
+    position: absolute;
+    
+    left: 50%;
+    transform: translate(-50%, -0%);
+    text-align: center;
+  }

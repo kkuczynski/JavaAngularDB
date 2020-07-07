@@ -4,13 +4,13 @@ import javax.persistence.*;
 
 @Entity
 public class AdoptionHouses {
-    public AdoptionHouses(Integer id, String address, String city, String postcode, int user_id, int pets_id, String conditions){
+    public AdoptionHouses(Integer id, String address, String city, String postcode, int userId, int petsId, String conditions){
         this.id = id;
         this.address = address;
         this.city = city;
         this.postcode = postcode;
-        this.user_id = user_id;
-        this.pets_id = pets_id;
+        this.userId = userId;
+        this.petsId = petsId;
         this.conditions = conditions;
     }
 
@@ -23,8 +23,8 @@ public class AdoptionHouses {
     private String address;
     private String city;
     private String postcode;
-    private int user_id;
-    private int pets_id;
+    private int userId;
+    private int petsId;
     private String conditions;
 
     public int getId(){
@@ -59,20 +59,20 @@ public class AdoptionHouses {
         this.postcode = postcode;
     }
 
-    public int getUser_id(){
-        return user_id;
+    public int getUserId(){
+        return userId;
     }
 
-    public void setUser_id(int user_id){
-        this.user_id = user_id;
+    public void setUserId(int userId){
+        this.userId = userId;
     }
 
-    public int getPets_id(){
-        return pets_id;
+    public int getPetsId(){
+        return petsId;
     }
 
-    public void setPets_id(int pets_id){
-        this.pets_id = pets_id;
+    public void setPetsId(int petsId){
+        this.petsId = petsId;
     }
 
     public String getConditions(){
