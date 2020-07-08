@@ -17,14 +17,16 @@ import java.util.List;
 @RestController
 @RequestMapping("/pets")
 public class PetsController {
-
+// final
     private PetsService petsService;
 
+// nie musi
     @Autowired
     public PetsController(PetsService petsService){
         this.petsService = petsService;
 
     }
+//    wtf
     @RequestMapping("/handle")
     public ResponseEntity<String> handle() throws URISyntaxException{
         URI location = new URI("http://localhost:4200");
@@ -33,15 +35,17 @@ public class PetsController {
         responseHeaders.set("Access-Control-Allow-Origin", "Access-Control-Allow-Origin");
         return new ResponseEntity<String>("Hello World", responseHeaders, HttpStatus.CREATED);
     }
+    //    wtf
     @GetMapping("/test")
     public String getAll(){
         return "test";
     }
+
     @GetMapping
     public List<Pets> getAllPets(){
         return petsService.findAll();
     }
-
+//w path id
     @GetMapping("/byId")
     public Pets getById(@RequestParam Integer index) throws Exception{
         return petsService.findById(index);
@@ -54,6 +58,7 @@ public class PetsController {
 
     @PutMapping
     public Pets updatePets(@RequestBody Pets pet){
+//        tu powinna być metoda update
         return petsService.save(pet);
     }
 

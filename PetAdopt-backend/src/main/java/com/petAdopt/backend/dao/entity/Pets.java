@@ -40,21 +40,29 @@ public class Pets {
     public Pets(){
     }
 
+//    Komenatrze nad polem, oraz linijka przerwy
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
 
     private Integer id;
     private String name;
+//    może jako enum lub osobna tabela?
     private String spieces; //dog, cat etc
+//     może jako enum lub osobna tabela?
     private String race;//race of the spieces
+//    może jakieś double/float wtedy masz i rok i miesiąć :D
     private int age;//age of the pet given in months
-    private LocalDate addedAt; //when the pet was added to db
+//    proponuje typ Date ale sformatowany do yyyy-mm-dd
+    private LocalDate addedAt; //when the pet was added to db,
     private String health;//the description of health status of the pet
+//    enum? Dużego wyboru nie mamy xD
     private String sex;//male/female
     private Boolean sterilized;
     private Boolean adopted;
+//    to samo co w przypadku dodanie
     private LocalDate adoptDate;
     private Boolean temporaryAdopted;
+//    tego nie czaje, nie lepiej boolean ?
     private int tmpAdoptForDays;//when permanently adopted set to -1
 
     public int getId(){

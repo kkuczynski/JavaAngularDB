@@ -9,8 +9,10 @@ import * as globals from 'globals';
   templateUrl: './pets.component.html',
   styleUrls: ['./pets.component.css']
 })
+// Formatowanie
 export class PetsComponent implements OnInit {
 
+//  pola prywatne
 public isAdmin = globals.isAdmin;
 
 public isEmployee = globals.isEmployee;
@@ -36,7 +38,9 @@ public month = this.currentDate.getMonth();
   }
 
   ngOnInit() {
+    // osobna funkcja
     this.petsService.getPets().subscribe(data => this.pets = data);
+    // forEach?
     for(let pet of this.pets){
       console.log(pet.name);
     }

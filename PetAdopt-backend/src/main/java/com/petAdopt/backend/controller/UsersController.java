@@ -4,14 +4,14 @@ import com.petAdopt.backend.dao.entity.Users;
 import com.petAdopt.backend.service.UsersService;
 import org.springframework.web.bind.annotation.*;
 
-
+// Zobacz czy nie da się tego zaimplmentować globalnie na całą apke ;)
 @CrossOrigin(origins = "http://localhost:4200")
 @RestController
 @RequestMapping("/users")
 public class UsersController {
 
 
-
+// publiczne ?
     UsersService usersService;
 
 
@@ -24,7 +24,7 @@ public class UsersController {
         return usersService.findAll();
     }
 
-
+// w path id
     @GetMapping("/byId")
     public Users getById(@RequestParam Integer index) throws Exception{
        return usersService.findById(index);
