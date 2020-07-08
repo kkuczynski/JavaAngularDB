@@ -1,19 +1,25 @@
+<div style="text-align: right;" *ngIf="!logged" class="warning">
 
-     
+   <input #login type="text" placeholder="username" (keydown)="keyDownFunction($event)">
+   
 
+    
 
-<div style="text-align: right;" *ngIf="!logged">
-     
-    <input #login type="text" placeholder="username">
     <br>
-   <input #password type="password" placeholder="password">
+    
+   <input #password type="password" placeholder="password" (keydown)="keyDownFunction($event)">
+   
+
+    
+
     <br>
     <button (click)="signUp()">Sign up </button>
-    <button (click)="signIn(login.value, password.value)">Sign in </button>
+    <button id="signInButton" (click)="signIn(login.value, password.value)">Sign in </button>
+    <div class="warn">{{this.loginWarn}}</div>
 
 </div>
 <div style="text-align: right;" *ngIf="logged">
     Signed in <button (click)="signOut()">Sign out</button>
-    
+
 
 </div>

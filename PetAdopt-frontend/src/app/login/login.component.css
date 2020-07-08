@@ -34,3 +34,10 @@ button {
     font-size: 15px; 
     height: 35px;   
   }
+.warn{
+  color: darkred;
+  font-size: 15px;
+  min-height: 0px;
+  max-height: 0px;
+}
+  
