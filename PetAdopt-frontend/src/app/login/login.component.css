@@ -21,6 +21,7 @@ button {
   }
 
   input[type=text] {
+    margin-top: 2px;
     border: 1px solid gray;
     border-radius: 5px;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
