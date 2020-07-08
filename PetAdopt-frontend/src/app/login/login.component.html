@@ -7,7 +7,7 @@
 
     <br>
     
-   <input #password type="password" placeholder="password" (keydown)="keyDownFunction($event)">
+   <input #password type="password" placeholder="password" (keydown)="keyDownFunction($event)" (keydown) = "capsFunction($event)">
    
 
     
@@ -15,7 +15,11 @@
     <br>
     <button (click)="signUp()">Sign up </button>
     <button id="signInButton" (click)="signIn(login.value, password.value)">Sign in </button>
-    <div class="warn">{{this.loginWarn}}</div>
+    <div class="warn">{{this.loginWarn}}
+    </div>
+    <ng-template [ngIf]="this.loginWarn.length>0"><br></ng-template>
+    <div class="warn">{{this.capsWarn}}
+    </div>
 
 </div>
 <div style="text-align: right;" *ngIf="logged">
