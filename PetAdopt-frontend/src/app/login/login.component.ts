@@ -9,14 +9,14 @@ import { Component, OnInit, Input } from '@angular/core';
 // FORMATOWANIE!
 export class LoginComponent implements OnInit {
 // pola prywatne
-  public date = new Date();
-  public logged = false;
-  public isAdmin = false;
-  public isEmployee = false;
-  public username = '';
-  public password = '';
-  public capsWarn = '';
-  public loginWarn = '';
+  private date = new Date();
+  private logged = false;
+  private isAdmin = false;
+  private isEmployee = false;
+  private username = '';
+  private password = '';
+  private capsWarn = '';
+  private loginWarn = '';
 
   keyDownFunction(event) {
     if (event.keyCode === 13) {

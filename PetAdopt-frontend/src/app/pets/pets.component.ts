@@ -9,16 +9,13 @@ import * as globals from 'globals';
   templateUrl: './pets.component.html',
   styleUrls: ['./pets.component.css']
 })
-// Formatowanie
 export class PetsComponent implements OnInit {
-
 //  pola prywatne
-public isAdmin = globals.isAdmin;
-
-public isEmployee = globals.isEmployee;
-public pets = [];
-public currentDate = new Date();
-public month = this.currentDate.getMonth();
+private isAdmin = globals.isAdmin;
+private isEmployee = globals.isEmployee;
+private pets = [];
+private currentDate = new Date();
+private month = this.currentDate.getMonth();
   constructor(private petsService: PetsService) { }
   public compareDates(dateA: Date, days: number, dateB: Date): boolean{
     let newDateA: Date = new Date(dateA);
