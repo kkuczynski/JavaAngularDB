@@ -8,6 +8,7 @@
     top:0px;
     text-align: center;    
     text-shadow: black;
+  
     position: fixed;
     z-index: 1;
     color:gray;
@@ -25,6 +26,24 @@
     overflow-x: hidden;
     padding-top: 0px;
     padding-right: 0px;
-    background-color: black;
+   
     right: 0;
+  }
+  .menu{
+      background-color: darkgray;
+      width: 50%;
+      height: 100%;
+      
+  }
+  button{
+      height: 25%;
+      width: 98%;
+      border-radius: 0px;
+      border-width: 1px;
+      border-color: gray;
+      background-color: darkgray;
+      font-size: 25px;
+      writing-mode: vertical-lr;
+      text-orientation: upright;
+      color: gray;
   }
