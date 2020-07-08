@@ -6,13 +6,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import java.util.List;
 
-// to samo co w AdoptionHouse
 @Service
-public class UsersService {
+public class UsersService implements ServiceInterface{
 
     private UsersRepo usersRepo;
 
-    @Autowired
     public UsersService(UsersRepo usersRepo){
         this.usersRepo = usersRepo;
     }

@@ -5,22 +5,6 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-
-
-/*
-* Struktura katalogowa:
-* backend:
-* 	controller
-* 	dao(lub domain):
-* 		entity
-* 		dto
-* 	repository
-* 	serivce
-* 		impl:
-*
-* Api == Controller
-* Manager == Service
- */
 @SpringBootApplication
 public class BackendApplication {
 

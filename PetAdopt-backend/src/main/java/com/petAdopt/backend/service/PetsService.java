@@ -2,34 +2,31 @@ package com.petAdopt.backend.service;
 
 import com.petAdopt.backend.repo.PetsRepo;
 import com.petAdopt.backend.dao.entity.Pets;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import java.util.List;
 
-// to samo co w AdoptionHouse
+import java.util.List;
 @Service
-public class PetsService {
+public class PetsService implements ServiceInterface {
 
     private PetsRepo petsRepo;
 
-    @Autowired
     public PetsService(PetsRepo petsRepo){
         this.petsRepo = petsRepo;
     }
 
-    public Pets findById(Integer id) throws Exception{
+    public Pets getPetById(Integer id) throws Exception{
         return petsRepo.findById(id).orElseThrow(Exception::new);
     }
 
-    public List<Pets> findAll(){
+    public List<Pets> getAllPets(){
         return (List<Pets>) petsRepo.findAll();
     }
 
-    public Pets save (Pets pets){
+    public Pets savePet(Pets pets){
         return petsRepo.save(pets);
     }
 
-    public void deleteById (Integer id){
+    public void deletePetById(Integer id){
         petsRepo.deleteById(id);
     }
 

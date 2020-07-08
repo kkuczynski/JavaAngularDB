@@ -1,5 +1,7 @@
 package com.petAdopt.backend.dao.entity;
 
+import com.petAdopt.backend.dao.enums.Sex;
+import com.petAdopt.backend.dao.enums.Spieces;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -8,8 +10,32 @@ import java.time.LocalDate;
 
 @Entity
 public class Pets {
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Id
+    private Integer id;
+    private String name;
+    //dog, cat etc
+    private Spieces spieces;
+    //race of the spieces
+    private String race;
+    //    może jakieś double/float wtedy masz i rok i miesiąć :D
+    //age of the pet given in months
+    private int age;
+    //    proponuje typ Date ale sformatowany do yyyy-mm-dd
+    private LocalDate addedAt; //when the pet was added to db,
+    private String health;//the description of health status of the pet
+    private Sex sex;//male/female
+    private Boolean sterilized;
+    private Boolean adopted;
+    //    to samo co w przypadku dodanie
+    private LocalDate adoptDate;
+    private Boolean temporaryAdopted;
+    private int tmpAdoptForDays;
 
-    public Pets(Integer id, String name, String spieces, String race, int age, LocalDate addedAt, String health, String sex, Boolean sterilized, Boolean adopted, LocalDate adoptDate, Boolean temporaryAdopted, int tmpAdoptForDays){
+    public Pets(){
+    }
+
+    public Pets(Integer id, String name, Spieces spieces, String race, int age, LocalDate addedAt, String health, Sex sex, Boolean sterilized, Boolean adopted, LocalDate adoptDate, Boolean temporaryAdopted, int tmpAdoptForDays){
         this.id = id;
         this.name = name;
         this.spieces = spieces;
@@ -25,51 +51,11 @@ public class Pets {
         this.tmpAdoptForDays = tmpAdoptForDays;
     }
 
-    public void setId(Integer id){
-        this.id = id;
-    }
-
-    public LocalDate getAddedAt(){
-        return addedAt;
-    }
-
-    public void setAddedAt(LocalDate addedAt){
-        this.addedAt = addedAt;
-    }
-
-    public Pets(){
-    }
-
-//    Komenatrze nad polem, oraz linijka przerwy
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Id
-
-    private Integer id;
-    private String name;
-//    może jako enum lub osobna tabela?
-    private String spieces; //dog, cat etc
-//     może jako enum lub osobna tabela?
-    private String race;//race of the spieces
-//    może jakieś double/float wtedy masz i rok i miesiąć :D
-    private int age;//age of the pet given in months
-//    proponuje typ Date ale sformatowany do yyyy-mm-dd
-    private LocalDate addedAt; //when the pet was added to db,
-    private String health;//the description of health status of the pet
-//    enum? Dużego wyboru nie mamy xD
-    private String sex;//male/female
-    private Boolean sterilized;
-    private Boolean adopted;
-//    to samo co w przypadku dodanie
-    private LocalDate adoptDate;
-    private Boolean temporaryAdopted;
-//    tego nie czaje, nie lepiej boolean ?
-    private int tmpAdoptForDays;//when permanently adopted set to -1
-
-    public int getId(){
+    public Integer getId(){
         return id;
     }
 
-    public void setId(int id){
+    public void setId(Integer id){
         this.id = id;
     }
 
@@ -81,11 +67,11 @@ public class Pets {
         this.name = name;
     }
 
-    public String getSpieces(){
+    public Spieces getSpieces(){
         return spieces;
     }
 
-    public void setSpieces(String spieces){
+    public void setSpieces(Spieces spieces){
         this.spieces = spieces;
     }
 
@@ -105,6 +91,14 @@ public class Pets {
         this.age = age;
     }
 
+    public LocalDate getAddedAt(){
+        return addedAt;
+    }
+
+    public void setAddedAt(LocalDate addedAt){
+        this.addedAt = addedAt;
+    }
+
     public String getHealth(){
         return health;
     }
@@ -113,11 +107,11 @@ public class Pets {
         this.health = health;
     }
 
-    public String getSex(){
+    public Sex getSex(){
         return sex;
     }
 
-    public void setSex(String sex){
+    public void setSex(Sex sex){
         this.sex = sex;
     }
 

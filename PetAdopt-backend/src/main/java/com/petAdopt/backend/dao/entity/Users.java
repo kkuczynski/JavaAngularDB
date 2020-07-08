@@ -1,5 +1,6 @@
 package com.petAdopt.backend.dao.entity;
 
+import com.petAdopt.backend.dao.enums.Role;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -8,48 +9,51 @@ import java.sql.Date;
 
 @Entity
 public class Users {
-    public Users(Integer id, String fullName, Date createdAt, Role givenRole, String login, String pass){
-        this.id = id;
-        this.fullName = fullName;
-        this.createdAt = createdAt;
-        this.givenRole = givenRole;
-        this.login = login;
-        this.pass = pass;
-    }
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Id
+    private Integer id;
+    private String name;
+    private String surname;
+    private Date createdAt;
+    private Role givenRole;
+    private String login;
+    private String password;
 
     public Users(){
     }
 
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Id
-
-    private Integer id;
-//    rozbić na name, surname
-    private String fullName;
-    private Date createdAt;
-//    Enumy trzymamy w osobnych pakietach, dao -> enums/
-    private enum Role {
-        ADMIN, COMMON_USER, EMPLOYEE;
+    public Users(Integer id, String name, String surname, Date createdAt, Role givenRole, String login, String password){
+        this.id = id;
+        this.name = name;
+        this.surname = surname;
+        this.createdAt = createdAt;
+        this.givenRole = givenRole;
+        this.login = login;
+        this.password = password;
     }
-    private Role givenRole;
-    private String login;
-//    password -> atramentu tu Ci nie braknie
-    private String pass;
 
-    public int getId(){
+    public Integer getId(){
         return id;
     }
 
-    public void setId(int id){
+    public void setId(Integer id){
         this.id = id;
     }
 
-    public String getFullName(){
-        return fullName;
+    public String getName(){
+        return name;
     }
 
-    public void setFullName(String fullName){
-        this.fullName = fullName;
+    public void setName(String name){
+        this.name = name;
+    }
+
+    public String getSurname(){
+        return surname;
+    }
+
+    public void setSurname(String surname){
+        this.surname = surname;
     }
 
     public Date getCreatedAt(){
@@ -60,12 +64,12 @@ public class Users {
         this.createdAt = createdAt;
     }
 
-    public Role getRole(){
+    public Role getGivenRole(){
         return givenRole;
     }
 
-    public void setRole(Role givenRole){
-        this.givenRole=givenRole;
+    public void setGivenRole(Role givenRole){
+        this.givenRole = givenRole;
     }
 
     public String getLogin(){
@@ -76,11 +80,11 @@ public class Users {
         this.login = login;
     }
 
-    public String getPass(){
-        return pass;
+    public String getPassword(){
+        return password;
     }
 
-    public void setPass(String pass){
-        this.pass = pass;
+    public void setPassword(String password){
+        this.password = password;
     }
 }

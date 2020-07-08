@@ -11,6 +11,16 @@ import javax.persistence.*;
 * 4. Override
 */
 public class AdoptionHouses {
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Id
+    private Integer id;
+    private String address;
+    private String city;
+    private String postcode;
+    private int userId;
+    private int petsId;
+    private String conditions;
+
     public AdoptionHouses(Integer id, String address, String city, String postcode, int userId, int petsId, String conditions){
         this.id = id;
         this.address = address;
@@ -23,16 +33,6 @@ public class AdoptionHouses {
 
     public AdoptionHouses(){
     }
-
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Id
-    private Integer id;
-    private String address;
-    private String city;
-    private String postcode;
-    private int userId;
-    private int petsId;
-    private String conditions;
 
     public int getId(){
         return id;
