@@ -7,7 +7,7 @@ import { PetsInterface } from './pets.interface';
   providedIn: 'root'
 })
 export class PetsService {
-
+// jako stałą sobie zadeklaruj lub najlepiej w environments
   private url = 'http://localhost:8088/pets';
 
   constructor(private http: HttpClient) { }

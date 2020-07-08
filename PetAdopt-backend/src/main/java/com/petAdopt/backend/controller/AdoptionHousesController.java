@@ -10,11 +10,14 @@ import java.util.List;
 
 @CrossOrigin(origins = "http://localhost:4200")
 @RestController
+//camelCase
 @RequestMapping("/adoptionhouses")
 public class AdoptionHousesController {
 
+//    final
     private AdoptionHousesService adoptionHousesService;
 
+//    nie musi
     @Autowired
     public AdoptionHousesController(AdoptionHousesService adoptionHousesService){
         this.adoptionHousesService = adoptionHousesService;
@@ -25,6 +28,7 @@ public class AdoptionHousesController {
         return adoptionHousesService.findAll();
     }
 
+//    W pathu przekazać id
     @GetMapping("/byId")
     public AdoptionHouses getById(@RequestParam Integer index)throws Exception{
         return adoptionHousesService.findById(index);
@@ -38,8 +42,10 @@ public class AdoptionHousesController {
 
     @PutMapping
     public AdoptionHouses updateAdoptionHouses(@RequestBody AdoptionHouses adoptionHouse){
+        //        tu powinna być metoda update
         return adoptionHousesService.save(adoptionHouse);
     }
+
     @DeleteMapping
     public void deleteAdoptionHouses(@RequestParam Integer index){
         adoptionHousesService.deleteById(index);

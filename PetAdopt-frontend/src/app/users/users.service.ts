@@ -8,7 +8,7 @@ import { UsersInterface } from './users.interface';
   providedIn: 'root'
 })
 export class UsersService {
-
+// jako stałą sobie zadeklaruj lub najlepiej w environments
   private url = 'http://localhost:8088/users';
 
   constructor(private http: HttpClient) { }

@@ -3,6 +3,13 @@ package com.petAdopt.backend.dao.entity;
 import javax.persistence.*;
 
 @Entity
+// Poczytać o Lomboku, Skróci kod
+/*
+* 1. Pola
+* 2. Contruktor
+* 3. Gettery Setter
+* 4. Override
+*/
 public class AdoptionHouses {
     public AdoptionHouses(Integer id, String address, String city, String postcode, int userId, int petsId, String conditions){
         this.id = id;

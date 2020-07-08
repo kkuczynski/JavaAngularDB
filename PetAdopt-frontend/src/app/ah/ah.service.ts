@@ -6,8 +6,10 @@ import {AHInterface } from './ah.interface';
 @Injectable({
   providedIn: 'root'
 })
+// Dobra samoopisujący się Serwis :D 
+// Formatowanie
 export class AHService {
-
+// jako stałą sobie zadeklaruj lub najlepiej w environments
   private url = 'http://localhost:8088/adoptionhouses';
 
   constructor(private http: HttpClient) { }

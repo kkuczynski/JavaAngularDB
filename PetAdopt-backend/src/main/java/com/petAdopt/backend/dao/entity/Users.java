@@ -24,13 +24,16 @@ public class Users {
     @Id
 
     private Integer id;
+//    rozbić na name, surname
     private String fullName;
     private Date createdAt;
+//    Enumy trzymamy w osobnych pakietach, dao -> enums/
     private enum Role {
         ADMIN, COMMON_USER, EMPLOYEE;
     }
     private Role givenRole;
     private String login;
+//    password -> atramentu tu Ci nie braknie
     private String pass;
 
     public int getId(){

@@ -6,8 +6,9 @@ import { Component, OnInit, Input } from '@angular/core';
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css']
 })
+// FORMATOWANIE!
 export class LoginComponent implements OnInit {
-
+// pola prywatne
   public date = new Date();
   public logged = false;
   public isAdmin = false;
@@ -30,7 +31,7 @@ export class LoginComponent implements OnInit {
       this.capsWarn = '';
     }
   }
-
+// angularowe formsy ?
   checkTooShort(text: string): boolean {
     if (text.length < 5) {
       console.log('tooShort');
