@@ -45,6 +45,7 @@ public class AdoptionHousesServiceImpl implements AdoptionHousesService {
 
         } catch (NoRecordWithIdException e) {
             throw new NoRecordWithIdException("AdoptionHouse");
+
         }
     }
 }
