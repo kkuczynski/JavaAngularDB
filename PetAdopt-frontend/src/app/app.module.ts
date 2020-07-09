@@ -9,6 +9,7 @@ import { UsersComponent } from './users/users.component';
 import { PetsComponent } from './pets/pets.component';
 import { AHComponent } from './ah/ah.component';
 import { LeftMenuComponent } from './left-menu/left-menu.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -17,12 +18,14 @@ import { LeftMenuComponent } from './left-menu/left-menu.component';
     UsersComponent,
     PetsComponent,
     AHComponent,
-    LeftMenuComponent
+    LeftMenuComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

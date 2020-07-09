@@ -1,24 +1,23 @@
-<div class="menu" id="menu">
+
     <table>
         <tr>
-            <button>butt1</button>
-            <td><div class="separator"></div>.<br>.<br>.</td>
+            <button id="butt1" (mouseover)="onMouseOver(1)"><div class="inButton">.<br>.<br>.</div></button>           
         </tr>
         <tr>
-            <button>butt2<div>ssss</div></button>
+            <button id="butt2" (mouseover)="onMouseOver(2)"><div class="inButton">.<br>.<br>.</div></button>
         </tr>
         <tr>
-            <button>butt3</button>
+            <button id="butt3" (mouseover)="onMouseOver(3)"><div class="inButton">.<br>.<br>.</div></button>
         </tr>
         <tr>
-            <button>butt4</button>
+            <button id="butt4" (mouseover)="onMouseOver(4)"><div class="inButton">.<br>.<br>.</div></button>
         </tr>
     </table>
-</div>
 
-<div (mouseover)="onMouseOverLeft()" id="leftBar" class="closedBar"><div class="separator"></div>.<br>.<br>.
 
-</div>
+<!--<div (mouseover)="onMouseOverLeft()" id="leftBar" class="closedBar"><div class="separator"></div>.<br>.<br>.
+-->
+
 <div (mouseover)="onMouseOverRight()" class="invisibleBarHider">
 
 </div>

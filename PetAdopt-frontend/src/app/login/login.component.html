@@ -1,27 +1,25 @@
-<div style="text-align: right;" *ngIf="!getLogged()" class="login">
-
-   <input formControlName="username" type="text" placeholder="username" (keydown)="keyDownFunction($event)">
-   
-
-    
-
+<div [formGroup]="getInputForm()" class="form group" style="text-align: right;" *ngIf="!getLogged()" class="login"
+    (ngSubmit)="signIn()">
+    <input type="text" placeholder="username" (keydown)="keyDownFunction($event)" formControlName="username" required>
     <br>
-    
-   <input formControlName="password" type="password" placeholder="password" (keydown)="keyDownFunction($event)" (keydown) = "capsFunction($event)">
-   
-
-    
-
+    <input type="password" placeholder="password" (keydown)="keyDownFunction($event)" (keydown)="capsFunction($event)"
+        required formControlName="password">
     <br>
+
     <button (click)="signUp()">Sign up </button>
+
     <button id="signInButton" (click)="signIn()">Sign in </button>
+
     <div class="warn">{{this.getLoginWarn()}}
     </div>
     <ng-template *ngIf="this.getLoginWarn().length>0"><br></ng-template>
     <div class="warn">{{this.getCapsWarn()}}
-    </div>
 
+    </div>
 </div>
+
+
+
 <div style="text-align: right;" *ngIf="getLogged()">
     Signed in <button (click)="signOut()">Sign out</button>
 

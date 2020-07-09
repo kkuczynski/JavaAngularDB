@@ -3,9 +3,9 @@ div{
     color: gray
 }
 footer{
-  position: absolute;
-    bottom: 1%;
-    right: 0;
+    position: absolute;
+    bottom: 2%;
+    right: 2%;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
     color: gray
 }

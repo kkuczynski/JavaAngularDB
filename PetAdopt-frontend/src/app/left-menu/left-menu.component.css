@@ -1,32 +1,19 @@
-.closedBar{
-    background: darkgray;
-    border-style: solid;
-    border-color: darkgray;
-    
-    width:1%;
-    height: 100%;
-    top:0px;
-    text-align: center;    
-    text-shadow: black;
-  
-    position: fixed;
-    z-index: 1;
-    color:gray;
-    font-size: 25px;
-    cursor: default;
-}
-
 table{
     height: 100%;
-    width: 100%;
-    font-size: 25px;
+    width: 50%;
+    font-size: 100%;
     cursor: default;
-    color:gray;
-    text-shadow: black;
-    text-align: center;
+    color:gray;    
+    text-align: left;
+    
+   
 }
 tr{
     height: 25%;
+    
+}
+td{
+    max-width: fit-content;
 }
 .invisibleBarHider{
     height: 100%;
@@ -43,19 +30,23 @@ tr{
   }
   .menu{
       background-color: darkgray;
-      width: 50%;
+      width: 20%;
       height: 100%;
       
   }
   button{
+      transform: translateX(-10%);
       height: 100%;
-      width: 98%;
-      border-radius: 0px;
-      border-width: 3px;
+      width: 40%;
+      border-radius: 0%;
+      border-width: 1%;
       border-color: gray;
       background-color: darkgray;
-      font-size: 25px;
-      writing-mode: vertical-lr;
-      text-orientation: upright;
+      font-size: 100%;      
       color: gray;
+  }
+  .inButton{
+      text-align: right;
+      width: 100%;
+      font-size: 150%;
   }

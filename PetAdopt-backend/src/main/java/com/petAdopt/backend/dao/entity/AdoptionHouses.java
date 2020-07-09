@@ -3,7 +3,7 @@ package com.petAdopt.backend.dao.entity;
 import javax.persistence.*;
 
 @Entity
-// Poczytać o Lomboku, Skróci kod
+//TODO Poczytać o Lomboku, Skróci kod
 /*
 * 1. Pola
 * 2. Contruktor

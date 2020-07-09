@@ -1,7 +1,7 @@
 import { Component, OnInit, Input, Inject } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
-
+//TODO FORM!
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -18,20 +18,19 @@ export class LoginComponent implements OnInit {
   private password = '';
   private capsWarn = '';
   private loginWarn = '';
-  private builder: FormBuilder;
+ 
   private inputForm: FormGroup;
 
-  constructor() {
-
-  }
-
-  ngOnInit() {
-    this.builder = new FormBuilder();
+  constructor(private formBuilder: FormBuilder) {
     this.createForm();
   }
 
+  ngOnInit() {
+
+  }
+
   createForm() {
-    this.inputForm = this.builder.group({
+    this.inputForm = this.formBuilder.group({
       username: ['', Validators.required, Validators.minLength(5), Validators.maxLength(20)],
       password: ['', Validators.required, Validators.minLength(5), Validators.maxLength(20)]
     });
@@ -80,11 +79,10 @@ export class LoginComponent implements OnInit {
   signIn() {
     this.username = this.inputForm.get('username').value;
     this.password = this.inputForm.get('password').value;
-    console.log('login: ' + this.username);
-    console.log('pass: ' + this.password);
+    console.log('login: ' + this.inputForm.get('username').value);
+    console.log('pass: ' + this.inputForm.get('username').value);
     this.logged = true;
     this.loggedAsAdmin();
-
   }
 
   signUp() {

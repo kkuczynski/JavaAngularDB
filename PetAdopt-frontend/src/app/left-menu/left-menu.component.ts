@@ -12,40 +12,62 @@ export class LeftMenuComponent implements OnInit {
   private isShown = false;
   constructor() { }
 
-  onMouseOverLeft() {
-      console.log('mouse on bar');
-      document.getElementById('menu').hidden = false;
-      document.getElementById('leftBar').hidden = true;
-      this.isShown = true;
+  showButton(picked)
+  {
+    for (let i = 1; i < 5; i++) {
+      if (i === picked){
+        document.getElementById('butt' + i).style.width = '100%';
+      }
+      else{
+        document.getElementById('butt' + i).style.width = '40%';
+      }
+    }
+  }
+  
+  onMouseOver(picked: number) {
+    console.log('mouse on button' + picked);
+    switch (picked) {
+      case 1:
+        this.showButton(picked);
+        break;
+      case 2:
+        this.showButton(picked);
+        break;
+      case 3:
+        this.showButton(picked);
+        break;
+      case 4:
+        this.showButton(picked);
+        break;
+    }
   }
 
   onMouseOverRight() {
-    if (this.isShown) {
-      console.log('mouse on invisible bar');
-      document.getElementById('menu').hidden = true;
-      document.getElementById('leftBar').hidden = false;
-      this.isShown = false;
+    console.log('mouse on invisible bar');
+    for (let i = 1; i < 5; i++) {
+      document.getElementById('butt' + i).style.width = '40%';
     }
   }
 
 
+
   ngOnInit(): void {
-     document.getElementById('menu').hidden = true;
+    
   }
 
-  getIsAdmin(){
+  getIsAdmin() {
     return this.isAdmin;
   }
 
-  getIsEmployee(){
+  getIsEmployee() {
     return this.isEmployee;
   }
 
-  getIsShown(){
+  getIsShown() {
     return this.isShown;
   }
 
-  setIsAdmin(isAdmin: boolean){
+  setIsAdmin(isAdmin: boolean) {
     this.isAdmin = isAdmin;
   }
 

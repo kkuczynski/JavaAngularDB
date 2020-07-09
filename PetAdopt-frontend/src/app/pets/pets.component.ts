@@ -59,6 +59,4 @@ export class PetsComponent implements OnInit {
     });
   }
 
-  
-
 }

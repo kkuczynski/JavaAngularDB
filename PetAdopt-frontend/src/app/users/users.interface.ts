@@ -1,3 +1,4 @@
+import { Role } from 'src/app/enums/role.enum';
 export interface UsersInterface {
     id: number;
     fullName: string;
@@ -7,8 +8,4 @@ export interface UsersInterface {
     pass: string;
 }
 
-enum Role{
-    ADMIN,
-    EMPLOYEE,
-    USER
-}
+

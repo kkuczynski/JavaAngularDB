@@ -18,10 +18,9 @@ public class Pets {
     private Spieces spieces;
     //race of the spieces
     private String race;
-    //    może jakieś double/float wtedy masz i rok i miesiąć :D
-    //age of the pet given in months
+     //age of the pet given in months
     private int age;
-    //    proponuje typ Date ale sformatowany do yyyy-mm-dd
+    //TODO    proponuje typ Date ale sformatowany do yyyy-mm-dd
     private LocalDate addedAt; //when the pet was added to db,
     private String health;//the description of health status of the pet
     private Sex sex;//male/female

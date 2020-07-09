@@ -1,43 +1,48 @@
-div{
-    height: 35px;
+.login{
+    
     font-family: Verdana, Geneva, Tahoma, sans-serif;
-    color: gray
+    color: gray;
+    height: 100%
 }
 button {
     background-color: gray;
     border-style: solid;    
-    border-radius: 3px;
-    border-color: white;
-    border-width: 2px;
     color: white;
-    padding: 11px 24px;
+    min-width: 41%;
+    max-width: max-content;
     text-align: center;
     text-decoration: none;
     display: inline-block;
-    font-size: 14px;
+    font-size: 90%;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
     cursor: pointer;
     border-radius: 10px;  
+    min-height: 5%;
+    max-height: fit-content;
   }
-
+form{
+  height:100%;
+}
   input[type=text] {
     margin-top: 2px;
     border: 1px solid gray;
     border-radius: 5px;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
-    font-size: 15px;     
-    height: 35px; 
+    font-size: 100%;     
+    width: 80%;
+    height: 4%;
   }
   input[type=password] {
     border: 1px solid gray;
     border-radius: 5px;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
-    font-size: 15px; 
-    height: 35px;   
+    font-size: 100%; 
+    width:80%;  
+    height: 4%;
   }
 .warn{
   color: darkred;
-  font-size: 15px;
+  font-size: 80%;
   min-height: 0px;
   max-height: 0px;
 }
