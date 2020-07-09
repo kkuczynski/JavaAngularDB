@@ -1,10 +1,11 @@
 CREATE TABLE "users" (
   "id" SERIAL PRIMARY KEY,
-  "full_name" varchar,
-  "created_at" timestamp,
-  "role" int,
+  "name" varchar,
+  "surname" varchar,
+  "created_at" date,
+  "given_role" varchar,
   "login" varchar,
-  "pass" varchar
+  "password" varchar
 );
 
 CREATE TABLE "pets" (
@@ -13,12 +14,13 @@ CREATE TABLE "pets" (
   "spieces" varchar,
   "race" varchar,
   "age" int,
+  "added_at" date,
   "health" varchar,
   "sex" varchar,
   "sterilized" bool,
-  "adopted" bool,
+  "adopted" bool,  
+  "adopt_date" date,
   "temporary_adopted" bool,
-  "tmp_adopt_date" date,
   "tmp_adopt_for_days" int
 );
 
