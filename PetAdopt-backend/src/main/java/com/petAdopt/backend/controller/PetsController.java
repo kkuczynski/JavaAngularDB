@@ -1,7 +1,8 @@
 package com.petAdopt.backend.controller;
 
 import com.petAdopt.backend.dao.entity.Pets;
-import com.petAdopt.backend.service.PetsService;
+import com.petAdopt.backend.exception.NoRecordWithIdException;
+import com.petAdopt.backend.service.impl.PetsServiceImpl;
 import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
@@ -9,37 +10,36 @@ import java.util.List;
 @RestController
 @RequestMapping("/pets")
 public class PetsController {
-    private final PetsService petsService;
+    private final PetsServiceImpl petsServiceImpl;
 
-    public PetsController(PetsService petsService){
-        this.petsService = petsService;
+    public PetsController(PetsServiceImpl petsServiceImpl){
+        this.petsServiceImpl = petsServiceImpl;
 
     }
 
     @GetMapping
     public List<Pets> getAllPets(){
-        return petsService.getAllPets();
+        return petsServiceImpl.getAllPets();
     }
 
     @GetMapping("/{id}")
-    public Pets getById(@PathVariable Integer id) throws Exception{
-        return petsService.getPetById(id);
+    public Pets getById(@PathVariable Integer id) throws NoRecordWithIdException{
+        return petsServiceImpl.getPetById(id);
     }
 
     @PostMapping
     public Pets addPets(@RequestBody Pets pet){
-        return petsService.savePet(pet);
+        return petsServiceImpl.savePet(pet);
     }
 
     @PutMapping
-    public Pets updatePets(@RequestBody Pets pet){
-//        tu powinna być metoda update
-        return petsService.savePet(pet);
+    public Pets updatePets(@RequestBody Pets pet) throws NoRecordWithIdException{
+        return petsServiceImpl.updatePets(pet);
     }
 
     @DeleteMapping("/{id}")
-    public void deletePets(@PathVariable int id){
-        petsService.deletePetById(id);
+    public void deletePets(@PathVariable int id) throws NoRecordWithIdException{
+        petsServiceImpl.deletePetById(id);
     }
 }
 

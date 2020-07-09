@@ -1,7 +1,8 @@
 package com.petAdopt.backend.controller;
 
 import com.petAdopt.backend.dao.entity.Users;
-import com.petAdopt.backend.service.UsersService;
+import com.petAdopt.backend.exception.NoRecordWithIdException;
+import com.petAdopt.backend.service.impl.UsersServiceImpl;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -12,34 +13,34 @@ import java.util.List;
 @RequestMapping("/users")
 public class UsersController {
 
-    private final UsersService usersService;
-    public UsersController(UsersService usersService){
-        this.usersService = usersService;
+    private final UsersServiceImpl usersServiceImpl;
+    public UsersController(UsersServiceImpl usersServiceImpl){
+        this.usersServiceImpl = usersServiceImpl;
     }
 
     @GetMapping()
     public List<Users> getAll(){
-        return usersService.findAll();
+        return usersServiceImpl.getAllUsers();
     }
 
     @GetMapping("/{id}}")
-    public Users getById(@PathVariable Integer id) throws Exception{
-       return usersService.findById(id);
+    public Users getById(@PathVariable Integer id) throws NoRecordWithIdException{
+       return usersServiceImpl.getUserById(id);
     }
 
     @PostMapping
     public Users addUsers(@RequestBody Users user){
-        return usersService.save(user);
+        return usersServiceImpl.saveUser(user);
     }
-    //zmienic na update
+
     @PutMapping
     public Users updateUsers(@RequestBody Users user){
-        return usersService.save(user);
+        return usersServiceImpl.saveUser(user);
     }
 
     @DeleteMapping("/{id}")
-    public void deleteUsers(@PathVariable int id){
-       usersService.deleteById(id);
+    public void deleteUsers(@PathVariable int id) throws NoRecordWithIdException{
+       usersServiceImpl.deleteUserById(id);
     }
 }
 
