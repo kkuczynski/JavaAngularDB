@@ -1,17 +1,19 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { PetsInterface } from './pets.interface';
+import { AdoptionHousesInterface } from './adoption-houses.interface';
 import { environment } from 'src/environments/environment';
+
 
 @Injectable({
   providedIn: 'root'
 })
-export class PetsService {
-  private url = environment.urlPets;
+
+export class AdoptionHousesService {
+  private url = environment.urlAdoptionHouses;
 
   constructor(private http: HttpClient) { }
-  getPets(): Observable<PetsInterface[]> {
-    return this.http.get<PetsInterface[]>(this.url);
+  getAH(): Observable<AdoptionHousesInterface[]> {
+    return this.http.get<AdoptionHousesInterface[]>(this.url);
   }
 }

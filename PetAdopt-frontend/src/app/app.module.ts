@@ -7,7 +7,7 @@ import { LoginComponent } from './login/login.component';
 import { HttpClientModule} from '@angular/common/http';
 import { UsersComponent } from './users/users.component';
 import { PetsComponent } from './pets/pets.component';
-import { AHComponent } from './ah/ah.component';
+import { AdoptionHousesComponent } from './adoption-houses/adoption-houses.component';
 import { LeftMenuComponent } from './left-menu/left-menu.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
@@ -17,7 +17,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     LoginComponent,
     UsersComponent,
     PetsComponent,
-    AHComponent,
+    AdoptionHousesComponent,
     LeftMenuComponent,
   ],
   imports: [

@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, Inject } from '@angular/core';
+import { Component, OnInit, Input, Inject, SimpleChange, SimpleChanges } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
@@ -7,7 +7,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
   styleUrls: ['./login.component.css']
 })
 
-export class LoginComponent implements OnInit {
+export class LoginComponent implements OnInit{
 
   private date = new Date();
   private logged = false;
@@ -27,7 +27,6 @@ export class LoginComponent implements OnInit {
   ngOnInit() {
 
   }
-
   createForm() {
     this.inputForm = this.formBuilder.group({
       username: ['', [Validators.required, Validators.minLength(5), Validators.maxLength(20), Validators.pattern('[a-zA-Z0-9]+([._]?[a-zA-Z0-9]+)')]],
@@ -68,7 +67,18 @@ export class LoginComponent implements OnInit {
       this.capsWarn = '';
     }
   }
-  // angularowe formsy ?
+  //   not needed and not working properly
+   errorTextField(fieldName) {}
+  //   console.log('error method called ' + fieldName);
+  //   console.log('value: "' + this.inputForm.get(fieldName).value + '"');
+  //   if (!this.inputForm.get(fieldName).valid && this.inputForm.get(fieldName).value.length > 0) {
+
+  //     document.getElementById(fieldName).style.borderColor = 'darkred';
+  //   }
+  //   else {
+  //     document.getElementById(fieldName).style.borderColor = 'gray';
+  //   }
+  // }
   loggedAsAdmin() {
     this.isAdmin = true;
     this.isEmployee = true;

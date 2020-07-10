@@ -1,4 +1,4 @@
-export interface AHInterface {
+export interface AdoptionHousesInterface {
     id: number;
     address: string;
     city: string;

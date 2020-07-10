@@ -31,12 +31,17 @@ button {
     cursor: pointer;
     background-color: gray
   }
+  .signOut{
+    cursor: pointer;
+    background-color: gray
+  }
 form{
   height:100%;
 }
   input[type=text] {
+    border: 2px solid gray;
     margin-top: 2px;
-    border: 1px solid gray;
+    
     border-radius: 5px;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
     font-size: 100%;     
@@ -44,7 +49,8 @@ form{
     height: 4%;
   }
   input[type=password] {
-    border: 1px solid gray;
+    border: 2px solid gray;
+    
     border-radius: 5px;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
     font-size: 100%; 
@@ -56,5 +62,11 @@ form{
   font-size: 80%;
   min-height: 0px;
   max-height: 0px;
+}
+.username{
+  border-color: gray;
+}
+.password{
+  border-color: gray;
 }
   

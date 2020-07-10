@@ -1,8 +1,10 @@
 <div [formGroup]="getInputForm()" class="form group" style="text-align: right;" *ngIf="!getLogged()" class="login"
     (ngSubmit)="signIn()">
-    <input type="text" placeholder="username" (keydown)="keyDownFunction($event)" formControlName="username" required>
+    
+    
+    <input type="text" id="username" class="username" placeholder="username" (keydown)="errorTextField('username')" formControlName="username" required>
     <br>
-    <input type="password" placeholder="password" (keydown)="keyDownFunction($event)" (keydown)="capsFunction($event)"
+    <input type="password" id="password" class="password" placeholder="password" (keydown)="errorTextField('password')" (keydown)="capsFunction($event)"
         required formControlName="password">
     <br>
 
@@ -22,7 +24,7 @@
 
 
 <div style="text-align: right;" *ngIf="getLogged()">
-    Signed in <button (click)="signOut()">Sign out</button>
+    Signed in <button class="signOut" (click)="signOut()">Sign out</button>
 
 
 </div>
