@@ -4,22 +4,22 @@
 
 
 <button class="butt1" id="butt1" (mouseover)="onMouseOver(1)">
-    <div class="inButton"><i class="fa fa-paw"></i></div>
+    <div class="inButton"><i class="fa fa-paw"></i><ng-template [ngIf]="getButtonTextEnabled() == 1">  pets</ng-template></div>
 </button>
 <br>
 
 <button class="butt2" id="butt2" (mouseover)="onMouseOver(2)">
-    <div class="inButton"><i class="fa fa-user"></i></div>
+    <div class="inButton"><i class="fa fa-user"></i><ng-template [ngIf]="getButtonTextEnabled() == 2">  users</ng-template></div>
 </button>
 
 <br>
 <button class="butt3" id="butt3" (mouseover)="onMouseOver(3)">
-    <div class="inButton"><i class="fa fa-home"></i></div>
+    <div class="inButton"><i class="fa fa-home"></i><ng-template [ngIf]="getButtonTextEnabled() == 3">  homes</ng-template></div>
 </button>
 <br>
 
 <button class="butt4" id="butt4" (mouseover)="onMouseOver(4)">
-    <div class="inButton"><i class="fa fa-cogs"></i></div>
+    <div class="inButton"><i class="fa fa-cogs"></i><ng-template [ngIf]="getButtonTextEnabled() == 4">  settings</ng-template></div>
 </button>
 
 

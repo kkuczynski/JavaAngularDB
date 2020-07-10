@@ -9,19 +9,18 @@ export class LeftMenuComponent implements OnInit {
 
   private isAdmin = true;
   private isEmployee = true;
-  private isShown = false;
+  private buttonTextEnabled;
   constructor() { }
 
   showButton(picked)
   {
     for (let i = 1; i < 5; i++) {
       if (i === picked){
-        document.getElementById('butt' + i).style.width = '60%';
-        document.getElementById('butt' + i).style.fontSize = '240%';
+        document.getElementById('butt' + i).style.minWidth = 'fit-content';
+        this.buttonTextEnabled = picked;
       }
       else{
-        document.getElementById('butt' + i).style.width = '30%';
-        document.getElementById('butt' + i).style.fontSize = '90%';
+        document.getElementById('butt' + i).style.minWidth = '22%';
       }
     }
   }
@@ -46,9 +45,9 @@ export class LeftMenuComponent implements OnInit {
 
   onMouseOverRight() {
     console.log('mouse on invisible bar');
+    this.buttonTextEnabled = 0;
     for (let i = 1; i < 5; i++) {
-      document.getElementById('butt' + i).style.width = '30%';
-      document.getElementById('butt' + i).style.fontSize = '90%';
+      document.getElementById('butt' + i).style.minWidth = '22%';
     }
   }
 
@@ -58,16 +57,15 @@ export class LeftMenuComponent implements OnInit {
 
   }
 
+  getButtonTextEnabled(){
+    return this.buttonTextEnabled;
+  }
   getIsAdmin() {
     return this.isAdmin;
   }
 
   getIsEmployee() {
     return this.isEmployee;
-  }
-
-  getIsShown() {
-    return this.isShown;
   }
 
   setIsAdmin(isAdmin: boolean) {

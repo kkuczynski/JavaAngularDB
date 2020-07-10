@@ -29,8 +29,8 @@ export class LoginComponent implements OnInit {
 
   createForm() {
     this.inputForm = this.formBuilder.group({
-      username: ['', Validators.required, Validators.minLength(5), Validators.maxLength(20)],
-      password: ['', Validators.required, Validators.minLength(5), Validators.maxLength(20)]
+      username: ['', [Validators.required, Validators.minLength(5), Validators.maxLength(20)]],
+      password: ['', [Validators.required, Validators.minLength(5), Validators.maxLength(20)]]
     });
   }
 
@@ -77,7 +77,7 @@ export class LoginComponent implements OnInit {
     this.username = this.inputForm.get('username').value;
     this.password = this.inputForm.get('password').value;
     console.log('login: ' + this.inputForm.get('username').value);
-    console.log('pass: ' + this.inputForm.get('username').value);
+    console.log('pass: ' + this.inputForm.get('password').value);
     this.logged = true;
     this.loggedAsAdmin();
   }
