@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { PetsService } from './pets.service';
+import { ActivatedRoute } from '@angular/router';
 
 
 
@@ -16,7 +17,7 @@ export class PetsComponent implements OnInit {
   private currentDate = new Date();
   private month = this.currentDate.getMonth();
 
-  constructor(private petsService: PetsService) { }
+  constructor(private petsService: PetsService, private route: ActivatedRoute,) { }
   ngOnInit() {
     this.getPetsService();
 

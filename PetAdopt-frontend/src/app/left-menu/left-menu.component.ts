@@ -12,46 +12,15 @@ export class LeftMenuComponent implements OnInit {
   private buttonTextEnabled;
   constructor() { }
 
-  showButton(picked)
-  {
-    for (let i = 1; i < 5; i++) {
-      if (i === picked){
-        document.getElementById('butt' + i).style.minWidth = 'fit-content';
-        this.buttonTextEnabled = picked;
-      }
-      else{
-        document.getElementById('butt' + i).style.minWidth = '22%';
-      }
-    }
-  }
-
-  onMouseOver(picked: number) {
-    console.log('mouse on button' + picked);
-    switch (picked) {
-      case 1:
-        this.showButton(picked);
-        break;
-      case 2:
-        this.showButton(picked);
-        break;
-      case 3:
-        this.showButton(picked);
-        break;
-      case 4:
-        this.showButton(picked);
-        break;
-    }
-  }
-
-  onMouseOverRight() {
-    console.log('mouse on invisible bar');
+  onMouseLeave(picked){
+    document.getElementById('butt' + picked).style.minWidth = '22%';
     this.buttonTextEnabled = 0;
-    for (let i = 1; i < 5; i++) {
-      document.getElementById('butt' + i).style.minWidth = '22%';
-    }
   }
-
-
+  onMouseEnter(picked)
+  {
+    this.buttonTextEnabled = picked;
+    document.getElementById('butt' + picked).style.minWidth = 'fit-content';
+  }
 
   ngOnInit(): void {
 
