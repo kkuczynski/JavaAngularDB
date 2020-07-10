@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { PetsService } from './pets.service';
-import * as globals from 'globals';
 
 
 
@@ -11,8 +10,8 @@ import * as globals from 'globals';
 })
 export class PetsComponent implements OnInit {
 
-  private isAdmin = globals.isAdmin;
-  private isEmployee = globals.isEmployee;
+  private isAdmin = true;
+  private isEmployee = true;
   private pets = [];
   private currentDate = new Date();
   private month = this.currentDate.getMonth();
@@ -37,7 +36,7 @@ export class PetsComponent implements OnInit {
   }
 
   public compareDates(dateA: Date, days: number, dateB: Date): boolean {
-    let newDateA: Date = new Date(dateA);
+    const newDateA: Date = new Date(dateA);
     const newDateB: Date = new Date(dateB);
     newDateA.setDate(newDateA.getDate() + days);
     if (newDateA > newDateB) {
@@ -48,7 +47,7 @@ export class PetsComponent implements OnInit {
     }
   }
   public addDays(date: Date, days: number): Date {
-    let newDate: Date = new Date(date);
+    const newDate: Date = new Date(date);
     newDate.setDate(newDate.getDate() + days);
     return newDate;
   }

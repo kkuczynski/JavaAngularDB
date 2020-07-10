@@ -1,20 +1,3 @@
-table{
-    height: 100%;
-    width: 50%;
-    font-size: 100%;
-    cursor: default;
-    color:gray;    
-    text-align: left;
-    
-   
-}
-tr{
-    height: 25%;
-    
-}
-td{
-    max-width: fit-content;
-}
 .invisibleBarHider{
     height: 100%;
     width: 10%;
@@ -24,29 +7,23 @@ td{
     top: 0;
     overflow-x: hidden;
     padding-top: 0px;
-    padding-right: 0px;
-   
+    padding-right: 0px;   
     right: 0;
-  }
-  .menu{
-      background-color: darkgray;
-      width: 20%;
-      height: 100%;
-      
-  }
+}
   button{
       transform: translateX(-10%);
-      height: 100%;
-      width: 40%;
+      height: 25%;
+      width: 30%;
       border-radius: 0%;
       border-width: 1%;
       border-color: gray;
       background-color: darkgray;
-      font-size: 100%;      
+          
       color: gray;
+     
   }
   .inButton{
-      text-align: right;
+      text-align: center;
       width: 100%;
-      font-size: 150%;
+      font-size: 250%;
   }

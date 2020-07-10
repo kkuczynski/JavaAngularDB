@@ -1,7 +1,6 @@
 import { Component, OnInit, Input, Inject } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
-//TODO FORM!
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -18,7 +17,6 @@ export class LoginComponent implements OnInit {
   private password = '';
   private capsWarn = '';
   private loginWarn = '';
- 
   private inputForm: FormGroup;
 
   constructor(private formBuilder: FormBuilder) {
@@ -34,7 +32,6 @@ export class LoginComponent implements OnInit {
       username: ['', Validators.required, Validators.minLength(5), Validators.maxLength(20)],
       password: ['', Validators.required, Validators.minLength(5), Validators.maxLength(20)]
     });
-    this.inputForm.disable();
   }
 
   getInputForm() {
