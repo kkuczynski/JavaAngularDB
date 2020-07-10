@@ -18,6 +18,7 @@ export class LoginComponent implements OnInit {
   private capsWarn = '';
   private loginWarn = '';
   private inputForm: FormGroup;
+  private signInButton = false;
 
   constructor(private formBuilder: FormBuilder) {
     this.createForm();
@@ -29,8 +30,8 @@ export class LoginComponent implements OnInit {
 
   createForm() {
     this.inputForm = this.formBuilder.group({
-      username: ['', [Validators.required, Validators.minLength(5), Validators.maxLength(20)]],
-      password: ['', [Validators.required, Validators.minLength(5), Validators.maxLength(20)]]
+      username: ['', [Validators.required, Validators.minLength(5), Validators.maxLength(20), Validators.pattern('[a-zA-Z0-9]+([._]?[a-zA-Z0-9]+)')]],
+      password: ['', [Validators.required, Validators.minLength(5), Validators.maxLength(20), Validators.pattern('[a-zA-Z0-9]+([._]?[a-zA-Z0-9]+)')]]
     });
   }
 

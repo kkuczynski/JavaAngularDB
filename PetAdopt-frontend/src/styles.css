@@ -1,6 +1,6 @@
 /* You can add global styles to this file, and also import other style files */
 button {
-    background-color: gray;
+    
     border-style: solid;    
     border-color: white;
     border-width: 2px;
@@ -11,6 +11,5 @@ button {
     display: inline-block;
     font-size: 14px;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
-    cursor: pointer;
     border-radius: 10px;  
   }

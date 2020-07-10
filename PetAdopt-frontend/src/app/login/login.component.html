@@ -6,9 +6,10 @@
         required formControlName="password">
     <br>
 
-    <button (click)="signUp()">Sign up </button>
+    <button class="signUp" (click)="signUp()">Sign up </button>
 
-    <button id="signInButton" (click)="signIn()">Sign in </button>
+    <button *ngIf="!getInputForm().valid" class="disabled" id="signInButton"  [disabled]="!getInputForm().valid" (click)="signIn()">Sign in </button>
+    <button *ngIf="getInputForm().valid" class="enabled" id="signInButton"  [disabled]="!getInputForm().valid" (click)="signIn()">Sign in </button>
 
     <div class="warn">{{this.getLoginWarn()}}
     </div>

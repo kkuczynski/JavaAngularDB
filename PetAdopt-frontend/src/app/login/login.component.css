@@ -5,7 +5,7 @@
     height: 100%
 }
 button {
-    background-color: gray;
+    
     border-style: solid;    
     color: white;
     min-width: 41%;
@@ -15,10 +15,21 @@ button {
     display: inline-block;
     font-size: 90%;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
-    cursor: pointer;
     border-radius: 10px;  
     min-height: 5%;
     max-height: fit-content;
+  }
+  .enabled{
+    cursor: pointer;
+    background-color: gray
+  }
+  .disabled{
+    cursor: auto;
+    background-color: lightgray;
+  }
+  .signUp{
+    cursor: pointer;
+    background-color: gray
   }
 form{
   height:100%;

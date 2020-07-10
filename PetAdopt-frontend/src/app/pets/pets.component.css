@@ -20,3 +20,7 @@ h4{
 .noHome{
     color: darkred;
 }
+button{
+    background-color: gray;
+    cursor: pointer;
+}

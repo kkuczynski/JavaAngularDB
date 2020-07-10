@@ -24,6 +24,7 @@
       max-width: fit-content;
       min-width: 22%;
       border-collapse: collapse;
+      cursor: pointer;
      
   }
   .inButton{
