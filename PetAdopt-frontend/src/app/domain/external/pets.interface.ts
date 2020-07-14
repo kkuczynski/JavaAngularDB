@@ -1,5 +1,5 @@
-import { Spieces } from 'src/app/enums/spieces.enum';
-import { Sex } from 'src/app/enums/sex.enum';
+import { Spieces } from '../enums/spieces.enum';
+import { Sex } from '../enums/sex.enum';
 export interface PetsInterface {
     id: number;
     name: string;

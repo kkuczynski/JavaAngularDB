@@ -1,4 +1,11 @@
-<!-- Hmm angular material nie ma żadnych elementów których potrzebujesz ? -->
+<button (click)="showAddTab()" *ngIf="getIsEmployee" class="add">add pet</button>
+<table *ngIf="getAddPetTab()">
+<mat-form-field>
+    <mat-select>
+       
+    </mat-select>
+</mat-form-field>
+</table>
 <div *ngFor="let pet of this.getPets()">
     <hr>
         <table>

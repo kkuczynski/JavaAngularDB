@@ -1,11 +1,18 @@
 <div [formGroup]="getInputForm()" class="form group" style="text-align: right;" *ngIf="!getLogged()" class="login"
     (ngSubmit)="signIn()">
     
+    <mat-form-field appearance="outline"> 
+    <input matInput type="text" id="username" placeholder="username"  formControlName="username" required>
+    <mat-error *ngIf="!getInputForm().get('username').valid">wrong username</mat-error>
     
-    <input [ngClass]="underlineField('username') ? 'wrong' : 'good'" type="text" id="username" placeholder="username"  formControlName="username" required>
+
+</mat-form-field>
     <br>
-    <input [ngClass]="underlineField('password') ? 'wrong' : 'good'" type="password" id="password" placeholder="password"  (keydown)="capsFunction($event)"
+    <mat-form-field appearance="outline">
+    <input matInput type="password" id="password" placeholder="password"  (keydown)="capsFunction($event)"
         required formControlName="password">
+    <mat-error *ngIf="!getInputForm().get('password').valid">wrong password</mat-error>
+    </mat-form-field>
     <br>
 
     <button class="signUp" (click)="signUp()">Sign up </button>

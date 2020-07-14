@@ -22,7 +22,7 @@ public class Users {
     @Getter
     private Date createdAt;
     @Getter
-    private Role givenRole;
+    private Role role;
     @Getter
     private String login;
     @Getter
@@ -31,12 +31,12 @@ public class Users {
     public Users(){
     }
 
-    public Users(Integer id, String name, String surname, Date createdAt, Role givenRole, String login, String password){
+    public Users(Integer id, String name, String surname, Date createdAt, Role role, String login, String password){
         this.id = id;
         this.name = name;
         this.surname = surname;
         this.createdAt = createdAt;
-        this.givenRole = givenRole;
+        this.role = role;
         this.login = login;
         this.password = password;
     }

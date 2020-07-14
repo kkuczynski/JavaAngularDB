@@ -42,6 +42,11 @@ public class UsersController {
     public void deleteUsers(@PathVariable int id) throws NoRecordWithIdException{
        usersServiceImpl.deleteUserById(id);
     }
+
+    @PostMapping("/login")
+    public void login(){
+
+    }
 }
 
 

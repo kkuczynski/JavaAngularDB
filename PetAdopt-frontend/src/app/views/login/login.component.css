@@ -38,25 +38,7 @@ button {
 form{
   height:100%;
 }
-  input[type=text] {
-    border: 2px solid gray;
-    margin-top: 2px;
-    
-    border-radius: 5px;
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
-    font-size: 100%;     
-    width: 80%;
-    height: 4%;
-  }
-  input[type=password] {
-    border: 2px solid gray;
-    
-    border-radius: 5px;
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
-    font-size: 100%; 
-    width:80%;  
-    height: 4%;
-  }
+  
 .warn{
   color: darkred;
   font-size: 80%;

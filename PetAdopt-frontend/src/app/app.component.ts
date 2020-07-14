@@ -8,5 +8,4 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 })
 export class AppComponent {
   title = 'PetAdopt';
-  public date = new Date();
 }

@@ -3,6 +3,11 @@ table{
     
     
 }
+.add{
+    position: static;
+    right: 0;
+    top: 1%;
+}
 .left{
     text-align: right;
     
