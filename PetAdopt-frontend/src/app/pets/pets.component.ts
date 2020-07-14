@@ -55,9 +55,6 @@ export class PetsComponent implements OnInit {
   public getPetsService() {
     this.petsService.getPetsWithNoHome().subscribe(data => this.pets = data);
     this.petsService.getPetsWithHome().subscribe(data => this.pets = data);
-    this.pets.forEach(pet => {
-      console.log(pet.name);
-    });
   }
 
 }

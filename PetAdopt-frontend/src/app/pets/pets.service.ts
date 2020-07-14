@@ -13,10 +13,10 @@ export class PetsService {
   private urlWithNoHome = environment.urlPetsWithNoHome;
 
   constructor(private http: HttpClient) { }
-  getPetsWithNoHome(): Observable<PetsInterface[]> {
+  getPetsWithNoHome(){
     return this.http.get<PetsInterface[]>(this.urlWithNoHome);
   }
-  getPetsWithHome(): Observable<PetsInterface[]> {
+  getPetsWithHome(){
     return this.http.get<PetsInterface[]>(this.urlWithHome);
   }
 }

@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Vector;
+import java.util.stream.Collectors;
 
 @Service
 public class PetsServiceImpl implements com.petAdopt.backend.service.PetsService {
@@ -50,24 +51,14 @@ public class PetsServiceImpl implements com.petAdopt.backend.service.PetsService
 
     }
 
+
+
     public List<Pets> getAllPetsWithNoHome(){
-        List<Pets> petsWithNoHomesList = getAllPets();
-        for (Pets pet : petsWithNoHomesList) {
-            if (pet.getAdopted() || pet.getTemporaryAdopted()) {
-                petsWithNoHomesList.removeIf(pets -> pets.getAdopted() || pets.getTemporaryAdopted());
-            }
+        return this.petsRepo.findAll().stream().filter(pet -> !pet.getAdopted() && !pet.getTemporaryAdopted()).collect(Collectors.toList());
         }
-        return petsWithNoHomesList;
-    }
 
     public List<Pets> getAllPetsWithHome(){
-        List<Pets> petsWithHomesList = getAllPets();
-        petsWithHomesList.forEach(pet ->
-        {
-            if (!pet.getAdopted() && !pet.getTemporaryAdopted()){
-                petsWithHomesList.remove(pet);
-            }
-        });
-        return petsWithHomesList;
+        return this.petsRepo.findAll().stream().filter(pet -> pet.getAdopted() || pet.getTemporaryAdopted()).collect(Collectors.toList());
     }
+
 }
