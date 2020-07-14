@@ -6,6 +6,8 @@ export const environment = {
   production: false,
   url: 'http://localhost:8088',
   urlPets: 'http://localhost:8088/pets',
+  urlPetsWithNoHome: 'http://localhost:8088/pets/withNoHome',
+  urlPetsWithHome: 'http://localhost:8088/pets/withHome',
   urlUsers: 'http://localhost:8088/users',
   urlAdoptionHouses: 'http://localhost:8088/adoptionHouses'
 };

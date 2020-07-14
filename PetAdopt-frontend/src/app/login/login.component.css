@@ -63,10 +63,17 @@ form{
   min-height: 0px;
   max-height: 0px;
 }
-.username{
-  border-color: gray;
+
+.wrong{
+  
+  text-decoration: underline;
+  text-decoration-color: red;
+  text-decoration-style: solid;
+  
 }
-.password{
-  border-color: gray;
+.good{
+  
+  text-decoration: none;
 }
+
   

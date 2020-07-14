@@ -22,6 +22,16 @@ public class PetsController {
         return petsServiceImpl.getAllPets();
     }
 
+    @GetMapping("/withNoHome")
+    public List<Pets> getPetsWithNoHome() {
+        return petsServiceImpl.getAllPetsWithNoHome();
+    }
+
+    @GetMapping("/withHome")
+    public List<Pets> getPetsWithHome() {
+        return petsServiceImpl.getAllPetsWithHome();
+    }
+
     @GetMapping("/{id}")
     public Pets getById(@PathVariable Integer id) throws NoRecordWithIdException{
         return petsServiceImpl.getPetById(id);

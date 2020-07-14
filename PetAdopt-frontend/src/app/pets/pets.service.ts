@@ -9,9 +9,14 @@ import { environment } from 'src/environments/environment';
 })
 export class PetsService {
   private url = environment.urlPets;
+  private urlWithHome = environment.urlPetsWithHome;
+  private urlWithNoHome = environment.urlPetsWithNoHome;
 
   constructor(private http: HttpClient) { }
-  getPets(): Observable<PetsInterface[]> {
-    return this.http.get<PetsInterface[]>(this.url);
+  getPetsWithNoHome(): Observable<PetsInterface[]> {
+    return this.http.get<PetsInterface[]>(this.urlWithNoHome);
+  }
+  getPetsWithHome(): Observable<PetsInterface[]> {
+    return this.http.get<PetsInterface[]>(this.urlWithHome);
   }
 }

@@ -7,6 +7,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import java.sql.Date;
 import java.time.LocalDate;
 
 @Entity
@@ -17,18 +18,15 @@ public class Pets {
     private Integer id;
     @Getter
     private String name;
-    //dog, cat etc
     @Getter
     private Spieces spieces;
-    //race of the spieces
     @Getter
     private String race;
     //age of the pet given in months
     @Getter
     private int age;
-    //TODO    proponuje typ Date ale sformatowany do yyyy-mm-dd
     @Getter
-    private LocalDate addedAt; //when the pet was added to db,
+    private Date addedAt; //when the pet was added to db,
     @Getter
     private String health;//the description of health status of the pet
     @Getter
@@ -37,9 +35,8 @@ public class Pets {
     private Boolean sterilized;
     @Getter
     private Boolean adopted;
-    //    to samo co w przypadku dodanie
     @Getter
-    private LocalDate adoptDate;
+    private Date adoptDate;
     @Getter
     private Boolean temporaryAdopted;
     @Getter
@@ -48,7 +45,7 @@ public class Pets {
     public Pets(){
     }
 
-    public Pets(Integer id, String name, Spieces spieces, String race, int age, LocalDate addedAt, String health, Sex sex, Boolean sterilized, Boolean adopted, LocalDate adoptDate, Boolean temporaryAdopted, int tmpAdoptForDays){
+    public Pets(Integer id, String name, Spieces spieces, String race, int age, Date addedAt, String health, Sex sex, Boolean sterilized, Boolean adopted, Date adoptDate, Boolean temporaryAdopted, int tmpAdoptForDays){
         this.id = id;
         this.name = name;
         this.spieces = spieces;

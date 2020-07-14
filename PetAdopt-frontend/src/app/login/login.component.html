@@ -2,9 +2,9 @@
     (ngSubmit)="signIn()">
     
     
-    <input type="text" id="username" class="username" placeholder="username" (keydown)="errorTextField('username')" formControlName="username" required>
+    <input [ngClass]="underlineField('username') ? 'wrong' : 'good'" type="text" id="username" placeholder="username"  formControlName="username" required>
     <br>
-    <input type="password" id="password" class="password" placeholder="password" (keydown)="errorTextField('password')" (keydown)="capsFunction($event)"
+    <input [ngClass]="underlineField('password') ? 'wrong' : 'good'" type="password" id="password" placeholder="password"  (keydown)="capsFunction($event)"
         required formControlName="password">
     <br>
 

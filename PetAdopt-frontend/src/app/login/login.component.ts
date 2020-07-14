@@ -7,7 +7,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
   styleUrls: ['./login.component.css']
 })
 
-export class LoginComponent implements OnInit{
+export class LoginComponent implements OnInit {
 
   private date = new Date();
   private logged = false;
@@ -29,8 +29,16 @@ export class LoginComponent implements OnInit{
   }
   createForm() {
     this.inputForm = this.formBuilder.group({
-      username: ['', [Validators.required, Validators.minLength(5), Validators.maxLength(20), Validators.pattern('[a-zA-Z0-9]+([._]?[a-zA-Z0-9]+)')]],
-      password: ['', [Validators.required, Validators.minLength(5), Validators.maxLength(20), Validators.pattern('[a-zA-Z0-9]+([._]?[a-zA-Z0-9]+)')]]
+      username: ['', [
+        Validators.required,
+        Validators.minLength(5),
+        Validators.maxLength(20),
+        Validators.pattern('[a-zA-Z0-9]+([._]?[a-zA-Z0-9]+)')]],
+      password: ['', [
+        Validators.required,
+        Validators.minLength(5),
+        Validators.maxLength(20),
+        Validators.pattern('[a-zA-Z0-9]+([._]?[a-zA-Z0-9]+)')]]
     });
   }
 
@@ -62,23 +70,11 @@ export class LoginComponent implements OnInit{
   capsFunction(event) {
     if (event.getModifierState('CapsLock')) {
       this.capsWarn = 'CapsLock is on!';
-    }
-    else {
+    } else {
       this.capsWarn = '';
     }
   }
-  //   not needed and not working properly
-   errorTextField(fieldName) {}
-  //   console.log('error method called ' + fieldName);
-  //   console.log('value: "' + this.inputForm.get(fieldName).value + '"');
-  //   if (!this.inputForm.get(fieldName).valid && this.inputForm.get(fieldName).value.length > 0) {
 
-  //     document.getElementById(fieldName).style.borderColor = 'darkred';
-  //   }
-  //   else {
-  //     document.getElementById(fieldName).style.borderColor = 'gray';
-  //   }
-  // }
   loggedAsAdmin() {
     this.isAdmin = true;
     this.isEmployee = true;
@@ -100,6 +96,14 @@ export class LoginComponent implements OnInit{
     this.logged = false;
     this.isAdmin = false;
     this.isEmployee = false;
+  }
+
+  underlineField(fieldName): boolean {
+    if (!this.inputForm.get(fieldName).valid && this.inputForm.get(fieldName).value.length > 0) {
+      return true;
+    } else {
+      return false;
+    }
   }
 
 }

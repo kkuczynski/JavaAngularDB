@@ -6,6 +6,8 @@ import com.petAdopt.backend.dao.entity.Pets;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Vector;
+
 @Service
 public class PetsServiceImpl implements com.petAdopt.backend.service.PetsService {
 
@@ -20,7 +22,7 @@ public class PetsServiceImpl implements com.petAdopt.backend.service.PetsService
     }
 
     public List<Pets> getAllPets(){
-        return (List<Pets>) petsRepo.findAll();
+        return petsRepo.findAll();
     }
 
     public Pets savePet(Pets pets){
@@ -48,4 +50,24 @@ public class PetsServiceImpl implements com.petAdopt.backend.service.PetsService
 
     }
 
+    public List<Pets> getAllPetsWithNoHome(){
+        List<Pets> petsWithNoHomesList = getAllPets();
+        for (Pets pet : petsWithNoHomesList) {
+            if (pet.getAdopted() || pet.getTemporaryAdopted()) {
+                petsWithNoHomesList.removeIf(pets -> pets.getAdopted() || pets.getTemporaryAdopted());
+            }
+        }
+        return petsWithNoHomesList;
+    }
+
+    public List<Pets> getAllPetsWithHome(){
+        List<Pets> petsWithHomesList = getAllPets();
+        petsWithHomesList.forEach(pet ->
+        {
+            if (!pet.getAdopted() && !pet.getTemporaryAdopted()){
+                petsWithHomesList.remove(pet);
+            }
+        });
+        return petsWithHomesList;
+    }
 }

@@ -17,7 +17,7 @@ export class PetsComponent implements OnInit {
   private currentDate = new Date();
   private month = this.currentDate.getMonth();
 
-  constructor(private petsService: PetsService, private route: ActivatedRoute,) { }
+  constructor(private petsService: PetsService) { }
   ngOnInit() {
     this.getPetsService();
 
@@ -53,7 +53,8 @@ export class PetsComponent implements OnInit {
     return newDate;
   }
   public getPetsService() {
-    this.petsService.getPets().subscribe(data => this.pets = data);
+    this.petsService.getPetsWithNoHome().subscribe(data => this.pets = data);
+    this.petsService.getPetsWithHome().subscribe(data => this.pets = data);
     this.pets.forEach(pet => {
       console.log(pet.name);
     });

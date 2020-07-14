@@ -13,5 +13,7 @@ public interface PetsService {
     Pets savePet(Pets pets);
     void deletePetById(Integer id) throws NoRecordWithIdException;
     Pets updatePets(Pets pets) throws NoRecordWithIdException;
+    List<Pets> getAllPetsWithNoHome();
+    List<Pets> getAllPetsWithHome();
 
 }
