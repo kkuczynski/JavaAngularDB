@@ -10,6 +10,7 @@ import java.util.List;
 @Service
 public class AdoptionHousesServiceImpl implements AdoptionHousesService {
 
+    private final String message = "AdoptionHouses";
     private final AdoptionHousesRepo adoptionHousesRepo;
 
     public AdoptionHousesServiceImpl(AdoptionHousesRepo adoptionHousesRepo){
@@ -17,7 +18,7 @@ public class AdoptionHousesServiceImpl implements AdoptionHousesService {
     }
 
     public AdoptionHouses getAdoptionHouseById(Integer id) throws NoRecordWithIdException{
-        return adoptionHousesRepo.findById(id).orElseThrow(() -> new NoRecordWithIdException("AdoptionHouses"));
+        return adoptionHousesRepo.findById(id).orElseThrow(() -> new NoRecordWithIdException(message));
     }
     public List<AdoptionHouses> getAllAdoptionHouses(){
         return (List<AdoptionHouses>) adoptionHousesRepo.findAll();
@@ -30,21 +31,21 @@ public class AdoptionHousesServiceImpl implements AdoptionHousesService {
     public void deleteAdoptionHouseById (Integer id) throws NoRecordWithIdException{
 
         try {
-            getAdoptionHouseById(id);
+            adoptionHousesRepo.findById(id);
             adoptionHousesRepo.deleteById(id);
         }
-        catch(NoRecordWithIdException e){
-            throw new NoRecordWithIdException("AdoptionHouse");
+        catch(Exception e){
+            throw new NoRecordWithIdException(message);
         }
     }
 
     public AdoptionHouses updateAdoptionHouse(AdoptionHouses adoptionHouses) throws NoRecordWithIdException{
         try {
-            getAdoptionHouseById(adoptionHouses.getId());
+            adoptionHousesRepo.findById(adoptionHouses.getId());
             return adoptionHousesRepo.save(adoptionHouses);
 
-        } catch (NoRecordWithIdException e) {
-            throw new NoRecordWithIdException("AdoptionHouse");
+        } catch (Exception e) {
+            throw new NoRecordWithIdException(message);
 
         }
     }

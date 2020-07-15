@@ -1,27 +1,31 @@
 <div [formGroup]="getInputForm()" class="form group" style="text-align: right;" *ngIf="!getLogged()" class="login"
     (ngSubmit)="signIn()">
-    
-    <mat-form-field appearance="outline"> 
-    <input matInput type="text" id="username" placeholder="username"  formControlName="username" (keydown)="keyDownFunction($event)" required>
-    <mat-error *ngIf="!getUsernameCorrect()">wrong username</mat-error>
-    
 
-</mat-form-field>
+    <mat-form-field appearance="outline">
+        <input matInput type="text" id="username" placeholder="username" formControlName="username"
+            (keydown)="keyDownFunction($event)" required>
+        <mat-error *ngIf="!getUsernameCorrect()">wrong username</mat-error>
+
+
+    </mat-form-field>
     <br>
     <mat-form-field appearance="outline">
-    <input matInput type="password" id="password" placeholder="password"  (keydown)="capsFunction($event)" (keydown)="keyDownFunction($event)"   required formControlName="password">
+        <input matInput type="password" id="password" placeholder="password" (keydown)="capsFunction($event)"
+            (keydown)="keyDownFunction($event)" required formControlName="password">
         <mat-error *ngIf="!getUsernameCorrect()">wrong password</mat-error>
     </mat-form-field>
     <br>
 
     <button class="signUp" (click)="signUp()">Sign up </button>
 
-    <button *ngIf="!getInputForm().valid" class="disabled" id="signInButton"  [disabled]="!getInputForm().valid" (click)="signIn()">Sign in </button>
-    <button *ngIf="getInputForm().valid" class="enabled" id="signInButton"  [disabled]="!getInputForm().valid" (click)="signIn()">Sign in </button>
+    <button *ngIf="!getInputForm().valid" class="disabled" id="signInButton" [disabled]="!getInputForm().valid"
+        (click)="signIn()">Sign in </button>
+    <button *ngIf="getInputForm().valid" class="enabled" id="signInButton" [disabled]="!getInputForm().valid"
+        (click)="signIn()">Sign in </button>
 
     <div class="warn">{{this.getLoginWarn()}}
     </div>
-    
+
     <div class="warn">{{this.getCapsWarn()}}
 
     </div>

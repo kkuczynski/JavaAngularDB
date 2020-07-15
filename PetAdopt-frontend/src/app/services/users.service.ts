@@ -9,10 +9,10 @@ import { environment } from '../../environments/environment';
   providedIn: 'root'
 })
 export class UsersService {
-  private url = environment.urlUsers;
+  private URL = environment.urlUsers;
 
   constructor(private http: HttpClient) { }
   getUsers(): Observable<UsersInterface[]> {
-    return this.http.get<UsersInterface[]>(this.url);
+    return this.http.get<UsersInterface[]>(this.URL);
   }
 }

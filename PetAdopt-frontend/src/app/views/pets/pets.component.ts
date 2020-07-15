@@ -4,7 +4,9 @@ import { ActivatedRoute } from '@angular/router';
 import { FormBuilder, FormGroup, Validators, FormControl } from '@angular/forms';
 import { PetsInterface } from 'src/app/domain/external/pets.interface';
 
-
+// TODO: send pets via http
+// TODO: zapytac o 4 taby
+// TODO: response entity poczytac i cos zwraca, backend
 @Component({
   selector: 'app-pets',
   templateUrl: './pets.component.html',
@@ -12,71 +14,91 @@ import { PetsInterface } from 'src/app/domain/external/pets.interface';
 })
 export class PetsComponent implements OnInit {
 
+  private _newPet: PetsInterface;
+  private _isAdmin = true;
+  private _isEmployee = true;
+  private _pets = [];
+  private _currentDate = new Date();
+  private _month = this._currentDate.getMonth();
+  private _AddPetTab = false;
+  private _inputForm: FormGroup;
+  private _adopted = false;
+  private _tmpAdopted = false;
 
-  private newPet: PetsInterface;
-  private isAdmin = true;
-  private isEmployee = true;
-  private pets = [];
-  private currentDate = new Date();
-  private month = this.currentDate.getMonth();
-  private AddPetTab = false;
-  private inputForm: FormGroup;
-  private adopted = false;
-  private tmpAdopted = false;
-
-  constructor(private petsService: PetsService, private formBuilder: FormBuilder) { 
+  constructor(private petsService: PetsService, private formBuilder: FormBuilder) {
     this.createForm();
-   }
+  }
   ngOnInit() {
     this.getPetsService();
 
   }
 
   getIsAdmin() {
-    return this.isAdmin;
+    return this._isAdmin;
   }
   getIsEmployee() {
-    return this.isEmployee;
+    return this._isEmployee;
   }
   getPets() {
-    return this.pets;
+    return this._pets;
   }
 
   getCurrentDate() {
-    return this.currentDate;
+    return this._currentDate;
   }
 
   getPetsService() {
-    this.petsService.getPetsWithNoHome().subscribe(data => this.pets = data);
-    this.petsService.getPetsWithHome().subscribe(data => this.pets = data);
+    this.petsService.getPetsWithNoHome().subscribe(data => this._pets = data);
+    this.petsService.getPetsWithHome().subscribe(data => this._pets = data);
   }
 
   getAddPetTab() {
-    return this.AddPetTab;
+    return this._AddPetTab;
   }
 
   getInputForm() {
-    return this.inputForm;
+    return this._inputForm;
   }
   showAddTab() {
-    this.AddPetTab = true;
+    this._AddPetTab = true;
+  }
+  hideAddTab() {
+    this._AddPetTab = false;
   }
 
+  postPet(){
+    const date = new Date();
+    this._newPet =
+    {
+      1,
+      _inputForm.get('name').value,
+      _inputForm.get('spieces').value,
+      _inputForm.get('race').value,
+      _inputForm.get('age').value,
+      date,
+      _inputForm.get('health').value,
+      _inputForm.get('sex').value,
+      _inputFOrm.get('sterilized').value,
+      _inputForm.get('adopted') //TODO
+
+    };
+    this.petsService.postNewPet(this._newPet);
+  }
 
   createForm() {
-    this.inputForm = this.formBuilder.group({
+    this._inputForm = this.formBuilder.group({
       name: ['', [
         Validators.required,
         Validators.minLength(2),
         Validators.maxLength(20)
-        ]],
+      ]],
       spieces: ['', [
         Validators.required]],
       race: ['', [
         Validators.required,
         Validators.minLength(3),
         Validators.maxLength(40),
-        ]],
+      ]],
       health: ['', [
         Validators.required,
         Validators.minLength(1),
@@ -94,24 +116,24 @@ export class PetsComponent implements OnInit {
     });
   }
 
-  tmpAdoptTrue(){
-    this.tmpAdopted = true;
+  tmpAdoptTrue() {
+    this._tmpAdopted = true;
   }
-  tmpAdoptFalse(){
-    this.tmpAdopted = false;
+  tmpAdoptFalse() {
+    this._tmpAdopted = false;
   }
-  adoptTrue(){
-    this.adopted = true;
+  adoptTrue() {
+    this._adopted = true;
   }
-  adoptFalse(){
-    this.adopted = false;
+  adoptFalse() {
+    this._adopted = false;
   }
-  getTmpAdopted(){
-    return this.tmpAdopted;
+  getTmpAdopted() {
+    return this._tmpAdopted;
   }
   anyAdoptTrue() {
 
-    if (this.adopted || this.tmpAdopted) {
+    if (this._adopted || this._tmpAdopted) {
       return true;
     }
     else {

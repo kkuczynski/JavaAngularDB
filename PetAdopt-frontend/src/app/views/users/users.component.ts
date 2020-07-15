@@ -8,12 +8,15 @@ import { ActivatedRoute } from '@angular/router';
   styleUrls: ['./users.component.css']
 })
 export class UsersComponent implements OnInit {
-//  pola prywatne, enkapsulacja danych
-  public users = [];
+
+  private _users = [];
   constructor(private usersService: UsersService, private route: ActivatedRoute) { }
 
   ngOnInit() {
-    this.usersService.getUsers().subscribe(data => this.users = data);
+    this.usersService.getUsers().subscribe(data => this._users = data);
   }
 
+  getUsers() {
+    return this._users;
+  }
 }

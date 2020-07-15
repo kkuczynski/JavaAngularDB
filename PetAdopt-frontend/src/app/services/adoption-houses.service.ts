@@ -11,10 +11,10 @@ import { environment } from '../../environments/environment';
 })
 
 export class AdoptionHousesService {
-  private url = environment.urlAdoptionHouses;
+  private URL = environment.urlAdoptionHouses;
 
   constructor(private http: HttpClient) { }
   getAH(): Observable<AdoptionHousesInterface[]> {
-    return this.http.get<AdoptionHousesInterface[]>(this.url);
+    return this.http.get<AdoptionHousesInterface[]>(this.URL);
   }
 }

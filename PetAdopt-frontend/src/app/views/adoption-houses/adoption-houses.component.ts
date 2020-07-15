@@ -8,7 +8,7 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class AdoptionHousesComponent implements OnInit {
 
-  constructor(private route: ActivatedRoute,) { }
+  constructor(private route: ActivatedRoute) { }
 
   ngOnInit(): void {
   }

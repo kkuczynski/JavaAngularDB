@@ -41,7 +41,7 @@
                 <div class="right">
                     <mat-radio-group formControlName="sex" required>
                         <mat-radio-button value="MALE">male </mat-radio-button>
-                        
+
                         <mat-radio-button value="FEMALE">female </mat-radio-button>
 
                     </mat-radio-group>
@@ -75,7 +75,7 @@
             <td>
                 <div class="right">
                     <mat-radio-group formControlName="adopted" required>
-                        <mat-radio-button (click)="adoptTrue()"value=1>yes&nbsp;&nbsp; </mat-radio-button>
+                        <mat-radio-button (click)="adoptTrue()" value=1>yes&nbsp;&nbsp; </mat-radio-button>
                         <mat-radio-button (click)="adoptFalse()" value=0>no </mat-radio-button>
 
                     </mat-radio-group>
@@ -93,8 +93,8 @@
             <td>
                 <div class="right">
                     <mat-radio-group formControlName="temporaryAdopted" required>
-                        <mat-radio-button (click)="tmpAdoptTrue()"value=1>yes&nbsp;&nbsp; </mat-radio-button>
-                        <mat-radio-button (click)="tmpAdoptFalse()"value=0>no </mat-radio-button>
+                        <mat-radio-button (click)="tmpAdoptTrue()" value=1>yes&nbsp;&nbsp; </mat-radio-button>
+                        <mat-radio-button (click)="tmpAdoptFalse()" value=0>no </mat-radio-button>
 
                     </mat-radio-group>
                 </div>
@@ -102,16 +102,17 @@
         </tr>
     </table>
     <mat-form-field *ngIf="anyAdoptTrue()">
-        <input matInput type="date" id="adoptDate" placeholder="Adoption Date" formControlName="adoptDate" >
+        <input matInput type="date" id="adoptDate" placeholder="Adoption Date" formControlName="adoptDate">
     </mat-form-field>
     <br>
     <mat-form-field *ngIf="getTmpAdopted()">
-        
-        <input matInput type="number" id="tmpAdoptForDays" placeholder="For how many days?" formControlName="tmpAdoptForDays" >
+
+        <input matInput type="number" id="tmpAdoptForDays" placeholder="For how many days?"
+            formControlName="tmpAdoptForDays">
     </mat-form-field>
-    <div class="post"> <button >post</button> </div>
-   
-    
+    <div class="post"> <button (click)=hideAddTab()>hide</button> <button>post</button> </div>
+
+
 </form>
 <div *ngFor="let pet of this.getPets()">
     <hr>

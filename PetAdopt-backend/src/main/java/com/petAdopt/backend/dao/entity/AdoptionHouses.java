@@ -1,26 +1,19 @@
 package com.petAdopt.backend.dao.entity;
 
-import lombok.Getter;
-
+import lombok.Data;
 import javax.persistence.*;
 
+@Data
 @Entity
 public class AdoptionHouses {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
-    @Getter
     private Integer id;
-    @Getter
     private String address;
-    @Getter
     private String city;
-    @Getter
     private String postcode;
-    @Getter
     private int userId;
-    @Getter
     private int petsId;
-    @Getter
     private String conditions;
 
     public AdoptionHouses(Integer id, String address, String city, String postcode, int userId, int petsId, String conditions){

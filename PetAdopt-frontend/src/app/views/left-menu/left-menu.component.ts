@@ -7,18 +7,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LeftMenuComponent implements OnInit {
 
-  private isAdmin = true;
-  private isEmployee = true;
-  private buttonTextEnabled;
+  private _isAdmin = true;
+  private _isEmployee = true;
+  private _buttonTextEnabled;
   constructor() { }
-
+// TODO: zmienic algorytm
   onMouseLeave(picked){
     document.getElementById('butt' + picked).style.minWidth = '22%';
-    this.buttonTextEnabled = 0;
+    this._buttonTextEnabled = 0;
   }
   onMouseEnter(picked)
   {
-    this.buttonTextEnabled = picked;
+    this._buttonTextEnabled = picked;
     document.getElementById('butt' + picked).style.minWidth = 'fit-content';
   }
 
@@ -27,18 +27,18 @@ export class LeftMenuComponent implements OnInit {
   }
 
   getButtonTextEnabled(){
-    return this.buttonTextEnabled;
+    return this._buttonTextEnabled;
   }
   getIsAdmin() {
-    return this.isAdmin;
+    return this._isAdmin;
   }
 
   getIsEmployee() {
-    return this.isEmployee;
+    return this._isEmployee;
   }
 
   setIsAdmin(isAdmin: boolean) {
-    this.isAdmin = isAdmin;
+    this._isAdmin = isAdmin;
   }
 
 }

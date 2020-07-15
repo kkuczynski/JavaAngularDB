@@ -7,9 +7,8 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-// Zobacz czy nie da się tego zaimplmentować globalnie na całą apke ;)
-@CrossOrigin(origins = "http://localhost:4200")
 @RestController
+@CrossOrigin
 @RequestMapping("/users")
 public class UsersController {
 

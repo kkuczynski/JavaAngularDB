@@ -10,6 +10,7 @@ import java.util.List;
 @Service
 public class UsersServiceImpl implements UsersService {
 
+    private final String message = "Users";
     private UsersRepo usersRepo;
 
     public UsersServiceImpl(UsersRepo usersRepo){
@@ -17,7 +18,7 @@ public class UsersServiceImpl implements UsersService {
     }
 
     public Users getUserById(Integer id) throws NoRecordWithIdException{
-        return usersRepo.findById(id).orElseThrow(() -> new NoRecordWithIdException("Pets"));
+        return usersRepo.findById(id).orElseThrow(() -> new NoRecordWithIdException(message));
     }
 
     public List<Users> getAllUsers(){
@@ -30,21 +31,21 @@ public class UsersServiceImpl implements UsersService {
 
     public void deleteUserById(Integer id) throws NoRecordWithIdException{
         try {
-            getUserById(id);
+            usersRepo.findById(id);
             usersRepo.deleteById(id);
         }
-        catch(NoRecordWithIdException e){
-            throw new NoRecordWithIdException("Users");
+        catch(Exception e){
+            throw new NoRecordWithIdException(message);
         }
     }
 
     public Users updateUsers(Users users) throws NoRecordWithIdException{
         try {
-            getUserById(users.getId());
+            usersRepo.findById(users.getId());
             return usersRepo.save(users);
 
-        } catch (NoRecordWithIdException e) {
-            throw new NoRecordWithIdException("Users");
+        } catch (Exception e) {
+            throw new NoRecordWithIdException(message);
         }
     }
 }

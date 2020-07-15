@@ -6,8 +6,13 @@ import com.petAdopt.backend.exception.NoRecordWithIdException;
 import java.util.List;
 
 public interface UsersService {
+
     Users getUserById(Integer id) throws NoRecordWithIdException;
+
     List<Users> getAllUsers();
+
     Users saveUser(Users users);
+
     void deleteUserById(Integer id) throws NoRecordWithIdException;
+
 }
