@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { PetsService } from '../../services/pets.service';
 import { ActivatedRoute } from '@angular/router';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-
-
-
+import { FormBuilder, FormGroup, Validators, FormControl } from '@angular/forms';
+import { PetsInterface } from 'src/app/domain/external/pets.interface';
+import { Spieces } from 'src/app/domain/enums/spieces.enum';
+import { Sex } from 'src/app/domain/enums/sex.enum';
 
 @Component({
   selector: 'app-pets',
@@ -14,7 +14,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 export class PetsComponent implements OnInit {
 
 
-
+  private newPet: PetsInterface;
   private isAdmin = true;
   private isEmployee = true;
   private pets = [];
@@ -22,12 +22,17 @@ export class PetsComponent implements OnInit {
   private month = this.currentDate.getMonth();
   private AddPetTab = false;
   private inputForm: FormGroup;
+  private adopted = false;
+  private tmpAdopted = false;
 
-  constructor(private petsService: PetsService, private formBuilder: FormBuilder) { this.createForm(); }
+  constructor(private petsService: PetsService, private formBuilder: FormBuilder) { 
+    this.createForm();
+   }
   ngOnInit() {
     this.getPetsService();
 
   }
+
   getIsAdmin() {
     return this.isAdmin;
   }
@@ -51,6 +56,9 @@ export class PetsComponent implements OnInit {
     return this.AddPetTab;
   }
 
+  getInputForm() {
+    return this.inputForm;
+  }
   showAddTab() {
     this.AddPetTab = true;
   }
@@ -81,13 +89,36 @@ export class PetsComponent implements OnInit {
         Validators.maxLength(6)]],
       sterilized: [Boolean, Validators.required],
       adopted: [Boolean, Validators.required],
-      adoptDate: [Date, Validators.required],
+      adoptDate: [Date],
       temporaryAdopted: [Boolean, Validators.required],
       tmpAdoptForDays: [Number]
     });
-
   }
 
+  tmpAdoptTrue(){
+    this.tmpAdopted = true;
+  }
+  tmpAdoptFalse(){
+    this.tmpAdopted = false;
+  }
+  adoptTrue(){
+    this.adopted = true;
+  }
+  adoptFalse(){
+    this.adopted = false;
+  }
+  getTmpAdopted(){
+    return this.tmpAdopted;
+  }
+  anyAdoptTrue() {
+
+    if (this.adopted || this.tmpAdopted) {
+      return true;
+    }
+    else {
+      return false;
+    }
+  }
   compareDates(dateA: Date, days: number, dateB: Date): boolean {
     const newDateA: Date = new Date(dateA);
     const newDateB: Date = new Date(dateB);

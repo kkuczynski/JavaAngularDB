@@ -1,126 +1,227 @@
 <button (click)="showAddTab()" *ngIf="getIsEmployee" class="add">add pet</button>
-<table *ngIf="getAddPetTab()">
-<mat-form-field>
-    <mat-select>
-       
-    </mat-select>
-</mat-form-field>
-</table>
+<form class="addPet" *ngIf="getAddPetTab()" [formGroup]="getInputForm()">
+    <mat-form-field>
+        <input matInput type="text" id="name" placeholder="name" formControlName="name" required>
+    </mat-form-field>
+    <br>
+    <mat-form-field>
+        <mat-label>spieces</mat-label>
+        <mat-select formControlName="spieces" required>
+            <mat-option value="DOG">dog</mat-option>
+            <mat-option value="CAT">cat</mat-option>
+            <mat-option value="MOUSE">mouse</mat-option>
+            <mat-option value="RAT">rat</mat-option>
+            <mat-option value="OTHER">other</mat-option>
+        </mat-select>
+    </mat-form-field>
+    <br>
+    <mat-form-field>
+        <mat-label>race</mat-label>
+        <input matInput type="text" placeholder="race" formControlName="race" required>
+    </mat-form-field>
+    <br>
+    <mat-form-field>
+        <mat-label>age</mat-label>
+        <input matInput type="number" placeholder="age" formControlName="age" required>
+    </mat-form-field>
+    <br>
+    <mat-form-field>
+        <mat-label>health status</mat-label>
+        <textarea matInput placeholder="health status" formControlName="health" required> </textarea>
+    </mat-form-field>
+
+    <table class="radios">
+        <tr>
+            <td>
+                <div class="left">
+                    <mat-label>sex: </mat-label>
+                </div>
+            </td>
+            <td>
+                <div class="right">
+                    <mat-radio-group formControlName="sex" required>
+                        <mat-radio-button value="MALE">male </mat-radio-button>
+                        
+                        <mat-radio-button value="FEMALE">female </mat-radio-button>
+
+                    </mat-radio-group>
+                </div>
+            </td>
+        </tr>
+        <tr>
+
+            <td>
+                <div class="left">
+                    <mat-label>sterilized: </mat-label>
+                </div>
+            </td>
+            <td>
+                <div class="right">
+                    <mat-radio-group formControlName="sterilized" required>
+                        <mat-radio-button value=1>yes&nbsp;&nbsp; </mat-radio-button>
+                        <mat-radio-button value=0>no </mat-radio-button>
+
+                    </mat-radio-group>
+                </div>
+            </td>
+        </tr>
+
+        <tr>
+            <td>
+                <div class="left">
+                    <mat-label>adopted: </mat-label>
+                </div>
+            </td>
+            <td>
+                <div class="right">
+                    <mat-radio-group formControlName="adopted" required>
+                        <mat-radio-button (click)="adoptTrue()"value=1>yes&nbsp;&nbsp; </mat-radio-button>
+                        <mat-radio-button (click)="adoptFalse()" value=0>no </mat-radio-button>
+
+                    </mat-radio-group>
+                </div>
+            </td>
+        </tr>
+
+        <tr>
+
+            <td>
+                <div class="left">
+                    <mat-label>temporary adopted: </mat-label>
+                </div>
+            </td>
+            <td>
+                <div class="right">
+                    <mat-radio-group formControlName="temporaryAdopted" required>
+                        <mat-radio-button (click)="tmpAdoptTrue()"value=1>yes&nbsp;&nbsp; </mat-radio-button>
+                        <mat-radio-button (click)="tmpAdoptFalse()"value=0>no </mat-radio-button>
+
+                    </mat-radio-group>
+                </div>
+            </td>
+        </tr>
+    </table>
+    <mat-form-field *ngIf="anyAdoptTrue()">
+        <input matInput type="date" id="adoptDate" placeholder="Adoption Date" formControlName="adoptDate" >
+    </mat-form-field>
+    <br>
+    <mat-form-field *ngIf="getTmpAdopted()">
+        
+        <input matInput type="number" id="tmpAdoptForDays" placeholder="For how many days?" formControlName="tmpAdoptForDays" >
+    </mat-form-field>
+</form>
 <div *ngFor="let pet of this.getPets()">
     <hr>
-        <table>
-            <tr>
-                <td>
-                    <div class="left">
-                        name:
+    <table class="petTab">
+        <tr>
+            <td>
+                <div class="left">
+                    name:
 
-                    </div>
-                </td>
-                <td>
-                    <div class="right">
-                        <h2>
-                            {{pet.name}}
-                        </h2>
-                    </div>
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    <div class="left">
-                        age:
-                    </div>
-                </td>
+                </div>
+            </td>
+            <td>
+                <div class="right">
+                    <h2>
+                        {{pet.name}}
+                    </h2>
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <div class="left">
+                    age:
+                </div>
+            </td>
 
-                <td>
-                    <div class="right">
-                        <h4>
-                            {{pet.age}} month<ng-template [ngIf]="pet.age!=1">s</ng-template>
-                        </h4>
-                    </div>
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    <div class="left">
-                        race:
-                    </div>
-                </td>
+            <td>
+                <div class="right">
+                    <h4>
+                        {{pet.age}} month<ng-template [ngIf]="pet.age!=1">s</ng-template>
+                    </h4>
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <div class="left">
+                    race:
+                </div>
+            </td>
 
-                <td>
-                    <div class="right">
-                        <h4>
-                            {{pet.race}}
-                        </h4>
-                    </div>
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    <div class="left">
-                        sex:
-                    </div>
-                </td>
+            <td>
+                <div class="right">
+                    <h4>
+                        {{pet.race}}
+                    </h4>
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <div class="left">
+                    sex:
+                </div>
+            </td>
 
-                <td>
-                    <div class="right">
-                        <h4>
-                            {{pet.sex | lowercase}}
-                        </h4>
-                    </div>
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    <div class="left">
-                        sterilized:
-                    </div>
-                </td>
+            <td>
+                <div class="right">
+                    <h4>
+                        {{pet.sex | lowercase}}
+                    </h4>
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <div class="left">
+                    sterilized:
+                </div>
+            </td>
 
-                <td>
-                    <div class="right">
-                        <h4 *ngIf="pet.sterilized">
-                            yes
-                        </h4>
-                        <h4 *ngIf="!pet.sterilized">
-                            no
-                        </h4>
-                    </div>
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    <div class="left">
-                        home:
-                    </div>
-                </td>
+            <td>
+                <div class="right">
+                    <h4 *ngIf="pet.sterilized">
+                        yes
+                    </h4>
+                    <h4 *ngIf="!pet.sterilized">
+                        no
+                    </h4>
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <div class="left">
+                    home:
+                </div>
+            </td>
 
-                <td>
-                    <div class="right">
-                        <h4>
-                            <div *ngIf="!pet.adopted">
-                                <ng-template
-                                    [ngIf]="compareDates(pet.adoptDate, pet.tmpAdoptForDays, getCurrentDate())">
-                                    until {{addDays(pet.adoptDate, pet.tmpAdoptForDays) | date:'longDate'}}
-                                </ng-template>
-                                <ng-template
-                                    [ngIf]="!compareDates(pet.adoptDate, pet.tmpAdoptForDays, getCurrentDate())">
-                                    <div class="noHome">no...</div>
-                                </ng-template>
+            <td>
+                <div class="right">
+                    <h4>
+                        <div *ngIf="!pet.adopted">
+                            <ng-template [ngIf]="compareDates(pet.adoptDate, pet.tmpAdoptForDays, getCurrentDate())">
+                                until {{addDays(pet.adoptDate, pet.tmpAdoptForDays) | date:'longDate'}}
+                            </ng-template>
+                            <ng-template [ngIf]="!compareDates(pet.adoptDate, pet.tmpAdoptForDays, getCurrentDate())">
+                                <div class="noHome">no...</div>
+                            </ng-template>
 
-                            </div>
-                            <div *ngIf="pet.adopted">
-                                I've found a new home!
-                            </div>
-                        </h4>
-                    </div>
-                </td>
-            </tr>
-            <tr>
-                <td></td>
-                <td><button *ngIf="getIsEmployee">edit</button><button *ngIf="getIsAdmin">delete</button></td>
-            </tr>
-        </table>
-    
-    
+                        </div>
+                        <div *ngIf="pet.adopted">
+                            I've found a new home!
+                        </div>
+                    </h4>
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td></td>
+            <td><button *ngIf="getIsEmployee">edit</button><button *ngIf="getIsAdmin">delete</button></td>
+        </tr>
+    </table>
+
+
 </div>
-

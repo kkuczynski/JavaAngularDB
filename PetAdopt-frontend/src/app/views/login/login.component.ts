@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, Inject, SimpleChange, SimpleChanges } from '@angular/core';
+import { Component, OnInit, Input, Inject} from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 import { Router } from '@angular/router';
@@ -21,6 +21,8 @@ export class LoginComponent implements OnInit {
   private loginWarn = '';
   private inputForm: FormGroup;
   private signInButton = false;
+  private usernameCorrect = true;
+  private passwordCorrect = true;
 
   constructor(private formBuilder: FormBuilder, private router: Router) {
     this.createForm();
@@ -29,6 +31,7 @@ export class LoginComponent implements OnInit {
   ngOnInit() {
 
   }
+
   createForm() {
     this.inputForm = this.formBuilder.group({
       username: ['', [
@@ -44,6 +47,25 @@ export class LoginComponent implements OnInit {
     });
   }
 
+  getPassordCorrect() {
+    if (!this.inputForm.get('password').valid && this.inputForm.get('password').value.length > 0) {
+      this.passwordCorrect = false;
+      return this.passwordCorrect;
+     }
+     else{
+       this.passwordCorrect = true;
+     }
+  }
+
+  getUsernameCorrect() {
+    if (!this.inputForm.get('username').valid && this.inputForm.get('username').valueChanges) {
+      this.usernameCorrect = false;
+      return this.usernameCorrect;
+     }
+     else{
+       this.usernameCorrect = true;
+     }
+  }
   getInputForm() {
     return this.inputForm;
   }

@@ -2,16 +2,15 @@
     (ngSubmit)="signIn()">
     
     <mat-form-field appearance="outline"> 
-    <input matInput type="text" id="username" placeholder="username"  formControlName="username" required>
-    <mat-error *ngIf="!getInputForm().get('username').valid">wrong username</mat-error>
+    <input matInput type="text" id="username" placeholder="username"  formControlName="username" (keydown)="keyDownFunction($event)" required>
+    <mat-error *ngIf="!getUsernameCorrect()">wrong username</mat-error>
     
 
 </mat-form-field>
     <br>
     <mat-form-field appearance="outline">
-    <input matInput type="password" id="password" placeholder="password"  (keydown)="capsFunction($event)"
-        required formControlName="password">
-    <mat-error *ngIf="!getInputForm().get('password').valid">wrong password</mat-error>
+    <input matInput type="password" id="password" placeholder="password"  (keydown)="capsFunction($event)" (keydown)="keyDownFunction($event)"   required formControlName="password">
+        <mat-error *ngIf="!getUsernameCorrect()">wrong password</mat-error>
     </mat-form-field>
     <br>
 

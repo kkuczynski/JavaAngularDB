@@ -14,3 +14,21 @@ button {
     font-family: Verdana, Geneva, Tahoma, sans-serif;
     border-radius: 10px;  
   }
+
+  button:hover{
+    border-color: rgb(74, 20, 140);
+  }
+
+  .mat-radio-button{
+    margin-left: 10px;
+  }
+  .mat-radio-button.mat-accent.mat-radio-checked .mat-radio-outer-circle {
+    border-color: rgb(74, 20, 140);
+}
+.mat-radio-button.mat-accent .mat-radio-inner-circle {
+  background-color:  rgb(74, 20, 140);
+}
+
+.mat-radio-button.mat-accent .mat-radio-ripple .mat-ripple-element {
+  background-color:rgb(74, 20, 140, .26)
+}

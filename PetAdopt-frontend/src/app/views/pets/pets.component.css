@@ -1,7 +1,11 @@
-table{
-    min-width: 120%;
-    
-    
+.radios{
+    transform: translateX(-8%);
+}
+.petTab{
+    transform: translateX(18%);
+}
+.addPet{
+    min-width: 90%;
 }
 .add{
     position: static;
@@ -16,7 +20,7 @@ table{
     text-align:left;
 }
 td{
-    min-width: 50%;
+    
     margin-top: 0px;
 }
 h4{

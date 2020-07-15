@@ -4,11 +4,14 @@
     color: gray;
     height: 100%
 }
+.mat-form-field{
+  width: 85%;
+}
 button {
     
     border-style: solid;    
     color: white;
-    min-width: 41%;
+    min-width: 42%;
     max-width: max-content;
     text-align: center;
     text-decoration: none;
@@ -26,6 +29,9 @@ button {
   .disabled{
     cursor: auto;
     background-color: lightgray;
+  }
+  .disabled:hover{
+    border-color: white;
   }
   .signUp{
     cursor: pointer;
