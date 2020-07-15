@@ -4,7 +4,7 @@ import com.petAdopt.backend.dao.entity.AdoptionHouses;
 import com.petAdopt.backend.exception.NoRecordWithIdException;
 
 import java.util.List;
-
+//Formatowanie
 public interface AdoptionHousesService {
     AdoptionHouses getAdoptionHouseById(Integer id) throws NoRecordWithIdException;
     List<AdoptionHouses> getAllAdoptionHouses();

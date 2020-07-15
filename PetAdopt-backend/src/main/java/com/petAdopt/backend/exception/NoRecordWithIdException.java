@@ -9,6 +9,7 @@ public class NoRecordWithIdException extends Throwable {
         httpStatus(message);
 
     }
+//    ResponseEntity coś zwraca ;)
     public ResponseEntity httpStatus(String message){
         return new ResponseEntity<>(message+" has no record with given ID", HttpStatus.BAD_REQUEST);
     }

@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-// Zobacz czy nie da się tego zaimplmentować globalnie na całą apke ;)
+// Zobacz czy nie da się tego zaimplmentować globalnie na całą apke ;D
 @CrossOrigin(origins = "http://localhost:4200")
 @RestController
 @RequestMapping("/users")

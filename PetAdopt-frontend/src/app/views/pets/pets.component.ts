@@ -11,8 +11,8 @@ import { PetsInterface } from 'src/app/domain/external/pets.interface';
   styleUrls: ['./pets.component.css']
 })
 export class PetsComponent implements OnInit {
-
-
+  // Formatowanie, 4 taby ;)
+  // pola prywatne zaczynamy od _
   private newPet: PetsInterface;
   private isAdmin = true;
   private isEmployee = true;
@@ -24,9 +24,9 @@ export class PetsComponent implements OnInit {
   private adopted = false;
   private tmpAdopted = false;
 
-  constructor(private petsService: PetsService, private formBuilder: FormBuilder) { 
+  constructor(private petsService: PetsService, private formBuilder: FormBuilder) {
     this.createForm();
-   }
+  }
   ngOnInit() {
     this.getPetsService();
 
@@ -69,14 +69,14 @@ export class PetsComponent implements OnInit {
         Validators.required,
         Validators.minLength(2),
         Validators.maxLength(20)
-        ]],
+      ]],
       spieces: ['', [
         Validators.required]],
       race: ['', [
         Validators.required,
         Validators.minLength(3),
         Validators.maxLength(40),
-        ]],
+      ]],
       health: ['', [
         Validators.required,
         Validators.minLength(1),
@@ -94,19 +94,19 @@ export class PetsComponent implements OnInit {
     });
   }
 
-  tmpAdoptTrue(){
+  tmpAdoptTrue() {
     this.tmpAdopted = true;
   }
-  tmpAdoptFalse(){
+  tmpAdoptFalse() {
     this.tmpAdopted = false;
   }
-  adoptTrue(){
+  adoptTrue() {
     this.adopted = true;
   }
-  adoptFalse(){
+  adoptFalse() {
     this.adopted = false;
   }
-  getTmpAdopted(){
+  getTmpAdopted() {
     return this.tmpAdopted;
   }
   anyAdoptTrue() {

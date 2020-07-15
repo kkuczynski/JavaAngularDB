@@ -34,6 +34,7 @@ public class AdoptionHousesServiceImpl implements AdoptionHousesService {
             adoptionHousesRepo.deleteById(id);
         }
         catch(NoRecordWithIdException e){
+//            AdoptionHouse możesz do stałej wyciągnąć ;)
             throw new NoRecordWithIdException("AdoptionHouse");
         }
     }

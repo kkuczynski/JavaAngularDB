@@ -32,6 +32,7 @@ public class PetsServiceImpl implements com.petAdopt.backend.service.PetsService
 
     public void deletePetById(Integer id) throws NoRecordWithIdException{
         try {
+            //          metody mają być standalone
             getPetById(id);
             petsRepo.deleteById(id);
         }
@@ -42,6 +43,7 @@ public class PetsServiceImpl implements com.petAdopt.backend.service.PetsService
 
     public Pets updatePets(Pets pets) throws NoRecordWithIdException{
         try {
+//          metody mają być standalone
             getPetById(pets.getId());
             return petsRepo.save(pets);
         }
@@ -52,7 +54,7 @@ public class PetsServiceImpl implements com.petAdopt.backend.service.PetsService
     }
 
 
-
+// Kto Ci to pisał :O
     public List<Pets> getAllPetsWithNoHome(){
         return this.petsRepo.findAll().stream().filter(pet -> !pet.getAdopted() && !pet.getTemporaryAdopted()).collect(Collectors.toList());
         }

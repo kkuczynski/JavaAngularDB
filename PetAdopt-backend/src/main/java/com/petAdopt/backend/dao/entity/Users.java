@@ -11,6 +11,7 @@ import java.sql.Date;
 
 @Entity
 public class Users {
+    //    same gettery :O ?
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
     @Getter

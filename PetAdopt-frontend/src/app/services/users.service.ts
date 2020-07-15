@@ -9,6 +9,7 @@ import { environment } from '../../environments/environment';
   providedIn: 'root'
 })
 export class UsersService {
+  // pola prywatne zaczynamy od _
   private url = environment.urlUsers;
 
   constructor(private http: HttpClient) { }

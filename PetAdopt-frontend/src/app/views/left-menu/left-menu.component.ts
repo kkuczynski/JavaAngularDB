@@ -6,19 +6,20 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./left-menu.component.css']
 })
 export class LeftMenuComponent implements OnInit {
-
+  // pola prywatne zaczynamy od _
   private isAdmin = true;
   private isEmployee = true;
   private buttonTextEnabled;
   constructor() { }
 
-  onMouseLeave(picked){
+  onMouseLeave(picked) {
+    //  nie da się inaczej ? :?
     document.getElementById('butt' + picked).style.minWidth = '22%';
     this.buttonTextEnabled = 0;
   }
-  onMouseEnter(picked)
-  {
+  onMouseEnter(picked) {
     this.buttonTextEnabled = picked;
+    //  nie da się inaczej ? :?
     document.getElementById('butt' + picked).style.minWidth = 'fit-content';
   }
 
@@ -26,7 +27,7 @@ export class LeftMenuComponent implements OnInit {
 
   }
 
-  getButtonTextEnabled(){
+  getButtonTextEnabled() {
     return this.buttonTextEnabled;
   }
   getIsAdmin() {

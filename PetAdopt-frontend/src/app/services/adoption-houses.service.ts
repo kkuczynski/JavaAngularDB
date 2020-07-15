@@ -11,6 +11,8 @@ import { environment } from '../../environments/environment';
 })
 
 export class AdoptionHousesService {
+  // pola prywatne zaczynamy od _
+  // formatowanie
   private url = environment.urlAdoptionHouses;
 
   constructor(private http: HttpClient) { }

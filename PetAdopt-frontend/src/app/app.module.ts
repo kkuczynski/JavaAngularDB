@@ -23,6 +23,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     LeftMenuComponent,
   ],
   imports: [
+    //  Materiale można wyciągnać do innego modułu
     BrowserAnimationsModule,
     MatAutocompleteModule,
     MatButtonModule,

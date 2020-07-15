@@ -6,6 +6,8 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+//Formatowanie
+//hmmm?
 @Service
 public interface PetsService {
     List<Pets> getAllPets();

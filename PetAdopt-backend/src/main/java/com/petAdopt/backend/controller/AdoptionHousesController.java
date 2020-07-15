@@ -9,8 +9,8 @@ import java.util.List;
 
 @CrossOrigin(origins = "http://localhost:4200")
 @RestController
-
 @RequestMapping("/adoptionHouses")
+// Doczytać o ResponseEntity<>
 public class AdoptionHousesController {
     private final AdoptionHousesServiceImpl adoptionHousesServiceImpl;
 

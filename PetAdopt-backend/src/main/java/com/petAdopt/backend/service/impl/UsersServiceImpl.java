@@ -30,6 +30,7 @@ public class UsersServiceImpl implements UsersService {
 
     public void deleteUserById(Integer id) throws NoRecordWithIdException{
         try {
+            //          metody mają być standalone
             getUserById(id);
             usersRepo.deleteById(id);
         }
@@ -40,6 +41,7 @@ public class UsersServiceImpl implements UsersService {
 
     public Users updateUsers(Users users) throws NoRecordWithIdException{
         try {
+            //          metody mają być standalone
             getUserById(users.getId());
             return usersRepo.save(users);
 

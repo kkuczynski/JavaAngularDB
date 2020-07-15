@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, Inject} from '@angular/core';
+import { Component, OnInit, Input, Inject } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 import { Router } from '@angular/router';
@@ -51,20 +51,20 @@ export class LoginComponent implements OnInit {
     if (!this.inputForm.get('password').valid && this.inputForm.get('password').value.length > 0) {
       this.passwordCorrect = false;
       return this.passwordCorrect;
-     }
-     else{
-       this.passwordCorrect = true;
-     }
+    }
+    else {
+      this.passwordCorrect = true;
+    }
   }
 
   getUsernameCorrect() {
     if (!this.inputForm.get('username').valid && this.inputForm.get('username').valueChanges) {
       this.usernameCorrect = false;
       return this.usernameCorrect;
-     }
-     else{
-       this.usernameCorrect = true;
-     }
+    }
+    else {
+      this.usernameCorrect = true;
+    }
   }
   getInputForm() {
     return this.inputForm;
@@ -107,6 +107,7 @@ export class LoginComponent implements OnInit {
   signIn() {
     this.username = this.inputForm.get('username').value;
     this.password = this.inputForm.get('password').value;
+    //  console do wywalenia
     console.log('login: ' + this.inputForm.get('username').value);
     console.log('pass: ' + this.inputForm.get('password').value);
     this.logged = true;
