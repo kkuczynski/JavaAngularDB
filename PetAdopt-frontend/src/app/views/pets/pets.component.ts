@@ -3,8 +3,7 @@ import { PetsService } from '../../services/pets.service';
 import { ActivatedRoute } from '@angular/router';
 import { FormBuilder, FormGroup, Validators, FormControl } from '@angular/forms';
 import { PetsInterface } from 'src/app/domain/external/pets.interface';
-import { Spieces } from 'src/app/domain/enums/spieces.enum';
-import { Sex } from 'src/app/domain/enums/sex.enum';
+
 
 @Component({
   selector: 'app-pets',
@@ -68,16 +67,16 @@ export class PetsComponent implements OnInit {
     this.inputForm = this.formBuilder.group({
       name: ['', [
         Validators.required,
-        Validators.minLength(5),
-        Validators.maxLength(20),
-        Validators.pattern('[a-zA-Z0-9]+([._]?[a-zA-Z0-9]+)')]],
+        Validators.minLength(2),
+        Validators.maxLength(20)
+        ]],
       spieces: ['', [
         Validators.required]],
       race: ['', [
         Validators.required,
         Validators.minLength(3),
         Validators.maxLength(40),
-        Validators.pattern('[a-zA-Z0-9\s]')]],
+        ]],
       health: ['', [
         Validators.required,
         Validators.minLength(1),

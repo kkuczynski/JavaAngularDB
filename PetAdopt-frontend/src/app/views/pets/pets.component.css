@@ -1,6 +1,10 @@
 .radios{
     transform: translateX(-8%);
 }
+.post{
+    position: static;
+    transform: translateX(25%);
+}
 .petTab{
     transform: translateX(18%);
 }

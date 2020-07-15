@@ -19,4 +19,7 @@ export class PetsService {
   getPetsWithHome(){
     return this.http.get<PetsInterface[]>(this.urlWithHome);
   }
+  postNewPet(pet: PetsInterface){
+    return this.http.post<PetsInterface>(this.url, pet);
+  }
 }
