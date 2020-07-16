@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { UsersInterface } from '../domain/external/users.interface';
+import { UsersEntity } from '../domain/external/users.entity';
 import { environment } from '../../environments/environment';
 
 
@@ -12,7 +12,7 @@ export class UsersService {
   private URL = environment.urlUsers;
 
   constructor(private http: HttpClient) { }
-  getUsers(): Observable<UsersInterface[]> {
-    return this.http.get<UsersInterface[]>(this.URL);
+  getUsers(): Observable<UsersEntity[]> {
+    return this.http.get<UsersEntity[]>(this.URL);
   }
 }

@@ -58,8 +58,8 @@
             <td>
                 <div class="right">
                     <mat-radio-group formControlName="sterilized" required>
-                        <mat-radio-button value=1>yes&nbsp;&nbsp; </mat-radio-button>
-                        <mat-radio-button value=0>no </mat-radio-button>
+                        <mat-radio-button value=true>yes&nbsp;&nbsp; </mat-radio-button>
+                        <mat-radio-button value=false>no </mat-radio-button>
 
                     </mat-radio-group>
                 </div>
@@ -75,8 +75,8 @@
             <td>
                 <div class="right">
                     <mat-radio-group formControlName="adopted" required>
-                        <mat-radio-button (click)="adoptTrue()" value=1>yes&nbsp;&nbsp; </mat-radio-button>
-                        <mat-radio-button (click)="adoptFalse()" value=0>no </mat-radio-button>
+                        <mat-radio-button (click)="adoptTrue()" value=true>yes&nbsp;&nbsp; </mat-radio-button>
+                        <mat-radio-button (click)="adoptFalse()" value=false>no </mat-radio-button>
 
                     </mat-radio-group>
                 </div>
@@ -93,8 +93,8 @@
             <td>
                 <div class="right">
                     <mat-radio-group formControlName="temporaryAdopted" required>
-                        <mat-radio-button (click)="tmpAdoptTrue()" value=1>yes&nbsp;&nbsp; </mat-radio-button>
-                        <mat-radio-button (click)="tmpAdoptFalse()" value=0>no </mat-radio-button>
+                        <mat-radio-button (click)="tmpAdoptTrue()" value=true>yes&nbsp;&nbsp; </mat-radio-button>
+                        <mat-radio-button (click)="tmpAdoptFalse()" value=false>no </mat-radio-button>
 
                     </mat-radio-group>
                 </div>
@@ -107,10 +107,10 @@
     <br>
     <mat-form-field *ngIf="getTmpAdopted()">
 
-        <input matInput type="number" id="tmpAdoptForDays" placeholder="For how many days?"
+        <input matInput type="number" id="tmpAdoptForDays" placeholder="For how many days?" value=0
             formControlName="tmpAdoptForDays">
     </mat-form-field>
-    <div class="post"> <button (click)=hideAddTab()>hide</button> <button>post</button> </div>
+    <div class="post"> <button (click)=hideAddTab()>hide</button> <button (click)=postPet()>post</button> </div>
 
 
 </form>

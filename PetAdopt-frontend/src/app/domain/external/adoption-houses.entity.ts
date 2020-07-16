@@ -1,4 +1,4 @@
-export interface AdoptionHousesInterface {
+export interface AdoptionHousesEntity {
     id: number;
     address: string;
     city: string;

@@ -2,7 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import { PetsService } from '../../services/pets.service';
 import { ActivatedRoute } from '@angular/router';
 import { FormBuilder, FormGroup, Validators, FormControl } from '@angular/forms';
-import { PetsInterface } from 'src/app/domain/external/pets.interface';
+import { PetsEntity } from 'src/app/domain/external/pets.entity';
+import { DatePipe } from '@angular/common';
+import { Observable } from 'rxjs';
+
 
 // TODO: send pets via http
 // TODO: zapytac o 4 taby
@@ -14,7 +17,7 @@ import { PetsInterface } from 'src/app/domain/external/pets.interface';
 })
 export class PetsComponent implements OnInit {
 
-  private _newPet: PetsInterface;
+  private _newPet: PetsEntity;
   private _isAdmin = true;
   private _isEmployee = true;
   private _pets = [];
@@ -30,6 +33,7 @@ export class PetsComponent implements OnInit {
   }
   ngOnInit() {
     this.getPetsService();
+    this.getPetsServiceConcat();
 
   }
 
@@ -49,7 +53,11 @@ export class PetsComponent implements OnInit {
 
   getPetsService() {
     this.petsService.getPetsWithNoHome().subscribe(data => this._pets = data);
-    this.petsService.getPetsWithHome().subscribe(data => this._pets = data);
+  }
+  getPetsServiceConcat() {
+    this.petsService.getPetsWithHome().subscribe(data => {
+      this._pets = this._pets.concat(data);
+    });
   }
 
   getAddPetTab() {
@@ -66,23 +74,24 @@ export class PetsComponent implements OnInit {
     this._AddPetTab = false;
   }
 
-  postPet(){
+  postPet() {
     const date = new Date();
-    this._newPet =
-    {
-      1,
-      _inputForm.get('name').value,
-      _inputForm.get('spieces').value,
-      _inputForm.get('race').value,
-      _inputForm.get('age').value,
-      date,
-      _inputForm.get('health').value,
-      _inputForm.get('sex').value,
-      _inputFOrm.get('sterilized').value,
-      _inputForm.get('adopted') //TODO
-
-    };
-    this.petsService.postNewPet(this._newPet);
+    this._newPet = new PetsEntity();
+    this._newPet.setNew(
+      this._inputForm.get('name').value,
+      this._inputForm.get('spieces').value,
+      this._inputForm.get('race').value,
+      this._inputForm.get('age').value,
+      this.dateConverter(date),
+      this._inputForm.get('health').value,
+      this._inputForm.get('sex').value,
+      this._inputForm.get('sterilized').value,
+      this._inputForm.get('adopted').value,
+      this._inputForm.get('temporaryAdopted').value,
+      this._inputForm.get('adoptDate').value ? this.dateConverter(this._inputForm.get('adoptDate').value) : null,
+      this._inputForm.get('tmpAdoptForDays').value ? this._inputForm.get('tmpAdoptForDays').value : 0);
+    console.log(this._newPet);
+    this.petsService.postNewPet(this._newPet).subscribe(pet => this._pets.push(pet));
   }
 
   createForm() {
@@ -103,7 +112,7 @@ export class PetsComponent implements OnInit {
         Validators.required,
         Validators.minLength(1),
         Validators.maxLength(250)]],
-      age: [Number, Validators.required],
+      age: [Number, [Validators.required, Validators.pattern('[0-9]+$')]],
       sex: ['', [
         Validators.required,
         Validators.minLength(4),
@@ -112,7 +121,7 @@ export class PetsComponent implements OnInit {
       adopted: [Boolean, Validators.required],
       adoptDate: [Date],
       temporaryAdopted: [Boolean, Validators.required],
-      tmpAdoptForDays: [Number]
+      tmpAdoptForDays: [Number, Validators.pattern('[0-9]+$')]
     });
   }
 
@@ -150,6 +159,12 @@ export class PetsComponent implements OnInit {
     else {
       return false;
     }
+  }
+
+  dateConverter(date: Date) {
+    const datepipe = new DatePipe('en-US');
+    console.log(datepipe.transform(date, 'yyyy-MM-dd'));
+    return datepipe.transform(date, 'yyyy-MM-dd');
   }
 
   addDays(date: Date, days: number): Date {

@@ -1,5 +1,5 @@
 import { Role } from '../enums/role.enum';
-export interface UsersInterface {
+export interface UsersEntity {
     id: number;
     fullName: string;
     createdAt: Date;
