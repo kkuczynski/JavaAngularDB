@@ -1,6 +1,9 @@
 .radios{
     transform: translateX(-8%);
 }
+.danger{
+    background-color: darkred;
+}
 .post{
     position: static;
     transform: translateX(25%);

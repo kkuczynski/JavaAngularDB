@@ -33,4 +33,8 @@ export class PetsService {
     console.log(JSON.stringify(pet));
     return this.http.post<PetsEntity>(this.URL, pet, httpOptions);
   }
+
+  deletePet(id: number) {
+    return this.http.delete<string>(this.URL + '/' + id, httpOptions);
+  }
 }

@@ -48,7 +48,7 @@ public class PetsController {
     }
 
     @DeleteMapping("/{id}")
-    public void deletePets(@PathVariable int id) throws NoRecordWithIdException{
+    public void deletePets(@PathVariable String id) throws NoRecordWithIdException{
         petsServiceImpl.deletePetById(id);
     }
 }

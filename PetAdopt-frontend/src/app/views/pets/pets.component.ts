@@ -27,6 +27,7 @@ export class PetsComponent implements OnInit {
   private _inputForm: FormGroup;
   private _adopted = false;
   private _tmpAdopted = false;
+  private _deleteClicked = -1;
 
   constructor(private petsService: PetsService, private formBuilder: FormBuilder) {
     this.createForm();
@@ -72,6 +73,11 @@ export class PetsComponent implements OnInit {
   }
   hideAddTab() {
     this._AddPetTab = false;
+  }
+  deletePet(id: number){
+    this.petsService.deletePet(id).subscribe();
+    this.getPetsService();
+    this.getPetsServiceConcat();
   }
 
   postPet() {
@@ -148,6 +154,14 @@ export class PetsComponent implements OnInit {
     else {
       return false;
     }
+  }
+
+  deleteClickedChange(id: number){
+    this._deleteClicked = id;
+    console.log(this._deleteClicked);
+  }
+  getDeleteClicked(){
+    return this._deleteClicked;
   }
   compareDates(dateA: Date, days: number, dateB: Date): boolean {
     const newDateA: Date = new Date(dateA);

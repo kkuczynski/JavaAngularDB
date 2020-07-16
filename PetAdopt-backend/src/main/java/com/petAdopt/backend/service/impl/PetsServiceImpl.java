@@ -29,10 +29,11 @@ public class PetsServiceImpl implements com.petAdopt.backend.service.PetsService
         return petsRepo.save(pets);
     }
 
-    public void deletePetById(Integer id) throws NoRecordWithIdException{
+    public void deletePetById(String id) throws NoRecordWithIdException{
+        Integer newId = new Integer(id);
         try {
-            petsRepo.findById(id);
-            petsRepo.deleteById(id);
+            petsRepo.findById(newId);
+            petsRepo.deleteById(newId);
         }
         catch(Exception e){
             throw new NoRecordWithIdException(message);
