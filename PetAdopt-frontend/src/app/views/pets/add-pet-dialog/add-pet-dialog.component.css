@@ -1,0 +1,32 @@
+.radios{
+    transform: translateX(-8%);
+}
+.mat-form-field{
+    width: 100%;
+}
+
+form{
+    overflow-x: hidden;
+    overflow-y: auto;
+}
+.enabled{
+    cursor: pointer;
+    background-color: rgb(74, 20, 140);
+  }
+  .disabled{
+    cursor: auto;
+    background-color: gray;
+  }
+  .disabled:hover{
+    border-color: white;
+  }
+  button{
+    background-color: rgb(74, 20, 140);
+    cursor: pointer;
+  }
+
+  .post{
+    position: sticky;
+    right: 5%;
+    bottom: 5%;
+}

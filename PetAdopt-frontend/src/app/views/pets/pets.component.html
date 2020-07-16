@@ -1,119 +1,5 @@
-<button (click)="showAddTab()" *ngIf="getIsEmployee" class="add">add pet</button>
-<form class="addPet" *ngIf="getAddPetTab()" [formGroup]="getInputForm()">
-    <mat-form-field>
-        <input matInput type="text" id="name" placeholder="name" formControlName="name" required>
-    </mat-form-field>
-    <br>
-    <mat-form-field>
-        <mat-label>spieces</mat-label>
-        <mat-select formControlName="spieces" required>
-            <mat-option value="DOG">dog</mat-option>
-            <mat-option value="CAT">cat</mat-option>
-            <mat-option value="MOUSE">mouse</mat-option>
-            <mat-option value="RAT">rat</mat-option>
-            <mat-option value="OTHER">other</mat-option>
-        </mat-select>
-    </mat-form-field>
-    <br>
-    <mat-form-field>
-        <mat-label>race</mat-label>
-        <input matInput type="text" placeholder="race" formControlName="race" required>
-    </mat-form-field>
-    <br>
-    <mat-form-field>
-        <mat-label>age</mat-label>
-        <input matInput type="number" placeholder="age" formControlName="age" required>
-    </mat-form-field>
-    <br>
-    <mat-form-field>
-        <mat-label>health status</mat-label>
-        <textarea matInput placeholder="health status" formControlName="health" required> </textarea>
-    </mat-form-field>
-
-    <table class="radios">
-        <tr>
-            <td>
-                <div class="left">
-                    <mat-label>sex: </mat-label>
-                </div>
-            </td>
-            <td>
-                <div class="right">
-                    <mat-radio-group formControlName="sex" required>
-                        <mat-radio-button value="MALE">male </mat-radio-button>
-
-                        <mat-radio-button value="FEMALE">female </mat-radio-button>
-
-                    </mat-radio-group>
-                </div>
-            </td>
-        </tr>
-        <tr>
-
-            <td>
-                <div class="left">
-                    <mat-label>sterilized: </mat-label>
-                </div>
-            </td>
-            <td>
-                <div class="right">
-                    <mat-radio-group formControlName="sterilized" required>
-                        <mat-radio-button value=true>yes&nbsp;&nbsp; </mat-radio-button>
-                        <mat-radio-button value=false>no </mat-radio-button>
-
-                    </mat-radio-group>
-                </div>
-            </td>
-        </tr>
-
-        <tr>
-            <td>
-                <div class="left">
-                    <mat-label>adopted: </mat-label>
-                </div>
-            </td>
-            <td>
-                <div class="right">
-                    <mat-radio-group formControlName="adopted" required>
-                        <mat-radio-button (click)="adoptTrue()" value=true>yes&nbsp;&nbsp; </mat-radio-button>
-                        <mat-radio-button (click)="adoptFalse()" value=false>no </mat-radio-button>
-
-                    </mat-radio-group>
-                </div>
-            </td>
-        </tr>
-
-        <tr>
-
-            <td>
-                <div class="left">
-                    <mat-label>temporary adopted: </mat-label>
-                </div>
-            </td>
-            <td>
-                <div class="right">
-                    <mat-radio-group formControlName="temporaryAdopted" required>
-                        <mat-radio-button (click)="tmpAdoptTrue()" value=true>yes&nbsp;&nbsp; </mat-radio-button>
-                        <mat-radio-button (click)="tmpAdoptFalse()" value=false>no </mat-radio-button>
-
-                    </mat-radio-group>
-                </div>
-            </td>
-        </tr>
-    </table>
-    <mat-form-field *ngIf="anyAdoptTrue()">
-        <input matInput type="date" id="adoptDate" placeholder="Adoption Date" formControlName="adoptDate">
-    </mat-form-field>
-    <br>
-    <mat-form-field *ngIf="getTmpAdopted()">
-
-        <input matInput type="number" id="tmpAdoptForDays" placeholder="For how many days?" value=0
-            formControlName="tmpAdoptForDays">
-    </mat-form-field>
-    <div class="post"> <button (click)=hideAddTab()>hide</button> <button (click)=postPet()>post</button> </div>
-
-
-</form>
+<button (click)="openAddDialog()" *ngIf="getIsEmployee" class="add">add pet</button>
+<!-- -->
 <div *ngFor="let pet of this.getPets()">
     <hr>
     <table class="petTab">
@@ -228,14 +114,15 @@
                     <button>edit</button>
                     <ng-template [ngIf]="getIsAdmin()">
                         <ng-template [ngIf]="getDeleteClicked()!==pet.id">
-                        <button (click)="deleteClickedChange(pet.id)">delete</button>
-                    </ng-template>
-                    <ng-template [ngIf]="getDeleteClicked()===pet.id">
-                        <button class="danger" (click)="deletePet(pet.id)">confirm</button>
-                    </ng-template>
+                            <button class="danger" (click)="deleteClickedChange(pet.id)">delete</button>
+                        </ng-template>
+                        <ng-template [ngIf]="getDeleteClicked()===pet.id">
+                            <button (click)="deleteClickedChange(-1)">cancel</button>
+                            <button class="danger" (click)="deletePet(pet.id)">confirm</button>
+                        </ng-template>
                     </ng-template>
                 </ng-template>
-               
+
             </td>
         </tr>
     </table>

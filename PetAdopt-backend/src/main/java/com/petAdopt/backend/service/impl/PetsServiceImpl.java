@@ -3,12 +3,13 @@ package com.petAdopt.backend.service.impl;
 import com.petAdopt.backend.exception.NoRecordWithIdException;
 import com.petAdopt.backend.repo.PetsRepo;
 import com.petAdopt.backend.dao.entity.Pets;
+import com.petAdopt.backend.service.PetsService;
 import org.springframework.stereotype.Service;
 import java.util.List;
 import java.util.stream.Collectors;
 
 @Service
-public class PetsServiceImpl implements com.petAdopt.backend.service.PetsService {
+public class PetsServiceImpl implements PetsService {
 
     private final String message = "Pets";
     private PetsRepo petsRepo;
@@ -29,11 +30,10 @@ public class PetsServiceImpl implements com.petAdopt.backend.service.PetsService
         return petsRepo.save(pets);
     }
 
-    public void deletePetById(String id) throws NoRecordWithIdException{
-        Integer newId = new Integer(id);
+    public void deletePetById(int id) throws NoRecordWithIdException{
+
         try {
-            petsRepo.findById(newId);
-            petsRepo.deleteById(newId);
+            petsRepo.deleteById(id);
         }
         catch(Exception e){
             throw new NoRecordWithIdException(message);

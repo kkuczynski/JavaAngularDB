@@ -1,0 +1,87 @@
+<h1 mat-dialog-title>add pet</h1>
+<form class="addPet" [formGroup]="getInputForm()">
+    <mat-form-field>
+        <input matInput type="text" id="name" placeholder="name" formControlName="name" required>
+    </mat-form-field>
+    <br>
+
+    <mat-form-field>
+        <mat-label>spieces</mat-label>
+        <mat-select formControlName="spieces" required>
+            <mat-option value="DOG">dog</mat-option>
+            <mat-option value="CAT">cat</mat-option>
+            <mat-option value="MOUSE">mouse</mat-option>
+            <mat-option value="RAT">rat</mat-option>
+            <mat-option value="OTHER">other</mat-option>
+        </mat-select>
+    </mat-form-field>
+    <br>
+
+    <mat-form-field>
+        <mat-label>race</mat-label>
+        <input matInput type="text" placeholder="race" formControlName="race" required>
+    </mat-form-field>
+    <br>
+
+    <mat-form-field>
+        <mat-label>age</mat-label>
+        <input matInput type="number" placeholder="age" formControlName="age" required>
+    </mat-form-field>
+    <br>
+
+    <mat-form-field>
+        <mat-label>health status</mat-label>
+        <textarea rows=3 matInput placeholder="health status" formControlName="health" required> </textarea>
+    </mat-form-field>
+    <br>
+    <mat-form-field>
+    <mat-label>sex</mat-label>
+    <mat-select formControlName="sex" required>
+        <mat-option value="MALE">male </mat-option>
+        <mat-option value="FEMALE">female </mat-option>
+    </mat-select>
+</mat-form-field>
+    <br>
+
+    <mat-form-field>
+    <mat-label>sterilized</mat-label>
+    <mat-select formControlName="sterilized" required>
+        <mat-option value=true>yes&nbsp;&nbsp; </mat-option>
+        <mat-option value=false>no </mat-option>
+    </mat-select>
+</mat-form-field>
+    <br>
+
+    <mat-form-field>
+    <mat-label>adopted</mat-label>
+    <mat-select formControlName="adopted" required>
+        <mat-option (click)="setAdoptTrue()" value=true>yes&nbsp;&nbsp; </mat-option>
+        <mat-option (click)="setAdoptFalse()" value=false>no </mat-option>
+    </mat-select>
+</mat-form-field>
+    <br>
+
+    <mat-form-field *ngIf="getAdopted() < 0">
+    <mat-label>temporary adopted</mat-label>
+    <mat-select formControlName="temporaryAdopted" required>
+        <mat-option (click)="setTmpAdoptTrue()" value=true>yes&nbsp;&nbsp; </mat-option>
+        <mat-option (click)="setTmpAdoptFalse()" value=false>no </mat-option>
+    </mat-select>
+</mat-form-field>
+    <br>
+
+    <mat-form-field *ngIf="anyAdoptTrue()">
+        <input matInput type="date" id="adoptDate" placeholder="Adoption Date" formControlName="adoptDate">
+    </mat-form-field>
+    <br>
+
+    <mat-form-field *ngIf="getTmpAdopted()">
+        <input matInput type="number" id="tmpAdoptForDays" placeholder="For how many days?" value=0
+            formControlName="tmpAdoptForDays">
+    </mat-form-field>
+    <div class="post" align=end> <button (click)=hideAddDialog()>cancel</button>
+        <button [ngClass]="(getInputForm().valid)?'enabled':'disabled'" [disabled]="!getInputForm().valid"
+            (click)=postPet()>add</button> </div>
+
+
+</form>
