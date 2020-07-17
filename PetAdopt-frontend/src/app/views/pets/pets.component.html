@@ -1,125 +1,101 @@
 <button (click)="openAddDialog()" *ngIf="getIsEmployee" class="add">add pet</button>
-<!-- -->
+<!--TODO fix with fxlayout -->
 <div *ngFor="let pet of this.getPets()">
     <hr>
-    <table class="petTab">
-        <tr>
-            <td>
-                <div class="left">
-                    name:
+    <div fxLayout="row">
+        <div fxLayout="col" fxLayoutAlign="start end" fxFlex="50%" fxFlexFill>
 
-                </div>
-            </td>
-            <td>
-                <div class="right">
-                    <h2>
-                        {{pet.name}}
-                    </h2>
-                </div>
-            </td>
-        </tr>
-        <tr>
-            <td>
-                <div class="left">
-                    age:
-                </div>
-            </td>
 
-            <td>
-                <div class="right">
-                    <h4>
-                        {{pet.age}} month<ng-template [ngIf]="pet.age!=1">s</ng-template>
-                    </h4>
-                </div>
-            </td>
-        </tr>
-        <tr>
-            <td>
-                <div class="left">
-                    race:
-                </div>
-            </td>
+            <div>
+                name:
 
-            <td>
-                <div class="right">
-                    <h4>
-                        {{pet.race}}
-                    </h4>
-                </div>
-            </td>
-        </tr>
-        <tr>
-            <td>
-                <div class="left">
-                    sex:
-                </div>
-            </td>
+            </div>
+            
+            <div>
+                age:
+            </div>
+            
+            <div>
+                race:
+            </div>
+            
+            <div>
+                sex:
+            </div>
 
-            <td>
-                <div class="right">
-                    <h4>
-                        {{pet.sex | lowercase}}
-                    </h4>
-                </div>
-            </td>
-        </tr>
-        <tr>
-            <td>
-                <div class="left">
-                    sterilized:
-                </div>
-            </td>
+            <div>
+                sterilized:
+            </div>
+            
+            <div>
+                home:
+            </div>
 
-            <td>
-                <div class="right">
-                    <h4 *ngIf="pet.sterilized">
-                        yes
-                    </h4>
-                    <h4 *ngIf="!pet.sterilized">
-                        no
-                    </h4>
-                </div>
-            </td>
-        </tr>
-        <tr>
-            <td>
-                <div class="left">
-                    home:
-                </div>
-            </td>
+        </div>
+        <div fxLayout="column" fxLayoutAlign="start start" fxFlex="50%" fxFlexFill>
+            <div class>
+                <h2>
+                    {{pet.name}}
+                </h2>
+            </div>
 
-            <td>
-                <div class="right">
-                    <h4>
-                        <div *ngIf="!pet.adopted">
-                            <ng-template [ngIf]="compareDates(pet.adoptDate, pet.tmpAdoptForDays, getCurrentDate())">
-                                until {{addDays(pet.adoptDate, pet.tmpAdoptForDays) | date:'longDate'}}
-                            </ng-template>
-                            <ng-template [ngIf]="!compareDates(pet.adoptDate, pet.tmpAdoptForDays, getCurrentDate())">
-                                <div class="noHome">no...</div>
-                            </ng-template>
 
-                        </div>
-                        <div *ngIf="pet.adopted">
-                            I've found a new home!
-                        </div>
-                    </h4>
-                </div>
-            </td>
-        </tr>
-        <tr>
-            <td></td>
-            <td>
-                <ng-template [ngIf]="getIsEmployee()">
+            <div>
+                <h4>
+                    {{pet.age}} month<ng-template [ngIf]="pet.age!=1">s</ng-template>
+                </h4>
+            </div>
+
+
+            <div>
+                <h4>
+                    {{pet.race}}
+                </h4>
+            </div>
+
+
+            <div class="right">
+                <h4>
+                    {{pet.sex | lowercase}}
+                </h4>
+            </div>
+
+            
+
+            <div class="right">
+                <h4 *ngIf="pet.sterilized">
+                    yes
+                </h4>
+                <h4 *ngIf="!pet.sterilized">
+                    no
+                </h4>
+            </div>
+
+            <div class="right">
+                <h4>
+                    <div *ngIf="!pet.adopted">
+                        <ng-template [ngIf]="compareDates(pet.adoptDate, pet.tmpAdoptForDays, getCurrentDate())">
+                            until {{addDays(pet.adoptDate, pet.tmpAdoptForDays) | date:'longDate'}}
+                        </ng-template>
+                        <ng-template [ngIf]="!compareDates(pet.adoptDate, pet.tmpAdoptForDays, getCurrentDate())">
+                            <div class="noHome">no...</div>
+                        </ng-template>
+
+                    </div>
+                    <div *ngIf="pet.adopted">
+                        I've found a new home!
+                    </div>
+                </h4>
+
+                <ng-template align=end [ngIf]="getIsEmployee()">
                     <button (click)="openEditDialog(pet.id)">edit</button>
                     <ng-template [ngIf]="getIsAdmin()">
                         <ng-template [ngIf]="getDeleteClicked()!==pet.id">
                             <button class="danger" (click)="openConfirmationDialog(pet.id)">delete</button>
-                        </ng-template>                     
+                        </ng-template>
                     </ng-template>
                 </ng-template>
 
-            </td>
-        </tr>
-    </table>
-</div>
+            </div>
+        </div>
+    </div>
