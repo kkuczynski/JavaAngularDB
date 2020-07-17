@@ -1,10 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { PetsService } from '../../services/pets.service';
 import { ActivatedRoute } from '@angular/router';
-import { FormBuilder, FormGroup, Validators, FormControl } from '@angular/forms';
 import { PetsEntity } from 'src/app/domain/external/pets.entity';
-import { DatePipe } from '@angular/common';
-import { Observable } from 'rxjs';
 import { MatDialog } from '@angular/material';
 import { AddPetDialogComponent } from './add-pet-dialog/add-pet-dialog.component';
 
@@ -25,7 +22,6 @@ export class PetsComponent implements OnInit {
   private _pets = [];
   private _currentDate = new Date();
   private _month = this._currentDate.getMonth();
-  private _AddPetTab = false;
   private _deleteClicked = -1;
 
   constructor(private petsService: PetsService, public dialog: MatDialog) { }
@@ -60,37 +56,29 @@ export class PetsComponent implements OnInit {
     });
   }
 
-  getAddPetTab() {
-    return this._AddPetTab;
-  }
-
   openAddDialog() {
     const dialogRef = this.dialog.open(AddPetDialogComponent, {
       minWidth: '30%',
-      data: { _newPet: this._newPet }
     });
-    dialogRef.afterClosed().subscribe(result => {
-      console.log('The dialog was closed');
-      this._newPet = result;
-      console.log(this._newPet);
+    dialogRef.afterClosed().subscribe(() => {
+      this.ngOnInit();
     });
-}
-  hideAddTab() {
-    this._AddPetTab = false;
   }
+
   deletePet(id: number) {
     this.petsService.deletePet(id).subscribe();
-    this.getPetsService();
-    this.getPetsServiceConcat();
+    this.ngOnInit();
   }
 
   deleteClickedChange(id: number) {
     this._deleteClicked = id;
     console.log(this._deleteClicked);
   }
+
   getDeleteClicked() {
     return this._deleteClicked;
   }
+
   compareDates(dateA: Date, days: number, dateB: Date): boolean {
     const newDateA: Date = new Date(dateA);
     const newDateB: Date = new Date(dateB);

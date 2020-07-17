@@ -11,7 +11,7 @@ form{
 }
 .enabled{
     cursor: pointer;
-    background-color: rgb(74, 20, 140);
+    background-color: rgb(69, 39, 160);
   }
   .disabled{
     cursor: auto;
@@ -21,12 +21,7 @@ form{
     border-color: white;
   }
   button{
-    background-color: rgb(74, 20, 140);
+    background-color: rgb(69, 39, 160);
     cursor: pointer;
-  }
-
-  .post{
-    position: sticky;
-    right: 5%;
-    bottom: 5%;
+   
 }
