@@ -21,6 +21,10 @@ export class PetsService {
 
   constructor(private http: HttpClient) { }
 
+  getAllPets() {
+    return this.http.get<PetsEntity[]>(this.URL);
+  }
+
   getPetsWithNoHome() {
     return this.http.get<PetsEntity[]>(this.URL_WITH_NO_HOME);
   }
@@ -30,8 +34,11 @@ export class PetsService {
   }
 
   postNewPet(pet: PetsEntity) {
-    console.log(JSON.stringify(pet));
     return this.http.post<PetsEntity>(this.URL, pet, httpOptions);
+  }
+
+  putPet(pet: PetsEntity) {
+    return this.http.put<PetsEntity>(this.URL, pet, httpOptions);
   }
 
   deletePet(id: number) {

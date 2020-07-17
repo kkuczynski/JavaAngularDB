@@ -19,16 +19,17 @@ export class PetsComponent implements OnInit {
   private _newPet: PetsEntity;
   private _isAdmin = true;
   private _isEmployee = true;
-  private _pets = [];
+  private _pets: PetsEntity[];
   private _currentDate = new Date();
   private _month = this._currentDate.getMonth();
   private _deleteClicked = -1;
+  private _editedPet: PetsEntity;
 
   constructor(private petsService: PetsService, public dialog: MatDialog) { }
 
   ngOnInit() {
     this.getPetsService();
-    this.getPetsServiceConcat();
+    // this.getPetsServiceConcat();
   }
 
   getIsAdmin() {
@@ -48,11 +49,29 @@ export class PetsComponent implements OnInit {
   }
 
   getPetsService() {
-    this.petsService.getPetsWithNoHome().subscribe(data => this._pets = data);
+    this.petsService.getAllPets().subscribe(data => this._pets = data);
   }
   getPetsServiceConcat() {
     this.petsService.getPetsWithHome().subscribe(data => {
       this._pets = this._pets.concat(data);
+    });
+  }
+
+  getPetById(petId): PetsEntity {
+    let foundPet: PetsEntity;
+    this._pets.forEach(pet => {
+      if (pet.id === petId) {
+        foundPet = pet;
+      }
+    });
+    return foundPet;
+  }
+
+  openEditDialog(petId: number) {
+    this._editedPet = this.getPetById(petId);
+    const dialogRef = this.dialog.open(AddPetDialogComponent, {
+      minWidth: '30%',
+      data: this._editedPet
     });
   }
 
@@ -67,12 +86,11 @@ export class PetsComponent implements OnInit {
 
   deletePet(id: number) {
     this.petsService.deletePet(id).subscribe();
-    this.ngOnInit();
+    this.petsService.getAllPets();
   }
 
   deleteClickedChange(id: number) {
     this._deleteClicked = id;
-    console.log(this._deleteClicked);
   }
 
   getDeleteClicked() {

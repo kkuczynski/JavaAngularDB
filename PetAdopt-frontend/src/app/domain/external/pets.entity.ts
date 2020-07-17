@@ -33,5 +33,12 @@ export class PetsEntity {
             this.tmpAdoptForDays = tmpAdoptForDays;
     }
 
+    setId(id: number){
+        this.id = id;
+    }
+    getId(){
+        return this.id;
+    }
+
 
 }

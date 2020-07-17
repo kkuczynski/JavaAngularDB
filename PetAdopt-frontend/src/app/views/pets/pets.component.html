@@ -111,7 +111,7 @@
             <td></td>
             <td>
                 <ng-template [ngIf]="getIsEmployee()">
-                    <button>edit</button>
+                    <button (click)="openEditDialog(pet.id)">edit</button>
                     <ng-template [ngIf]="getIsAdmin()">
                         <ng-template [ngIf]="getDeleteClicked()!==pet.id">
                             <button class="danger" (click)="deleteClickedChange(pet.id)">delete</button>
