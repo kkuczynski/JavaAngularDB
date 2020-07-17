@@ -1,0 +1,9 @@
+.cancel{
+    background-color: gray;
+}
+.confirm{
+    background-color: darkred;
+}
+.confirm:hover{
+    border-color: gray;
+}

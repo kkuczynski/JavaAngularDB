@@ -4,6 +4,7 @@ import { ActivatedRoute } from '@angular/router';
 import { PetsEntity } from 'src/app/domain/external/pets.entity';
 import { MatDialog } from '@angular/material';
 import { AddPetDialogComponent } from './add-pet-dialog/add-pet-dialog.component';
+import { ConfirmationDialogComponent } from './confirmation-dialog/confirmation-dialog.component';
 
 // this.petsService.postNewPet(this._newPet).subscribe(pet => this._pets.push(pet));
 
@@ -24,6 +25,7 @@ export class PetsComponent implements OnInit {
   private _month = this._currentDate.getMonth();
   private _deleteClicked = -1;
   private _editedPet: PetsEntity;
+  private _confirmation = false;
 
   constructor(private petsService: PetsService, public dialog: MatDialog) { }
 
@@ -67,11 +69,28 @@ export class PetsComponent implements OnInit {
     return foundPet;
   }
 
+  openConfirmationDialog(petId: number) {
+    const dialogRef = this.dialog.open(ConfirmationDialogComponent, {
+      minWidth: '10%',
+      data: {title: 'delete ' + this.getPetById(petId).name + '?'}
+    });
+    dialogRef.afterClosed().subscribe(dialogResult => {
+      this._confirmation = dialogResult;
+      if (this._confirmation) {
+        this.deletePet(petId);
+        this.ngOnInit();
+      }
+    });
+  }
+
   openEditDialog(petId: number) {
     this._editedPet = this.getPetById(petId);
     const dialogRef = this.dialog.open(AddPetDialogComponent, {
       minWidth: '30%',
       data: this._editedPet
+    });
+    dialogRef.afterClosed().subscribe(() => {
+      this.ngOnInit();
     });
   }
 

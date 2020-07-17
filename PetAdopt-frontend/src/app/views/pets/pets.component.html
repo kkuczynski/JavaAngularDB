@@ -114,12 +114,8 @@
                     <button (click)="openEditDialog(pet.id)">edit</button>
                     <ng-template [ngIf]="getIsAdmin()">
                         <ng-template [ngIf]="getDeleteClicked()!==pet.id">
-                            <button class="danger" (click)="deleteClickedChange(pet.id)">delete</button>
-                        </ng-template>
-                        <ng-template [ngIf]="getDeleteClicked()===pet.id">
-                            <button (click)="deleteClickedChange(-1)">cancel</button>
-                            <button class="danger" (click)="deletePet(pet.id)">confirm</button>
-                        </ng-template>
+                            <button class="danger" (click)="openConfirmationDialog(pet.id)">delete</button>
+                        </ng-template>                     
                     </ng-template>
                 </ng-template>
 

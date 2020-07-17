@@ -20,8 +20,6 @@ export class AddPetDialogComponent implements OnInit {
   private _newPet: PetsEntity;
   private _isUpdate: boolean;
 
-
-  _pets: any;
   constructor(private petsService: PetsService, private formBuilder: FormBuilder, public dialogRef: MatDialogRef<AddPetDialogComponent>,
               @Inject(MAT_DIALOG_DATA) public data: PetsEntity) {
                 this.createForm();
