@@ -32,6 +32,14 @@
     
       font-size: 150%;
   }
+  .purple{
+    border-color: rgb(69, 39, 160);
+    color: rgb(69, 39, 160);
+  }
+  .gray{
+    border-color: gray;
+    color: gray;
+  }
   button:hover{
       border-color: rgb(69, 39, 160);
       color: rgb(69, 39, 160);

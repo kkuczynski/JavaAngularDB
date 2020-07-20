@@ -11,7 +11,8 @@ import { ConfirmationDialogComponent } from './confirmation-dialog/confirmation-
 // TODO: zapytac o 4 taby
 // TODO: response entity poczytac i cos zwraca, backend
 @Component({
-  selector: 'app-pets',
+  // tslint:disable-next-line:component-selector
+  selector: 'pets',
   templateUrl: './pets.component.html',
   styleUrls: ['./pets.component.css']
 })

@@ -3,7 +3,8 @@ import { UsersService } from 'src/app/services/users.service';
 import { ActivatedRoute } from '@angular/router';
 
 @Component({
-  selector: 'app-users',
+  // tslint:disable-next-line:component-selector
+  selector: 'users',
   templateUrl: './users.component.html',
   styleUrls: ['./users.component.css']
 })

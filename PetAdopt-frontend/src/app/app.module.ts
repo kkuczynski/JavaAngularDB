@@ -14,17 +14,19 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AddPetDialogComponent } from './views/pets/add-pet-dialog/add-pet-dialog.component';
 import {FlexLayoutModule} from '@angular/flex-layout';
 import { ConfirmationDialogComponent } from './views/pets/confirmation-dialog/confirmation-dialog.component';
+import { SettingsComponent } from './views/settings/settings.component';
 
 @NgModule({
   declarations: [
-    AppComponent,
-    LoginComponent,
     UsersComponent,
     PetsComponent,
     AdoptionHousesComponent,
+    AppComponent,
+    LoginComponent,
     LeftMenuComponent,
     AddPetDialogComponent,
     ConfirmationDialogComponent,
+    SettingsComponent,
   ],
   imports: [
     FlexLayoutModule,

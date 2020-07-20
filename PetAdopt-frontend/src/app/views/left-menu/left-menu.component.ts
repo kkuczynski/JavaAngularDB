@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-left-menu',
@@ -10,7 +11,13 @@ export class LeftMenuComponent implements OnInit {
   private _isAdmin = true;
   private _isEmployee = true;
   private _buttonTextEnabled;
-  constructor() { }
+
+  constructor(private router: Router) { }
+
+  ngOnInit(): void {
+
+  }
+
 // TODO: zmienic algorytm
   onMouseLeave(picked){
     document.getElementById('butt' + picked).style.minWidth = '22%';
@@ -22,8 +29,13 @@ export class LeftMenuComponent implements OnInit {
     document.getElementById('butt' + picked).style.minWidth = 'fit-content';
   }
 
-  ngOnInit(): void {
-
+  checkRoute(route: string){
+    if (this.router.url === route) {
+      return true;
+     }
+     else {
+       return false;
+     }
   }
 
   getButtonTextEnabled(){
