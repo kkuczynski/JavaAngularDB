@@ -28,6 +28,7 @@ footer{
     overflow-x: hidden;
     padding-top: 0px;
     overflow-y: scroll;
+    
   }
   .left {
     left: 0;
@@ -41,18 +42,15 @@ footer{
   }
   .middle{
       
-left: 20%
+    left: 20%
   }
-  .centered {
-    position: absolute;
-    
-    left: 50%;
-    transform: translate(-50%, -0%);
+ 
+  h1{
     text-align: center;
+    color: rgb(69, 39, 160);
   }
-
+  
   .pets{
        
-    margin-left:auto; 
-    margin-right:auto;
+    width: 100%;
   }

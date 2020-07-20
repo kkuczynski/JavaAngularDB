@@ -1,42 +1,53 @@
 <button (click)="openAddDialog()" *ngIf="getIsEmployee" class="add">add pet</button>
 <!--TODO fix with fxlayout -->
 <div *ngFor="let pet of this.getPets()">
-    <hr>
+    <mat-divider></mat-divider>
     <div fxLayout="row">
-        <div fxLayout="col" fxLayoutAlign="start end" fxFlex="50%" fxFlexFill>
+        <div fxLayout="column" fxLayoutAlign="stretch end" fxFlex="50%" fxFlexFill class="labels">
 
 
             <div>
-                name:
+                <h4>
+                name:&nbsp;
+            </h4>
+            </div>
+            
+            <div>
+            <h4>
+                age:&nbsp;
+            </h4>
+            </div>
+            
+            <div>
+            <h4>
+                race:&nbsp;
+            </h4>
+            </div>
+            
+            <div>
+            <h4>
+                sex:&nbsp;
+            </h4>
+            </div>
 
+            <div>
+            <h4>
+                sterilized:&nbsp;
+            </h4>
             </div>
             
             <div>
-                age:
-            </div>
-            
-            <div>
-                race:
-            </div>
-            
-            <div>
-                sex:
-            </div>
-
-            <div>
-                sterilized:
-            </div>
-            
-            <div>
-                home:
+            <h4>
+                home:&nbsp;
+            </h4>
             </div>
 
         </div>
         <div fxLayout="column" fxLayoutAlign="start start" fxFlex="50%" fxFlexFill>
             <div class>
-                <h2>
+                <h4>
                     {{pet.name}}
-                </h2>
+                </h4>
             </div>
 
 
@@ -86,16 +97,17 @@
                         I've found a new home!
                     </div>
                 </h4>
-
-                <ng-template align=end [ngIf]="getIsEmployee()">
+            </div>
+        </div>
+    </div>  
+                <div align=end *ngIf="getIsEmployee()">
                     <button (click)="openEditDialog(pet.id)">edit</button>
                     <ng-template [ngIf]="getIsAdmin()">
                         <ng-template [ngIf]="getDeleteClicked()!==pet.id">
                             <button class="danger" (click)="openConfirmationDialog(pet.id)">delete</button>
                         </ng-template>
                     </ng-template>
-                </ng-template>
+                </div>
 
-            </div>
-        </div>
-    </div>
+            
+    

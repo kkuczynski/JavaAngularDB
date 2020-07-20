@@ -1,29 +1,16 @@
 
+.labels{
+    color: darkgray
+}
 
-.petTab{
-    transform: translateX(18%);
-}
-.addPet{
-    min-width: 90%;
-}
 .add{
-    position: static;
+    position: absolute;
     right: 0;
-    top: 1%;
+    top: 2%;
 }
-.left{
-    text-align: right;
-    
-}
-.right{
-    text-align:left;
-}
-td{
-    
-    margin-top: 0px;
-}
+
 h4{
-    line-height: 80%;
+    line-height: 50%;
 }
 .noHome{
     color: darkred;
