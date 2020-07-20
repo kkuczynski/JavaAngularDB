@@ -1,11 +1,26 @@
 import { Role } from '../enums/role.enum';
-export interface UsersEntity {
+export class UsersEntity {
     id: number;
-    fullName: string;
-    createdAt: Date;
-    givenRole: Role;
+    name: string;
+    surname: string;
+    createdAt: string;
+    role: string;
     login: string;
-    pass: string;
+    password: string;
+
+    setNew(name: string, surname: string, createdAt: string, role: string, login: string, password: string) {
+        this.name = name;
+        this.surname = surname;
+        this.createdAt = createdAt;
+        this.role = role;
+        this.login = login;
+        this.password = password;
+    }
+
+    setId(id: number) {
+        this.id = id;
+    }
+
 }
 
 

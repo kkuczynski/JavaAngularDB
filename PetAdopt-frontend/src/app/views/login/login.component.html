@@ -16,7 +16,7 @@
     </mat-form-field>
     <br>
 
-    <button class="signUp" (click)="signUp()">Sign up </button>
+    <button class="signUp" (click)="openSignUpDialog()">Sign up </button>
 
     <button [ngClass]="(getInputForm().valid)?'enabled':'disabled'" id="signInButton" [disabled]="!getInputForm().valid"
         (click)="signIn()">Sign in </button>

@@ -13,8 +13,9 @@ import { MatModule } from 'src/app/modules/mat.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AddPetDialogComponent } from './views/pets/add-pet-dialog/add-pet-dialog.component';
 import {FlexLayoutModule} from '@angular/flex-layout';
-import { ConfirmationDialogComponent } from './views/pets/confirmation-dialog/confirmation-dialog.component';
+import { ConfirmationDialogComponent } from './views/confirmation-dialog/confirmation-dialog.component';
 import { SettingsComponent } from './views/settings/settings.component';
+import { AddUserDialogComponent } from './views/users/add-user-dialog/add-user-dialog.component';
 
 @NgModule({
   declarations: [
@@ -27,6 +28,7 @@ import { SettingsComponent } from './views/settings/settings.component';
     AddPetDialogComponent,
     ConfirmationDialogComponent,
     SettingsComponent,
+    AddUserDialogComponent,
   ],
   imports: [
     FlexLayoutModule,

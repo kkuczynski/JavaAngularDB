@@ -4,7 +4,7 @@ import { ActivatedRoute } from '@angular/router';
 import { PetsEntity } from 'src/app/domain/external/pets.entity';
 import { MatDialog } from '@angular/material';
 import { AddPetDialogComponent } from './add-pet-dialog/add-pet-dialog.component';
-import { ConfirmationDialogComponent } from './confirmation-dialog/confirmation-dialog.component';
+import { ConfirmationDialogComponent} from '../confirmation-dialog/confirmation-dialog.component';
 
 // this.petsService.postNewPet(this._newPet).subscribe(pet => this._pets.push(pet));
 
@@ -54,6 +54,7 @@ export class PetsComponent implements OnInit {
   getPetsService() {
     this.petsService.getAllPets().subscribe(data => this._pets = data);
   }
+
   getPetsServiceConcat() {
     this.petsService.getPetsWithHome().subscribe(data => {
       this._pets = this._pets.concat(data);
@@ -106,15 +107,7 @@ export class PetsComponent implements OnInit {
 
   deletePet(id: number) {
     this.petsService.deletePet(id).subscribe();
-    this.petsService.getAllPets();
-  }
-
-  deleteClickedChange(id: number) {
-    this._deleteClicked = id;
-  }
-
-  getDeleteClicked() {
-    return this._deleteClicked;
+    this.ngOnInit();
   }
 
   compareDates(dateA: Date, days: number, dateB: Date): boolean {

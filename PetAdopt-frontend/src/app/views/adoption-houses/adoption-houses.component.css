@@ -1,0 +1,13 @@
+.add{
+    position: absolute;
+    right: 0;
+    top: 2%;
+}
+button{
+    background-color: gray;
+    cursor: pointer;
+}
+
+table {
+    width:100%;
+}

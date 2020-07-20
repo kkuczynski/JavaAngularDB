@@ -21,6 +21,10 @@ export class PetsService {
 
   constructor(private http: HttpClient) { }
 
+  getPet(id: number) {
+    return this.http.get<PetsEntity>(this.URL + '/' + id, httpOptions);
+  }
+
   getAllPets() {
     return this.http.get<PetsEntity[]>(this.URL);
   }

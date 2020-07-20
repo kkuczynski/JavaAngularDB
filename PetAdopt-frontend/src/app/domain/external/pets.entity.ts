@@ -1,6 +1,6 @@
 import { Spieces } from '../enums/spieces.enum';
 import { Sex } from '../enums/sex.enum';
-import { RaceOperator } from 'rxjs/internal/observable/race';
+
 export class PetsEntity {
     id: number;
     name: string;

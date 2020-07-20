@@ -1,0 +1,53 @@
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+<h1 mat-dialog-title><ng-template [ngIf]=getIsAdd() >add user</ng-template><ng-template [ngIf]=getIsUpdate()>update user</ng-template><ng-template [ngIf]=getIsSignUp() >sign up</ng-template></h1>
+<form class="addPet" [formGroup]="getInputForm()" (keydown)="keyDownFunction($event)">
+    <div fxLayout="column" fxLayoutAlign="center center" fxLayoutGap="10px">
+    <mat-form-field>
+        <input matInput type="text" id="name" placeholder="name" formControlName="name" required>
+    </mat-form-field>
+    
+    <mat-form-field>
+        <input matInput type="text" id="surname" placeholder="surname" formControlName="surname" required>
+    </mat-form-field>
+    
+    
+    <div *ngIf=!getIsSignUp>
+<mat-form-field>
+    <mat-select formControlName="role">
+      <mat-option value="USER">user</mat-option>
+      <mat-option value="EMPLOYEE">employee</mat-option>
+      <mat-option value="ADMIN">admin</mat-option>
+    </mat-select>
+</mat-form-field>
+</div>
+<mat-form-field>
+    <input matInput type="text" id="login" placeholder="username" formControlName="login" required>
+</mat-form-field>
+<mat-form-field>
+<input matInput placeholder="password" [type]="hide ? 'password' : 'text'" formControlName="password" required>
+<mat-icon mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+    {{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+</mat-form-field>
+
+<div class="confirmPassword" *ngIf="getIsSignUp()">
+<mat-form-field>
+<input matInput placeholder="repeat password" [type]="hide ? 'password' : 'text'" formControlName="passwordConfirmed" required>
+<mat-icon mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+    {{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+    <mat-error *ngIf="signUpPossible()">passwords do not match</mat-error>
+</mat-form-field>
+</div>
+</div>
+    
+    
+    <div class="post" align=end> <button (click)=hideAddDialog()>cancel</button>
+        <button id = confirmButton *ngIf="getIsAdd()" [ngClass]="(getInputForm().valid)?'enabled':'disabled'" [disabled]="!getInputForm().valid"
+            (click)=postUser()>add</button> 
+            <button id = confirmButton *ngIf="getIsUpdate()" [ngClass]="(getInputForm().valid)?'enabled':'disabled'" [disabled]="!getInputForm().valid"
+            (click)=putUser()>update</button>
+            <button id=confirmButton *ngIf="getIsSignUp()" [ngClass]="signUpPossible()?'enabled':'disabled'" [disabled]="!signUpPossible()"
+            (click)=postUser()>sign up!</button>
+        </div>
+
+
+</form>

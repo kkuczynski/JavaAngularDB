@@ -22,7 +22,7 @@ public class UsersServiceImpl implements UsersService {
     }
 
     public List<Users> getAllUsers(){
-        return (List<Users>) usersRepo.findAll();
+        return usersRepo.findAll();
     }
 
     public Users saveUser(Users users){
@@ -31,7 +31,6 @@ public class UsersServiceImpl implements UsersService {
 
     public void deleteUserById(Integer id) throws NoRecordWithIdException{
         try {
-            usersRepo.findById(id);
             usersRepo.deleteById(id);
         }
         catch(Exception e){

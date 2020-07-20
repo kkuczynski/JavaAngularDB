@@ -1,0 +1,29 @@
+.add{
+    position: absolute;
+    right: 0;
+    top: 2%;
+}
+
+button{
+    background-color: gray;
+    cursor: pointer;
+}
+
+table {
+    min-width:98%;
+    max-width: 98%;
+    position: relative;
+    left: 1%;
+    overflow-wrap: break-word;
+    word-wrap: break-word;
+    word-break: break-all;
+    
+}
+.options{
+width:fit-content;
+}
+
+.mat-column-options {
+width: 1%;
+word-break: keep-all;
+}

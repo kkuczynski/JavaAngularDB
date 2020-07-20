@@ -8,38 +8,38 @@
 
             <div>
                 <h4>
-                name:&nbsp;
-            </h4>
-            </div>
-            
-            <div>
-            <h4>
-                age:&nbsp;
-            </h4>
-            </div>
-            
-            <div>
-            <h4>
-                race:&nbsp;
-            </h4>
-            </div>
-            
-            <div>
-            <h4>
-                sex:&nbsp;
-            </h4>
+                    name:&nbsp;
+                </h4>
             </div>
 
             <div>
-            <h4>
-                sterilized:&nbsp;
-            </h4>
+                <h4>
+                    age:&nbsp;
+                </h4>
             </div>
-            
+
             <div>
-            <h4>
-                home:&nbsp;
-            </h4>
+                <h4>
+                    race:&nbsp;
+                </h4>
+            </div>
+
+            <div>
+                <h4>
+                    sex:&nbsp;
+                </h4>
+            </div>
+
+            <div>
+                <h4>
+                    sterilized:&nbsp;
+                </h4>
+            </div>
+
+            <div>
+                <h4>
+                    home:&nbsp;
+                </h4>
             </div>
 
         </div>
@@ -65,15 +65,15 @@
             </div>
 
 
-            <div class="right">
+            <div>
                 <h4>
                     {{pet.sex | lowercase}}
                 </h4>
             </div>
 
-            
 
-            <div class="right">
+
+            <div>
                 <h4 *ngIf="pet.sterilized">
                     yes
                 </h4>
@@ -82,7 +82,7 @@
                 </h4>
             </div>
 
-            <div class="right">
+            <div>
                 <h4>
                     <div *ngIf="!pet.adopted">
                         <ng-template [ngIf]="compareDates(pet.adoptDate, pet.tmpAdoptForDays, getCurrentDate())">
@@ -99,15 +99,12 @@
                 </h4>
             </div>
         </div>
-    </div>  
-                <div align=end *ngIf="getIsEmployee()">
-                    <button (click)="openEditDialog(pet.id)">edit</button>
-                    <ng-template [ngIf]="getIsAdmin()">
-                        <ng-template [ngIf]="getDeleteClicked()!==pet.id">
-                            <button class="danger" (click)="openConfirmationDialog(pet.id)">delete</button>
-                        </ng-template>
-                    </ng-template>
-                </div>
+    </div>
+    <div align=end *ngIf="getIsEmployee()">
+        <button (click)="openEditDialog(pet.id)">edit</button>
+        <ng-template [ngIf]="getIsAdmin()">
 
-            
-    
+            <button class="danger" (click)="openConfirmationDialog(pet.id)">delete</button>
+
+        </ng-template>
+    </div>

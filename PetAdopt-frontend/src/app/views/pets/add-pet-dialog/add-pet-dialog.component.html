@@ -1,5 +1,4 @@
-<link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500&display=swap" rel="stylesheet">
-<h1 mat-dialog-title>add pet</h1>
+<h1 mat-dialog-title><ng-template [ngIf]=!getIsUpdate >add pet</ng-template><ng-template [ngIf]=getIsUpdate>update pet</ng-template></h1>
 <form class="addPet" [formGroup]="getInputForm()">
     <mat-form-field>
         <input matInput type="text" id="name" placeholder="name" formControlName="name" required>

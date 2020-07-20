@@ -2,6 +2,8 @@ import { Component, OnInit, Input, Inject } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 import { Router } from '@angular/router';
+import { AddUserDialogComponent } from '../users/add-user-dialog/add-user-dialog.component';
+import { MatDialog } from '@angular/material';
 
 @Component({
   selector: 'app-login',
@@ -24,7 +26,7 @@ export class LoginComponent implements OnInit {
   private _usernameCorrect = true;
   private _passwordCorrect = true;
 
-  constructor(private formBuilder: FormBuilder, private router: Router) {
+  constructor(private formBuilder: FormBuilder, private router: Router,  public dialog: MatDialog) {
     this.createForm();
   }
 
@@ -113,9 +115,6 @@ export class LoginComponent implements OnInit {
     this.loggedAsAdmin();
   }
 
-  signUp() {
-
-  }
   signOut() {
     this._logged = false;
     this._isAdmin = false;
@@ -128,6 +127,16 @@ export class LoginComponent implements OnInit {
     } else {
       return false;
     }
+  }
+
+  openSignUpDialog() {
+    const dialogRef = this.dialog.open(AddUserDialogComponent, {
+      minWidth: '30%',
+      data: {title: 'sign up'}
+    });
+    dialogRef.afterClosed().subscribe(() => {
+      this.ngOnInit();
+    });
   }
 
 }
