@@ -5,6 +5,7 @@ import { MatSort, MatTableDataSource, MatDialog } from '@angular/material';
 import { UsersEntity } from 'src/app/domain/external/users.entity';
 import { ConfirmationDialogComponent } from '../confirmation-dialog/confirmation-dialog.component';
 import { AddUserDialogComponent } from './add-user-dialog/add-user-dialog.component';
+import { AddHouseDialogComponent } from '../adoption-houses/add-house-dialog/add-house-dialog.component';
 
 
 
@@ -96,8 +97,19 @@ export class UsersComponent implements OnInit {
     });
   }
 
+  openAddHouseDialog(userId: number) {
+    const dialogRef = this.dialog.open(AddHouseDialogComponent, {
+      minWidth: '30%',
+      data: { title: 'add house', id: userId }
+    });
+    dialogRef.afterClosed().subscribe(() => {
+      this.ngOnInit();
+    });
+  }
+
   deleteUser(userId: number) {
     this.usersService.deleteUser(userId).subscribe();
     this.ngOnInit();
   }
+
 }

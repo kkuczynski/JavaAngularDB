@@ -1,0 +1,38 @@
+<h1 mat-dialog-title>
+    <ng-template [ngIf]=getIsAdd()>add house</ng-template>
+    <ng-template [ngIf]=getIsUpdate()>update house</ng-template>
+</h1>
+<form class="addHouse" [formGroup]="getInputForm()" (keydown)="keyDownFunction($event)">
+    <div fxLayout="column" fxLayoutAlign="center center" fxLayoutGap="10px">
+        <mat-form-field>
+            <input matInput type="text" id="address" placeholder="address" formControlName="address" required>
+        </mat-form-field>
+
+        <mat-form-field>
+            <input matInput type="text" id="city" placeholder="city" formControlName="city" required>
+        </mat-form-field>
+
+
+        <mat-form-field>
+            <input matInput type="text" id="postcode" placeholder="postcode" formControlName="postcode" required>
+        </mat-form-field>
+
+        <mat-form-field>
+            <input matInput type="textarea" id="conditions"
+                placeholder="conditions (living area, how many pets do you own, their behaviour)"
+                formControlName="conditions" required>
+        </mat-form-field>
+
+    </div>
+
+
+    <div class="post" align=end> <button (click)=hideAddDialog()>cancel</button>
+        <button id=confirmButton *ngIf="getIsAdd()" [ngClass]="(getInputForm().valid)?'enabled':'disabled'"
+            [disabled]="!getInputForm().valid" (click)=postHouse()>add</button>
+        <button id=confirmButton *ngIf="getIsUpdate()" [ngClass]="(getInputForm().valid)?'enabled':'disabled'"
+            [disabled]="!getInputForm().valid" (click)=putHouse()>update</button>
+
+    </div>
+
+
+</form>

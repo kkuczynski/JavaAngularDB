@@ -1,6 +1,6 @@
 <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 <h1 mat-dialog-title><ng-template [ngIf]=getIsAdd() >add user</ng-template><ng-template [ngIf]=getIsUpdate()>update user</ng-template><ng-template [ngIf]=getIsSignUp() >sign up</ng-template></h1>
-<form class="addPet" [formGroup]="getInputForm()" (keydown)="keyDownFunction($event)">
+<form class="addUser" [formGroup]="getInputForm()" (keydown)="keyDownFunction($event)">
     <div fxLayout="column" fxLayoutAlign="center center" fxLayoutGap="10px">
     <mat-form-field>
         <input matInput type="text" id="name" placeholder="Name" formControlName="name" required>

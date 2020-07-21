@@ -16,6 +16,7 @@ import {FlexLayoutModule} from '@angular/flex-layout';
 import { ConfirmationDialogComponent } from './views/confirmation-dialog/confirmation-dialog.component';
 import { SettingsComponent } from './views/settings/settings.component';
 import { AddUserDialogComponent } from './views/users/add-user-dialog/add-user-dialog.component';
+import { AddHouseDialogComponent } from './views/adoption-houses/add-house-dialog/add-house-dialog.component';
 
 @NgModule({
   declarations: [
@@ -29,6 +30,7 @@ import { AddUserDialogComponent } from './views/users/add-user-dialog/add-user-d
     ConfirmationDialogComponent,
     SettingsComponent,
     AddUserDialogComponent,
+    AddHouseDialogComponent,
   ],
   imports: [
     FlexLayoutModule,

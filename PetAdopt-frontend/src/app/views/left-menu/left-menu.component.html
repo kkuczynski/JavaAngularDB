@@ -1,24 +1,36 @@
-<head>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"> <!--button icons-->
-</head>
+<!--button icons-->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
 
-<button [routerLink]="['/pets']" [ngClass]="(checkRoute('/pets'))?'purple':'gray'" class="butt1" id="butt1" (mouseenter)="onMouseEnter(1)" (mouseleave)="onMouseLeave(1)">
-    <div class="inButton"><i class="fa fa-paw"></i><ng-template [ngIf]="getButtonTextEnabled() == 1">  pets </ng-template></div>
+
+
+<button [routerLink]="['/pets']" [ngClass]="(checkRoute('/pets'))?'purple':'gray'" class="butt1" id="butt1"
+    (mouseenter)="onMouseEnter(1)" (mouseleave)="onMouseLeave(1)">
+    <div class="inButton"><i class="fa fa-paw"></i>
+        <ng-template [ngIf]="getButtonTextEnabled() == 1"> pets </ng-template>
+    </div>
 </button>
 <br>
 
-<button [routerLink]="['/users']" [ngClass]="(checkRoute('/users'))?'purple':'gray'" class="butt2" id="butt2" (mouseenter)="onMouseEnter(2)" (mouseleave)="onMouseLeave(2)">
-    <div class="inButton"><i class="fa fa-user"></i><ng-template [ngIf]="getButtonTextEnabled() == 2">    users </ng-template></div>
+<button [routerLink]="['/users']" [ngClass]="(checkRoute('/users'))?'purple':'gray'" class="butt2" id="butt2"
+    (mouseenter)="onMouseEnter(2)" (mouseleave)="onMouseLeave(2)">
+    <div class="inButton"><i class="fa fa-user"></i>
+        <ng-template [ngIf]="getButtonTextEnabled() == 2"> users </ng-template>
+    </div>
 </button>
 
 <br>
-<button [routerLink]="['/houses']" [ngClass]="(checkRoute('/houses'))?'purple':'gray'" class="butt3" id="butt3" (mouseenter)="onMouseEnter(3)" (mouseleave)="onMouseLeave(3)">
-    <div class="inButton"><i class="fa fa-home"></i><ng-template [ngIf]="getButtonTextEnabled() == 3">  homes </ng-template></div>
+<button [routerLink]="['/houses']" [ngClass]="(checkRoute('/houses'))?'purple':'gray'" class="butt3" id="butt3"
+    (mouseenter)="onMouseEnter(3)" (mouseleave)="onMouseLeave(3)">
+    <div class="inButton"><i class="fa fa-home"></i>
+        <ng-template [ngIf]="getButtonTextEnabled() == 3"> homes </ng-template>
+    </div>
 </button>
 <br>
 
-<button [routerLink]="['/settings']" class="butt4" id="butt4" [ngClass]="(checkRoute('/settings'))?'purple':'gray'"(mouseenter)="onMouseEnter(4)" (mouseleave)="onMouseLeave(4)">
-    <div class="inButton"><i class="fa fa-cogs"></i><ng-template [ngIf]="getButtonTextEnabled() == 4">  settings</ng-template></div>
+<button [routerLink]="['/settings']" class="butt4" id="butt4" [ngClass]="(checkRoute('/settings'))?'purple':'gray'"
+    (mouseenter)="onMouseEnter(4)" (mouseleave)="onMouseLeave(4)">
+    <div class="inButton"><i class="fa fa-cogs"></i>
+        <ng-template [ngIf]="getButtonTextEnabled() == 4"> settings</ng-template>
+    </div>
 </button>
-
