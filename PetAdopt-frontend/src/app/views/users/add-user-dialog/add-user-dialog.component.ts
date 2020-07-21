@@ -22,7 +22,7 @@ export class AddUserDialogComponent implements OnInit {
 
 
   constructor(private usersService: UsersService, private formBuilder: FormBuilder, public dialogRef: MatDialogRef<AddUserDialogComponent>,
-              @Inject(MAT_DIALOG_DATA) public data: {title: string, user: UsersEntity}) {
+    @Inject(MAT_DIALOG_DATA) public data: { title: string, user: UsersEntity }) {
     this.createForm();
   }
   ngOnInit(): void {
@@ -50,7 +50,7 @@ export class AddUserDialogComponent implements OnInit {
     return this._isSignUp;
   }
   getIsAdd() {
-   return this._isAdd;
+    return this._isAdd;
   }
 
   hideAddDialog() {
@@ -128,15 +128,27 @@ export class AddUserDialogComponent implements OnInit {
     return datepipe.transform(date, 'yyyy-MM-dd');
   }
 
-  signUpPossible(): boolean{
+  signUpPossible(): boolean {
     if (this._inputForm.valid) {
-      if (this._inputForm.get('password').value === this._inputForm.get('passwordConfirmed').value) {
+      if (this.passwordsMatch()) {
         return true;
       }
       return false;
     }
     return false;
   }
+
+  passwordsMatch() {
+    if (this._inputForm.get('password').value === this._inputForm.get('passwordConfirmed').value) {
+      this._inputForm.get('passwordConfirmed').setErrors(null);
+      return true;
+    }
+    else {
+      this._inputForm.get('passwordConfirmed').setErrors({incorrect: true});
+      return false;
+    }
+  }
+
   keyDownFunction(event) {
     if (event.keyCode === 13) {
       console.log('enter');
