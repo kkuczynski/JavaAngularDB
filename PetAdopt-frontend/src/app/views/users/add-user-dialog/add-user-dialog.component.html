@@ -3,23 +3,24 @@
 <form class="addPet" [formGroup]="getInputForm()" (keydown)="keyDownFunction($event)">
     <div fxLayout="column" fxLayoutAlign="center center" fxLayoutGap="10px">
     <mat-form-field>
-        <input matInput type="text" id="name" placeholder="name" formControlName="name" required>
+        <input matInput type="text" id="name" placeholder="Name" formControlName="name" required>
     </mat-form-field>
     
     <mat-form-field>
-        <input matInput type="text" id="surname" placeholder="surname" formControlName="surname" required>
+        <input matInput type="text" id="surname" placeholder="Surname" formControlName="surname" required>
     </mat-form-field>
     
     
-    <div *ngIf=!getIsSignUp>
-<mat-form-field>
+  
+<mat-form-field *ngIf="(getIsUpdate() || getIsAdd())">
+    <mat-label> role </mat-label>
     <mat-select formControlName="role">
       <mat-option value="USER">user</mat-option>
       <mat-option value="EMPLOYEE">employee</mat-option>
       <mat-option value="ADMIN">admin</mat-option>
     </mat-select>
 </mat-form-field>
-</div>
+
 <mat-form-field>
     <input matInput type="text" id="login" placeholder="username" formControlName="login" required>
 </mat-form-field>

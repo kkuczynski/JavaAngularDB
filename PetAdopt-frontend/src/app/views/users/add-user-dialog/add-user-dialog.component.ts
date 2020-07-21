@@ -22,6 +22,7 @@ export class AddUserDialogComponent implements OnInit {
 
 
   constructor(private usersService: UsersService, private formBuilder: FormBuilder, public dialogRef: MatDialogRef<AddUserDialogComponent>,
+    // tslint:disable-next-line:align
     @Inject(MAT_DIALOG_DATA) public data: { title: string, user: UsersEntity }) {
     this.createForm();
   }
@@ -61,6 +62,7 @@ export class AddUserDialogComponent implements OnInit {
   fillFormWithData() {
     this._inputForm.get('name').setValue(this.data.user.name);
     this._inputForm.get('surname').setValue(this.data.user.surname);
+    this._inputForm.get('role').setValue(this.data.user.role);
     this._inputForm.get('login').setValue(this.data.user.login);
     this._inputForm.get('password').setValue(this.data.user.password);
   }
