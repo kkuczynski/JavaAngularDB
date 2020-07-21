@@ -16,8 +16,9 @@ export class AddHouseDialogComponent implements OnInit {
   private _newHouse: AdoptionHousesEntity;
   constructor(private housesService: AdoptionHousesService, private formBuilder: FormBuilder,
               public dialogRef: MatDialogRef<AddHouseDialogComponent>,
-              @Inject(MAT_DIALOG_DATA) public data: { title: string, house: AdoptionHousesEntity, ownerId: number }) {
+              @Inject(MAT_DIALOG_DATA) public data: { title: string, house: AdoptionHousesEntity, ownerId: number  }) {
       this.createForm();
+      console.log(data.ownerId);
     }
 
   ngOnInit(): void {
@@ -54,6 +55,7 @@ export class AddHouseDialogComponent implements OnInit {
     this._inputForm.get('city').setValue(this.data.house.city);
     this._inputForm.get('postcode').setValue(this.data.house.postcode);
     this._inputForm.get('conditions').setValue(this.data.house.conditions);
+    console.log('userid:' + this.data.ownerId);
   }
 
   createForm() {

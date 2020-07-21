@@ -100,7 +100,7 @@ export class UsersComponent implements OnInit {
   openAddHouseDialog(userId: number) {
     const dialogRef = this.dialog.open(AddHouseDialogComponent, {
       minWidth: '30%',
-      data: { title: 'add house', id: userId }
+      data: { title: 'add house', ownerId: userId }
     });
     dialogRef.afterClosed().subscribe(() => {
       this.ngOnInit();

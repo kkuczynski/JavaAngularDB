@@ -24,8 +24,8 @@ export class AdoptionHousesService {
     return this.http.get<AdoptionHousesEntity[]>(this.URL);
   }
 
-  getHouse(id: number) {
-    return this.http.get<AdoptionHousesEntity>(this.URL + '/' + id, httpOptions);
+  getHouse(id: number): Observable<AdoptionHousesEntity> {
+    return this.http.get<AdoptionHousesEntity>(this.URL + '/' + id);
   }
 
   postNewHouse(house: AdoptionHousesEntity) {

@@ -22,7 +22,7 @@ public class UsersController {
         return usersServiceImpl.getAllUsers();
     }
 
-    @GetMapping("/{id}}")
+    @GetMapping("/{id}")
     public Users getById(@PathVariable Integer id) throws NoRecordWithIdException{
        return usersServiceImpl.getUserById(id);
     }

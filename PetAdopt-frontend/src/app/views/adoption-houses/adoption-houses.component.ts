@@ -19,29 +19,50 @@ export class AdoptionHousesComponent implements OnInit {
   private _displayedColumns: string[] = ['no.', 'city', 'postcode', 'address', 'owner', 'options'];
   private _confirmation = false;
   private _editedHouse: AdoptionHousesEntity;
-  private _owner: UsersEntity;
-  // private dataSource: MatTableDataSource<UsersEntity>;
-
+  private _owner: any;
+  // array of full names of houses owners
+  private _names: Names[] = [];
+  private _fullname;
 
   constructor(private housesService: AdoptionHousesService, private usersService: UsersService, public dialog: MatDialog) { }
 
   ngOnInit() {
     this.getHousesService();
-    // this.dataSource = new MatTableDataSource(this._users);
-    // console.log(this.dataSource);
-    // this. dataSource.sort = this.sort;
+  }
+
+  getName(id: number) {
+    this._names.forEach(name => {
+      if (name.id === id) {
+        return name.fullname;
+      }
+    });
+    return '';
   }
 
   getDisplayedColumns() {
     return this._displayedColumns;
   }
   getHousesService() {
-    this.housesService.getAllHouses().subscribe(data => this._houses = data);
+    this.housesService.getAllHouses().subscribe(data => {
+      this._houses = data;
+      this.fillNames();
+    });
   }
 
   getHouses() {
     return this._houses;
-    // return this.dataSource;
+  }
+
+  fillNames() {
+    if (this._houses) {
+      this._houses.forEach(house => {
+        let namesObj = new Names();
+        namesObj.fullname = this.getOwnerFullName(house.userId);
+        namesObj.id = house.userId;
+        this._names.push(namesObj);
+      });
+      console.log(this._names);
+    }
   }
 
   getHouseById(houseId): AdoptionHousesEntity {
@@ -54,15 +75,12 @@ export class AdoptionHousesComponent implements OnInit {
     return foundHouse;
   }
 
-  getOwner(userId): UsersEntity {
-    this.usersService.getUser(userId).subscribe(data => this._owner = data);
-    return this._owner;
-  }
-
-
-  getOwnerFullName(userId: number) {
-    this._owner = this.getOwner(userId);
-    return this._owner.name + ' ' + this._owner.surname;
+  getOwnerFullName(userId: number): string{
+    this.usersService.getUser(userId).subscribe((user: UsersEntity) => {
+      const name = this._fullname = user.name + ' ' + user.surname;
+    });
+    console.log(name);
+    return this._fullname;
   }
 
 
@@ -110,3 +128,7 @@ export class AdoptionHousesComponent implements OnInit {
   }
 }
 
+export class Names {
+  id: number;
+  fullname: string;
+}

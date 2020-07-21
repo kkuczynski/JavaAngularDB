@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { PetsEntity } from '../domain/external/pets.entity';
 import { environment } from '../../environments/environment';
 import { HttpHeaders } from '@angular/common/http';
+import { Observable } from 'rxjs';
 
 const httpOptions = {
   headers: new HttpHeaders({
@@ -21,8 +22,8 @@ export class PetsService {
 
   constructor(private http: HttpClient) { }
 
-  getPet(id: number) {
-    return this.http.get<PetsEntity>(this.URL + '/' + id, httpOptions);
+  getPet(id: number): Observable<PetsEntity> {
+    return this.http.get<PetsEntity>(this.URL + '/' + id);
   }
 
   getAllPets() {

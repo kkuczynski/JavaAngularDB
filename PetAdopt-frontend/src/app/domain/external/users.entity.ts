@@ -21,6 +21,11 @@ export class UsersEntity {
         this.id = id;
     }
 
+    getFullName(){
+        return this.name + ' ' + this.surname;
+    }
+
 }
+
 
 

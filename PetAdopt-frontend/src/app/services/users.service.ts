@@ -22,8 +22,8 @@ export class UsersService {
     return this.http.get<UsersEntity[]>(this.URL);
   }
 
-  getUser(id: number) {
-    return this.http.get<UsersEntity>(this.URL + '/' + id, httpOptions);
+  getUser(id: number): Observable<UsersEntity> {
+      return this.http.get<UsersEntity>(this.URL + '/' + id);
   }
 
   postNewUser(user: UsersEntity) {
