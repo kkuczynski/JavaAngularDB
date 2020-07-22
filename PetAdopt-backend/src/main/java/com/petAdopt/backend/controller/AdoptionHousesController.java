@@ -42,4 +42,5 @@ public class AdoptionHousesController {
     public void deleteAdoptionHouses(@PathVariable Integer id) throws NoRecordWithIdException{
         adoptionHousesServiceImpl.deleteAdoptionHouseById(id);
     }
+
 }

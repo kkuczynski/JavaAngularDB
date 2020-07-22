@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { environment } from '../../environments/environment';
-import { AdoptionHousesEntity } from '../domain/external/adoption-houses.entity';
+import { AdoptionHousesExternal } from '../domain/external/adoption-houses.external';
 
 const httpOptions = {
   headers: new HttpHeaders({
@@ -20,20 +20,20 @@ export class AdoptionHousesService {
 
   constructor(private http: HttpClient) { }
 
-  getAllHouses(): Observable<AdoptionHousesEntity[]> {
-    return this.http.get<AdoptionHousesEntity[]>(this.URL);
+  getAllHouses(): Observable<AdoptionHousesExternal[]> {
+    return this.http.get<AdoptionHousesExternal[]>(this.URL);
   }
 
-  getHouse(id: number): Observable<AdoptionHousesEntity> {
-    return this.http.get<AdoptionHousesEntity>(this.URL + '/' + id);
+  getHouse(id: number): Observable<AdoptionHousesExternal> {
+    return this.http.get<AdoptionHousesExternal>(this.URL + '/' + id);
   }
 
-  postNewHouse(house: AdoptionHousesEntity) {
-    return this.http.post<AdoptionHousesEntity>(this.URL, house, httpOptions);
+  postNewHouse(house: AdoptionHousesExternal) {
+    return this.http.post<AdoptionHousesExternal>(this.URL, house, httpOptions);
   }
 
-  putHouse(house: AdoptionHousesEntity) {
-    return this.http.put<AdoptionHousesEntity>(this.URL, house, httpOptions);
+  putHouse(house: AdoptionHousesExternal) {
+    return this.http.put<AdoptionHousesExternal>(this.URL, house, httpOptions);
   }
 
   deleteHouse(id: number) {

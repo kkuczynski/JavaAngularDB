@@ -1,5 +1,5 @@
 import { Role } from '../enums/role.enum';
-export class UsersEntity {
+export class UsersExternal {
     id: number;
     name: string;
     surname: string;

@@ -15,4 +15,5 @@ public interface UsersService {
 
     void deleteUserById(Integer id) throws NoRecordWithIdException;
 
+    Users loginUser(String username, String password) throws NoRecordWithIdException;
 }

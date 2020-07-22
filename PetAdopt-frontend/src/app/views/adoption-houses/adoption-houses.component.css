@@ -3,11 +3,46 @@
     right: 0;
     top: 2%;
 }
-button{
-    background-color: gray;
+button {    
+    background: none;
+    border-style: solid;    
+    border-color: gray;
+    border-width: 2px;
+    color: gray;
+    padding: 5px 5px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 15px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    border-radius: 10px;  
     cursor: pointer;
+  }
+  button:hover{
+    border-color: rgb(69, 39, 160);
+    color: rgb(69, 39, 160);
+  }
+  .danger:hover{
+    border-color: darkred;
+    color: darkred;
+  }
+
+  table {
+    min-width:98%;
+    max-width: 98%;
+    position: relative;
+    left: 1%;
+    overflow-wrap: break-word;
+    word-wrap: break-word;
+    word-break: break-all;
+    
 }
 
-table {
-    width:100%;
-}
+.mat-column-options {
+    width: 1%;
+    word-break: keep-all;
+    overflow-wrap: normal;
+    word-wrap: normal;
+    }
+
+   

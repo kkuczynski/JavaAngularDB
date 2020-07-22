@@ -33,25 +33,11 @@ public class Pets {
     private Date adoptDate;
     private Boolean temporaryAdopted;
     private int tmpAdoptForDays;
+    private int houseId;
 
     public Pets(){
     }
 
-    public Pets(Integer id, String name, Spieces spieces, String race, int age, Date addedAt, String health, Sex sex, Boolean sterilized, Boolean adopted, Date adoptDate, Boolean temporaryAdopted, int tmpAdoptForDays){
-        this.id = id;
-        this.name = name;
-        this.spieces = spieces;
-        this.race = race;
-        this.age = age;
-        this.addedAt = addedAt;
-        this.health = health;
-        this.sex = sex;
-        this.sterilized = sterilized;
-        this.adopted = adopted;
-        this.adoptDate = adoptDate;
-        this.temporaryAdopted = temporaryAdopted;
-        this.tmpAdoptForDays = tmpAdoptForDays;
-    }
 
 }
 

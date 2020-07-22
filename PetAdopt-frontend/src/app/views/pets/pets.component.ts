@@ -1,15 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { PetsService } from '../../services/pets.service';
 import { ActivatedRoute } from '@angular/router';
-import { PetsEntity } from 'src/app/domain/external/pets.entity';
+import { PetsExternal } from 'src/app/domain/external/pets.external';
 import { MatDialog } from '@angular/material';
 import { AddPetDialogComponent } from './add-pet-dialog/add-pet-dialog.component';
 import { ConfirmationDialogComponent} from '../confirmation-dialog/confirmation-dialog.component';
+import { AssignHouseDialogComponent} from './assign-house-dialog/assign-house-dialog.component';
 
-// this.petsService.postNewPet(this._newPet).subscribe(pet => this._pets.push(pet));
-
-// TODO: zapytac o 4 taby
-// TODO: response entity poczytac i cos zwraca, backend
 @Component({
   // tslint:disable-next-line:component-selector
   selector: 'pets',
@@ -18,14 +15,14 @@ import { ConfirmationDialogComponent} from '../confirmation-dialog/confirmation-
 })
 export class PetsComponent implements OnInit {
 
-  private _newPet: PetsEntity;
+  private _newPet: PetsExternal;
   private _isAdmin = true;
   private _isEmployee = true;
-  private _pets: PetsEntity[];
+  private _pets: PetsExternal[];
   private _currentDate = new Date();
   private _month = this._currentDate.getMonth();
   private _deleteClicked = -1;
-  private _editedPet: PetsEntity;
+  private _editedPet: PetsExternal;
   private _confirmation = false;
 
   constructor(private petsService: PetsService, public dialog: MatDialog) { }
@@ -61,8 +58,8 @@ export class PetsComponent implements OnInit {
     });
   }
 
-  getPetById(petId): PetsEntity {
-    let foundPet: PetsEntity;
+  getPetById(petId): PetsExternal {
+    let foundPet: PetsExternal;
     this._pets.forEach(pet => {
       if (pet.id === petId) {
         foundPet = pet;
@@ -104,6 +101,18 @@ export class PetsComponent implements OnInit {
       this.ngOnInit();
     });
   }
+
+  openAssignDialog(petId: number) {
+    this._editedPet = this.getPetById(petId);
+    const dialogRef = this.dialog.open(AssignHouseDialogComponent, {
+      minWidth: '50%',
+      data: this._editedPet
+    });
+    dialogRef.afterClosed().subscribe(() => {
+      this.ngOnInit();
+    });
+  }
+
 
   deletePet(id: number) {
     this.petsService.deletePet(id).subscribe();

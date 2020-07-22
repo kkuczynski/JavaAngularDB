@@ -1,5 +1,5 @@
 import { Component, OnInit, Inject } from '@angular/core';
-import { AdoptionHousesEntity } from 'src/app/domain/external/adoption-houses.entity';
+import { AdoptionHousesExternal } from 'src/app/domain/external/adoption-houses.external';
 import { Validators, FormBuilder, FormGroup } from '@angular/forms';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material';
 import { AdoptionHousesService } from 'src/app/services/adoption-houses.service';
@@ -13,10 +13,10 @@ export class AddHouseDialogComponent implements OnInit {
   private _isUpdate = false;
   private _isAdd = false;
   private _inputForm: FormGroup;
-  private _newHouse: AdoptionHousesEntity;
+  private _newHouse: AdoptionHousesExternal;
   constructor(private housesService: AdoptionHousesService, private formBuilder: FormBuilder,
               public dialogRef: MatDialogRef<AddHouseDialogComponent>,
-              @Inject(MAT_DIALOG_DATA) public data: { title: string, house: AdoptionHousesEntity, ownerId: number  }) {
+              @Inject(MAT_DIALOG_DATA) public data: { title: string, house: AdoptionHousesExternal, ownerId: number  }) {
       this.createForm();
       console.log(data.ownerId);
     }
@@ -85,7 +85,7 @@ export class AddHouseDialogComponent implements OnInit {
 
   postHouse() {
     const date = new Date();
-    this._newHouse = new AdoptionHousesEntity();
+    this._newHouse = new AdoptionHousesExternal();
     this._newHouse.setNew(
       this._inputForm.get('address').value,
       this._inputForm.get('city').value,
@@ -98,7 +98,7 @@ export class AddHouseDialogComponent implements OnInit {
   }
 
   putHouse() {
-    this._newHouse = new AdoptionHousesEntity();
+    this._newHouse = new AdoptionHousesExternal();
     this._newHouse.setNew(
       this._inputForm.get('address').value,
       this._inputForm.get('city').value,
@@ -106,7 +106,6 @@ export class AddHouseDialogComponent implements OnInit {
       this._inputForm.get('conditions').value);
     this._newHouse.setId(this.data.house.id);
     this._newHouse.setOwnerId(this.data.house.userId);
-    this._newHouse.setPetsId(this.data.house.petsId);
     this.housesService.putHouse(this._newHouse).subscribe();
     console.log(this._newHouse);
     this.dialogRef.close();

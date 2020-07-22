@@ -1,7 +1,7 @@
 import { Spieces } from '../enums/spieces.enum';
 import { Sex } from '../enums/sex.enum';
 
-export class PetsEntity {
+export class PetsExternal {
     id: number;
     name: string;
     spieces: Spieces;
@@ -15,6 +15,7 @@ export class PetsEntity {
     adoptDate: string;
     temporaryAdopted: boolean;
     tmpAdoptForDays: number;
+    houseId: number;
 
     setNew(name: string, spieces: Spieces, race: string, age: number,
            addedAt: string, health: string, sex: Sex, sterilized: boolean, adopted: boolean,
@@ -36,8 +37,13 @@ export class PetsEntity {
     setId(id: number){
         this.id = id;
     }
+
     getId(){
         return this.id;
+    }
+
+    setHouseId(id: number) {
+        this.houseId = id;
     }
 
 

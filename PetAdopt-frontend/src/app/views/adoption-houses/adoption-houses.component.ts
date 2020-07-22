@@ -1,11 +1,11 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { AdoptionHousesEntity } from 'src/app/domain/external/adoption-houses.entity';
+import { AdoptionHousesExternal } from 'src/app/domain/external/adoption-houses.external';
 import { AdoptionHousesService } from 'src/app/services/adoption-houses.service';
 import { MatDialog } from '@angular/material';
 import { ConfirmationDialogComponent } from '../confirmation-dialog/confirmation-dialog.component';
 import { AddHouseDialogComponent } from './add-house-dialog/add-house-dialog.component';
 import { UsersService } from 'src/app/services/users.service';
-import { UsersEntity } from 'src/app/domain/external/users.entity';
+import { UsersExternal } from 'src/app/domain/external/users.external';
 
 @Component({
   // tslint:disable-next-line:component-selector
@@ -18,7 +18,7 @@ export class AdoptionHousesComponent implements OnInit {
   private _houses = [];
   private _displayedColumns: string[] = ['no.', 'city', 'postcode', 'address', 'owner', 'options'];
   private _confirmation = false;
-  private _editedHouse: AdoptionHousesEntity;
+  private _editedHouse: AdoptionHousesExternal;
   private _owner: any;
   // array of full names of houses owners
   private _names: Names[] = [];
@@ -31,17 +31,20 @@ export class AdoptionHousesComponent implements OnInit {
   }
 
   getName(id: number) {
+    let returnedName;
     this._names.forEach(name => {
       if (name.id === id) {
-        return name.fullname;
+        returnedName = name.fullname;
+        return returnedName;
       }
     });
-    return '';
+    return returnedName;
   }
 
   getDisplayedColumns() {
     return this._displayedColumns;
   }
+
   getHousesService() {
     this.housesService.getAllHouses().subscribe(data => {
       this._houses = data;
@@ -56,17 +59,14 @@ export class AdoptionHousesComponent implements OnInit {
   fillNames() {
     if (this._houses) {
       this._houses.forEach(house => {
-        let namesObj = new Names();
-        namesObj.fullname = this.getOwnerFullName(house.userId);
-        namesObj.id = house.userId;
-        this._names.push(namesObj);
+        this.getOwnerFullName(house.userId);
       });
       console.log(this._names);
     }
   }
 
-  getHouseById(houseId): AdoptionHousesEntity {
-    let foundHouse: AdoptionHousesEntity;
+  getHouseById(houseId): AdoptionHousesExternal {
+    let foundHouse: AdoptionHousesExternal;
     this._houses.forEach(house => {
       if (house.id === houseId) {
         foundHouse = house;
@@ -75,12 +75,13 @@ export class AdoptionHousesComponent implements OnInit {
     return foundHouse;
   }
 
-  getOwnerFullName(userId: number): string{
-    this.usersService.getUser(userId).subscribe((user: UsersEntity) => {
-      const name = this._fullname = user.name + ' ' + user.surname;
+  getOwnerFullName(userId: number) {
+    this.usersService.getUser(userId).subscribe((user: UsersExternal) => {
+      const namesObj = new Names();
+      namesObj.fullname = user.name + ' ' + user.surname;
+      namesObj.id = userId;
+      this._names.push(namesObj);
     });
-    console.log(name);
-    return this._fullname;
   }
 
 

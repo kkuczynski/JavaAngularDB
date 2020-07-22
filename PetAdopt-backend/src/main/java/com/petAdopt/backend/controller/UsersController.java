@@ -2,6 +2,7 @@ package com.petAdopt.backend.controller;
 
 import com.petAdopt.backend.dao.entity.Users;
 import com.petAdopt.backend.exception.NoRecordWithIdException;
+import com.petAdopt.backend.service.impl.AdoptionHousesServiceImpl;
 import com.petAdopt.backend.service.impl.UsersServiceImpl;
 import org.springframework.web.bind.annotation.*;
 
@@ -13,8 +14,11 @@ import java.util.List;
 public class UsersController {
 
     private final UsersServiceImpl usersServiceImpl;
-    public UsersController(UsersServiceImpl usersServiceImpl){
+    private final AdoptionHousesServiceImpl adoptionHousesServiceImpl;
+
+    public UsersController(UsersServiceImpl usersServiceImpl, AdoptionHousesServiceImpl adoptionHousesServiceImpl){
         this.usersServiceImpl = usersServiceImpl;
+        this.adoptionHousesServiceImpl = adoptionHousesServiceImpl;
     }
 
     @GetMapping()
@@ -39,12 +43,14 @@ public class UsersController {
 
     @DeleteMapping("/{id}")
     public void deleteUsers(@PathVariable int id) throws NoRecordWithIdException{
-       usersServiceImpl.deleteUserById(id);
+
+        adoptionHousesServiceImpl.deleteAdoptionHouseByUserId(id);
+        usersServiceImpl.deleteUserById(id);
     }
 
     @PostMapping("/login")
-    public void login(){
-
+    public Users loginUser(@RequestBody String username, String password) throws NoRecordWithIdException{
+        return usersServiceImpl.loginUser(username, password);
     }
 }
 

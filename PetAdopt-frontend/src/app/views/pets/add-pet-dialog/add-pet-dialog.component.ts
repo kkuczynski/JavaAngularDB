@@ -1,7 +1,7 @@
 import { Component, OnInit, Inject } from '@angular/core';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { FormBuilder, FormGroup, Validators, SelectControlValueAccessor } from '@angular/forms';
-import { PetsEntity } from '../../../domain/external/pets.entity';
+import { PetsExternal } from '../../../domain/external/pets.external';
 import { DatePipe } from '@angular/common';
 import { PetsService } from 'src/app/services/pets.service';
 
@@ -17,11 +17,11 @@ export class AddPetDialogComponent implements OnInit {
   private _adopted: boolean;
   private _tmpAdopted: boolean;
   private _inputForm: FormGroup;
-  private _newPet: PetsEntity;
+  private _newPet: PetsExternal;
   private _isUpdate: boolean;
 
   constructor(private petsService: PetsService, private formBuilder: FormBuilder, public dialogRef: MatDialogRef<AddPetDialogComponent>,
-              @Inject(MAT_DIALOG_DATA) public data: PetsEntity) {
+              @Inject(MAT_DIALOG_DATA) public data: PetsExternal) {
                 this.createForm();
   }
 
@@ -31,7 +31,9 @@ export class AddPetDialogComponent implements OnInit {
       this.fillFormWithData();
     }
     else {
+      const date = new Date();
       this._isUpdate = false;
+      this._inputForm.get('adoptDate').setValue(this.dateConverter(date));
     }
   }
 
@@ -125,7 +127,7 @@ export class AddPetDialogComponent implements OnInit {
 
   postPet() {
       const date = new Date();
-      this._newPet = new PetsEntity();
+      this._newPet = new PetsExternal();
       this._newPet.setNew(
         this._inputForm.get('name').value,
         this._inputForm.get('spieces').value,
@@ -147,7 +149,7 @@ export class AddPetDialogComponent implements OnInit {
 
   putPet() {
     const date = new Date();
-    this._newPet = new PetsEntity();
+    this._newPet = new PetsExternal();
     this._newPet.setNew(
         this._inputForm.get('name').value,
         this._inputForm.get('spieces').value,

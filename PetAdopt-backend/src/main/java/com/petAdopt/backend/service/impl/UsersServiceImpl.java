@@ -47,4 +47,20 @@ public class UsersServiceImpl implements UsersService {
             throw new NoRecordWithIdException(message);
         }
     }
+
+    public Users loginUser(String username, String password) throws NoRecordWithIdException{
+        try {
+            int foundId = -1;
+            for(Users user: usersRepo.findAll()) {
+                if (user.getLogin() == username && user.getPassword() == password) {
+                   return usersRepo.findById(user.getId()).orElseThrow(() -> new NoRecordWithIdException(message));
+                }
+            }
+
+
+        } catch (Exception e) {
+            throw new NoRecordWithIdException(message);
+        }
+        return null;
+    }
 }

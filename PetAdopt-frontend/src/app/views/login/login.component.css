@@ -26,19 +26,30 @@ button {
   
   .enabled{
     cursor: pointer;
-    background-color: gray
+    background-color: none;
+    border-color: gray;
+    color: gray;
   }
   .disabled{
+    color: darkgray;
     cursor: auto;
-    background-color: lightgray;
+    background-color: none;
+    border-color: darkgray;
   }
   .disabled:hover{
-    border-color: white;
+    border-color: darkgray;
+    color: darkgray;
+  }
+  button:hover{
+    color: rgb(69, 39, 160);
+    border-color: rgb(69, 39, 160);
   }
   
   .signUp{
     cursor: pointer;
-    background-color: gray
+    background-color: none;
+    border-color: gray;
+    color: gray;
   }
   .signOut{
     cursor: pointer;

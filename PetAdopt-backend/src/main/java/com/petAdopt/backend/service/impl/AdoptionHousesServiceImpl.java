@@ -31,10 +31,22 @@ public class AdoptionHousesServiceImpl implements AdoptionHousesService {
     public void deleteAdoptionHouseById (Integer id) throws NoRecordWithIdException{
 
         try {
-            adoptionHousesRepo.findById(id);
-            adoptionHousesRepo.deleteById(id);
+              adoptionHousesRepo.deleteById(id);
         }
         catch(Exception e){
+            throw new NoRecordWithIdException(message);
+        }
+    }
+
+    public void deleteAdoptionHouseByUserId (Integer id) throws NoRecordWithIdException{
+        try {
+            adoptionHousesRepo.findAll().forEach((house)-> {
+                if(house.getUserId() == id) {
+                    adoptionHousesRepo.delete(house);
+                }
+            });
+
+        } catch(Exception e) {
             throw new NoRecordWithIdException(message);
         }
     }

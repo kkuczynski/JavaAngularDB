@@ -4,6 +4,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AddUserDialogComponent } from '../users/add-user-dialog/add-user-dialog.component';
 import { MatDialog } from '@angular/material';
+import { LoginService } from 'src/app/services/login.service';
 
 @Component({
   selector: 'app-login',
@@ -26,7 +27,7 @@ export class LoginComponent implements OnInit {
   private _usernameCorrect = true;
   private _passwordCorrect = true;
 
-  constructor(private formBuilder: FormBuilder, private router: Router,  public dialog: MatDialog) {
+  constructor(public loginService: LoginService, private formBuilder: FormBuilder, private router: Router,  public dialog: MatDialog) {
     this.createForm();
   }
 
@@ -109,8 +110,8 @@ export class LoginComponent implements OnInit {
   signIn() {
     this._username = this._inputForm.get('username').value;
     this._password = this._inputForm.get('password').value;
-    console.log('login: ' + this._inputForm.get('username').value);
-    console.log('pass: ' + this._inputForm.get('password').value);
+    this.loginService.updateCurrentRole('ADMIN');
+    console.log(this.loginService.role);
     this._logged = true;
     this.loggedAsAdmin();
   }

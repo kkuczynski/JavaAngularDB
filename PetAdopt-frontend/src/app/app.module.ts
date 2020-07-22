@@ -17,6 +17,8 @@ import { ConfirmationDialogComponent } from './views/confirmation-dialog/confirm
 import { SettingsComponent } from './views/settings/settings.component';
 import { AddUserDialogComponent } from './views/users/add-user-dialog/add-user-dialog.component';
 import { AddHouseDialogComponent } from './views/adoption-houses/add-house-dialog/add-house-dialog.component';
+import { AssignHouseDialogComponent } from './views/pets/assign-house-dialog/assign-house-dialog.component';
+import { LoginService} from 'src/app/services/login.service';
 
 @NgModule({
   declarations: [
@@ -31,6 +33,7 @@ import { AddHouseDialogComponent } from './views/adoption-houses/add-house-dialo
     SettingsComponent,
     AddUserDialogComponent,
     AddHouseDialogComponent,
+    AssignHouseDialogComponent,
   ],
   imports: [
     FlexLayoutModule,

@@ -2,7 +2,7 @@ import { Component, OnInit, Inject } from '@angular/core';
 import { UsersService } from 'src/app/services/users.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
-import { UsersEntity } from 'src/app/domain/external/users.entity';
+import { UsersExternal } from 'src/app/domain/external/users.external';
 import { DatePipe } from '@angular/common';
 import { Role } from 'src/app/domain/enums/role.enum';
 
@@ -16,14 +16,14 @@ export class AddUserDialogComponent implements OnInit {
   private _isAdd = false;
   private _isSignUp = false;
   private _inputForm: FormGroup;
-  private _newUser: UsersEntity;
+  private _newUser: UsersExternal;
   private _userRole = Role.USER;
   hide = true;
 
 
   constructor(private usersService: UsersService, private formBuilder: FormBuilder, public dialogRef: MatDialogRef<AddUserDialogComponent>,
     // tslint:disable-next-line:align
-    @Inject(MAT_DIALOG_DATA) public data: { title: string, user: UsersEntity }) {
+    @Inject(MAT_DIALOG_DATA) public data: { title: string, user: UsersExternal }) {
     this.createForm();
   }
   ngOnInit(): void {
@@ -96,7 +96,7 @@ export class AddUserDialogComponent implements OnInit {
 
   postUser() {
     const date = new Date();
-    this._newUser = new UsersEntity();
+    this._newUser = new UsersExternal();
     this._newUser.setNew(
       this._inputForm.get('name').value,
       this._inputForm.get('surname').value,
@@ -111,7 +111,7 @@ export class AddUserDialogComponent implements OnInit {
   }
 
   putUser() {
-    this._newUser = new UsersEntity();
+    this._newUser = new UsersExternal();
     this._newUser.setNew(
       this._inputForm.get('name').value,
       this._inputForm.get('surname').value,

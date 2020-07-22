@@ -15,16 +15,14 @@
         <mat-error *ngIf="!getUsernameCorrect()">wrong password</mat-error>
     </mat-form-field>
     <br>
+<div fxLayout="row" fxLayoutAlign="end end" fxLayoutGap="2px">
+    
 
     <button class="signUp" (click)="openSignUpDialog()">Sign up </button>
 
     <button [ngClass]="(getInputForm().valid)?'enabled':'disabled'" id="signInButton" [disabled]="!getInputForm().valid"
         (click)="signIn()">Sign in </button>
-    
-
-    <div class="warn">{{this.getLoginWarn()}}
     </div>
-
     <div class="warn">{{this.getCapsWarn()}}
 
     </div>

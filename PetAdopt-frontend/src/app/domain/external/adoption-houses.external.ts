@@ -1,10 +1,9 @@
-export class AdoptionHousesEntity {
+export class AdoptionHousesExternal {
     id: number;
     address: string;
     city: string;
     postcode: string;
     userId: number;
-    petsId: number;
     conditions: string;
 
     setNew(address: string, city: string, postcode: string, conditions: string) {
@@ -20,9 +19,5 @@ export class AdoptionHousesEntity {
 
     setOwnerId(id: number) {
         this.userId = id;
-    }
-
-    setPetsId(id: number) {
-        this.petsId = id;
     }
 }

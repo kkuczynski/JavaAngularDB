@@ -1,3 +1,6 @@
+<!--button icons-->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
 <table mat-table #table [dataSource]="getHouses()" class="mat-elevation-z8">
     <ng-container matColumnDef="no.">
         <th mat-header-cell *matHeaderCellDef> no. </th>
@@ -20,16 +23,25 @@
         <td mat-cell *matCellDef="let row"> {{getName(row.userId)}} </td>
     </ng-container>
     
+
     <ng-container matColumnDef="options">
         <th mat-header-cell *matHeaderCellDef> options </th>
         <td mat-cell *matCellDef="let row">
             <div class="options" fxLayout="row" fxLayoutAlign="end none">
-                
-            <button (click)="openEditDialog(row.id)">edit</button> 
-            <button class="danger" (click)="openConfirmationDialog(row.id)">delete</button>
-                </div>
+
+                <button (click)="openEditDialog(row.id)">
+                    <div fxLayout="row" fxLayoutAlign="center center" fxLayoutGap="0px">
+                        <i class="fa fa-home"></i><i class="fa fa-wrench"></i>
+                    </div>
+                </button>
+                <button class="danger" (click)="openConfirmationDialog(row.id)">
+                    <div fxLayout="row" fxLayoutAlign="center center" fxLayoutGap="0px">
+                        <i class="fa fa-home"></i><i class="fa fa-times"></i>
+                    </div>
+                </button>
+            </div>
         </td>
-        
+
     </ng-container>
     <tr mat-header-row *matHeaderRowDef="getDisplayedColumns()"></tr>
     <tr mat-row *matRowDef="let row; columns: getDisplayedColumns()"></tr>

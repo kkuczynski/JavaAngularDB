@@ -16,4 +16,6 @@ public interface AdoptionHousesService {
     void deleteAdoptionHouseById (Integer id) throws NoRecordWithIdException;
 
     AdoptionHouses updateAdoptionHouse(AdoptionHouses adoptionHouses) throws NoRecordWithIdException;
+
+    void deleteAdoptionHouseByUserId (Integer id) throws NoRecordWithIdException;
 }

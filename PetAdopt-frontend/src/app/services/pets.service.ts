@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { PetsEntity } from '../domain/external/pets.entity';
+import { PetsExternal } from '../domain/external/pets.external';
 import { environment } from '../../environments/environment';
 import { HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
@@ -22,28 +22,28 @@ export class PetsService {
 
   constructor(private http: HttpClient) { }
 
-  getPet(id: number): Observable<PetsEntity> {
-    return this.http.get<PetsEntity>(this.URL + '/' + id);
+  getPet(id: number): Observable<PetsExternal> {
+    return this.http.get<PetsExternal>(this.URL + '/' + id);
   }
 
   getAllPets() {
-    return this.http.get<PetsEntity[]>(this.URL);
+    return this.http.get<PetsExternal[]>(this.URL);
   }
 
   getPetsWithNoHome() {
-    return this.http.get<PetsEntity[]>(this.URL_WITH_NO_HOME);
+    return this.http.get<PetsExternal[]>(this.URL_WITH_NO_HOME);
   }
 
   getPetsWithHome() {
-    return this.http.get<PetsEntity[]>(this.URL_WITH_HOME);
+    return this.http.get<PetsExternal[]>(this.URL_WITH_HOME);
   }
 
-  postNewPet(pet: PetsEntity) {
-    return this.http.post<PetsEntity>(this.URL, pet, httpOptions);
+  postNewPet(pet: PetsExternal) {
+    return this.http.post<PetsExternal>(this.URL, pet, httpOptions);
   }
 
-  putPet(pet: PetsEntity) {
-    return this.http.put<PetsEntity>(this.URL, pet, httpOptions);
+  putPet(pet: PetsExternal) {
+    return this.http.put<PetsExternal>(this.URL, pet, httpOptions);
   }
 
   deletePet(id: number) {
