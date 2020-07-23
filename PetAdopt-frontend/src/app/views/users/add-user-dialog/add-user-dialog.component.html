@@ -15,7 +15,7 @@
         </mat-form-field>
 
 
-        <div *ngIf="getLoggedAs()=='ADMIN'">
+        <div class="rolePick" *ngIf="getLoggedAs()=='ADMIN'">
             <mat-form-field *ngIf="(getIsUpdate() || getIsAdd())">
                 <mat-label> role </mat-label>
                 <mat-select formControlName="role">
