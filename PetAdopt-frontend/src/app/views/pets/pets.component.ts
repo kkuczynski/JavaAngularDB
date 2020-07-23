@@ -1,123 +1,124 @@
 import { Component, OnInit } from '@angular/core';
 import { PetsService } from '../../services/pets.service';
-import { ActivatedRoute } from '@angular/router';
-import { FormBuilder, FormGroup, Validators, FormControl } from '@angular/forms';
-import { PetsInterface } from 'src/app/domain/external/pets.interface';
-
+import { PetsExternal } from 'src/app/domain/external/pets.external';
+import { MatDialog } from '@angular/material';
+import { AddPetDialogComponent } from './add-pet-dialog/add-pet-dialog.component';
+import { ConfirmationDialogComponent } from '../confirmation-dialog/confirmation-dialog.component';
+import { AssignHouseDialogComponent } from './assign-house-dialog/assign-house-dialog.component';
+import { LoginService } from 'src/app/services/login.service';
 
 @Component({
-  selector: 'app-pets',
+  // tslint:disable-next-line:component-selector
+  selector: 'pets',
   templateUrl: './pets.component.html',
   styleUrls: ['./pets.component.css']
 })
 export class PetsComponent implements OnInit {
-  // Formatowanie, 4 taby ;)
-  // pola prywatne zaczynamy od _
-  private newPet: PetsInterface;
-  private isAdmin = true;
-  private isEmployee = true;
-  private pets = [];
-  private currentDate = new Date();
-  private month = this.currentDate.getMonth();
-  private AddPetTab = false;
-  private inputForm: FormGroup;
-  private adopted = false;
-  private tmpAdopted = false;
 
-  constructor(private petsService: PetsService, private formBuilder: FormBuilder) {
-    this.createForm();
-  }
+  private _newPet: PetsExternal;
+  private _pets: PetsExternal[];
+  private _currentDate = new Date();
+  private _month = this._currentDate.getMonth();
+  private _deleteClicked = -1;
+  private _editedPet: PetsExternal;
+  private _confirmation = false;
+  private _role;
+  private _loggedAs: string;
+
+  constructor(private petsService: PetsService, public loginService: LoginService, public dialog: MatDialog) { }
+
   ngOnInit() {
     this.getPetsService();
-
+    this.setRole();
   }
 
-  getIsAdmin() {
-    return this.isAdmin;
+  setRole() {
+    this._loggedAs = this.loginService.role;
   }
-  getIsEmployee() {
-    return this.isEmployee;
+
+  getLoggedAs() {
+    return this._loggedAs;
   }
+
   getPets() {
-    return this.pets;
+    return this._pets;
   }
 
   getCurrentDate() {
-    return this.currentDate;
+    return this._currentDate;
   }
 
   getPetsService() {
-    this.petsService.getPetsWithNoHome().subscribe(data => this.pets = data);
-    this.petsService.getPetsWithHome().subscribe(data => this.pets = data);
+    this.petsService.getAllPets().subscribe(data => this._pets = data);
   }
 
-  getAddPetTab() {
-    return this.AddPetTab;
-  }
-
-  getInputForm() {
-    return this.inputForm;
-  }
-  showAddTab() {
-    this.AddPetTab = true;
-  }
-
-
-  createForm() {
-    this.inputForm = this.formBuilder.group({
-      name: ['', [
-        Validators.required,
-        Validators.minLength(2),
-        Validators.maxLength(20)
-      ]],
-      spieces: ['', [
-        Validators.required]],
-      race: ['', [
-        Validators.required,
-        Validators.minLength(3),
-        Validators.maxLength(40),
-      ]],
-      health: ['', [
-        Validators.required,
-        Validators.minLength(1),
-        Validators.maxLength(250)]],
-      age: [Number, Validators.required],
-      sex: ['', [
-        Validators.required,
-        Validators.minLength(4),
-        Validators.maxLength(6)]],
-      sterilized: [Boolean, Validators.required],
-      adopted: [Boolean, Validators.required],
-      adoptDate: [Date],
-      temporaryAdopted: [Boolean, Validators.required],
-      tmpAdoptForDays: [Number]
+  getPetsServiceConcat() {
+    this.petsService.getPetsWithHome().subscribe(data => {
+      this._pets = this._pets.concat(data);
     });
   }
 
-  tmpAdoptTrue() {
-    this.tmpAdopted = true;
+  getPetById(petId): PetsExternal {
+    let foundPet: PetsExternal;
+    this._pets.forEach(pet => {
+      if (pet.id === petId) {
+        foundPet = pet;
+      }
+    });
+    return foundPet;
   }
-  tmpAdoptFalse() {
-    this.tmpAdopted = false;
-  }
-  adoptTrue() {
-    this.adopted = true;
-  }
-  adoptFalse() {
-    this.adopted = false;
-  }
-  getTmpAdopted() {
-    return this.tmpAdopted;
-  }
-  anyAdoptTrue() {
 
-    if (this.adopted || this.tmpAdopted) {
-      return true;
-    }
-    else {
-      return false;
-    }
+  openConfirmationDialog(petId: number) {
+    const dialogRef = this.dialog.open(ConfirmationDialogComponent, {
+      minWidth: '10%',
+      data: { title: 'delete ' + this.getPetById(petId).name + '?' }
+    });
+    dialogRef.afterClosed().subscribe(dialogResult => {
+      this._confirmation = dialogResult;
+      if (this._confirmation) {
+        this.deletePet(petId);
+        this.ngOnInit();
+      }
+    });
   }
+
+  openEditDialog(petId: number) {
+    this._editedPet = this.getPetById(petId);
+    const dialogRef = this.dialog.open(AddPetDialogComponent, {
+      minWidth: '30%',
+      data: this._editedPet
+    });
+    dialogRef.afterClosed().subscribe(() => {
+      this.ngOnInit();
+    });
+  }
+
+  openAddDialog() {
+    const dialogRef = this.dialog.open(AddPetDialogComponent, {
+      minWidth: '30%',
+    });
+    dialogRef.afterClosed().subscribe(() => {
+      this.ngOnInit();
+    });
+  }
+
+  openAssignDialog(petId: number) {
+    this._editedPet = this.getPetById(petId);
+    const dialogRef = this.dialog.open(AssignHouseDialogComponent, {
+      minWidth: '50%',
+      data: this._editedPet
+    });
+    dialogRef.afterClosed().subscribe(() => {
+      this.ngOnInit();
+    });
+  }
+
+
+  deletePet(id: number) {
+    this.petsService.deletePet(id).subscribe();
+    this.ngOnInit();
+  }
+
   compareDates(dateA: Date, days: number, dateB: Date): boolean {
     const newDateA: Date = new Date(dateA);
     const newDateB: Date = new Date(dateB);

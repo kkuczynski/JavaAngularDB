@@ -15,20 +15,25 @@ button {
     border-radius: 10px;  
   }
 
+  .danger:hover{
+    border-color: darkred;
+    
+}
+
   button:hover{
-    border-color: rgb(74, 20, 140);
+    border-color: rgb(69, 39, 160);
   }
 
   .mat-radio-button{
     margin-left: 10px;
   }
   .mat-radio-button.mat-accent.mat-radio-checked .mat-radio-outer-circle {
-    border-color: rgb(74, 20, 140);
+    border-color: rgb(69, 39, 160);
 }
 .mat-radio-button.mat-accent .mat-radio-inner-circle {
-  background-color:  rgb(74, 20, 140);
+  background-color:  rgb(69, 39, 160);
 }
 
 .mat-radio-button.mat-accent .mat-radio-ripple .mat-ripple-element {
-  background-color:rgb(74, 20, 140, .26)
+  background-color:rgb(69, 39, 160)
 }

@@ -6,8 +6,8 @@ import com.petAdopt.backend.service.impl.PetsServiceImpl;
 import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
-@CrossOrigin(origins = "http://localhost:4200")
 @RestController
+@CrossOrigin
 @RequestMapping("/pets")
 public class PetsController {
     private final PetsServiceImpl petsServiceImpl;

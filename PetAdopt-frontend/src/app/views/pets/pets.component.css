@@ -1,39 +1,45 @@
-.radios{
-    transform: translateX(-8%);
+
+.labels{
+    color: darkgray
 }
-.post{
-    position: static;
-    transform: translateX(25%);
-}
-.petTab{
-    transform: translateX(18%);
-}
-.addPet{
-    min-width: 90%;
-}
+
 .add{
-    position: static;
+    position: absolute;
     right: 0;
-    top: 1%;
+    top: 2%;
 }
-.left{
-    text-align: right;
-    
-}
-.right{
-    text-align:left;
-}
-td{
-    
-    margin-top: 0px;
-}
+
 h4{
-    line-height: 80%;
+    line-height: 50%;
 }
+
 .noHome{
     color: darkred;
 }
-button{
-    background-color: gray;
+
+button {    
+    background: none;
+    border-style: solid;    
+    border-color: gray;
+    border-width: 2px;
+    color: gray;
+    padding: 7px 7px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 15px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    border-radius: 10px;  
     cursor: pointer;
 }
+ 
+button:hover{
+    border-color: rgb(69, 39, 160);
+    color: rgb(69, 39, 160);
+}
+  
+.danger:hover{
+    border-color: darkred;
+    color: darkred;
+}
+

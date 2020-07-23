@@ -2,6 +2,7 @@ div{
     font-family: Verdana, Geneva, Tahoma, sans-serif;
     color: gray
 }
+
 footer{
     position: absolute;
     bottom: 2%;
@@ -9,6 +10,7 @@ footer{
     font-family: Verdana, Geneva, Tahoma, sans-serif;
     color: gray
 }
+
 .split {
     height: 100%;
     width: 20%;
@@ -18,8 +20,9 @@ footer{
     overflow-x: hidden;
     padding-top: 0px;
     padding-right: 0px;
-  }
-  .splitted {
+}
+  
+.splitted {
     height: 100%;
     width: 60%;
     position: fixed;
@@ -28,31 +31,30 @@ footer{
     overflow-x: hidden;
     padding-top: 0px;
     overflow-y: scroll;
-  }
-  .left {
+    
+}
+  
+.left {
     left: 0;
     background-color: whitesmoke;
     overflow: hidden;
-  }
-  .right{
+}
+  
+.right{
       right: 0;
       background-color: whitesmoke;
       overflow: hidden;
-  }
-  .middle{
-      
-left: 20%
-  }
-  .centered {
-    position: absolute;
-    
-    left: 50%;
-    transform: translate(-50%, -0%);
+}
+  
+.middle{      
+    left: 20%
+}
+ 
+h1{
     text-align: center;
-  }
-
-  .pets{
-       
-    margin-left:auto; 
-    margin-right:auto;
-  }
+    color: gray;
+}
+  
+.pets{       
+    width: 100%;
+}

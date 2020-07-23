@@ -1,0 +1,120 @@
+<h1 mat-dialog-title>
+    <ng-template [ngIf]=!getIsUpdate>add pet</ng-template>
+    <ng-template [ngIf]=getIsUpdate>update pet</ng-template>
+</h1>
+<form class="addPet" [formGroup]="getInputForm()" fxLayout="column" fxLayoutGap="15px">
+    <mat-form-field>
+        <input matInput type="text" id="name" placeholder="name" formControlName="name" required>
+    </mat-form-field>
+
+
+    <mat-form-field>
+        <mat-label>spieces</mat-label>
+        <mat-select formControlName="spieces" required>
+            <mat-option value="DOG">dog</mat-option>
+            <mat-option value="CAT">cat</mat-option>
+            <mat-option value="MOUSE">mouse</mat-option>
+            <mat-option value="RAT">rat</mat-option>
+            <mat-option value="OTHER">other</mat-option>
+        </mat-select>
+    </mat-form-field>
+
+
+    <mat-form-field>
+        <mat-label>race</mat-label>
+        <input matInput type="text" placeholder="race" formControlName="race" required>
+    </mat-form-field>
+
+
+    <mat-form-field>
+        <mat-label>age</mat-label>
+        <input matInput type="number" placeholder="age" formControlName="age" required>
+    </mat-form-field>
+
+
+    <mat-form-field>
+
+        <mat-label>health status</mat-label>
+        <textarea rows=3 matInput placeholder="health status" formControlName="health" required> </textarea>
+    </mat-form-field>
+
+
+
+    <mat-list>
+        <div fxLayout="column" fxLayoutAlign="start start" fxLayoutGap="30px">
+            <div fxLayout="row" fxFlex="50%" fxFlexFill>
+
+                <mat-list-item>
+                    <mat-radio-group formControlName="sex" required>
+                        <div fxLayout="column" fxLayoutGap="13px">
+                            <div><label>sex</label></div>
+                            <div>
+                                <mat-radio-button value="MALE">male </mat-radio-button>
+                                <mat-radio-button value="FEMALE">female </mat-radio-button>
+                            </div>
+                        </div>
+                    </mat-radio-group>
+                </mat-list-item>
+
+                <mat-list-item>
+                    <mat-radio-group formControlName="sterilized" required>
+                        <div fxLayout="column" fxLayoutGap="13px">
+                            <div><label>sterilized</label></div>
+
+                            <div>
+                                <mat-radio-button value="true">yes&nbsp;&nbsp; </mat-radio-button>
+                                <mat-radio-button value="false">no </mat-radio-button>
+                            </div>
+                        </div>
+                    </mat-radio-group>
+                </mat-list-item>
+            </div>
+            <div fxLayout="row" fxFlex="50%" fxFlexFill>
+
+
+                <mat-list-item>
+                    <mat-radio-group formControlName="adopted" required>
+                        <div fxLayout="column" fxLayoutGap="13px">
+                            <div><label>adopted</label></div>
+                            <div>
+                                <mat-radio-button value=true>yes&nbsp;&nbsp; </mat-radio-button>
+                                <mat-radio-button value=false>no </mat-radio-button>
+                            </div>
+                        </div>
+                    </mat-radio-group>
+                </mat-list-item>
+
+
+                <mat-list-item>
+                    <mat-radio-group formControlName="temporaryAdopted" required>
+                        <div fxLayout="column" fxLayoutGap="13px">
+
+                            <div><label>temporary adopted</label></div>
+                            <div>
+                                <mat-radio-button value=true>yes&nbsp;&nbsp; </mat-radio-button>
+                                <mat-radio-button value=false>no </mat-radio-button>
+                            </div>
+                        </div>
+                    </mat-radio-group>
+                </mat-list-item>
+            </div>
+        </div>
+    </mat-list>
+
+    <mat-form-field>
+        <input matInput type="date" min="2000-01-01" max="2030-12-31" id="adoptDate" placeholder="adoption date"
+            formControlName="adoptDate">
+    </mat-form-field>
+
+    <mat-form-field>
+        <input matInput type="number" id="tmpAdoptForDays" placeholder="for how many days?" value=0
+            formControlName="tmpAdoptForDays">
+    </mat-form-field>
+    <div class="post" align=end> <button (click)=hideAddDialog()>cancel</button>
+        <button *ngIf="!getIsUpdate()" [ngClass]="(getInputForm().valid)?'enabled':'disabled'"
+            [disabled]="!getInputForm().valid" (click)=postPet()>add</button>
+        <button *ngIf="getIsUpdate()" [ngClass]="(getInputForm().valid)?'enabled':'disabled'"
+            [disabled]="!getInputForm().valid" (click)=putPet()>update</button></div>
+
+
+</form>

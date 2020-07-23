@@ -1,21 +1,25 @@
 package com.petAdopt.backend.controller;
 
+import com.petAdopt.backend.dao.body.LoginBody;
 import com.petAdopt.backend.dao.entity.Users;
 import com.petAdopt.backend.exception.NoRecordWithIdException;
+import com.petAdopt.backend.service.impl.AdoptionHousesServiceImpl;
 import com.petAdopt.backend.service.impl.UsersServiceImpl;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-// Zobacz czy nie da się tego zaimplmentować globalnie na całą apke ;D
-@CrossOrigin(origins = "http://localhost:4200")
 @RestController
+@CrossOrigin
 @RequestMapping("/users")
 public class UsersController {
 
     private final UsersServiceImpl usersServiceImpl;
-    public UsersController(UsersServiceImpl usersServiceImpl){
+    private final AdoptionHousesServiceImpl adoptionHousesServiceImpl;
+
+    public UsersController(UsersServiceImpl usersServiceImpl, AdoptionHousesServiceImpl adoptionHousesServiceImpl){
         this.usersServiceImpl = usersServiceImpl;
+        this.adoptionHousesServiceImpl = adoptionHousesServiceImpl;
     }
 
     @GetMapping()
@@ -23,7 +27,7 @@ public class UsersController {
         return usersServiceImpl.getAllUsers();
     }
 
-    @GetMapping("/{id}}")
+    @GetMapping("/{id}")
     public Users getById(@PathVariable Integer id) throws NoRecordWithIdException{
        return usersServiceImpl.getUserById(id);
     }
@@ -40,13 +44,14 @@ public class UsersController {
 
     @DeleteMapping("/{id}")
     public void deleteUsers(@PathVariable int id) throws NoRecordWithIdException{
-       usersServiceImpl.deleteUserById(id);
+
+        adoptionHousesServiceImpl.deleteAdoptionHouseByUserId(id);
+        usersServiceImpl.deleteUserById(id);
     }
 
     @PostMapping("/login")
-    public void login(){
-
+    public Users loginUser(@RequestBody LoginBody loginBody) throws NoRecordWithIdException{
+        return usersServiceImpl.loginUser(loginBody);
     }
 }
-
 

@@ -1,9 +1,14 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { AdoptionHousesInterface } from '../domain/external/adoption-houses.interface';
 import { environment } from '../../environments/environment';
+import { AdoptionHousesExternal } from '../domain/external/adoption-houses.external';
 
+const httpOptions = {
+  headers: new HttpHeaders({
+    'Content-Type': 'application/json'
+  })
+};
 
 
 @Injectable({
@@ -11,12 +16,28 @@ import { environment } from '../../environments/environment';
 })
 
 export class AdoptionHousesService {
-  // pola prywatne zaczynamy od _
-  // formatowanie
-  private url = environment.urlAdoptionHouses;
+  private URL = environment.urlAdoptionHouses;
 
   constructor(private http: HttpClient) { }
-  getAH(): Observable<AdoptionHousesInterface[]> {
-    return this.http.get<AdoptionHousesInterface[]>(this.url);
+
+  getAllHouses(): Observable<AdoptionHousesExternal[]> {
+    return this.http.get<AdoptionHousesExternal[]>(this.URL);
   }
+
+  getHouse(id: number): Observable<AdoptionHousesExternal> {
+    return this.http.get<AdoptionHousesExternal>(this.URL + '/' + id);
+  }
+
+  postNewHouse(house: AdoptionHousesExternal) {
+    return this.http.post<AdoptionHousesExternal>(this.URL, house, httpOptions);
+  }
+
+  putHouse(house: AdoptionHousesExternal) {
+    return this.http.put<AdoptionHousesExternal>(this.URL, house, httpOptions);
+  }
+
+  deleteHouse(id: number) {
+    return this.http.delete<string>(this.URL + '/' + id, httpOptions);
+  }
+
 }

@@ -1,15 +1,3 @@
-.invisibleBarHider{
-    height: 100%;
-    width: 10%;
-    left: 10%;
-    position: fixed;
-    z-index: 1;
-    top: 0;
-    overflow-x: hidden;
-    padding-top: 0px;
-    padding-right: 0px;   
-    right: 0;
-}
   button{
       transform: translateX(-10px);
       min-height: 5%;
@@ -32,7 +20,15 @@
     
       font-size: 150%;
   }
+  .purple{
+    border-color: rgb(69, 39, 160);
+    color: rgb(69, 39, 160);
+  }
+  .gray{
+    border-color: gray;
+    color: gray;
+  }
   button:hover{
-      border-color: rgb(74, 20, 140);
-      color: rgb(74, 20, 140);
+      border-color: rgb(69, 39, 160);
+      color: rgb(69, 39, 160);
   }

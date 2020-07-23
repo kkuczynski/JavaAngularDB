@@ -1,7 +1,12 @@
 import { Component, OnInit, Input, Inject } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-
+import { AddUserDialogComponent } from '../users/add-user-dialog/add-user-dialog.component';
+import { MatDialog } from '@angular/material';
+import { LoginService } from 'src/app/services/login.service';
+import { UsersExternal } from 'src/app/domain/external/users.external';
+import { UsersService } from 'src/app/services/users.service';
 import { Router } from '@angular/router';
+import { LeftMenuComponent } from '../left-menu/left-menu.component';
 
 @Component({
   selector: 'app-login',
@@ -11,20 +16,22 @@ import { Router } from '@angular/router';
 
 export class LoginComponent implements OnInit {
 
-  private date = new Date();
-  private logged = false;
-  private isAdmin = false;
-  private isEmployee = false;
-  private username = '';
-  private password = '';
-  private capsWarn = '';
-  private loginWarn = '';
-  private inputForm: FormGroup;
-  private signInButton = false;
-  private usernameCorrect = true;
-  private passwordCorrect = true;
+  private _date = new Date();
+  private _logged = false;
+  private _isAdmin = false;
+  private _isEmployee = false;
+  private _username = '';
+  private _password = '';
+  private _capsWarn = '';
+  private _loginWarn = '';
+  private _inputForm: FormGroup;
+  private _signInButton = false;
+  private _usernameCorrect = true;
+  private _passwordCorrect = true;
+  private _signedUser: UsersExternal;
 
-  constructor(private formBuilder: FormBuilder, private router: Router) {
+  // tslint:disable-next-line:max-line-length
+  constructor(public loginService: LoginService, private router: Router, private usersService: UsersService, private formBuilder: FormBuilder, public dialog: MatDialog) {
     this.createForm();
   }
 
@@ -33,7 +40,7 @@ export class LoginComponent implements OnInit {
   }
 
   createForm() {
-    this.inputForm = this.formBuilder.group({
+    this._inputForm = this.formBuilder.group({
       username: ['', [
         Validators.required,
         Validators.minLength(5),
@@ -48,42 +55,43 @@ export class LoginComponent implements OnInit {
   }
 
   getPassordCorrect() {
-    if (!this.inputForm.get('password').valid && this.inputForm.get('password').value.length > 0) {
-      this.passwordCorrect = false;
-      return this.passwordCorrect;
+    if (!this._inputForm.get('password').valid && this._inputForm.get('password').value.length > 0) {
+      this._passwordCorrect = false;
+      return this._passwordCorrect;
     }
     else {
-      this.passwordCorrect = true;
+      this._passwordCorrect = true;
     }
   }
 
   getUsernameCorrect() {
-    if (!this.inputForm.get('username').valid && this.inputForm.get('username').valueChanges) {
-      this.usernameCorrect = false;
-      return this.usernameCorrect;
+    if (!this._inputForm.get('username').valid && this._inputForm.get('username').valueChanges) {
+      this._usernameCorrect = false;
+      return this._usernameCorrect;
     }
     else {
-      this.usernameCorrect = true;
+      this._usernameCorrect = true;
     }
   }
+
   getInputForm() {
-    return this.inputForm;
+    return this._inputForm;
   }
 
   getLogged() {
-    return this.logged;
+    return this._logged;
   }
 
   setLogged(logged: boolean) {
-    this.logged = logged;
+    this._logged = logged;
   }
 
   getLoginWarn() {
-    return this.loginWarn;
+    return this._loginWarn;
   }
 
   getCapsWarn() {
-    return this.capsWarn;
+    return this._capsWarn;
   }
 
   keyDownFunction(event) {
@@ -91,44 +99,52 @@ export class LoginComponent implements OnInit {
       document.getElementById('signInButton').click();
     }
   }
+
   capsFunction(event) {
     if (event.getModifierState('CapsLock')) {
-      this.capsWarn = 'CapsLock is on!';
+      this._capsWarn = 'CapsLock is on!';
     } else {
-      this.capsWarn = '';
+      this._capsWarn = '';
     }
   }
 
   loggedAsAdmin() {
-    this.isAdmin = true;
-    this.isEmployee = true;
+    this._isAdmin = true;
+    this._isEmployee = true;
   }
 
   signIn() {
-    this.username = this.inputForm.get('username').value;
-    this.password = this.inputForm.get('password').value;
-    //  console do wywalenia
-    console.log('login: ' + this.inputForm.get('username').value);
-    console.log('pass: ' + this.inputForm.get('password').value);
-    this.logged = true;
-    this.loggedAsAdmin();
+    this._username = this._inputForm.get('username').value;
+    this._password = this._inputForm.get('password').value;
+    this.usersService.loginUser(this._username, this._password).subscribe((user: any) => {
+      this._signedUser = user;
+      if (this._signedUser) {
+        this.loginService.updateCurrentRole(this._signedUser.role);
+        this.loginService.updateCurrentUser(this._signedUser);
+        this._loginWarn = '';
+        this._logged = true;
+        this.router.navigateByUrl('pets');
+      } else {
+        this._loginWarn = 'Incorrect username or password';
+      }
+    });
   }
 
-  signUp() {
-
-  }
   signOut() {
-    this.logged = false;
-    this.isAdmin = false;
-    this.isEmployee = false;
+    this._logged = false;
+    this.loginService.role = null;
+    this.loginService.user = null;
+    this.router.navigateByUrl('pets');
   }
 
-  underlineField(fieldName): boolean {
-    if (!this.inputForm.get(fieldName).valid && this.inputForm.get(fieldName).value.length > 0) {
-      return true;
-    } else {
-      return false;
-    }
+  openSignUpDialog() {
+    const dialogRef = this.dialog.open(AddUserDialogComponent, {
+      minWidth: '30%',
+      data: { title: 'sign up' }
+    });
+    dialogRef.afterClosed().subscribe(() => {
+      this.ngOnInit();
+    });
   }
 
 }

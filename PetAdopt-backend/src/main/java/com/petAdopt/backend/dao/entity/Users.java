@@ -1,32 +1,25 @@
 package com.petAdopt.backend.dao.entity;
 
 import com.petAdopt.backend.dao.enums.Role;
-import lombok.Getter;
-
+import lombok.Data;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import java.sql.Date;
 
+@Data
 @Entity
 public class Users {
     //    same gettery :O ?
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
-    @Getter
     private Integer id;
-    @Getter
     private String name;
-    @Getter
     private String surname;
-    @Getter
     private Date createdAt;
-    @Getter
     private Role role;
-    @Getter
     private String login;
-    @Getter
     private String password;
 
     public Users(){

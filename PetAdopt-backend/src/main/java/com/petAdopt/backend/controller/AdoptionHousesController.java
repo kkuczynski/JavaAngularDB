@@ -7,8 +7,8 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-@CrossOrigin(origins = "http://localhost:4200")
 @RestController
+@CrossOrigin
 @RequestMapping("/adoptionHouses")
 // Doczytać o ResponseEntity<>
 public class AdoptionHousesController {
@@ -43,4 +43,5 @@ public class AdoptionHousesController {
     public void deleteAdoptionHouses(@PathVariable Integer id) throws NoRecordWithIdException{
         adoptionHousesServiceImpl.deleteAdoptionHouseById(id);
     }
+
 }
