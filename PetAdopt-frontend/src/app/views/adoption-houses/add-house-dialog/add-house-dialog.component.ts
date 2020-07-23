@@ -16,9 +16,9 @@ export class AddHouseDialogComponent implements OnInit {
   private _newHouse: AdoptionHousesExternal;
   constructor(private housesService: AdoptionHousesService, private formBuilder: FormBuilder,
               public dialogRef: MatDialogRef<AddHouseDialogComponent>, @Inject(MAT_DIALOG_DATA) public data: {
-              title: string, house: AdoptionHousesExternal, ownerId: number }) {
+      title: string, house: AdoptionHousesExternal, ownerId: number
+    }) {
     this.createForm();
-    console.log(data.ownerId);
   }
 
   ngOnInit(): void {
@@ -53,7 +53,6 @@ export class AddHouseDialogComponent implements OnInit {
     this._inputForm.get('city').setValue(this.data.house.city);
     this._inputForm.get('postcode').setValue(this.data.house.postcode);
     this._inputForm.get('conditions').setValue(this.data.house.conditions);
-    console.log('userid:' + this.data.ownerId);
   }
 
   createForm() {
@@ -89,7 +88,6 @@ export class AddHouseDialogComponent implements OnInit {
       this._inputForm.get('conditions').value);
     this._newHouse.setOwnerId(this.data.ownerId);
     this.housesService.postNewHouse(this._newHouse).subscribe();
-    console.log(this._newHouse);
     this.dialogRef.close();
   }
 
@@ -103,13 +101,11 @@ export class AddHouseDialogComponent implements OnInit {
     this._newHouse.setId(this.data.house.id);
     this._newHouse.setOwnerId(this.data.house.userId);
     this.housesService.putHouse(this._newHouse).subscribe();
-    console.log(this._newHouse);
     this.dialogRef.close();
   }
 
   keyDownFunction(event) {
     if (event.keyCode === 13) {
-      console.log('enter');
       document.getElementById('confirmButton').click();
     }
   }

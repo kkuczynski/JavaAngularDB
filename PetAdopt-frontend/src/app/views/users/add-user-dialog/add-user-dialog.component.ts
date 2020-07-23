@@ -114,9 +114,7 @@ export class AddUserDialogComponent implements OnInit {
       this._inputForm.get('role').value ? this._inputForm.get('role').value : Role[this._userRole],
       this._inputForm.get('login').value,
       this._inputForm.get('password').value);
-
     this.usersService.postNewUser(this._newUser).subscribe();
-    console.log(this._newUser);
     this.dialogRef.close();
   }
 
@@ -131,7 +129,6 @@ export class AddUserDialogComponent implements OnInit {
       this._inputForm.get('password').value);
     this._newUser.setId(this.data.user.id);
     this.usersService.putUser(this._newUser).subscribe();
-    console.log(this._newUser);
     this.dialogRef.close();
   }
 
@@ -163,7 +160,6 @@ export class AddUserDialogComponent implements OnInit {
 
   keyDownFunction(event) {
     if (event.keyCode === 13) {
-      console.log('enter');
       document.getElementById('confirmButton').click();
     }
   }

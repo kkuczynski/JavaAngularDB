@@ -117,11 +117,8 @@ export class LoginComponent implements OnInit {
     this._username = this._inputForm.get('username').value;
     this._password = this._inputForm.get('password').value;
     this.usersService.loginUser(this._username, this._password).subscribe((user: any) => {
-      console.log(user);
       this._signedUser = user;
-      console.log(this._signedUser);
       if (this._signedUser) {
-        console.log('in if');
         this.loginService.updateCurrentRole(this._signedUser.role);
         this.loginService.updateCurrentUser(this._signedUser);
         this._loginWarn = '';
@@ -131,7 +128,6 @@ export class LoginComponent implements OnInit {
         this._loginWarn = 'Incorrect username or password';
       }
     });
-    console.log(this.loginService.role);
   }
 
   signOut() {
