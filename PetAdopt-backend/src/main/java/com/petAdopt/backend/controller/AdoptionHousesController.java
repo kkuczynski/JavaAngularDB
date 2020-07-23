@@ -10,7 +10,7 @@ import java.util.List;
 @RestController
 @CrossOrigin
 @RequestMapping("/adoptionHouses")
-// Doczytać o ResponseEntity<>
+// Doczytać o ResponseEntity<> !
 public class AdoptionHousesController {
     private final AdoptionHousesServiceImpl adoptionHousesServiceImpl;
 

@@ -6,10 +6,11 @@ import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
   templateUrl: './confirmation-dialog.component.html',
   styleUrls: ['./confirmation-dialog.component.css']
 })
+//  spoko tylko co on robi ? :D
 export class ConfirmationDialogComponent implements OnInit {
 
   constructor(public dialogRef: MatDialogRef<ConfirmationDialogComponent>,
-              @Inject(MAT_DIALOG_DATA) public data: ConfirmDialogData) { }
+    @Inject(MAT_DIALOG_DATA) public data: ConfirmDialogData) { }
 
   ngOnInit(): void {
   }
@@ -23,7 +24,7 @@ export class ConfirmationDialogComponent implements OnInit {
   }
 
 }
-
+// yy
 export class ConfirmDialogData {
 
   constructor(public title: string) { }

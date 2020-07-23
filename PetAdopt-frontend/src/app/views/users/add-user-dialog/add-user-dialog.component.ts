@@ -13,19 +13,25 @@ import { LoginService } from 'src/app/services/login.service';
   styleUrls: ['./add-user-dialog.component.css']
 })
 export class AddUserDialogComponent implements OnInit {
+  // HALO TYP
   private _isUpdate = false;
+  // HALO TYP
   private _isAdd = false;
+  // HALO TYP
   private _isSignUp = false;
+  // HALO TYP
   private _inputForm: FormGroup;
   private _newUser: UsersExternal;
+  // HALO TYP
   private _userRole = Role.USER;
+  // HALO TYP fajna zaminna
   hide = true;
   private _loggedAs: string;
 
-
+  // format
   constructor(private usersService: UsersService, public loginService: LoginService,
-              private formBuilder: FormBuilder, public dialogRef: MatDialogRef<AddUserDialogComponent>,
-              @Inject(MAT_DIALOG_DATA) public data: { title: string, user: UsersExternal }) {
+    private formBuilder: FormBuilder, public dialogRef: MatDialogRef<AddUserDialogComponent>,
+    @Inject(MAT_DIALOG_DATA) public data: { title: string, user: UsersExternal }) {
     this.createForm();
   }
 
@@ -153,7 +159,7 @@ export class AddUserDialogComponent implements OnInit {
       return true;
     }
     else {
-      this._inputForm.get('passwordConfirmed').setErrors({incorrect: true});
+      this._inputForm.get('passwordConfirmed').setErrors({ incorrect: true });
       return false;
     }
   }

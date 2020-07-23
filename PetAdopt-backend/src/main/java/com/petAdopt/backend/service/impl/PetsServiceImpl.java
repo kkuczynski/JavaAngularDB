@@ -35,6 +35,7 @@ public class PetsServiceImpl implements PetsService {
         try {
             petsRepo.deleteById(id);
         }
+        //        trochę ogólny exception
         catch(Exception e){
             throw new NoRecordWithIdException(message);
         }
@@ -45,6 +46,7 @@ public class PetsServiceImpl implements PetsService {
             petsRepo.findById(pets.getId());
             return petsRepo.save(pets);
         }
+        //        trochę ogólny exception
         catch (Exception e) {
             throw new NoRecordWithIdException(message);
         }

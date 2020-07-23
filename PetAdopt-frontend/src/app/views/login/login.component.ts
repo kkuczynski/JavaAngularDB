@@ -15,26 +15,38 @@ import { LeftMenuComponent } from '../left-menu/left-menu.component';
 })
 
 export class LoginComponent implements OnInit {
-
+  // trup
   private _date = new Date();
+  // HALO TYP zwracany
   private _logged = false;
+  // HALO TYP zwracany + trup
   private _isAdmin = false;
+  // HALO TYP zwracany + trup
   private _isEmployee = false;
+  // HALO TYP zwracany
   private _username = '';
+  // HALO TYP zwracany
   private _password = '';
+  // HALO TYP zwracany
   private _capsWarn = '';
+  // HALO TYP zwracany
   private _loginWarn = '';
+  // HALO TYP zwracany
   private _inputForm: FormGroup;
+  // HALO TYP zwracany
   private _signInButton = false;
+  // HALO TYP zwracany
   private _usernameCorrect = true;
+  // HALO TYP zwracany
   private _passwordCorrect = true;
   private _signedUser: UsersExternal;
 
   // tslint:disable-next-line:max-line-length
+  // formatowanie
   constructor(public loginService: LoginService, private router: Router, private usersService: UsersService, private formBuilder: FormBuilder, public dialog: MatDialog) {
     this.createForm();
   }
-
+  // po co to w takim razie ? :D
   ngOnInit() {
 
   }
@@ -53,7 +65,7 @@ export class LoginComponent implements OnInit {
         Validators.pattern('[a-zA-Z0-9]+([._]?[a-zA-Z0-9]+)')]]
     });
   }
-
+  // HALO TYP zwracany i przeanalizuj czy tak powinno być :D
   getPassordCorrect() {
     if (!this._inputForm.get('password').valid && this._inputForm.get('password').value.length > 0) {
       this._passwordCorrect = false;
@@ -63,7 +75,7 @@ export class LoginComponent implements OnInit {
       this._passwordCorrect = true;
     }
   }
-
+  // HALO TYP zwracany i przeanalizuj czy tak powinno być :D
   getUsernameCorrect() {
     if (!this._inputForm.get('username').valid && this._inputForm.get('username').valueChanges) {
       this._usernameCorrect = false;
@@ -73,23 +85,23 @@ export class LoginComponent implements OnInit {
       this._usernameCorrect = true;
     }
   }
-
+  // HALO TYP zwracany 
   getInputForm() {
     return this._inputForm;
   }
-
+  // HALO TYP zwracany 
   getLogged() {
     return this._logged;
   }
-
+  // HALO TYP zwracany 
   setLogged(logged: boolean) {
     this._logged = logged;
   }
-
+  // HALO TYP zwracany 
   getLoginWarn() {
     return this._loginWarn;
   }
-
+  // HALO TYP zwracany 
   getCapsWarn() {
     return this._capsWarn;
   }
@@ -143,6 +155,7 @@ export class LoginComponent implements OnInit {
       data: { title: 'sign up' }
     });
     dialogRef.afterClosed().subscribe(() => {
+      // spoko tylko to nic nie robi :D
       this.ngOnInit();
     });
   }

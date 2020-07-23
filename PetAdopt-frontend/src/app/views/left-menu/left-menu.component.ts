@@ -9,10 +9,13 @@ import { UsersExternal } from 'src/app/domain/external/users.external';
   styleUrls: ['./left-menu.component.css']
 })
 export class LeftMenuComponent implements OnInit {
-
+  // HALO TYP zwracany
   private _isAdmin = true;
+  // HALO TYP zwracany
   private _isEmployee = true;
+  // HALO TYP zwracany
   private _buttonTextEnabled;
+  // HALO TYP zwracany
   private _loggedAs;
   private _user: UsersExternal = null;
 
@@ -22,7 +25,7 @@ export class LeftMenuComponent implements OnInit {
     this._loggedAs = this.loginService.role;
     this._user = this.loginService.user;
   }
-
+  // HALO TYP zwracany
   someoneIsLogged() {
     if (this._user) {
       return true;
@@ -30,23 +33,25 @@ export class LeftMenuComponent implements OnInit {
       return false;
     }
   }
-
+  // HALO TYP zwracany
   getLoggedAs() {
+    // ngOnInit
     this.ngOnInit();
     return this._loggedAs;
   }
 
   onMouseLeave(picked) {
-    //  nie da się inaczej ? :?
+    //  nie da się inaczej ? :? dalej nie da się ?
     document.getElementById('butt' + picked).style.minWidth = '22%';
     this._buttonTextEnabled = 0;
   }
 
   onMouseEnter(picked) {
     this._buttonTextEnabled = picked;
+    //  nie da się inaczej ? :? dalej nie da się ?
     document.getElementById('butt' + picked).style.minWidth = 'fit-content';
   }
-
+  // HALO TYP zwracany
   checkRoute(route: string) {
     if (this.router.url === route) {
       return true;
@@ -55,19 +60,19 @@ export class LeftMenuComponent implements OnInit {
       return false;
     }
   }
-
+  // HALO TYP zwracany
   getButtonTextEnabled() {
     return this._buttonTextEnabled;
   }
-
+  // HALO TYP zwracany
   getIsAdmin() {
     return this._isAdmin;
   }
-
+  // HALO TYP zwracany
   getIsEmployee() {
     return this._isEmployee;
   }
-
+  // HALO TYP zwracany
   setIsAdmin(isAdmin: boolean) {
     this._isAdmin = isAdmin;
   }

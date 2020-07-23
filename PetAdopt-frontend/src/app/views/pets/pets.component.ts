@@ -17,14 +17,19 @@ export class PetsComponent implements OnInit {
 
   private _newPet: PetsExternal;
   private _pets: PetsExternal[];
+  // HALO TYP zwracany 
   private _currentDate = new Date();
+  // HALO TYP zwracany + trup
   private _month = this._currentDate.getMonth();
+  // HALO TYP zwracany + trup
   private _deleteClicked = -1;
   private _editedPet: PetsExternal;
+  // HALO TYP zwracany 
   private _confirmation = false;
+  // HALO TYP zwracany + trup
   private _role;
   private _loggedAs: string;
-
+  // format
   constructor(private petsService: PetsService, public loginService: LoginService, public dialog: MatDialog) { }
 
   ngOnInit() {
@@ -35,15 +40,15 @@ export class PetsComponent implements OnInit {
   setRole() {
     this._loggedAs = this.loginService.role;
   }
-
+  // HALO TYP zwracany
   getLoggedAs() {
     return this._loggedAs;
   }
-
+  // HALO TYP zwracany
   getPets() {
     return this._pets;
   }
-
+  // HALO TYP zwracany
   getCurrentDate() {
     return this._currentDate;
   }
@@ -77,6 +82,7 @@ export class PetsComponent implements OnInit {
       this._confirmation = dialogResult;
       if (this._confirmation) {
         this.deletePet(petId);
+        // inaczej
         this.ngOnInit();
       }
     });
@@ -89,6 +95,7 @@ export class PetsComponent implements OnInit {
       data: this._editedPet
     });
     dialogRef.afterClosed().subscribe(() => {
+      // inaczej
       this.ngOnInit();
     });
   }
@@ -98,6 +105,7 @@ export class PetsComponent implements OnInit {
       minWidth: '30%',
     });
     dialogRef.afterClosed().subscribe(() => {
+      // inaczej
       this.ngOnInit();
     });
   }
@@ -109,6 +117,7 @@ export class PetsComponent implements OnInit {
       data: this._editedPet
     });
     dialogRef.afterClosed().subscribe(() => {
+      // inaczej
       this.ngOnInit();
     });
   }

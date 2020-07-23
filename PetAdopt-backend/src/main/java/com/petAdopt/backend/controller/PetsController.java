@@ -9,6 +9,7 @@ import java.util.List;
 @RestController
 @CrossOrigin
 @RequestMapping("/pets")
+// Doczytać o ResponseEntity<> !
 public class PetsController {
     private final PetsServiceImpl petsServiceImpl;
 
