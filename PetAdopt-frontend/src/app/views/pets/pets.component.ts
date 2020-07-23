@@ -5,6 +5,7 @@ import { MatDialog } from '@angular/material';
 import { AddPetDialogComponent } from './add-pet-dialog/add-pet-dialog.component';
 import { ConfirmationDialogComponent} from '../confirmation-dialog/confirmation-dialog.component';
 import { AssignHouseDialogComponent} from './assign-house-dialog/assign-house-dialog.component';
+import { LoginService } from 'src/app/services/login.service';
 
 @Component({
   // tslint:disable-next-line:component-selector
@@ -15,28 +16,28 @@ import { AssignHouseDialogComponent} from './assign-house-dialog/assign-house-di
 export class PetsComponent implements OnInit {
 
   private _newPet: PetsExternal;
-  private _isAdmin = true;
-  private _isEmployee = true;
   private _pets: PetsExternal[];
   private _currentDate = new Date();
   private _month = this._currentDate.getMonth();
   private _deleteClicked = -1;
   private _editedPet: PetsExternal;
   private _confirmation = false;
+  private _role;
+  private _loggedAs: string;
 
-  constructor(private petsService: PetsService, public dialog: MatDialog) { }
+  constructor(private petsService: PetsService, public loginService: LoginService, public dialog: MatDialog) { }
 
   ngOnInit() {
     this.getPetsService();
-    // this.getPetsServiceConcat();
+    this.setRole();
   }
 
-  getIsAdmin() {
-    return this._isAdmin;
+  setRole() {
+    this._loggedAs = this.loginService.role;
   }
 
-  getIsEmployee() {
-    return this._isEmployee;
+  getLoggedAs() {
+    return this._loggedAs;
   }
 
   getPets() {

@@ -15,15 +15,16 @@
         </mat-form-field>
 
 
-
-        <mat-form-field *ngIf="(getIsUpdate() || getIsAdd())">
-            <mat-label> role </mat-label>
-            <mat-select formControlName="role">
-                <mat-option value="USER">user</mat-option>
-                <mat-option value="EMPLOYEE">employee</mat-option>
-                <mat-option value="ADMIN">admin</mat-option>
-            </mat-select>
-        </mat-form-field>
+        <div *ngIf="getLoggedAs()=='ADMIN'">
+            <mat-form-field *ngIf="(getIsUpdate() || getIsAdd())">
+                <mat-label> role </mat-label>
+                <mat-select formControlName="role">
+                    <mat-option value="USER">user</mat-option>
+                    <mat-option value="EMPLOYEE">employee</mat-option>
+                    <mat-option value="ADMIN">admin</mat-option>
+                </mat-select>
+            </mat-form-field>
+        </div>
 
         <mat-form-field>
             <input matInput type="text" id="login" placeholder="username" formControlName="login" required>

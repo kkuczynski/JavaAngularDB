@@ -1,6 +1,6 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { UsersService } from 'src/app/services/users.service';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { MatSort, MatTableDataSource, MatDialog } from '@angular/material';
 import { UsersExternal } from 'src/app/domain/external/users.external';
 import { ConfirmationDialogComponent } from '../confirmation-dialog/confirmation-dialog.component';
@@ -26,22 +26,26 @@ export class UsersComponent implements OnInit {
   private _editedUser: UsersExternal;
   private _houses: AdoptionHousesExternal[] = [];
   private _editedHouse: any;
+  private _loggedAs: string;
   // private dataSource: MatTableDataSource<UsersEntity>;
 
 
   // tslint:disable-next-line:max-line-length
-  constructor(public loginService: LoginService, private usersService: UsersService, private housesService: AdoptionHousesService, public dialog: MatDialog) { }
+  constructor(public loginService: LoginService, private usersService: UsersService, private housesService: AdoptionHousesService, public dialog: MatDialog, private router: Router) { }
 
   @ViewChild(MatSort, { static: true }) sort: MatSort;
 
   ngOnInit() {
     this.getUsersService();
     this.getHousesService();
-    console.log(this.loginService.role);
-    console.log(this.loginService.user);
-    // this.dataSource = new MatTableDataSource(this._users);
-    // console.log(this.dataSource);
-    // this. dataSource.sort = this.sort;
+    this.setRole();
+    this.redirectToMain();
+  }
+
+  redirectToMain(){
+    if (this._loggedAs === 'USER' || this._loggedAs === null) {
+      this.router.navigateByUrl('pets');
+    }
   }
 
   getDisplayedColumns() {
@@ -50,6 +54,14 @@ export class UsersComponent implements OnInit {
 
   getUsersService() {
     this.usersService.getAllUsers().subscribe(data => this._users = data);
+  }
+
+  setRole() {
+    this._loggedAs = this.loginService.role;
+  }
+
+  getLoggedAs() {
+    return this._loggedAs;
   }
 
   getUsers() {

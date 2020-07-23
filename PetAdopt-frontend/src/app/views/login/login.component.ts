@@ -5,6 +5,8 @@ import { MatDialog } from '@angular/material';
 import { LoginService } from 'src/app/services/login.service';
 import { UsersExternal } from 'src/app/domain/external/users.external';
 import { UsersService } from 'src/app/services/users.service';
+import { Router } from '@angular/router';
+import { LeftMenuComponent } from '../left-menu/left-menu.component';
 
 @Component({
   selector: 'app-login',
@@ -29,7 +31,7 @@ export class LoginComponent implements OnInit {
   private _signedUser: UsersExternal;
 
   // tslint:disable-next-line:max-line-length
-  constructor(public loginService: LoginService, private usersService: UsersService, private formBuilder: FormBuilder, public dialog: MatDialog) {
+  constructor(public loginService: LoginService, private router: Router, private usersService: UsersService, private formBuilder: FormBuilder, public dialog: MatDialog) {
     this.createForm();
   }
 
@@ -122,10 +124,11 @@ export class LoginComponent implements OnInit {
         console.log('in if');
         this.loginService.updateCurrentRole(this._signedUser.role);
         this.loginService.updateCurrentUser(this._signedUser);
+        this._loginWarn = '';
         this._logged = true;
+        this.router.navigateByUrl('pets');
       } else {
-        // TODO: info about incorrect login/username
-        console.log('in else');
+        this._loginWarn = 'Incorrect username or password';
       }
     });
     console.log(this.loginService.role);
@@ -133,8 +136,9 @@ export class LoginComponent implements OnInit {
 
   signOut() {
     this._logged = false;
-    this._isAdmin = false;
-    this._isEmployee = false;
+    this.loginService.role = null;
+    this.loginService.user = null;
+    this.router.navigateByUrl('pets');
   }
 
   openSignUpDialog() {

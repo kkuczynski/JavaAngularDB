@@ -1,7 +1,7 @@
 <!--button icons-->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
-<table mat-table #table [dataSource]="getUsers()" class="mat-elevation-z8">
+<table *ngIf="getLoggedAs()=='ADMIN' || getLoggedAs()=='EMPLOYEE'" mat-table #table [dataSource]="getUsers()" class="mat-elevation-z8">
     <ng-container matColumnDef="no.">
         <th mat-header-cell *matHeaderCellDef> no. </th>
         <td mat-cell *matCellDef="let row, let i = index"> {{i+1}} </td>
@@ -61,7 +61,7 @@
                         <i class="fa fa-user"></i><i class="fa fa-wrench"></i>
                     </div>
                 </button>
-                <button class="danger" (click)="openConfirmationDialog(row.id)">
+                <button *ngIf="getLoggedAs()=='ADMIN'" class="danger" (click)="openConfirmationDialog(row.id)">
                     <div fxLayout="row" fxLayoutAlign="center center" fxLayoutGap="0ppx">
                         <i class="fa fa-user"></i><i class="fa fa-times"></i>
                     </div>

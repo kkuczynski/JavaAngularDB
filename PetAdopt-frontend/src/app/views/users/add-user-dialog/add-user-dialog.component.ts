@@ -5,6 +5,7 @@ import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 import { UsersExternal } from 'src/app/domain/external/users.external';
 import { DatePipe } from '@angular/common';
 import { Role } from 'src/app/domain/enums/role.enum';
+import { LoginService } from 'src/app/services/login.service';
 
 @Component({
   selector: 'app-add-user-dialog',
@@ -19,15 +20,17 @@ export class AddUserDialogComponent implements OnInit {
   private _newUser: UsersExternal;
   private _userRole = Role.USER;
   hide = true;
+  private _loggedAs: string;
 
 
-  constructor(private usersService: UsersService, private formBuilder: FormBuilder, public dialogRef: MatDialogRef<AddUserDialogComponent>,
-    // tslint:disable-next-line:align
-    @Inject(MAT_DIALOG_DATA) public data: { title: string, user: UsersExternal }) {
+  constructor(private usersService: UsersService, public loginService: LoginService,
+              private formBuilder: FormBuilder, public dialogRef: MatDialogRef<AddUserDialogComponent>,
+              @Inject(MAT_DIALOG_DATA) public data: { title: string, user: UsersExternal }) {
     this.createForm();
   }
 
   ngOnInit(): void {
+    this.setRole();
     if (this.data.title === 'update user') {
       this._isUpdate = true;
       this.fillFormWithData();
@@ -38,6 +41,14 @@ export class AddUserDialogComponent implements OnInit {
     else if (this.data.title === 'sign up') {
       this._isSignUp = true;
     }
+  }
+
+  setRole() {
+    this._loggedAs = this.loginService.role;
+  }
+
+  getLoggedAs() {
+    return this._loggedAs;
   }
 
   getInputForm() {

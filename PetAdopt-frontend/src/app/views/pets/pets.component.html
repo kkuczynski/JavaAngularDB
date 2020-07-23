@@ -1,7 +1,7 @@
 <!--button icons-->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
-<button (click)="openAddDialog()" *ngIf="getIsEmployee" class="add">
+<button (click)="openAddDialog()" *ngIf="getLoggedAs()=='ADMIN' || getLoggedAs()=='EMPLOYEE'" class="add">
     <div fxLayout="row" fxLayoutAlign="center center" fxLayoutGap="0px">
         <i class="fa fa-paw"></i><i class="fa fa-plus"></i>
     </div>
@@ -108,28 +108,28 @@
             </div>
         </div>
     </div>
-    <div *ngIf="getIsEmployee()" fxLayout="row" fxLayoutAlign="end end" fxLayoutGap="2px">
+    <div fxLayout="row" fxLayoutAlign="end end" fxLayoutGap="2px">
 
 
-        <button (click)="openAssignDialog(pet.id)">
+        <button *ngIf="getLoggedAs()=='ADMIN' || getLoggedAs()=='EMPLOYEE'" (click)="openAssignDialog(pet.id)">
             <div fxLayout="row" fxLayoutAlign="center center" fxLayoutGap="0px">
                 <i class="fa fa-mail-forward"></i><i class="fa fa-home"></i>
             </div>
         </button>
 
-        <button (click)="openEditDialog(pet.id)">
+        <button *ngIf="getLoggedAs()=='ADMIN' || getLoggedAs()=='EMPLOYEE'" (click)="openEditDialog(pet.id)">
             <div fxLayout="row" fxLayoutAlign="center center" fxLayoutGap="0px">
                 <i class="fa fa-paw"></i><i class="fa fa-wrench"></i>
             </div>
         </button>
-        <ng-template [ngIf]="getIsAdmin()">
+        
 
-            <button class="danger" (click)="openConfirmationDialog(pet.id)">
+            <button *ngIf="getLoggedAs()=='ADMIN'" class="danger" (click)="openConfirmationDialog(pet.id)">
                 <div fxLayout="row" fxLayoutAlign="center center" fxLayoutGap="0px">
                     <i class="fa fa-paw"></i><i class="fa fa-times"></i>
                 </div>
             </button>
 
-        </ng-template>
+        
     </div>
 </div>

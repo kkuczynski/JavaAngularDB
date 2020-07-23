@@ -9,7 +9,7 @@
 </button>
 
 
-<button [routerLink]="['/users']" [ngClass]="(checkRoute('/users'))?'purple':'gray'" class="butt2" id="butt2"
+<button *ngIf="getLoggedAs()=='ADMIN' || getLoggedAs()=='EMPLOYEE'"[routerLink]="['/users']" [ngClass]="(checkRoute('/users'))?'purple':'gray'" class="butt2" id="butt2"
     (mouseenter)="onMouseEnter(2)" (mouseleave)="onMouseLeave(2)">
     <div class="inButton"><i class="fa fa-user"></i>
         <ng-template [ngIf]="getButtonTextEnabled() == 2"> users </ng-template>
@@ -17,7 +17,7 @@
 </button>
 
 
-<button [routerLink]="['/houses']" [ngClass]="(checkRoute('/houses'))?'purple':'gray'" class="butt3" id="butt3"
+<button *ngIf="getLoggedAs()=='ADMIN' || getLoggedAs()=='EMPLOYEE'" [routerLink]="['/houses']" [ngClass]="(checkRoute('/houses'))?'purple':'gray'" class="butt3" id="butt3"
     (mouseenter)="onMouseEnter(3)" (mouseleave)="onMouseLeave(3)">
     <div class="inButton"><i class="fa fa-home"></i>
         <ng-template [ngIf]="getButtonTextEnabled() == 3"> homes </ng-template>
@@ -25,7 +25,7 @@
 </button>
 
 
-<button [routerLink]="['/settings']" class="butt4" id="butt4" [ngClass]="(checkRoute('/settings'))?'purple':'gray'"
+<button *ngIf="someoneIsLogged()" [routerLink]="['/settings']" class="butt4" id="butt4" [ngClass]="(checkRoute('/settings'))?'purple':'gray'"
     (mouseenter)="onMouseEnter(4)" (mouseleave)="onMouseLeave(4)">
     <div class="inButton"><i class="fa fa-cogs"></i>
         <ng-template [ngIf]="getButtonTextEnabled() == 4"> settings</ng-template>

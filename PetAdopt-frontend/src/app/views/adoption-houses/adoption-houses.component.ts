@@ -6,6 +6,8 @@ import { ConfirmationDialogComponent } from '../confirmation-dialog/confirmation
 import { AddHouseDialogComponent } from './add-house-dialog/add-house-dialog.component';
 import { UsersService } from 'src/app/services/users.service';
 import { UsersExternal } from 'src/app/domain/external/users.external';
+import { LoginService } from 'src/app/services/login.service';
+import { Router } from '@angular/router';
 
 @Component({
   // tslint:disable-next-line:component-selector
@@ -23,11 +25,28 @@ export class AdoptionHousesComponent implements OnInit {
   // array of full names of houses owners
   private _names: Names[] = [];
   private _fullname;
+  private _loggedAs;
 
-  constructor(private housesService: AdoptionHousesService, private usersService: UsersService, public dialog: MatDialog) { }
+  // tslint:disable-next-line:max-line-length
+  constructor(private housesService: AdoptionHousesService, public loginService: LoginService, private usersService: UsersService, public dialog: MatDialog, private router: Router) { }
 
   ngOnInit() {
     this.getHousesService();
+    this.setRole();
+    this.redirectToMain();
+  }
+
+  redirectToMain(){
+    if (this._loggedAs === 'USER' || this._loggedAs === null) {
+      this.router.navigateByUrl('pets');
+    }
+  }
+  setRole() {
+    this._loggedAs = this.loginService.role;
+  }
+
+  getLoggedAs(): string {
+    return this._loggedAs;
   }
 
   getName(id: number) {
