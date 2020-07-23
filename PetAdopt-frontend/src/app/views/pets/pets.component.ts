@@ -6,6 +6,8 @@ import { AddPetDialogComponent } from './add-pet-dialog/add-pet-dialog.component
 import { ConfirmationDialogComponent } from '../confirmation-dialog/confirmation-dialog.component';
 import { AssignHouseDialogComponent } from './assign-house-dialog/assign-house-dialog.component';
 import { LoginService } from 'src/app/services/login.service';
+import { Role } from 'src/app/domain/enums/role.enum';
+import { Router } from '@angular/router';
 
 @Component({
   // tslint:disable-next-line:component-selector
@@ -17,20 +19,12 @@ export class PetsComponent implements OnInit {
 
   private _newPet: PetsExternal;
   private _pets: PetsExternal[];
-  // HALO TYP zwracany 
-  private _currentDate = new Date();
-  // HALO TYP zwracany + trup
-  private _month = this._currentDate.getMonth();
-  // HALO TYP zwracany + trup
-  private _deleteClicked = -1;
+  private _currentDate: Date = new Date();
   private _editedPet: PetsExternal;
-  // HALO TYP zwracany 
   private _confirmation = false;
-  // HALO TYP zwracany + trup
-  private _role;
-  private _loggedAs: string;
-  // format
-  constructor(private petsService: PetsService, public loginService: LoginService, public dialog: MatDialog) { }
+  private _loggedAs: Role;
+
+  constructor(private petsService: PetsService, public loginService: LoginService, public dialog: MatDialog, private router: Router) { }
 
   ngOnInit() {
     this.getPetsService();
@@ -40,16 +34,16 @@ export class PetsComponent implements OnInit {
   setRole() {
     this._loggedAs = this.loginService.role;
   }
-  // HALO TYP zwracany
-  getLoggedAs() {
+
+  getLoggedAs(): Role {
     return this._loggedAs;
   }
-  // HALO TYP zwracany
-  getPets() {
+
+  getPets(): PetsExternal[] {
     return this._pets;
   }
-  // HALO TYP zwracany
-  getCurrentDate() {
+
+  getCurrentDate(): Date {
     return this._currentDate;
   }
 
@@ -82,8 +76,7 @@ export class PetsComponent implements OnInit {
       this._confirmation = dialogResult;
       if (this._confirmation) {
         this.deletePet(petId);
-        // inaczej
-        this.ngOnInit();
+        this.router.navigateByUrl('pets');
       }
     });
   }
@@ -95,8 +88,7 @@ export class PetsComponent implements OnInit {
       data: this._editedPet
     });
     dialogRef.afterClosed().subscribe(() => {
-      // inaczej
-      this.ngOnInit();
+      this.router.navigateByUrl('pets');
     });
   }
 
@@ -105,8 +97,7 @@ export class PetsComponent implements OnInit {
       minWidth: '30%',
     });
     dialogRef.afterClosed().subscribe(() => {
-      // inaczej
-      this.ngOnInit();
+      this.router.navigateByUrl('pets');
     });
   }
 
@@ -117,15 +108,14 @@ export class PetsComponent implements OnInit {
       data: this._editedPet
     });
     dialogRef.afterClosed().subscribe(() => {
-      // inaczej
-      this.ngOnInit();
+      this.router.navigateByUrl('pets');
     });
   }
 
 
   deletePet(id: number) {
     this.petsService.deletePet(id).subscribe();
-    this.ngOnInit();
+    this.router.navigateByUrl('pets');
   }
 
   compareDates(dateA: Date, days: number, dateB: Date): boolean {

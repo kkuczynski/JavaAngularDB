@@ -17,18 +17,19 @@ import { Names } from '../../adoption-houses/adoption-houses.component';
 export class AssignHouseDialogComponent implements OnInit {
 
   private _houses: AdoptionHousesExternal[] = [];
-  // trup
-  private _isUpdate: boolean;
   private _newPet: PetsExternal;
   private _displayedColumns: string[] = ['no.', 'city', 'postcode', 'address', 'owner', 'options'];
   private _names: Names[] = [];
   private _houseId: number;
-  // trup
   private _pets: PetsExternal[] = [];
   private _assigments: Assigment[] = [];
 
-  constructor(private housesService: AdoptionHousesService, private petsService: PetsService, private usersService: UsersService,
-    public dialogRef: MatDialogRef<AssignHouseDialogComponent>, @Inject(MAT_DIALOG_DATA) public data: PetsExternal) { }
+  constructor(
+    private housesService: AdoptionHousesService,
+    private petsService: PetsService,
+    private usersService: UsersService,
+    public dialogRef: MatDialogRef<AssignHouseDialogComponent>,
+    @Inject(MAT_DIALOG_DATA) public data: PetsExternal) { }
 
   ngOnInit(): void {
     this.getHousesService();
@@ -38,8 +39,8 @@ export class AssignHouseDialogComponent implements OnInit {
   hideAssignDialog() {
     this.dialogRef.close();
   }
-  //  HALO TYP 
-  getHouses() {
+
+  getHouses(): AdoptionHousesExternal[] {
     return this._houses;
   }
 
@@ -98,13 +99,11 @@ export class AssignHouseDialogComponent implements OnInit {
   assignHome(houseId) {
     this._houseId = houseId;
     this.updateAssigment(houseId, 1);
-
   }
 
   unassignHome(houseId) {
     this._houseId = -1;
     this.updateAssigment(houseId, -1);
-
   }
 
   getOwnerFullName(userId: number) {
@@ -115,8 +114,8 @@ export class AssignHouseDialogComponent implements OnInit {
       this._names.push(namesObj);
     });
   }
-  //  HALO TYP 
-  checkIsAssigned(houseId) {
+
+  checkIsAssigned(houseId): boolean {
     if (this.data.houseId === houseId) {
       return true;
     }

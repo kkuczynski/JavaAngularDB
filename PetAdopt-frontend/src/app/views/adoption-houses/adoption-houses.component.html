@@ -1,5 +1,4 @@
-<!--button icons fajna copy-pasta ale to mógłbyś wrzucić dla ogółu apki :)-->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
 
 <table *ngIf="getLoggedAs()=='ADMIN' || getLoggedAs()=='EMPLOYEE'" mat-table #table [dataSource]="getHouses()" class="mat-elevation-z8">
     <ng-container matColumnDef="no.">

@@ -9,6 +9,7 @@ import { AddHouseDialogComponent } from '../adoption-houses/add-house-dialog/add
 import { AdoptionHousesService } from 'src/app/services/adoption-houses.service';
 import { AdoptionHousesExternal } from 'src/app/domain/external/adoption-houses.external';
 import { LoginService } from 'src/app/services/login.service';
+import { Role } from 'src/app/domain/enums/role.enum';
 
 
 
@@ -19,22 +20,23 @@ import { LoginService } from 'src/app/services/login.service';
   styleUrls: ['./users.component.css']
 })
 export class UsersComponent implements OnInit {
-  //  HALO TYP 
-  private _users = [];
+  private _users: UsersExternal[] = [];
   private _displayedColumns: string[] = ['no.', 'surname', 'name', 'createdAt', 'role', 'login', 'options'];
-  //  HALO TYP 
   private _confirmation = false;
   private _editedUser: UsersExternal;
   private _houses: AdoptionHousesExternal[] = [];
-  //  HALO TYP 
-  private _editedHouse: any;
-  private _loggedAs: string;
-  // private dataSource: MatTableDataSource<UsersEntity>;
+  private _editedHouse: AdoptionHousesExternal;
+  private _loggedAs: Role;
+  private _admin: Role = Role.ADMIN;
+  private _employee: Role = Role.EMPLOYEE;
+  private _user: Role = Role.USER;
 
-
-  // tslint:disable-next-line:max-line-length
-  // format
-  constructor(public loginService: LoginService, private usersService: UsersService, private housesService: AdoptionHousesService, public dialog: MatDialog, private router: Router) { }
+  constructor(
+    public loginService: LoginService,
+    private usersService: UsersService,
+    private housesService: AdoptionHousesService,
+    public dialog: MatDialog,
+    private router: Router) { }
 
   @ViewChild(MatSort, { static: true }) sort: MatSort;
 
@@ -45,13 +47,25 @@ export class UsersComponent implements OnInit {
     this.redirectToMain();
   }
 
+  getAdmin(): Role {
+    return this._admin;
+  }
+
+  getEmployee(): Role {
+    return this._employee;
+  }
+
+  getUser(): Role {
+    return this._user;
+  }
+
   redirectToMain() {
-    if (this._loggedAs === 'USER' || this._loggedAs === null) {
+    if (this._loggedAs === this._user || this._loggedAs === null) {
       this.router.navigateByUrl('pets');
     }
   }
-  //  HALO TYP 
-  getDisplayedColumns() {
+
+  getDisplayedColumns(): string[] {
     return this._displayedColumns;
   }
 
@@ -62,14 +76,13 @@ export class UsersComponent implements OnInit {
   setRole() {
     this._loggedAs = this.loginService.role;
   }
-  //  HALO TYP 
-  getLoggedAs() {
+
+  getLoggedAs(): Role {
     return this._loggedAs;
   }
-  //  HALO TYP 
-  getUsers() {
+
+  getUsers(): UsersExternal[] {
     return this._users;
-    // return this.dataSource;
   }
 
   getUserById(userId): UsersExternal {
@@ -129,8 +142,7 @@ export class UsersComponent implements OnInit {
       this._confirmation = dialogResult;
       if (this._confirmation) {
         this.deleteUser(userId);
-        // inaczej
-        this.ngOnInit();
+        this.router.navigateByUrl('users');
       }
     });
   }
@@ -145,8 +157,7 @@ export class UsersComponent implements OnInit {
       this._confirmation = dialogResult;
       if (this._confirmation) {
         this.deleteHouse(userId);
-        // inaczej
-        this.ngOnInit();
+        this.router.navigateByUrl('users');
       }
     });
   }
@@ -161,8 +172,7 @@ export class UsersComponent implements OnInit {
       }
     });
     dialogRef.afterClosed().subscribe(() => {
-      // inaczej
-      this.ngOnInit();
+      this.router.navigateByUrl('users');
     });
   }
 
@@ -172,8 +182,7 @@ export class UsersComponent implements OnInit {
       data: { title: 'add user' }
     });
     dialogRef.afterClosed().subscribe(() => {
-      // inaczej
-      this.ngOnInit();
+      this.router.navigateByUrl('users');
     });
   }
 
@@ -183,8 +192,7 @@ export class UsersComponent implements OnInit {
       data: { title: 'add house', ownerId: userId }
     });
     dialogRef.afterClosed().subscribe(() => {
-      // inaczej
-      this.ngOnInit();
+      this.router.navigateByUrl('users');
     });
   }
 
@@ -196,21 +204,18 @@ export class UsersComponent implements OnInit {
       data: { title: 'edit house', house: this._editedHouse, ownerId: userId }
     });
     dialogRef.afterClosed().subscribe(() => {
-      // inaczej
-      this.ngOnInit();
+      this.router.navigateByUrl('users');
     });
   }
 
   deleteUser(userId: number) {
     this.usersService.deleteUser(userId).subscribe();
-    // inaczej
-    this.ngOnInit();
+    this.router.navigateByUrl('users');
   }
 
   deleteHouse(userId: number) {
     const houseId = this.getHousIdByUserId(userId);
     this.usersService.deleteUser(houseId).subscribe();
-    // inaczej
-    this.ngOnInit();
+    this.router.navigateByUrl('users');
   }
 }

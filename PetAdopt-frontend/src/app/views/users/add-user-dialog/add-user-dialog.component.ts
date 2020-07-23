@@ -13,24 +13,23 @@ import { LoginService } from 'src/app/services/login.service';
   styleUrls: ['./add-user-dialog.component.css']
 })
 export class AddUserDialogComponent implements OnInit {
-  // HALO TYP
   private _isUpdate = false;
-  // HALO TYP
   private _isAdd = false;
-  // HALO TYP
   private _isSignUp = false;
-  // HALO TYP
   private _inputForm: FormGroup;
   private _newUser: UsersExternal;
-  // HALO TYP
-  private _userRole = Role.USER;
-  // HALO TYP fajna zaminna
-  hide = true;
-  private _loggedAs: string;
+  private _userRole: Role = Role.USER;
+  private _adminRole: Role = Role.ADMIN;
+  private _employeeRole: Role = Role.EMPLOYEE;
+  private _loggedAs: Role;
+  // variable for showing/hiding the password
+  public hide = true;
 
-  // format
-  constructor(private usersService: UsersService, public loginService: LoginService,
-    private formBuilder: FormBuilder, public dialogRef: MatDialogRef<AddUserDialogComponent>,
+  constructor(
+    private usersService: UsersService,
+    public loginService: LoginService,
+    private formBuilder: FormBuilder,
+    public dialogRef: MatDialogRef<AddUserDialogComponent>,
     @Inject(MAT_DIALOG_DATA) public data: { title: string, user: UsersExternal }) {
     this.createForm();
   }
@@ -49,6 +48,17 @@ export class AddUserDialogComponent implements OnInit {
     }
   }
 
+  getAdmin(): Role {
+    return this._adminRole;
+  }
+
+  getEmployee(): Role {
+    return this._employeeRole;
+  }
+
+  getUser(): Role {
+    return this._userRole;
+  }
   setRole() {
     this._loggedAs = this.loginService.role;
   }

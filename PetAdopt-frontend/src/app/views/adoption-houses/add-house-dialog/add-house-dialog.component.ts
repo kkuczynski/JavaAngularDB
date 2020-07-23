@@ -10,17 +10,19 @@ import { AdoptionHousesService } from 'src/app/services/adoption-houses.service'
   styleUrls: ['./add-house-dialog.component.css']
 })
 export class AddHouseDialogComponent implements OnInit {
-  // HALO TYP zwracany
   private _isUpdate = false;
-  // HALO TYP zwracany
   private _isAdd = false;
   private _inputForm: FormGroup;
   private _newHouse: AdoptionHousesExternal;
 
-  // formatowanie
-  constructor(private housesService: AdoptionHousesService, private formBuilder: FormBuilder,
-    public dialogRef: MatDialogRef<AddHouseDialogComponent>, @Inject(MAT_DIALOG_DATA) public data: {
-      title: string, house: AdoptionHousesExternal, ownerId: number
+  constructor(
+    private housesService: AdoptionHousesService,
+    private formBuilder: FormBuilder,
+    public dialogRef: MatDialogRef<AddHouseDialogComponent>,
+    @Inject(MAT_DIALOG_DATA) public data: {
+      title: string,
+      house: AdoptionHousesExternal,
+      ownerId: number
     }) {
     this.createForm();
   }
@@ -34,16 +36,16 @@ export class AddHouseDialogComponent implements OnInit {
       this._isAdd = true;
     }
   }
-  // HALO TYP zwracany
-  getInputForm() {
+
+  getInputForm(): FormGroup {
     return this._inputForm;
   }
-  // HALO TYP zwracany
-  getIsUpdate() {
+
+  getIsUpdate(): boolean {
     return this._isUpdate;
   }
-  // HALO TYP zwracany
-  getIsAdd() {
+
+  getIsAdd(): boolean {
     return this._isAdd;
   }
 
@@ -83,8 +85,6 @@ export class AddHouseDialogComponent implements OnInit {
   }
 
   postHouse() {
-    // a to, to chyba martwe ?
-    const date = new Date();
     this._newHouse = new AdoptionHousesExternal();
     this._newHouse.setNew(
       this._inputForm.get('address').value,

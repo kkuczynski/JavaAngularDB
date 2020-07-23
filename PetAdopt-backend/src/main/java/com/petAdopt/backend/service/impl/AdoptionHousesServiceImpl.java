@@ -20,9 +20,9 @@ public class AdoptionHousesServiceImpl implements AdoptionHousesService {
     public AdoptionHouses getAdoptionHouseById(Integer id) throws NoRecordWithIdException{
         return adoptionHousesRepo.findById(id).orElseThrow(() -> new NoRecordWithIdException(message));
     }
-//    po co rzutowanie?
+
     public List<AdoptionHouses> getAllAdoptionHouses(){
-        return (List<AdoptionHouses>) adoptionHousesRepo.findAll();
+        return adoptionHousesRepo.findAll();
     }
 
     public AdoptionHouses saveAdoptionHouse (AdoptionHouses adoptionHouses){

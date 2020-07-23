@@ -9,8 +9,7 @@ import { RouteConfigLoadEnd } from '@angular/router';
 })
 export class LoginService {
 
-  // czemu jawnie po indexie ?
-  role = Role[2];
+  role: Role = Role.USER;
   update: Observable<string>;
   observer: Observer<string>;
   user: UsersExternal = null;
@@ -23,20 +22,8 @@ export class LoginService {
     });
   }
 
-  // może po elementach
-  updateCurrentRole(role: string) {
-    if (role === 'ADMIN') {
-      this.role = Role[0];
-      // Role.ADMIN ??????????????
-    }
-    else if (role === 'EMPLOYEE') {
-      this.role = Role[1];
-      // Role.EMPLOYEE ??????????????
-    }
-    else {
-      this.role = Role[2];
-      // Role.USER ??????????????
-    }
+  updateCurrentRole(role: Role) {
+    this.role = role;
   }
 
   updateCurrentUser(user: UsersExternal) {

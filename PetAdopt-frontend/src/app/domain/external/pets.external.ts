@@ -16,10 +16,10 @@ export class PetsExternal {
     temporaryAdopted: boolean;
     tmpAdoptForDays: number;
     houseId: number;
-    // Nie wiem po co ci to do komunikacji z backendem :?
+
     setNew(name: string, spieces: Spieces, race: string, age: number,
-        addedAt: string, health: string, sex: Sex, sterilized: boolean, adopted: boolean,
-        temporaryAdopted: boolean, adoptDate?: string, tmpAdoptForDays = 0) {
+           addedAt: string, health: string, sex: Sex, sterilized: boolean, adopted: boolean,
+           temporaryAdopted: boolean, adoptDate?: string, tmpAdoptForDays = 0) {
         this.name = name;
         this.spieces = spieces;
         this.race = race;
@@ -33,15 +33,15 @@ export class PetsExternal {
         this.temporaryAdopted = temporaryAdopted;
         this.tmpAdoptForDays = tmpAdoptForDays;
     }
-    // Nie wiem po co ci to do komunikacji z backendem :?
+
     setId(id: number) {
         this.id = id;
     }
-    // Nie wiem po co ci to do komunikacji z backendem :?
+
     getId() {
         return this.id;
     }
-    // Nie wiem po co ci to do komunikacji z backendem :?
+
     setHouseId(id: number) {
         this.houseId = id;
     }

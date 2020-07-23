@@ -31,13 +31,7 @@ public class UsersServiceImpl implements UsersService {
     }
 
     public void deleteUserById(Integer id) throws NoRecordWithIdException{
-        try {
-            usersRepo.deleteById(id);
-        }
-        //        trochę ogólny exception
-        catch(Exception e){
-            throw new NoRecordWithIdException(message);
-        }
+        usersRepo.deleteById(id);
     }
 
     public Users updateUsers(Users users) throws NoRecordWithIdException{
