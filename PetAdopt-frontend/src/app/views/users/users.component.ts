@@ -19,18 +19,21 @@ import { LoginService } from 'src/app/services/login.service';
   styleUrls: ['./users.component.css']
 })
 export class UsersComponent implements OnInit {
-
+  //  HALO TYP 
   private _users = [];
   private _displayedColumns: string[] = ['no.', 'surname', 'name', 'createdAt', 'role', 'login', 'options'];
+  //  HALO TYP 
   private _confirmation = false;
   private _editedUser: UsersExternal;
   private _houses: AdoptionHousesExternal[] = [];
+  //  HALO TYP 
   private _editedHouse: any;
   private _loggedAs: string;
   // private dataSource: MatTableDataSource<UsersEntity>;
 
 
   // tslint:disable-next-line:max-line-length
+  // format
   constructor(public loginService: LoginService, private usersService: UsersService, private housesService: AdoptionHousesService, public dialog: MatDialog, private router: Router) { }
 
   @ViewChild(MatSort, { static: true }) sort: MatSort;
@@ -42,12 +45,12 @@ export class UsersComponent implements OnInit {
     this.redirectToMain();
   }
 
-  redirectToMain(){
+  redirectToMain() {
     if (this._loggedAs === 'USER' || this._loggedAs === null) {
       this.router.navigateByUrl('pets');
     }
   }
-
+  //  HALO TYP 
   getDisplayedColumns() {
     return this._displayedColumns;
   }
@@ -59,11 +62,11 @@ export class UsersComponent implements OnInit {
   setRole() {
     this._loggedAs = this.loginService.role;
   }
-
+  //  HALO TYP 
   getLoggedAs() {
     return this._loggedAs;
   }
-
+  //  HALO TYP 
   getUsers() {
     return this._users;
     // return this.dataSource;
@@ -93,7 +96,7 @@ export class UsersComponent implements OnInit {
     let houseId = -1;
     this._houses.forEach(house => {
       if (house.userId === userId) {
-      houseId = house.id;
+        houseId = house.id;
       }
     });
     return houseId;
@@ -126,6 +129,7 @@ export class UsersComponent implements OnInit {
       this._confirmation = dialogResult;
       if (this._confirmation) {
         this.deleteUser(userId);
+        // inaczej
         this.ngOnInit();
       }
     });
@@ -141,6 +145,7 @@ export class UsersComponent implements OnInit {
       this._confirmation = dialogResult;
       if (this._confirmation) {
         this.deleteHouse(userId);
+        // inaczej
         this.ngOnInit();
       }
     });
@@ -156,6 +161,7 @@ export class UsersComponent implements OnInit {
       }
     });
     dialogRef.afterClosed().subscribe(() => {
+      // inaczej
       this.ngOnInit();
     });
   }
@@ -166,6 +172,7 @@ export class UsersComponent implements OnInit {
       data: { title: 'add user' }
     });
     dialogRef.afterClosed().subscribe(() => {
+      // inaczej
       this.ngOnInit();
     });
   }
@@ -176,6 +183,7 @@ export class UsersComponent implements OnInit {
       data: { title: 'add house', ownerId: userId }
     });
     dialogRef.afterClosed().subscribe(() => {
+      // inaczej
       this.ngOnInit();
     });
   }
@@ -188,18 +196,21 @@ export class UsersComponent implements OnInit {
       data: { title: 'edit house', house: this._editedHouse, ownerId: userId }
     });
     dialogRef.afterClosed().subscribe(() => {
+      // inaczej
       this.ngOnInit();
     });
   }
 
   deleteUser(userId: number) {
     this.usersService.deleteUser(userId).subscribe();
+    // inaczej
     this.ngOnInit();
   }
 
   deleteHouse(userId: number) {
     const houseId = this.getHousIdByUserId(userId);
     this.usersService.deleteUser(houseId).subscribe();
+    // inaczej
     this.ngOnInit();
   }
 }

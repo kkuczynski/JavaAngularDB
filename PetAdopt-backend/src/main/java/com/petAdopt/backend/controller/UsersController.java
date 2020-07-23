@@ -12,6 +12,7 @@ import java.util.List;
 @RestController
 @CrossOrigin
 @RequestMapping("/users")
+// Doczytać o ResponseEntity<> !
 public class UsersController {
 
     private final UsersServiceImpl usersServiceImpl;

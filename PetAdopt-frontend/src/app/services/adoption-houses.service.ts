@@ -27,15 +27,15 @@ export class AdoptionHousesService {
   getHouse(id: number): Observable<AdoptionHousesExternal> {
     return this.http.get<AdoptionHousesExternal>(this.URL + '/' + id);
   }
-
+  // HALO TYP ZWRACANY
   postNewHouse(house: AdoptionHousesExternal) {
     return this.http.post<AdoptionHousesExternal>(this.URL, house, httpOptions);
   }
-
+  // HALO TYP ZWRACANY
   putHouse(house: AdoptionHousesExternal) {
     return this.http.put<AdoptionHousesExternal>(this.URL, house, httpOptions);
   }
-
+  // HALO TYP ZWRACANY
   deleteHouse(id: number) {
     return this.http.delete<string>(this.URL + '/' + id, httpOptions);
   }

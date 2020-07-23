@@ -14,6 +14,7 @@ const httpOptions = {
   providedIn: 'root'
 })
 export class UsersService {
+  // const?
   private URL = environment.urlUsers;
 
   constructor(private http: HttpClient) { }
@@ -23,28 +24,29 @@ export class UsersService {
   }
 
   getUser(id: number): Observable<UsersExternal> {
-      return this.http.get<UsersExternal>(this.URL + '/' + id);
+    return this.http.get<UsersExternal>(this.URL + '/' + id);
   }
-
+  // HALO TYP ZWRACANY
   postNewUser(user: UsersExternal) {
     return this.http.post<UsersExternal>(this.URL, user, httpOptions);
   }
-
+  // HALO TYP ZWRACANY
   putUser(user: UsersExternal) {
     return this.http.put<UsersExternal>(this.URL, user, httpOptions);
   }
-
+  // HALO TYP ZWRACANY
   deleteUser(id: number) {
     return this.http.delete<string>(this.URL + '/' + id, httpOptions);
   }
-
+  // co on zwraca ?
   loginUser(username: string, password: string): Observable<any> {
     const body = new LoginBody(username, password);
+    // no to mogło być w chyba w jednym stringu :?
     return this.http.post<UsersExternal>(this.URL + '/' + 'login', body, httpOptions);
   }
 }
-
-export class LoginBody{
+// hmm to mogłoby być w osobnym pliku :?
+export class LoginBody {
   private username: string;
   private password: string;
 

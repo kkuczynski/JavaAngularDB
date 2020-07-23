@@ -34,6 +34,7 @@ public class UsersServiceImpl implements UsersService {
         try {
             usersRepo.deleteById(id);
         }
+        //        trochę ogólny exception
         catch(Exception e){
             throw new NoRecordWithIdException(message);
         }
@@ -43,7 +44,7 @@ public class UsersServiceImpl implements UsersService {
         try {
             usersRepo.findById(users.getId());
             return usersRepo.save(users);
-
+//        trochę ogólny exception
         } catch (Exception e) {
             throw new NoRecordWithIdException(message);
         }
@@ -58,7 +59,7 @@ public class UsersServiceImpl implements UsersService {
                 }
             }
 
-
+//        trochę ogólny exception
         } catch (Exception e) {
             throw new NoRecordWithIdException(message);
         }

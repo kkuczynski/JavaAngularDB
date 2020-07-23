@@ -14,6 +14,7 @@ import java.time.LocalDate;
 @Data
 @Entity
 public class Pets {
+//    same gettery :O ?
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
     private Integer id;

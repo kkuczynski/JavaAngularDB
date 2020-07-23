@@ -6,6 +6,8 @@ import javax.persistence.*;
 @Data
 @Entity
 public class AdoptionHouses {
+
+//    same gettery :O ?
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
     private Integer id;

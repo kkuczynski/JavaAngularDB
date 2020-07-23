@@ -20,6 +20,7 @@ public class AdoptionHousesServiceImpl implements AdoptionHousesService {
     public AdoptionHouses getAdoptionHouseById(Integer id) throws NoRecordWithIdException{
         return adoptionHousesRepo.findById(id).orElseThrow(() -> new NoRecordWithIdException(message));
     }
+//    po co rzutowanie?
     public List<AdoptionHouses> getAllAdoptionHouses(){
         return (List<AdoptionHouses>) adoptionHousesRepo.findAll();
     }
@@ -33,6 +34,7 @@ public class AdoptionHousesServiceImpl implements AdoptionHousesService {
         try {
               adoptionHousesRepo.deleteById(id);
         }
+//        trochę ogólny exception
         catch(Exception e){
             throw new NoRecordWithIdException(message);
         }
@@ -45,7 +47,7 @@ public class AdoptionHousesServiceImpl implements AdoptionHousesService {
                     adoptionHousesRepo.delete(house);
                 }
             });
-
+//        trochę ogólny exception
         } catch(Exception e) {
             throw new NoRecordWithIdException(message);
         }
@@ -55,7 +57,7 @@ public class AdoptionHousesServiceImpl implements AdoptionHousesService {
         try {
             adoptionHousesRepo.findById(adoptionHouses.getId());
             return adoptionHousesRepo.save(adoptionHouses);
-
+//        trochę ogólny exception
         } catch (Exception e) {
             throw new NoRecordWithIdException(message);
 

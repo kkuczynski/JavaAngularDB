@@ -15,19 +15,20 @@ import { PetsService } from 'src/app/services/pets.service';
 export class AddPetDialogComponent implements OnInit {
 
   private _adopted: boolean;
+  // trup
   private _tmpAdopted: boolean;
   private _inputForm: FormGroup;
   private _newPet: PetsExternal;
   private _isUpdate: boolean;
 
-
+  // format
   constructor(private petsService: PetsService, private formBuilder: FormBuilder, public dialogRef: MatDialogRef<AddPetDialogComponent>,
-              @Inject(MAT_DIALOG_DATA) public data: PetsExternal) {
-                this.createForm();
+    @Inject(MAT_DIALOG_DATA) public data: PetsExternal) {
+    this.createForm();
   }
 
   ngOnInit(): void {
-    if (this.data){
+    if (this.data) {
       this._isUpdate = true;
       this.fillFormWithData();
     } else {
@@ -64,19 +65,19 @@ export class AddPetDialogComponent implements OnInit {
       tmpAdoptForDays: [Number] // [Number, Validators.pattern('[0-9]+$')]
     });
   }
-
+  //  HALO TYP 
   getIsUpdate() {
     return this._isUpdate;
   }
-
+  //  HALO TYP 
   getInputForm() {
     return this._inputForm;
   }
-
-  getAdopted(){
+  //  HALO TYP 
+  getAdopted() {
     return this._adopted;
   }
-
+  //  HALO TYP 
   getTmpAdopted() {
     if (this._inputForm.get('temporaryAdopted').value === 'true') {
       return true;
@@ -85,7 +86,7 @@ export class AddPetDialogComponent implements OnInit {
       return false;
     }
   }
-
+  //  HALO TYP to z tym wyżej chyba w 1 funkcji się dało
   anyAdoptTrue() {
     if (this._inputForm.get('temporaryAdopted').value === 'true' || this._inputForm.get('adopted').value === 'true') {
       return true;
@@ -100,9 +101,10 @@ export class AddPetDialogComponent implements OnInit {
     this.dialogRef.close();
   }
 
-  // because html doesn't like bools
-  boolToString(bool: boolean){
-    if (bool){
+  // because html doesn't like bools -> No, you don't like bools!
+  //  HALO TYP 
+  boolToString(bool: boolean) {
+    if (bool) {
       return 'true';
     }
     else {
@@ -112,38 +114,38 @@ export class AddPetDialogComponent implements OnInit {
 
   fillFormWithData() {
     this._inputForm.get('name').setValue(this.data.name),
-    this._inputForm.get('spieces').setValue(this.data.spieces),
-    this._inputForm.get('race').setValue(this.data.race),
-    this._inputForm.get('age').setValue(this.data.age),
-    this._inputForm.get('health').setValue(this.data.health),
-    this._inputForm.get('sex').setValue(this.data.sex),
-    this._inputForm.get('sterilized').setValue(this.boolToString(this.data.sterilized)),
-    this._inputForm.get('adopted').setValue(this.boolToString(this.data.adopted)),
-    this._inputForm.get('temporaryAdopted').setValue(this.boolToString(this.data.temporaryAdopted)),
-    this._inputForm.get('adoptDate').setValue(this.data.adoptDate),
-    this._inputForm.get('tmpAdoptForDays').setValue(this.data.tmpAdoptForDays);
+      this._inputForm.get('spieces').setValue(this.data.spieces),
+      this._inputForm.get('race').setValue(this.data.race),
+      this._inputForm.get('age').setValue(this.data.age),
+      this._inputForm.get('health').setValue(this.data.health),
+      this._inputForm.get('sex').setValue(this.data.sex),
+      this._inputForm.get('sterilized').setValue(this.boolToString(this.data.sterilized)),
+      this._inputForm.get('adopted').setValue(this.boolToString(this.data.adopted)),
+      this._inputForm.get('temporaryAdopted').setValue(this.boolToString(this.data.temporaryAdopted)),
+      this._inputForm.get('adoptDate').setValue(this.data.adoptDate),
+      this._inputForm.get('tmpAdoptForDays').setValue(this.data.tmpAdoptForDays);
 
   }
 
   postPet() {
-      const date = new Date();
-      this._newPet = new PetsExternal();
-      this._newPet.setNew(
-        this._inputForm.get('name').value,
-        this._inputForm.get('spieces').value,
-        this._inputForm.get('race').value,
-        this._inputForm.get('age').value,
-        this.dateConverter(date),
-        this._inputForm.get('health').value,
-        this._inputForm.get('sex').value,
-        this._inputForm.get('sterilized').value ? this._inputForm.get('sterilized').value : false,
-        this._inputForm.get('adopted').value,
-        this._inputForm.get('temporaryAdopted').value ? this._inputForm.get('temporaryAdopted').value : false,
-        this._inputForm.get('adoptDate').value ? this.dateConverter(this._inputForm.get('adoptDate').value) : this.dateConverter(date),
-        this._inputForm.get('tmpAdoptForDays').value ? this._inputForm.get('tmpAdoptForDays').value : 0);
+    const date = new Date();
+    this._newPet = new PetsExternal();
+    this._newPet.setNew(
+      this._inputForm.get('name').value,
+      this._inputForm.get('spieces').value,
+      this._inputForm.get('race').value,
+      this._inputForm.get('age').value,
+      this.dateConverter(date),
+      this._inputForm.get('health').value,
+      this._inputForm.get('sex').value,
+      this._inputForm.get('sterilized').value ? this._inputForm.get('sterilized').value : false,
+      this._inputForm.get('adopted').value,
+      this._inputForm.get('temporaryAdopted').value ? this._inputForm.get('temporaryAdopted').value : false,
+      this._inputForm.get('adoptDate').value ? this.dateConverter(this._inputForm.get('adoptDate').value) : this.dateConverter(date),
+      this._inputForm.get('tmpAdoptForDays').value ? this._inputForm.get('tmpAdoptForDays').value : 0);
 
-      this.petsService.postNewPet(this._newPet).subscribe();
-      this.dialogRef.close();
+    this.petsService.postNewPet(this._newPet).subscribe();
+    this.dialogRef.close();
   }
 
 
@@ -151,18 +153,18 @@ export class AddPetDialogComponent implements OnInit {
     const date = new Date();
     this._newPet = new PetsExternal();
     this._newPet.setNew(
-        this._inputForm.get('name').value,
-        this._inputForm.get('spieces').value,
-        this._inputForm.get('race').value,
-        this._inputForm.get('age').value,
-        this.data.addedAt,
-        this._inputForm.get('health').value,
-        this._inputForm.get('sex').value,
-        this._inputForm.get('sterilized').value ? this._inputForm.get('sterilized').value : false,
-        this._inputForm.get('adopted').value,
-        this._inputForm.get('temporaryAdopted').value ? this._inputForm.get('temporaryAdopted').value : false,
-        this._inputForm.get('adoptDate').value ? this.dateConverter(this._inputForm.get('adoptDate').value) : this.dateConverter(date),
-        this._inputForm.get('tmpAdoptForDays').value ? this._inputForm.get('tmpAdoptForDays').value : 0);
+      this._inputForm.get('name').value,
+      this._inputForm.get('spieces').value,
+      this._inputForm.get('race').value,
+      this._inputForm.get('age').value,
+      this.data.addedAt,
+      this._inputForm.get('health').value,
+      this._inputForm.get('sex').value,
+      this._inputForm.get('sterilized').value ? this._inputForm.get('sterilized').value : false,
+      this._inputForm.get('adopted').value,
+      this._inputForm.get('temporaryAdopted').value ? this._inputForm.get('temporaryAdopted').value : false,
+      this._inputForm.get('adoptDate').value ? this.dateConverter(this._inputForm.get('adoptDate').value) : this.dateConverter(date),
+      this._inputForm.get('tmpAdoptForDays').value ? this._inputForm.get('tmpAdoptForDays').value : 0);
     this._newPet.setId(this.data.id);
     this.petsService.putPet(this._newPet).subscribe();
     this.dialogRef.close();

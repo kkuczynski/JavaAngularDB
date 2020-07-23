@@ -12,13 +12,13 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatModule } from 'src/app/modules/mat.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AddPetDialogComponent } from './views/pets/add-pet-dialog/add-pet-dialog.component';
-import {FlexLayoutModule} from '@angular/flex-layout';
+import { FlexLayoutModule } from '@angular/flex-layout';
 import { ConfirmationDialogComponent } from './views/confirmation-dialog/confirmation-dialog.component';
 import { SettingsComponent } from './views/settings/settings.component';
 import { AddUserDialogComponent } from './views/users/add-user-dialog/add-user-dialog.component';
 import { AddHouseDialogComponent } from './views/adoption-houses/add-house-dialog/add-house-dialog.component';
 import { AssignHouseDialogComponent } from './views/pets/assign-house-dialog/assign-house-dialog.component';
-import { LoginService} from 'src/app/services/login.service';
+import { LoginService } from 'src/app/services/login.service';
 
 @NgModule({
   declarations: [
