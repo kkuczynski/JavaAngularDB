@@ -45,12 +45,12 @@ export class UsersService {
 }
 
 export class LoginBody{
-  private _username: string;
-  private _password: string;
+  private username: string;
+  private password: string;
 
   constructor(username: string, password: string) {
-    this._username = username;
-    this._password = password;
+    this.username = username;
+    this.password = password;
   }
 }
 

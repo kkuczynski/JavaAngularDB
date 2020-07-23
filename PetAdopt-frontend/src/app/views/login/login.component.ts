@@ -119,12 +119,12 @@ export class LoginComponent implements OnInit {
       this._signedUser = user;
       console.log(this._signedUser);
       if (this._signedUser) {
-      console.log('in if');
-      this.loginService.updateCurrentRole(this._signedUser.role);
-      this.loginService.updateCurrentUser(this._signedUser);
-      this._logged = true;
+        console.log('in if');
+        this.loginService.updateCurrentRole(this._signedUser.role);
+        this.loginService.updateCurrentUser(this._signedUser);
+        this._logged = true;
       } else {
-        // info about incorrect login/username
+        // TODO: info about incorrect login/username
         console.log('in else');
       }
     });
@@ -137,18 +137,10 @@ export class LoginComponent implements OnInit {
     this._isEmployee = false;
   }
 
-  underlineField(fieldName): boolean {
-    if (!this._inputForm.get(fieldName).valid && this._inputForm.get(fieldName).value.length > 0) {
-      return true;
-    } else {
-      return false;
-    }
-  }
-
   openSignUpDialog() {
     const dialogRef = this.dialog.open(AddUserDialogComponent, {
       minWidth: '30%',
-      data: {title: 'sign up'}
+      data: { title: 'sign up' }
     });
     dialogRef.afterClosed().subscribe(() => {
       this.ngOnInit();

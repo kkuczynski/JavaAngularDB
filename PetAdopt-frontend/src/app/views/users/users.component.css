@@ -42,7 +42,7 @@ table {
 }
 
 .options{
-    width:fit-content;
+    width:100%;
 }
 
 .mat-column-options {

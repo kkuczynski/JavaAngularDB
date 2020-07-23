@@ -149,7 +149,7 @@ export class AssignHouseDialogComponent implements OnInit {
   putPet() {
     this._newPet = this.data;
     console.log(this._newPet);
-    this._newPet.houseId = this._houseId; // setHouseId is not a function?
+    this._newPet.houseId = this._houseId;
     this.petsService.putPet(this._newPet).subscribe();
     this.dialogRef.close();
   }
