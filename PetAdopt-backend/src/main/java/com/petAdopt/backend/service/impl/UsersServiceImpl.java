@@ -1,5 +1,6 @@
 package com.petAdopt.backend.service.impl;
 
+import com.petAdopt.backend.dao.body.LoginBody;
 import com.petAdopt.backend.exception.NoRecordWithIdException;
 import com.petAdopt.backend.repo.UsersRepo;
 import com.petAdopt.backend.dao.entity.Users;
@@ -48,12 +49,12 @@ public class UsersServiceImpl implements UsersService {
         }
     }
 
-    public Users loginUser(String username, String password) throws NoRecordWithIdException{
+    public Users loginUser(LoginBody loginBody) throws NoRecordWithIdException{
+        Users foundUser = null;
         try {
-            int foundId = -1;
-            for(Users user: usersRepo.findAll()) {
-                if (user.getLogin() == username && user.getPassword() == password) {
-                   return usersRepo.findById(user.getId()).orElseThrow(() -> new NoRecordWithIdException(message));
+             for(Users user: usersRepo.findAll()) {
+                if (user.getLogin().equals(loginBody.getUsername()) && user.getPassword().equals(loginBody.getPassword())) {
+                   foundUser = usersRepo.findById(user.getId()).orElseThrow(() -> new NoRecordWithIdException(message));
                 }
             }
 
@@ -61,6 +62,6 @@ public class UsersServiceImpl implements UsersService {
         } catch (Exception e) {
             throw new NoRecordWithIdException(message);
         }
-        return null;
+        return foundUser;
     }
 }

@@ -12,9 +12,11 @@
 h4{
     line-height: 50%;
 }
+
 .noHome{
     color: darkred;
 }
+
 button {    
     background: none;
     border-style: solid;    
@@ -29,12 +31,14 @@ button {
     font-family: Verdana, Geneva, Tahoma, sans-serif;
     border-radius: 10px;  
     cursor: pointer;
-  }
-  button:hover{
+}
+ 
+button:hover{
     border-color: rgb(69, 39, 160);
     color: rgb(69, 39, 160);
-  }
-  .danger:hover{
+}
+  
+.danger:hover{
     border-color: darkred;
     color: darkred;
   }

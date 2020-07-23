@@ -1,15 +1,19 @@
 .radios{
     transform: translateX(-8%);
 }
+
 .mat-form-field{
     width: 100%;
 }
+
 .mat-icon{
     cursor: pointer;
 }
+
 .confirmPassword{
     width: 100%;
 }
+
 form{
     overflow-x: hidden;
     overflow-y: auto;
@@ -17,19 +21,22 @@ form{
 .enabled{
     cursor: pointer;
     background-color: rgb(69, 39, 160);
-  }
-  .disabled{
+}
+
+.disabled{
     cursor: auto;
     background-color: gray;
-  }
-  .disabled:hover{
-    border-color: white;
-  }
-  button{
-    background-color: rgb(69, 39, 160);
-    cursor: pointer;
-   
 }
+
+.disabled:hover{
+    border-color: white;
+}
+  
+button{
+    background-color: rgb(69, 39, 160);
+    cursor: pointer;   
+}
+
 label{
   text-align: left;
   color: gray;

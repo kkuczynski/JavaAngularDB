@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Role } from '../domain/enums/role.enum';
 import { Observable, Observer } from 'rxjs';
+import { UsersExternal } from '../domain/external/users.external';
 
 @Injectable({
   providedIn: 'root'
@@ -10,6 +11,7 @@ export class LoginService {
   role = Role[2];
   update: Observable<string>;
   observer: Observer<string>;
+  user: UsersExternal = null;
 
   constructor() {
     this.update = Observable.create((observer: Observer<string>) => {
@@ -28,5 +30,9 @@ export class LoginService {
     else {
       this.role = Role[2];
     }
+  }
+
+  updateCurrentUser(user: UsersExternal) {
+    this.user = user;
   }
 }

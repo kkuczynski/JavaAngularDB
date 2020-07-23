@@ -2,6 +2,7 @@ div{
     font-family: Verdana, Geneva, Tahoma, sans-serif;
     color: gray
 }
+
 footer{
     position: absolute;
     bottom: 2%;
@@ -9,6 +10,7 @@ footer{
     font-family: Verdana, Geneva, Tahoma, sans-serif;
     color: gray
 }
+
 .split {
     height: 100%;
     width: 20%;
@@ -18,8 +20,9 @@ footer{
     overflow-x: hidden;
     padding-top: 0px;
     padding-right: 0px;
-  }
-  .splitted {
+}
+  
+.splitted {
     height: 100%;
     width: 60%;
     position: fixed;
@@ -29,28 +32,29 @@ footer{
     padding-top: 0px;
     overflow-y: scroll;
     
-  }
-  .left {
+}
+  
+.left {
     left: 0;
     background-color: whitesmoke;
     overflow: hidden;
-  }
-  .right{
+}
+  
+.right{
       right: 0;
       background-color: whitesmoke;
       overflow: hidden;
-  }
-  .middle{
-      
+}
+  
+.middle{      
     left: 20%
-  }
+}
  
-  h1{
+h1{
     text-align: center;
     color: gray;
-  }
+}
   
-  .pets{
-       
+.pets{       
     width: 100%;
-  }
+}

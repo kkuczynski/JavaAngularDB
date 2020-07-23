@@ -18,15 +18,17 @@ button {
     font-family: Verdana, Geneva, Tahoma, sans-serif;
     border-radius: 10px;  
     cursor: pointer;
-  }
-  button:hover{
+}
+
+button:hover{
     border-color: rgb(69, 39, 160);
     color: rgb(69, 39, 160);
-  }
-  .danger:hover{
+}
+  
+.danger:hover{
     border-color: darkred;
     color: darkred;
-  }
+}
 
 table {
     min-width:98%;
@@ -38,13 +40,14 @@ table {
     word-break: break-all;
     
 }
+
 .options{
-width:fit-content;
+    width:fit-content;
 }
 
 .mat-column-options {
-width: 1%;
-word-break: keep-all;
-overflow-wrap: normal;
-word-wrap: normal;
+    width: 1%;
+    word-break: keep-all;
+    overflow-wrap: normal;
+    word-wrap: normal;
 }

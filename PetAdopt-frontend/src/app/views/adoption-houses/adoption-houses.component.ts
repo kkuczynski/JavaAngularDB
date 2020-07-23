@@ -35,7 +35,6 @@ export class AdoptionHousesComponent implements OnInit {
     this._names.forEach(name => {
       if (name.id === id) {
         returnedName = name.fullname;
-        return returnedName;
       }
     });
     return returnedName;
@@ -61,7 +60,6 @@ export class AdoptionHousesComponent implements OnInit {
       this._houses.forEach(house => {
         this.getOwnerFullName(house.userId);
       });
-      console.log(this._names);
     }
   }
 

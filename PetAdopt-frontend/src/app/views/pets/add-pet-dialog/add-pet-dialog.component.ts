@@ -20,6 +20,7 @@ export class AddPetDialogComponent implements OnInit {
   private _newPet: PetsExternal;
   private _isUpdate: boolean;
 
+
   constructor(private petsService: PetsService, private formBuilder: FormBuilder, public dialogRef: MatDialogRef<AddPetDialogComponent>,
               @Inject(MAT_DIALOG_DATA) public data: PetsExternal) {
                 this.createForm();
@@ -29,8 +30,7 @@ export class AddPetDialogComponent implements OnInit {
     if (this.data){
       this._isUpdate = true;
       this.fillFormWithData();
-    }
-    else {
+    } else {
       const date = new Date();
       this._isUpdate = false;
       this._inputForm.get('adoptDate').setValue(this.dateConverter(date));
@@ -172,5 +172,4 @@ export class AddPetDialogComponent implements OnInit {
     const datepipe = new DatePipe('en-US');
     return datepipe.transform(date, 'yyyy-MM-dd');
   }
-
 }

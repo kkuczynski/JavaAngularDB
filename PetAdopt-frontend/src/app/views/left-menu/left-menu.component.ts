@@ -18,11 +18,11 @@ export class LeftMenuComponent implements OnInit {
 
   }
 
-// TODO: zmienic algorytm
   onMouseLeave(picked){
     document.getElementById('butt' + picked).style.minWidth = '22%';
     this._buttonTextEnabled = 0;
   }
+
   onMouseEnter(picked)
   {
     this._buttonTextEnabled = picked;
@@ -41,6 +41,7 @@ export class LeftMenuComponent implements OnInit {
   getButtonTextEnabled(){
     return this._buttonTextEnabled;
   }
+
   getIsAdmin() {
     return this._isAdmin;
   }

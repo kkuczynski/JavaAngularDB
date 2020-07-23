@@ -1,60 +1,64 @@
 .login{
-    
     font-family: Verdana, Geneva, Tahoma, sans-serif;
     color: gray;
     height: 100%
 }
+
 .mat-form-field{
   width: 85%;
 }
+
 button {
-    
-    border-style: solid;    
-    color: white;
-    min-width: 42%;
-    max-width: max-content;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 90%;
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
-    border-radius: 10px;  
-    min-height: 5%;
-    max-height: fit-content;
-  }
+  border-style: solid;    
+  color: white;
+  min-width: 42%;
+  max-width: max-content;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 90%;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  border-radius: 10px;  
+  min-height: 5%;
+  max-height: fit-content;
+} 
+
+.enabled{
+  cursor: pointer;
+  background-color: none;
+  border-color: gray;
+  color: gray;
+}
+
+.disabled{
+  color: darkgray;
+  cursor: auto;
+  background-color: none;
+  border-color: darkgray;
+}
+
+.disabled:hover{
+  border-color: darkgray;
+  color: darkgray;
+}
+
+button:hover{
+  color: rgb(69, 39, 160);
+  border-color: rgb(69, 39, 160);
+}
   
-  
-  .enabled{
-    cursor: pointer;
-    background-color: none;
-    border-color: gray;
-    color: gray;
-  }
-  .disabled{
-    color: darkgray;
-    cursor: auto;
-    background-color: none;
-    border-color: darkgray;
-  }
-  .disabled:hover{
-    border-color: darkgray;
-    color: darkgray;
-  }
-  button:hover{
-    color: rgb(69, 39, 160);
-    border-color: rgb(69, 39, 160);
-  }
-  
-  .signUp{
-    cursor: pointer;
-    background-color: none;
-    border-color: gray;
-    color: gray;
-  }
-  .signOut{
-    cursor: pointer;
-    background-color: gray
-  }
+.signUp{
+  cursor: pointer;
+  background-color: none;
+  border-color: gray;
+  color: gray;
+}
+
+.signOut{
+  cursor: pointer;
+  background-color: gray
+}
+
 form{
   height:100%;
 }

@@ -15,25 +15,23 @@ export class AddHouseDialogComponent implements OnInit {
   private _inputForm: FormGroup;
   private _newHouse: AdoptionHousesExternal;
   constructor(private housesService: AdoptionHousesService, private formBuilder: FormBuilder,
-              public dialogRef: MatDialogRef<AddHouseDialogComponent>,
-              @Inject(MAT_DIALOG_DATA) public data: { title: string, house: AdoptionHousesExternal, ownerId: number  }) {
-      this.createForm();
-      console.log(data.ownerId);
-    }
+              public dialogRef: MatDialogRef<AddHouseDialogComponent>, @Inject(MAT_DIALOG_DATA) public data: {
+              title: string, house: AdoptionHousesExternal, ownerId: number }) {
+    this.createForm();
+    console.log(data.ownerId);
+  }
 
   ngOnInit(): void {
-
-  if (this.data.title === 'update house') {
-    this._isUpdate = true;
-    this.fillFormWithData();
+    if (this.data.title === 'update house') {
+      this._isUpdate = true;
+      this.fillFormWithData();
+    }
+    else if (this.data.title === 'add house') {
+      this._isAdd = true;
+    }
   }
-  else if (this.data.title === 'add house') {
-    this._isAdd = true;
-  }
-}
 
-
-   getInputForm() {
+  getInputForm() {
     return this._inputForm;
   }
 
@@ -80,8 +78,6 @@ export class AddHouseDialogComponent implements OnInit {
       ]],
     });
   }
-
-
 
   postHouse() {
     const date = new Date();

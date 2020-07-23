@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { PetsService } from '../../services/pets.service';
-import { ActivatedRoute } from '@angular/router';
 import { PetsExternal } from 'src/app/domain/external/pets.external';
 import { MatDialog } from '@angular/material';
 import { AddPetDialogComponent } from './add-pet-dialog/add-pet-dialog.component';

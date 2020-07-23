@@ -38,6 +38,7 @@ export class UsersComponent implements OnInit {
     this.getUsersService();
     this.getHousesService();
     console.log(this.loginService.role);
+    console.log(this.loginService.user);
     // this.dataSource = new MatTableDataSource(this._users);
     // console.log(this.dataSource);
     // this. dataSource.sort = this.sort;
@@ -46,6 +47,7 @@ export class UsersComponent implements OnInit {
   getDisplayedColumns() {
     return this._displayedColumns;
   }
+
   getUsersService() {
     this.usersService.getAllUsers().subscribe(data => this._users = data);
   }
@@ -188,5 +190,4 @@ export class UsersComponent implements OnInit {
     this.usersService.deleteUser(houseId).subscribe();
     this.ngOnInit();
   }
-
 }

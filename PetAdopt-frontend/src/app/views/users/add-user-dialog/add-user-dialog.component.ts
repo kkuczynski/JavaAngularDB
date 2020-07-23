@@ -26,6 +26,7 @@ export class AddUserDialogComponent implements OnInit {
     @Inject(MAT_DIALOG_DATA) public data: { title: string, user: UsersExternal }) {
     this.createForm();
   }
+
   ngOnInit(): void {
     if (this.data.title === 'update user') {
       this._isUpdate = true;
@@ -91,8 +92,6 @@ export class AddUserDialogComponent implements OnInit {
       passwordConfirmed: ['']
     });
   }
-
-
 
   postUser() {
     const date = new Date();

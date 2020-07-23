@@ -1,10 +1,10 @@
 import { Component, OnInit, Input, Inject } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-
-import { Router } from '@angular/router';
 import { AddUserDialogComponent } from '../users/add-user-dialog/add-user-dialog.component';
 import { MatDialog } from '@angular/material';
 import { LoginService } from 'src/app/services/login.service';
+import { UsersExternal } from 'src/app/domain/external/users.external';
+import { UsersService } from 'src/app/services/users.service';
 
 @Component({
   selector: 'app-login',
@@ -26,8 +26,10 @@ export class LoginComponent implements OnInit {
   private _signInButton = false;
   private _usernameCorrect = true;
   private _passwordCorrect = true;
+  private _signedUser: UsersExternal;
 
-  constructor(public loginService: LoginService, private formBuilder: FormBuilder, private router: Router,  public dialog: MatDialog) {
+  // tslint:disable-next-line:max-line-length
+  constructor(public loginService: LoginService, private usersService: UsersService, private formBuilder: FormBuilder, public dialog: MatDialog) {
     this.createForm();
   }
 
@@ -69,6 +71,7 @@ export class LoginComponent implements OnInit {
       this._usernameCorrect = true;
     }
   }
+
   getInputForm() {
     return this._inputForm;
   }
@@ -94,6 +97,7 @@ export class LoginComponent implements OnInit {
       document.getElementById('signInButton').click();
     }
   }
+
   capsFunction(event) {
     if (event.getModifierState('CapsLock')) {
       this._capsWarn = 'CapsLock is on!';
@@ -110,10 +114,21 @@ export class LoginComponent implements OnInit {
   signIn() {
     this._username = this._inputForm.get('username').value;
     this._password = this._inputForm.get('password').value;
-    this.loginService.updateCurrentRole('ADMIN');
+    this.usersService.loginUser(this._username, this._password).subscribe((user: any) => {
+      console.log(user);
+      this._signedUser = user;
+      console.log(this._signedUser);
+      if (this._signedUser) {
+      console.log('in if');
+      this.loginService.updateCurrentRole(this._signedUser.role);
+      this.loginService.updateCurrentUser(this._signedUser);
+      this._logged = true;
+      } else {
+        // info about incorrect login/username
+        console.log('in else');
+      }
+    });
     console.log(this.loginService.role);
-    this._logged = true;
-    this.loggedAsAdmin();
   }
 
   signOut() {

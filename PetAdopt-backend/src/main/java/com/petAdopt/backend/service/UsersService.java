@@ -1,5 +1,6 @@
 package com.petAdopt.backend.service;
 
+import com.petAdopt.backend.dao.body.LoginBody;
 import com.petAdopt.backend.dao.entity.Users;
 import com.petAdopt.backend.exception.NoRecordWithIdException;
 
@@ -15,5 +16,5 @@ public interface UsersService {
 
     void deleteUserById(Integer id) throws NoRecordWithIdException;
 
-    Users loginUser(String username, String password) throws NoRecordWithIdException;
+    Users loginUser(LoginBody loginBody) throws NoRecordWithIdException;
 }

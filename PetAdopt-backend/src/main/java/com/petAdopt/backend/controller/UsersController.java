@@ -1,5 +1,6 @@
 package com.petAdopt.backend.controller;
 
+import com.petAdopt.backend.dao.body.LoginBody;
 import com.petAdopt.backend.dao.entity.Users;
 import com.petAdopt.backend.exception.NoRecordWithIdException;
 import com.petAdopt.backend.service.impl.AdoptionHousesServiceImpl;
@@ -49,9 +50,8 @@ public class UsersController {
     }
 
     @PostMapping("/login")
-    public Users loginUser(@RequestBody String username, String password) throws NoRecordWithIdException{
-        return usersServiceImpl.loginUser(username, password);
+    public Users loginUser(@RequestBody LoginBody loginBody) throws NoRecordWithIdException{
+        return usersServiceImpl.loginUser(loginBody);
     }
 }
-
 

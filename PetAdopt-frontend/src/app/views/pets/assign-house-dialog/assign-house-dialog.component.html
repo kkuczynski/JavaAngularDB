@@ -1,34 +1,39 @@
 <!--button icons-->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <h1 mat-dialog-title>give {{data.name}} a home <div fxLayout="row" fxLayoutAlign="end end" fxLayoutGap="2px">
-    <button (click)=hideAssignDialog()>cancel</button><button (click)=putPet()>confirm</button>
-</div></h1>
+        <button (click)=hideAssignDialog()>cancel</button><button (click)=putPet()>confirm</button>
+    </div>
+</h1>
 
 <table mat-table #table [dataSource]="getHouses()" class="mat-elevation-z8">
     <ng-container matColumnDef="no.">
         <th mat-header-cell *matHeaderCellDef> no. </th>
-        <td [ngClass]="getAssigment(row.id).assigned?'highlighted':'none'" mat-cell *matCellDef="let row, let i = index">
+        <td [ngClass]="getAssigment(row.id).assigned?'highlighted':'none'" mat-cell
+            *matCellDef="let row, let i = index">
             {{i+1}} </td>
     </ng-container>
     <ng-container matColumnDef="city">
         <th mat-header-cell *matHeaderCellDef> city </th>
-        <td [ngClass]="getAssigment(row.id).assigned?'highlighted':'none'" mat-cell *matCellDef="let row"> {{row.city}} </td>
+        <td [ngClass]="getAssigment(row.id).assigned?'highlighted':'none'" mat-cell *matCellDef="let row"> {{row.city}}
+        </td>
     </ng-container>
     <ng-container matColumnDef="postcode">
         <th mat-header-cell *matHeaderCellDef> post code </th>
-        <td [ngClass]="getAssigment(row.id).assigned?'highlighted':'none'" mat-cell *matCellDef="let row"> {{row.postcode}}
+        <td [ngClass]="getAssigment(row.id).assigned?'highlighted':'none'" mat-cell *matCellDef="let row">
+            {{row.postcode}}
         </td>
     </ng-container>
     <ng-container matColumnDef="address">
         <th mat-header-cell *matHeaderCellDef> address </th>
-        <td [ngClass]="getAssigment(row.id).assigned?'highlighted':'none'" mat-cell *matCellDef="let row"> {{row.address}}
+        <td [ngClass]="getAssigment(row.id).assigned?'highlighted':'none'" mat-cell *matCellDef="let row">
+            {{row.address}}
         </td>
     </ng-container>
     <ng-container matColumnDef="owner">
         <th mat-header-cell *matHeaderCellDef> owner </th>
         <td [ngClass]="getAssigment(row.id).assigned?'highlighted':'none'" mat-cell *matCellDef="let row">
             {{getName(row.userId)}} </td>
-    </ng-container>    
+    </ng-container>
     <ng-container matColumnDef="options">
         <th mat-header-cell *matHeaderCellDef>
             <div class="iconHeader" fxLayout="row" fxLayoutAlign="center center" fxLayoutGap="0px">
@@ -55,4 +60,3 @@
     <tr mat-header-row *matHeaderRowDef="getDisplayedColumns()"></tr>
     <tr mat-row *matRowDef="let row; columns: getDisplayedColumns()"></tr>
 </table>
-   

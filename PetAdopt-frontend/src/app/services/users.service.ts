@@ -38,9 +38,19 @@ export class UsersService {
     return this.http.delete<string>(this.URL + '/' + id, httpOptions);
   }
 
-  loginUser(username: string, password: string) {
-    const body = '{"username": "' + username + '", "password": "' + password + '"}';
+  loginUser(username: string, password: string): Observable<any> {
+    const body = new LoginBody(username, password);
     return this.http.post<UsersExternal>(this.URL + '/' + 'login', body, httpOptions);
+  }
+}
+
+export class LoginBody{
+  private _username: string;
+  private _password: string;
+
+  constructor(username: string, password: string) {
+    this._username = username;
+    this._password = password;
   }
 }
 

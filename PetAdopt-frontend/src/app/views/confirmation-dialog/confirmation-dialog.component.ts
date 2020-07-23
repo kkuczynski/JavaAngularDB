@@ -8,25 +8,23 @@ import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 })
 export class ConfirmationDialogComponent implements OnInit {
 
-  constructor( public dialogRef: MatDialogRef<ConfirmationDialogComponent>,
-               @Inject(MAT_DIALOG_DATA) public data: ConfirmDialogData) { console.log(data.title); }
+  constructor(public dialogRef: MatDialogRef<ConfirmationDialogComponent>,
+              @Inject(MAT_DIALOG_DATA) public data: ConfirmDialogData) { }
 
   ngOnInit(): void {
   }
 
-  onConfirm(){
+  onConfirm() {
     this.dialogRef.close(true);
   }
 
-  onCancel(){
+  onCancel() {
     this.dialogRef.close(false);
   }
 
 }
 
-
-
 export class ConfirmDialogData {
 
-  constructor(public title: string) {}
+  constructor(public title: string) { }
 }
