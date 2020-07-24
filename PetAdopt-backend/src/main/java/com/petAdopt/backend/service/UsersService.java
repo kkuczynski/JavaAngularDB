@@ -12,7 +12,9 @@ public interface UsersService {
 
     List<Users> getAllUsers();
 
-    Users saveUser(Users users);
+    boolean saveUser(Users users);
+
+    boolean updateUser(Users users) throws NoRecordWithIdException;
 
     void deleteUserById(Integer id) throws NoRecordWithIdException;
 

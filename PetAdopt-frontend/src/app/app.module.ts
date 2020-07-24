@@ -19,6 +19,7 @@ import { AddUserDialogComponent } from './views/users/add-user-dialog/add-user-d
 import { AddHouseDialogComponent } from './views/adoption-houses/add-house-dialog/add-house-dialog.component';
 import { AssignHouseDialogComponent } from './views/pets/assign-house-dialog/assign-house-dialog.component';
 import { LoginService } from 'src/app/services/login.service';
+import { BlankComponent } from './views/blank/blank.component';
 
 @NgModule({
   declarations: [
@@ -34,6 +35,7 @@ import { LoginService } from 'src/app/services/login.service';
     AddUserDialogComponent,
     AddHouseDialogComponent,
     AssignHouseDialogComponent,
+    BlankComponent,
   ],
   imports: [
     FlexLayoutModule,

@@ -4,7 +4,7 @@
     <mat-form-field appearance="outline">
         <input matInput type="text" id="username" placeholder="username" formControlName="username"
             (keydown)="keyDownFunction($event)" required>
-        <mat-error *ngIf="!getInputForm().get('username').valid">wrong username</mat-error>
+        <mat-error *ngIf="!getInputForm().get('username').valid">incorrect username</mat-error>
 
 
     </mat-form-field>
@@ -12,7 +12,7 @@
     <mat-form-field appearance="outline">
         <input matInput type="password" id="password" placeholder="password" (keydown)="capsFunction($event)"
             (keydown)="keyDownFunction($event)" required formControlName="password">
-        <mat-error *ngIf="!getInputForm().get('password').valid">wrong password</mat-error>
+        <mat-error *ngIf="!getInputForm().get('password').valid">incorrect password</mat-error>
     </mat-form-field>
     
     <div fxLayout="row" fxLayoutAlign="end end" fxLayoutGap="2px">

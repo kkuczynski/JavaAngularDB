@@ -16,28 +16,27 @@ const httpOptions = {
 })
 
 export class AdoptionHousesService {
-  private URL = environment.urlAdoptionHouses;
 
   constructor(private http: HttpClient) { }
 
   getAllHouses(): Observable<AdoptionHousesExternal[]> {
-    return this.http.get<AdoptionHousesExternal[]>(this.URL);
+    return this.http.get<AdoptionHousesExternal[]>(environment.urlAdoptionHouses);
   }
 
   getHouse(id: number): Observable<AdoptionHousesExternal> {
-    return this.http.get<AdoptionHousesExternal>(this.URL + '/' + id);
+    return this.http.get<AdoptionHousesExternal>(environment.urlAdoptionHouses + '/' + id);
   }
 
   postNewHouse(house: AdoptionHousesExternal): Observable<AdoptionHousesExternal> {
-    return this.http.post<AdoptionHousesExternal>(this.URL, house, httpOptions);
+    return this.http.post<AdoptionHousesExternal>(environment.urlAdoptionHouses, house, httpOptions);
   }
 
   putHouse(house: AdoptionHousesExternal): Observable<AdoptionHousesExternal> {
-    return this.http.put<AdoptionHousesExternal>(this.URL, house, httpOptions);
+    return this.http.put<AdoptionHousesExternal>(environment.urlAdoptionHouses, house, httpOptions);
   }
 
   deleteHouse(id: number): Observable<string> {
-    return this.http.delete<string>(this.URL + '/' + id, httpOptions);
+    return this.http.delete<string>(environment.urlAdoptionHouses + '/' + id, httpOptions);
   }
 
 }

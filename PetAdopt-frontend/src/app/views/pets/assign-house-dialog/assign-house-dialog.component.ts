@@ -6,7 +6,8 @@ import { UsersService } from '../../../services/users.service';
 import { AdoptionHousesService } from '../../../services/adoption-houses.service';
 import { PetsService } from '../../../services/pets.service';
 import { AdoptionHousesExternal } from '../../../domain/external/adoption-houses.external';
-import { Names } from '../../adoption-houses/adoption-houses.component';
+import { Names } from '../../../domain/structs/names.class';
+import { Assigment } from '../../../domain/structs/assigment.class';
 
 
 @Component({
@@ -154,8 +155,5 @@ export class AssignHouseDialogComponent implements OnInit {
     this.dialogRef.close();
   }
 }
-// yy
-export class Assigment {
-  houseId: number;
-  assigned: boolean;
-}
+
+

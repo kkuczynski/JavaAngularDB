@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild, ɵisDefaultChangeDetectionStrategy, ChangeDetectorRef } from '@angular/core';
 import { UsersService } from 'src/app/services/users.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { MatSort, MatTableDataSource, MatDialog } from '@angular/material';
@@ -26,41 +26,44 @@ export class UsersComponent implements OnInit {
   private _editedUser: UsersExternal;
   private _houses: AdoptionHousesExternal[] = [];
   private _editedHouse: AdoptionHousesExternal;
-  private _loggedAs: Role;
-  private _admin: Role = Role.ADMIN;
-  private _employee: Role = Role.EMPLOYEE;
-  private _user: Role = Role.USER;
-
+  private _loggedAs: string;
   constructor(
     public loginService: LoginService,
     private usersService: UsersService,
     private housesService: AdoptionHousesService,
     public dialog: MatDialog,
-    private router: Router) { }
+    private router: Router,
+    private changeDetectorRefs: ChangeDetectorRef) { }
 
   @ViewChild(MatSort, { static: true }) sort: MatSort;
 
   ngOnInit() {
+    this.fetchData();
+  }
+
+  fetchData() {
     this.getUsersService();
     this.getHousesService();
     this.setRole();
     this.redirectToMain();
+    this.router.navigateByUrl('blank');
+    this.router.navigateByUrl('users');
   }
 
-  getAdmin(): Role {
-    return this._admin;
+  getAdmin(): string {
+    return Role[Role.ADMIN];
   }
 
-  getEmployee(): Role {
-    return this._employee;
+  getEmployee(): string {
+    return Role[Role.EMPLOYEE];
   }
 
-  getUser(): Role {
-    return this._user;
+  getUser(): string {
+    return Role[Role.USER];
   }
 
   redirectToMain() {
-    if (this._loggedAs === this._user || this._loggedAs === null) {
+    if (this._loggedAs === this.getUser() || this._loggedAs === null) {
       this.router.navigateByUrl('pets');
     }
   }
@@ -77,7 +80,7 @@ export class UsersComponent implements OnInit {
     this._loggedAs = this.loginService.role;
   }
 
-  getLoggedAs(): Role {
+  getLoggedAs(): string {
     return this._loggedAs;
   }
 
@@ -142,7 +145,7 @@ export class UsersComponent implements OnInit {
       this._confirmation = dialogResult;
       if (this._confirmation) {
         this.deleteUser(userId);
-        this.router.navigateByUrl('users');
+        this.fetchData();
       }
     });
   }
@@ -157,7 +160,7 @@ export class UsersComponent implements OnInit {
       this._confirmation = dialogResult;
       if (this._confirmation) {
         this.deleteHouse(userId);
-        this.router.navigateByUrl('users');
+        this.fetchData();
       }
     });
   }
@@ -172,7 +175,7 @@ export class UsersComponent implements OnInit {
       }
     });
     dialogRef.afterClosed().subscribe(() => {
-      this.router.navigateByUrl('users');
+      this.fetchData();
     });
   }
 
@@ -182,7 +185,7 @@ export class UsersComponent implements OnInit {
       data: { title: 'add user' }
     });
     dialogRef.afterClosed().subscribe(() => {
-      this.router.navigateByUrl('users');
+      this.fetchData();
     });
   }
 
@@ -192,7 +195,7 @@ export class UsersComponent implements OnInit {
       data: { title: 'add house', ownerId: userId }
     });
     dialogRef.afterClosed().subscribe(() => {
-      this.router.navigateByUrl('users');
+      this.fetchData();
     });
   }
 
@@ -204,18 +207,18 @@ export class UsersComponent implements OnInit {
       data: { title: 'edit house', house: this._editedHouse, ownerId: userId }
     });
     dialogRef.afterClosed().subscribe(() => {
-      this.router.navigateByUrl('users');
+      this.fetchData();
     });
   }
 
   deleteUser(userId: number) {
     this.usersService.deleteUser(userId).subscribe();
-    this.router.navigateByUrl('users');
+    this.fetchData();
   }
 
   deleteHouse(userId: number) {
     const houseId = this.getHousIdByUserId(userId);
     this.usersService.deleteUser(houseId).subscribe();
-    this.router.navigateByUrl('users');
+    this.fetchData();
   }
 }

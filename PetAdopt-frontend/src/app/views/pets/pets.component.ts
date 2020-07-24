@@ -22,20 +22,43 @@ export class PetsComponent implements OnInit {
   private _currentDate: Date = new Date();
   private _editedPet: PetsExternal;
   private _confirmation = false;
-  private _loggedAs: Role;
+  private _loggedAs: string = Role[Role.USER];
 
-  constructor(private petsService: PetsService, public loginService: LoginService, public dialog: MatDialog, private router: Router) { }
+
+  constructor(
+    private petsService: PetsService,
+    public loginService: LoginService,
+    public dialog: MatDialog,
+    private router: Router) { }
 
   ngOnInit() {
+    this.fetchData();
+  }
+  fetchData() {
     this.getPetsService();
     this.setRole();
+    this.router.navigateByUrl('blank');
+    this.router.navigateByUrl('pets');
+  }
+
+  getAdmin(): string {
+    return Role[Role.ADMIN];
+  }
+
+  getEmployee(): string {
+    return Role[Role.EMPLOYEE];
+  }
+
+  getUser(): string {
+    return Role[Role.USER];
   }
 
   setRole() {
     this._loggedAs = this.loginService.role;
   }
 
-  getLoggedAs(): Role {
+  getLoggedAs(): string {
+    this.setRole();
     return this._loggedAs;
   }
 
@@ -49,12 +72,6 @@ export class PetsComponent implements OnInit {
 
   getPetsService() {
     this.petsService.getAllPets().subscribe(data => this._pets = data);
-  }
-
-  getPetsServiceConcat() {
-    this.petsService.getPetsWithHome().subscribe(data => {
-      this._pets = this._pets.concat(data);
-    });
   }
 
   getPetById(petId): PetsExternal {
@@ -76,7 +93,7 @@ export class PetsComponent implements OnInit {
       this._confirmation = dialogResult;
       if (this._confirmation) {
         this.deletePet(petId);
-        this.router.navigateByUrl('pets');
+        this.fetchData();
       }
     });
   }
@@ -88,7 +105,7 @@ export class PetsComponent implements OnInit {
       data: this._editedPet
     });
     dialogRef.afterClosed().subscribe(() => {
-      this.router.navigateByUrl('pets');
+      this.fetchData();
     });
   }
 
@@ -97,7 +114,7 @@ export class PetsComponent implements OnInit {
       minWidth: '30%',
     });
     dialogRef.afterClosed().subscribe(() => {
-      this.router.navigateByUrl('pets');
+      this.fetchData();
     });
   }
 
@@ -108,14 +125,14 @@ export class PetsComponent implements OnInit {
       data: this._editedPet
     });
     dialogRef.afterClosed().subscribe(() => {
-      this.router.navigateByUrl('pets');
+      this.fetchData();
     });
   }
 
 
   deletePet(id: number) {
     this.petsService.deletePet(id).subscribe();
-    this.router.navigateByUrl('pets');
+    this.fetchData();
   }
 
   compareDates(dateA: Date, days: number, dateB: Date): boolean {

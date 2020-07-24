@@ -8,6 +8,8 @@ import { UsersService } from 'src/app/services/users.service';
 import { UsersExternal } from 'src/app/domain/external/users.external';
 import { LoginService } from 'src/app/services/login.service';
 import { Router } from '@angular/router';
+import { Role } from 'src/app/domain/enums/role.enum';
+import { Names } from '../../domain/structs/names.class';
 
 @Component({
   // tslint:disable-next-line:component-selector
@@ -16,41 +18,50 @@ import { Router } from '@angular/router';
   styleUrls: ['./adoption-houses.component.css']
 })
 export class AdoptionHousesComponent implements OnInit {
-  // typu jakiego?
-  private _houses = [];
+  private _houses: AdoptionHousesExternal[] = [];
   private _displayedColumns: string[] = ['no.', 'city', 'postcode', 'address', 'owner', 'options'];
-  // typu jakiego?
   private _confirmation = false;
   private _editedHouse: AdoptionHousesExternal;
-  // typu jakiego?
-  private _owner: any;
-  // array of full names of houses owners -> fajnie, tylko chciałbym żeby to nazwa zmiennej definiowała a nie komentarz :D
   private _names: Names[] = [];
-  // typu jakiego?
-  private _fullname;
-  // typu jakiego?
   private _loggedAs;
 
-  // tslint:disable-next-line:max-line-length
-  // a pod sobą żeby to było cztelne to się nie da ? :D
-  // te publiki to wszędzie są używane ?
-  // te prywatne to bez podkreślnika?
-  constructor(private housesService: AdoptionHousesService, public loginService: LoginService, private usersService: UsersService, public dialog: MatDialog, private router: Router) { }
+  constructor(
+    private housesService: AdoptionHousesService,
+    private loginService: LoginService,
+    private usersService: UsersService,
+    private dialog: MatDialog,
+    private router: Router) { }
 
   ngOnInit() {
+    this.fetchData();
+  }
+
+  fetchData() {
     this.getHousesService();
     this.setRole();
     this.redirectToMain();
+    this.router.navigateByUrl('blank');
+    this.router.navigateByUrl('houses');
+  }
+
+  getAdmin(): string {
+    return Role[Role.ADMIN];
+  }
+
+  getEmployee(): string {
+    return Role[Role.EMPLOYEE];
+  }
+
+  getUser(): string {
+    return Role[Role.USER];
   }
 
   redirectToMain() {
-    // a może do enuma się odwołać ?
-    if (this._loggedAs === 'USER' || this._loggedAs === null) {
+    if (this._loggedAs === this.getUser() || this._loggedAs === null) {
       this.router.navigateByUrl('pets');
     }
   }
 
-  //a tutaj enter jeden 
   setRole() {
     this._loggedAs = this.loginService.role;
   }
@@ -59,8 +70,7 @@ export class AdoptionHousesComponent implements OnInit {
     return this._loggedAs;
   }
 
-  // HALO TYP ZWRACANY
-  getName(id: number) {
+  getName(id: number): string {
     let returnedName;
     this._names.forEach(name => {
       if (name.id === id) {
@@ -69,8 +79,8 @@ export class AdoptionHousesComponent implements OnInit {
     });
     return returnedName;
   }
-  // HALO TYP ZWRACANY
-  getDisplayedColumns() {
+
+  getDisplayedColumns(): string[] {
     return this._displayedColumns;
   }
 
@@ -80,8 +90,8 @@ export class AdoptionHousesComponent implements OnInit {
       this.fillNames();
     });
   }
-  // HALO TYP ZWRACANY
-  getHouses() {
+
+  getHouses(): AdoptionHousesExternal[] {
     return this._houses;
   }
 
@@ -122,8 +132,7 @@ export class AdoptionHousesComponent implements OnInit {
       this._confirmation = dialogResult;
       if (this._confirmation) {
         this.deleteHouse(houseId);
-        // ngOnInit? :D
-        this.ngOnInit();
+        this.router.navigateByUrl('houses');
       }
     });
   }
@@ -138,8 +147,7 @@ export class AdoptionHousesComponent implements OnInit {
       }
     });
     dialogRef.afterClosed().subscribe(() => {
-      // ngOnInit? :D
-      this.ngOnInit();
+      this.router.navigateByUrl('houses');
     });
   }
 
@@ -149,20 +157,12 @@ export class AdoptionHousesComponent implements OnInit {
       data: { title: 'add house' }
     });
     dialogRef.afterClosed().subscribe(() => {
-      // ngOnInit? :D
-      this.ngOnInit();
+      this.router.navigateByUrl('houses');
     });
   }
 
   deleteHouse(houseId: number) {
     this.housesService.deleteHouse(houseId).subscribe();
-    // ngOnInit? :D
-    this.ngOnInit();
+    this.router.navigateByUrl('houses');
   }
-}
-
-// A to co to ?
-export class Names {
-  id: number;
-  fullname: string;
 }

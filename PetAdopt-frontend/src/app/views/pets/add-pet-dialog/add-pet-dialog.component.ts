@@ -15,14 +15,15 @@ import { PetsService } from 'src/app/services/pets.service';
 export class AddPetDialogComponent implements OnInit {
 
   private _adopted: boolean;
-  // trup
-  private _tmpAdopted: boolean;
   private _inputForm: FormGroup;
   private _newPet: PetsExternal;
   private _isUpdate: boolean;
 
   // format
-  constructor(private petsService: PetsService, private formBuilder: FormBuilder, public dialogRef: MatDialogRef<AddPetDialogComponent>,
+  constructor(
+    private petsService: PetsService,
+    private formBuilder: FormBuilder,
+    public dialogRef: MatDialogRef<AddPetDialogComponent>,
     @Inject(MAT_DIALOG_DATA) public data: PetsExternal) {
     this.createForm();
   }
@@ -60,25 +61,25 @@ export class AddPetDialogComponent implements OnInit {
       sex: ['', Validators.required],
       sterilized: [Boolean, Validators.required],
       adopted: [Boolean, Validators.required],
-      adoptDate: [Date], // [Date],
+      adoptDate: [Date],
       temporaryAdopted: [Boolean, Validators.required],
-      tmpAdoptForDays: [Number] // [Number, Validators.pattern('[0-9]+$')]
+      tmpAdoptForDays: [Number, Validators.pattern('[0-9]+$')]
     });
   }
-  //  HALO TYP 
-  getIsUpdate() {
+
+  getIsUpdate(): boolean {
     return this._isUpdate;
   }
-  //  HALO TYP 
-  getInputForm() {
+
+  getInputForm(): FormGroup {
     return this._inputForm;
   }
-  //  HALO TYP 
-  getAdopted() {
+
+  getAdopted(): boolean {
     return this._adopted;
   }
-  //  HALO TYP 
-  getTmpAdopted() {
+
+  getTmpAdopted(): boolean {
     if (this._inputForm.get('temporaryAdopted').value === 'true') {
       return true;
     }
@@ -86,9 +87,9 @@ export class AddPetDialogComponent implements OnInit {
       return false;
     }
   }
-  //  HALO TYP to z tym wyżej chyba w 1 funkcji się dało
-  anyAdoptTrue() {
-    if (this._inputForm.get('temporaryAdopted').value === 'true' || this._inputForm.get('adopted').value === 'true') {
+
+  anyAdoptTrue(): boolean {
+    if (this.getTmpAdopted() || this._inputForm.get('adopted').value === 'true') {
       return true;
     }
     else {
@@ -101,9 +102,7 @@ export class AddPetDialogComponent implements OnInit {
     this.dialogRef.close();
   }
 
-  // because html doesn't like bools -> No, you don't like bools!
-  //  HALO TYP 
-  boolToString(bool: boolean) {
+  boolToString(bool: boolean): string {
     if (bool) {
       return 'true';
     }

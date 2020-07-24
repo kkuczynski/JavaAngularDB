@@ -5,7 +5,7 @@ import { MatDialog } from '@angular/material';
 import { LoginService } from 'src/app/services/login.service';
 import { UsersExternal } from 'src/app/domain/external/users.external';
 import { UsersService } from 'src/app/services/users.service';
-import { Router } from '@angular/router';
+import { Router, RouterEvent, NavigationEnd } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -24,15 +24,15 @@ export class LoginComponent implements OnInit {
   private _signedUser: UsersExternal;
 
   constructor(
-    public loginService: LoginService,
+    private loginService: LoginService,
     private router: Router,
     private usersService: UsersService,
     private formBuilder: FormBuilder,
-    public dialog: MatDialog) {
+    private dialog: MatDialog) {
     this.createForm();
   }
 
-  ngOnInit(){}
+  ngOnInit(){  }
 
   createForm() {
     this._inputForm = this.formBuilder.group({
@@ -93,8 +93,7 @@ export class LoginComponent implements OnInit {
         this.loginService.updateCurrentUser(this._signedUser);
         this._loginWarn = '';
         this._logged = true;
-        this.router.navigateByUrl('pets');
-      } else {
+        } else {
         this._loginWarn = 'Incorrect username or password';
       }
     });

@@ -4,11 +4,11 @@ export class UsersExternal {
     name: string;
     surname: string;
     createdAt: string;
-    role: Role;
+    role: string;
     login: string;
     password: string;
 
-    setNew(name: string, surname: string, createdAt: string, role: Role, login: string, password: string) {
+    setNew(name: string, surname: string, createdAt: string, role: string, login: string, password: string) {
         this.name = name;
         this.surname = surname;
         this.createdAt = createdAt;

@@ -3,6 +3,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { UsersExternal } from '../domain/external/users.external';
 import { environment } from '../../environments/environment';
+import { LoginBody } from '../domain/structs/login-body.class';
 
 const httpOptions = {
   headers: new HttpHeaders({
@@ -10,49 +11,39 @@ const httpOptions = {
   })
 };
 
+
 @Injectable({
   providedIn: 'root'
 })
 export class UsersService {
-  // const?
-  private URL = environment.urlUsers;
 
   constructor(private http: HttpClient) { }
 
   getAllUsers(): Observable<UsersExternal[]> {
-    return this.http.get<UsersExternal[]>(this.URL);
+    return this.http.get<UsersExternal[]>(environment.urlUsers);
   }
 
   getUser(id: number): Observable<UsersExternal> {
-    return this.http.get<UsersExternal>(this.URL + '/' + id);
+    return this.http.get<UsersExternal>(environment.urlUsers + '/' + id);
   }
   // HALO TYP ZWRACANY
   postNewUser(user: UsersExternal) {
-    return this.http.post<UsersExternal>(this.URL, user, httpOptions);
+    return this.http.post<UsersExternal>(environment.urlUsers, user, httpOptions);
   }
   // HALO TYP ZWRACANY
-  putUser(user: UsersExternal) {
-    return this.http.put<UsersExternal>(this.URL, user, httpOptions);
+  putUser(user: UsersExternal): Observable<UsersExternal> {
+    return this.http.put<UsersExternal>(environment.urlUsers, user, httpOptions);
   }
   // HALO TYP ZWRACANY
-  deleteUser(id: number) {
-    return this.http.delete<string>(this.URL + '/' + id, httpOptions);
+  deleteUser(id: number): Observable<string> {
+    return this.http.delete<string>(environment.urlUsers + '/' + id, httpOptions);
   }
-  // co on zwraca ?
-  loginUser(username: string, password: string): Observable<any> {
-    const body = new LoginBody(username, password);
-    // no to mogło być w chyba w jednym stringu :?
-    return this.http.post<UsersExternal>(this.URL + '/' + 'login', body, httpOptions);
-  }
-}
-// hmm to mogłoby być w osobnym pliku :?
-export class LoginBody {
-  private username: string;
-  private password: string;
 
-  constructor(username: string, password: string) {
-    this.username = username;
-    this.password = password;
+  loginUser(username: string, password: string): Observable<UsersExternal> {
+    const body = new LoginBody(username, password);
+    return this.http.post<UsersExternal>(environment.urlUsers + '/' + 'login', body, httpOptions);
   }
 }
+
+
 

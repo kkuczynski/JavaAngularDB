@@ -9,50 +9,43 @@ import { UsersExternal } from 'src/app/domain/external/users.external';
   styleUrls: ['./left-menu.component.css']
 })
 export class LeftMenuComponent implements OnInit {
-  // HALO TYP zwracany
-  private _isAdmin = true;
-  // HALO TYP zwracany
-  private _isEmployee = true;
-  // HALO TYP zwracany
-  private _buttonTextEnabled;
-  // HALO TYP zwracany
-  private _loggedAs;
+  private _buttonTextEnabled: number;
+  private _loggedAs: string;
   private _user: UsersExternal = null;
 
   constructor(private router: Router, public loginService: LoginService) { }
 
   ngOnInit(): void {
+  }
+
+  setLogged() {
     this._loggedAs = this.loginService.role;
     this._user = this.loginService.user;
   }
-  // HALO TYP zwracany
-  someoneIsLogged() {
+  someoneIsLogged(): boolean {
     if (this._user) {
       return true;
     } else {
       return false;
     }
   }
-  // HALO TYP zwracany
-  getLoggedAs() {
-    // ngOnInit
-    this.ngOnInit();
+
+  getLoggedAs(): string {
+    this.setLogged();
     return this._loggedAs;
   }
 
-  onMouseLeave(picked) {
-    //  nie da się inaczej ? :? dalej nie da się ?
+  onMouseLeave(picked: number) {
     document.getElementById('butt' + picked).style.minWidth = '22%';
     this._buttonTextEnabled = 0;
   }
 
-  onMouseEnter(picked) {
+  onMouseEnter(picked: number) {
     this._buttonTextEnabled = picked;
-    //  nie da się inaczej ? :? dalej nie da się ?
     document.getElementById('butt' + picked).style.minWidth = 'fit-content';
   }
-  // HALO TYP zwracany
-  checkRoute(route: string) {
+
+  checkRoute(route: string): boolean {
     if (this.router.url === route) {
       return true;
     }
@@ -60,21 +53,8 @@ export class LeftMenuComponent implements OnInit {
       return false;
     }
   }
-  // HALO TYP zwracany
-  getButtonTextEnabled() {
+
+  getButtonTextEnabled(): number {
     return this._buttonTextEnabled;
   }
-  // HALO TYP zwracany
-  getIsAdmin() {
-    return this._isAdmin;
-  }
-  // HALO TYP zwracany
-  getIsEmployee() {
-    return this._isEmployee;
-  }
-  // HALO TYP zwracany
-  setIsAdmin(isAdmin: boolean) {
-    this._isAdmin = isAdmin;
-  }
-
 }

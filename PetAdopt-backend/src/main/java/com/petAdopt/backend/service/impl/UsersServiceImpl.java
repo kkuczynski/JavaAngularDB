@@ -7,6 +7,7 @@ import com.petAdopt.backend.dao.entity.Users;
 import com.petAdopt.backend.service.UsersService;
 import org.springframework.stereotype.Service;
 import java.util.List;
+import java.util.Objects;
 
 @Service
 public class UsersServiceImpl implements UsersService {
@@ -26,21 +27,46 @@ public class UsersServiceImpl implements UsersService {
         return usersRepo.findAll();
     }
 
-    public Users saveUser(Users users){
-        return usersRepo.save(users);
+    public boolean saveUser(Users users){
+        boolean usernameIsUnique = true;
+        for(Users foundUser: usersRepo.findAll())
+            if (Objects.equals(foundUser.getLogin(), users.getLogin())){
+                usernameIsUnique = false;
+            }
+
+        if(usernameIsUnique) {
+            usersRepo.save(users);
+            return true;
+        }
+        else {
+            return false;
+        }
+
+
     }
 
     public void deleteUserById(Integer id) throws NoRecordWithIdException{
         usersRepo.deleteById(id);
     }
 
-    public Users updateUsers(Users users) throws NoRecordWithIdException{
-        try {
-            usersRepo.findById(users.getId());
-            return usersRepo.save(users);
-//        trochę ogólny exception
-        } catch (Exception e) {
-            throw new NoRecordWithIdException(message);
+    public boolean updateUser(Users users) throws NoRecordWithIdException{
+        boolean usernameIsUnique = true;
+        for (Users foundUser : usersRepo.findAll())
+            if (Objects.equals(foundUser.getLogin(), users.getLogin())) {
+                usernameIsUnique = false;
+            }
+        if (usernameIsUnique) {
+            try {
+                usersRepo.findById(users.getId());
+                usersRepo.save(users);
+                return true;
+
+            } catch (Exception e) {
+                throw new NoRecordWithIdException(message);
+            }
+        }
+        else {
+            return false;
         }
     }
 
@@ -52,8 +78,6 @@ public class UsersServiceImpl implements UsersService {
                    foundUser = usersRepo.findById(user.getId()).orElseThrow(() -> new NoRecordWithIdException(message));
                 }
             }
-
-//        trochę ogólny exception
         } catch (Exception e) {
             throw new NoRecordWithIdException(message);
         }

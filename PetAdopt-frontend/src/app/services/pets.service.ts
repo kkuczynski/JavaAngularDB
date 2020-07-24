@@ -16,39 +16,25 @@ const httpOptions = {
 })
 export class PetsService {
 
-  // const ? dla tych 3?
-  private URL = environment.urlPets;
-  private URL_WITH_HOME = environment.urlPetsWithHome;
-  private URL_WITH_NO_HOME = environment.urlPetsWithNoHome;
-
   constructor(private http: HttpClient) { }
 
   getPet(id: number): Observable<PetsExternal> {
-    return this.http.get<PetsExternal>(this.URL + '/' + id);
+    return this.http.get<PetsExternal>(environment.urlPets + '/' + id);
   }
 
-  // HALO TYP ZWRACANY
-  getAllPets() {
-    return this.http.get<PetsExternal[]>(this.URL);
+  getAllPets(): Observable<PetsExternal[]> {
+    return this.http.get<PetsExternal[]>(environment.urlPets);
   }
-  // HALO TYP ZWRACANY
-  getPetsWithNoHome() {
-    return this.http.get<PetsExternal[]>(this.URL_WITH_NO_HOME);
+
+  postNewPet(pet: PetsExternal): Observable<PetsExternal> {
+    return this.http.post<PetsExternal>(environment.urlPets, pet, httpOptions);
   }
-  // HALO TYP ZWRACANY
-  getPetsWithHome() {
-    return this.http.get<PetsExternal[]>(this.URL_WITH_HOME);
+
+  putPet(pet: PetsExternal): Observable<PetsExternal> {
+    return this.http.put<PetsExternal>(environment.urlPets, pet, httpOptions);
   }
-  // HALO TYP ZWRACANY
-  postNewPet(pet: PetsExternal) {
-    return this.http.post<PetsExternal>(this.URL, pet, httpOptions);
-  }
-  // HALO TYP ZWRACANY
-  putPet(pet: PetsExternal) {
-    return this.http.put<PetsExternal>(this.URL, pet, httpOptions);
-  }
-  // HALO TYP ZWRACANY
-  deletePet(id: number) {
-    return this.http.delete<string>(this.URL + '/' + id, httpOptions);
+
+  deletePet(id: number): Observable<string> {
+    return this.http.delete<string>(environment.urlPets + '/' + id, httpOptions);
   }
 }

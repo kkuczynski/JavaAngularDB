@@ -4,6 +4,7 @@ import { PetsComponent } from './views/pets/pets.component';
 import { AdoptionHousesComponent } from './views/adoption-houses/adoption-houses.component';
 import { UsersComponent } from './views/users/users.component';
 import { SettingsComponent } from './views/settings/settings.component';
+import { BlankComponent } from './views/blank/blank.component';
 
 
 
@@ -12,6 +13,7 @@ const routes: Routes = [
   { path: 'users', component: UsersComponent },
   { path: 'houses', component: AdoptionHousesComponent },
   { path: 'settings', component: SettingsComponent},
+  { path: 'blank', component: BlankComponent},
   { path: '**', redirectTo: 'pets' }
 ];
 

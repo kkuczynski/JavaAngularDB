@@ -9,20 +9,14 @@ import { RouteConfigLoadEnd } from '@angular/router';
 })
 export class LoginService {
 
-  role: Role = Role.USER;
+  role: string = Role[Role.USER];
   update: Observable<string>;
   observer: Observer<string>;
   user: UsersExternal = null;
 
-  constructor() {
-    // czemu to w konsturktorze? i WTF
-    this.update = Observable.create((observer: Observer<string>) => {
-      this.observer = observer;
+  constructor() { }
 
-    });
-  }
-
-  updateCurrentRole(role: Role) {
+  updateCurrentRole(role: string) {
     this.role = role;
   }
 

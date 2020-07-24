@@ -18,12 +18,11 @@ export class AddUserDialogComponent implements OnInit {
   private _isSignUp = false;
   private _inputForm: FormGroup;
   private _newUser: UsersExternal;
-  private _userRole: Role = Role.USER;
-  private _adminRole: Role = Role.ADMIN;
-  private _employeeRole: Role = Role.EMPLOYEE;
-  private _loggedAs: Role;
+  private _loggedAs: string;
+  private _usernameTakenAlert = 'Username already in use';
   // variable for showing/hiding the password
   public hide = true;
+  private _usernameTakenBool: boolean;
 
   constructor(
     private usersService: UsersService,
@@ -31,6 +30,8 @@ export class AddUserDialogComponent implements OnInit {
     private formBuilder: FormBuilder,
     public dialogRef: MatDialogRef<AddUserDialogComponent>,
     @Inject(MAT_DIALOG_DATA) public data: { title: string, user: UsersExternal }) {
+
+    dialogRef.disableClose = true;
     this.createForm();
   }
 
@@ -48,17 +49,21 @@ export class AddUserDialogComponent implements OnInit {
     }
   }
 
-  getAdmin(): Role {
-    return this._adminRole;
+  getUsernameTakenBool(): boolean {
+    return this._usernameTakenBool;
+  }
+  getAdmin(): string {
+    return Role[Role.ADMIN];
   }
 
-  getEmployee(): Role {
-    return this._employeeRole;
+  getEmployee(): string {
+    return Role[Role.EMPLOYEE];
   }
 
-  getUser(): Role {
-    return this._userRole;
+  getUser(): string {
+    return Role[Role.USER];
   }
+
   setRole() {
     this._loggedAs = this.loginService.role;
   }
@@ -95,6 +100,10 @@ export class AddUserDialogComponent implements OnInit {
     this._inputForm.get('password').setValue(this.data.user.password);
   }
 
+  getUsernameAlreadyTakenAlert(): string {
+    return this._usernameTakenAlert;
+  }
+
   createForm() {
     this._inputForm = this.formBuilder.group({
       name: ['', [Validators.required,
@@ -127,11 +136,18 @@ export class AddUserDialogComponent implements OnInit {
       this._inputForm.get('name').value,
       this._inputForm.get('surname').value,
       this.dateConverter(date),
-      this._inputForm.get('role').value ? this._inputForm.get('role').value : Role[this._userRole],
+      this._inputForm.get('role').value ? this._inputForm.get('role').value : this.getUser(),
       this._inputForm.get('login').value,
       this._inputForm.get('password').value);
-    this.usersService.postNewUser(this._newUser).subscribe();
-    this.dialogRef.close();
+    this.usersService.postNewUser(this._newUser).subscribe((response) => {
+      console.log(response);
+      if (response) {
+        this.dialogRef.close();
+      }
+      else {
+        this._usernameTakenBool = true;
+      }
+    });
   }
 
   putUser() {
@@ -140,12 +156,19 @@ export class AddUserDialogComponent implements OnInit {
       this._inputForm.get('name').value,
       this._inputForm.get('surname').value,
       this.data.user.createdAt,
-      this._inputForm.get('role').value ? this._inputForm.get('role').value : Role[this._userRole],
+      this._inputForm.get('role').value ? this._inputForm.get('role').value : this.getUser(),
       this._inputForm.get('login').value,
       this._inputForm.get('password').value);
     this._newUser.setId(this.data.user.id);
-    this.usersService.putUser(this._newUser).subscribe();
-    this.dialogRef.close();
+    this.usersService.putUser(this._newUser).subscribe((response) => {
+      console.log(response);
+      if (response) {
+        this.dialogRef.close();
+      }
+      else {
+        this._usernameTakenBool = true;
+      }
+    });
   }
 
   dateConverter(date: Date) {
@@ -176,7 +199,7 @@ export class AddUserDialogComponent implements OnInit {
 
   keyDownFunction(event) {
     if (event.keyCode === 13) {
-      document.getElementById('confirmButton').click();
+      event.preventDefault();
     }
   }
 }

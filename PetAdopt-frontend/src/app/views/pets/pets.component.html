@@ -1,5 +1,5 @@
 
-<button (click)="openAddDialog()" *ngIf="getLoggedAs()=='ADMIN' || getLoggedAs()=='EMPLOYEE'" class="add">
+<button (click)="openAddDialog()" *ngIf="getLoggedAs()==getAdmin() || getLoggedAs()==getEmployee()" class="add">
     <div fxLayout="row" fxLayoutAlign="center center" fxLayoutGap="0px">
         <i class="fa fa-paw"></i><i class="fa fa-plus"></i>
     </div>
@@ -109,20 +109,20 @@
     <div fxLayout="row" fxLayoutAlign="end end" fxLayoutGap="2px">
 
 
-        <button *ngIf="getLoggedAs()=='ADMIN' || getLoggedAs()=='EMPLOYEE'" (click)="openAssignDialog(pet.id)">
+        <button *ngIf="getLoggedAs()==getAdmin() || getLoggedAs()==getEmployee()" (click)="openAssignDialog(pet.id)">
             <div fxLayout="row" fxLayoutAlign="center center" fxLayoutGap="0px">
                 <i class="fa fa-mail-forward"></i><i class="fa fa-home"></i>
             </div>
         </button>
 
-        <button *ngIf="getLoggedAs()=='ADMIN' || getLoggedAs()=='EMPLOYEE'" (click)="openEditDialog(pet.id)">
+        <button *ngIf="getLoggedAs()==getAdmin() || getLoggedAs()==getEmployee()" (click)="openEditDialog(pet.id)">
             <div fxLayout="row" fxLayoutAlign="center center" fxLayoutGap="0px">
                 <i class="fa fa-paw"></i><i class="fa fa-wrench"></i>
             </div>
         </button>
         
 
-            <button *ngIf="getLoggedAs()=='ADMIN'" class="danger" (click)="openConfirmationDialog(pet.id)">
+            <button *ngIf="getLoggedAs()==getAdmin()" class="danger" (click)="openConfirmationDialog(pet.id)">
                 <div fxLayout="row" fxLayoutAlign="center center" fxLayoutGap="0px">
                     <i class="fa fa-paw"></i><i class="fa fa-times"></i>
                 </div>

@@ -34,13 +34,13 @@ public class UsersController {
     }
 
     @PostMapping
-    public Users addUsers(@RequestBody Users user){
+    public boolean addUsers(@RequestBody Users user){
         return usersServiceImpl.saveUser(user);
     }
 
     @PutMapping
-    public Users updateUsers(@RequestBody Users user){
-        return usersServiceImpl.saveUser(user);
+    public boolean updateUser(@RequestBody Users user) throws NoRecordWithIdException{
+        return usersServiceImpl.updateUser(user);
     }
 
     @DeleteMapping("/{id}")
