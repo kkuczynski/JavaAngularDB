@@ -4,6 +4,7 @@ import com.petAdopt.backend.dao.enums.Sex;
 import com.petAdopt.backend.dao.enums.Spieces;
 import lombok.Data;
 import lombok.Getter;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;

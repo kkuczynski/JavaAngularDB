@@ -132,7 +132,7 @@ export class AdoptionHousesComponent implements OnInit {
       this._confirmation = dialogResult;
       if (this._confirmation) {
         this.deleteHouse(houseId);
-        this.router.navigateByUrl('houses');
+        this.fetchData();
       }
     });
   }
@@ -147,7 +147,7 @@ export class AdoptionHousesComponent implements OnInit {
       }
     });
     dialogRef.afterClosed().subscribe(() => {
-      this.router.navigateByUrl('houses');
+      this.fetchData();
     });
   }
 
@@ -157,12 +157,11 @@ export class AdoptionHousesComponent implements OnInit {
       data: { title: 'add house' }
     });
     dialogRef.afterClosed().subscribe(() => {
-      this.router.navigateByUrl('houses');
+      this.fetchData();
     });
   }
 
   deleteHouse(houseId: number) {
     this.housesService.deleteHouse(houseId).subscribe();
-    this.router.navigateByUrl('houses');
   }
 }

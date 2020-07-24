@@ -5,6 +5,7 @@ import com.petAdopt.backend.repo.PetsRepo;
 import com.petAdopt.backend.dao.entity.Pets;
 import com.petAdopt.backend.service.PetsService;
 import org.springframework.stereotype.Service;
+
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -19,7 +20,7 @@ public class PetsServiceImpl implements PetsService {
     }
 
     public Pets getPetById(Integer id) throws NoRecordWithIdException{
-            return petsRepo.findById(id).orElseThrow(() -> new NoRecordWithIdException(message));
+        return petsRepo.findById(id).orElseThrow(() -> new NoRecordWithIdException(message));
     }
 
     public List<Pets> getAllPets(){
@@ -34,9 +35,7 @@ public class PetsServiceImpl implements PetsService {
 
         try {
             petsRepo.deleteById(id);
-        }
-        //        trochę ogólny exception
-        catch(Exception e){
+        } catch (Exception e) {
             throw new NoRecordWithIdException(message);
         }
     }
@@ -45,9 +44,7 @@ public class PetsServiceImpl implements PetsService {
         try {
             petsRepo.findById(pets.getId());
             return petsRepo.save(pets);
-        }
-        //        trochę ogólny exception
-        catch (Exception e) {
+        } catch (Exception e) {
             throw new NoRecordWithIdException(message);
         }
 
@@ -55,7 +52,7 @@ public class PetsServiceImpl implements PetsService {
 
     public List<Pets> getAllPetsWithNoHome(){
         return this.petsRepo.findAll().stream().filter(pet -> !pet.getAdopted() && !pet.getTemporaryAdopted()).collect(Collectors.toList());
-        }
+    }
 
     public List<Pets> getAllPetsWithHome(){
         return this.petsRepo.findAll().stream().filter(pet -> pet.getAdopted() || pet.getTemporaryAdopted()).collect(Collectors.toList());

@@ -19,7 +19,6 @@ export class AddPetDialogComponent implements OnInit {
   private _newPet: PetsExternal;
   private _isUpdate: boolean;
 
-  // format
   constructor(
     private petsService: PetsService,
     private formBuilder: FormBuilder,

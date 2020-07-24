@@ -21,15 +21,16 @@ export class AddHouseDialogComponent implements OnInit {
     public dialogRef: MatDialogRef<AddHouseDialogComponent>,
     @Inject(MAT_DIALOG_DATA) public data: {
       title: string,
+      ownerId: number,
       house: AdoptionHousesExternal,
-      ownerId: number
     }) {
     this.createForm();
   }
 
   ngOnInit(): void {
-    if (this.data.title === 'update house') {
+    if (this.data.title === 'edit house') {
       this._isUpdate = true;
+      console.log(this.data.house);
       this.fillFormWithData();
     }
     else if (this.data.title === 'add house') {

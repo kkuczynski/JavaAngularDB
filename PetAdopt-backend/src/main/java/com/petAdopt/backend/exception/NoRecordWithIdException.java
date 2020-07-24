@@ -4,13 +4,13 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 
 public class NoRecordWithIdException extends Throwable {
-   public NoRecordWithIdException(String message){
-        super(message+" has no record with given ID");
+    public NoRecordWithIdException(String message){
+        super(message + " has no record with given ID");
         httpStatus(message);
 
     }
-//    ResponseEntity coś zwraca DALEJ COś ZWRACA;)
+
     public ResponseEntity httpStatus(String message){
-        return new ResponseEntity<>(message+" has no record with given ID", HttpStatus.BAD_REQUEST);
+        return new ResponseEntity<>(message + " has no record with given ID", HttpStatus.BAD_REQUEST);
     }
 }

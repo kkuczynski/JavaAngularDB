@@ -7,6 +7,7 @@ import com.petAdopt.backend.service.AdoptionHousesService;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+
 @Service
 public class AdoptionHousesServiceImpl implements AdoptionHousesService {
 
@@ -25,30 +26,27 @@ public class AdoptionHousesServiceImpl implements AdoptionHousesService {
         return adoptionHousesRepo.findAll();
     }
 
-    public AdoptionHouses saveAdoptionHouse (AdoptionHouses adoptionHouses){
+    public AdoptionHouses saveAdoptionHouse(AdoptionHouses adoptionHouses){
         return adoptionHousesRepo.save(adoptionHouses);
     }
 
-    public void deleteAdoptionHouseById (Integer id) throws NoRecordWithIdException{
+    public void deleteAdoptionHouseById(Integer id) throws NoRecordWithIdException{
 
         try {
-              adoptionHousesRepo.deleteById(id);
-        }
-//        trochę ogólny exception
-        catch(Exception e){
+            adoptionHousesRepo.deleteById(id);
+        } catch (Exception e) {
             throw new NoRecordWithIdException(message);
         }
     }
 
-    public void deleteAdoptionHouseByUserId (Integer id) throws NoRecordWithIdException{
+    public void deleteAdoptionHouseByUserId(Integer id) throws NoRecordWithIdException{
         try {
-            adoptionHousesRepo.findAll().forEach((house)-> {
-                if(house.getUserId() == id) {
+            adoptionHousesRepo.findAll().forEach((house) -> {
+                if (house.getUserId() == id) {
                     adoptionHousesRepo.delete(house);
                 }
             });
-//        trochę ogólny exception
-        } catch(Exception e) {
+        } catch (Exception e) {
             throw new NoRecordWithIdException(message);
         }
     }
@@ -57,7 +55,6 @@ public class AdoptionHousesServiceImpl implements AdoptionHousesService {
         try {
             adoptionHousesRepo.findById(adoptionHouses.getId());
             return adoptionHousesRepo.save(adoptionHouses);
-//        trochę ogólny exception
         } catch (Exception e) {
             throw new NoRecordWithIdException(message);
 

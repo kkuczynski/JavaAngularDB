@@ -108,7 +108,7 @@ export class UsersComponent implements OnInit {
     return foundHouse;
   }
 
-  getHousIdByUserId(userId): number {
+  getHouseIdByUserId(userId): number {
     let houseId = -1;
     this._houses.forEach(house => {
       if (house.userId === userId) {
@@ -200,11 +200,11 @@ export class UsersComponent implements OnInit {
   }
 
   openEditHouseDialog(userId: number) {
-    const houseId = this.getHousIdByUserId(userId);
+    const houseId = this.getHouseIdByUserId(userId);
     this._editedHouse = this.getHouseById(houseId);
     const dialogRef = this.dialog.open(AddHouseDialogComponent, {
       minWidth: '30%',
-      data: { title: 'edit house', house: this._editedHouse, ownerId: userId }
+      data: { title: 'edit house',  ownerId: userId, house: this._editedHouse, }
     });
     dialogRef.afterClosed().subscribe(() => {
       this.fetchData();
@@ -217,7 +217,7 @@ export class UsersComponent implements OnInit {
   }
 
   deleteHouse(userId: number) {
-    const houseId = this.getHousIdByUserId(userId);
+    const houseId = this.getHouseIdByUserId(userId);
     this.usersService.deleteUser(houseId).subscribe();
     this.fetchData();
   }

@@ -56,7 +56,9 @@ button:hover{
 
 .signOut{
   cursor: pointer;
-  background-color: gray
+  background-color: none;
+  border-color: gray;
+  color: gray;
 }
 
 form{

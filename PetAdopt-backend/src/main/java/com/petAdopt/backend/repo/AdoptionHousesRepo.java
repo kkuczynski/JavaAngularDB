@@ -5,6 +5,6 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface AdoptionHousesRepo extends JpaRepository<AdoptionHouses,Integer> {
+public interface AdoptionHousesRepo extends JpaRepository<AdoptionHouses, Integer> {
 
 }

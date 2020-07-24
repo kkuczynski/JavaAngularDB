@@ -6,6 +6,7 @@ import com.petAdopt.backend.repo.UsersRepo;
 import com.petAdopt.backend.dao.entity.Users;
 import com.petAdopt.backend.service.UsersService;
 import org.springframework.stereotype.Service;
+
 import java.util.List;
 import java.util.Objects;
 
@@ -29,16 +30,15 @@ public class UsersServiceImpl implements UsersService {
 
     public boolean saveUser(Users users){
         boolean usernameIsUnique = true;
-        for(Users foundUser: usersRepo.findAll())
-            if (Objects.equals(foundUser.getLogin(), users.getLogin())){
+        for (Users foundUser : usersRepo.findAll())
+            if (Objects.equals(foundUser.getLogin(), users.getLogin())) {
                 usernameIsUnique = false;
             }
 
-        if(usernameIsUnique) {
+        if (usernameIsUnique) {
             usersRepo.save(users);
             return true;
-        }
-        else {
+        } else {
             return false;
         }
 
@@ -64,8 +64,7 @@ public class UsersServiceImpl implements UsersService {
             } catch (Exception e) {
                 throw new NoRecordWithIdException(message);
             }
-        }
-        else {
+        } else {
             return false;
         }
     }
@@ -73,9 +72,9 @@ public class UsersServiceImpl implements UsersService {
     public Users loginUser(LoginBody loginBody) throws NoRecordWithIdException{
         Users foundUser = null;
         try {
-             for(Users user: usersRepo.findAll()) {
+            for (Users user : usersRepo.findAll()) {
                 if (user.getLogin().equals(loginBody.getUsername()) && user.getPassword().equals(loginBody.getPassword())) {
-                   foundUser = usersRepo.findById(user.getId()).orElseThrow(() -> new NoRecordWithIdException(message));
+                    foundUser = usersRepo.findById(user.getId()).orElseThrow(() -> new NoRecordWithIdException(message));
                 }
             }
         } catch (Exception e) {

@@ -9,7 +9,7 @@ import { RouteConfigLoadEnd } from '@angular/router';
 })
 export class LoginService {
 
-  role: string = Role[Role.USER];
+  role = 'UNSET';
   update: Observable<string>;
   observer: Observer<string>;
   user: UsersExternal = null;

@@ -12,7 +12,6 @@ import java.util.List;
 @RestController
 @CrossOrigin
 @RequestMapping("/users")
-// Doczytać o ResponseEntity<> !
 public class UsersController {
 
     private final UsersServiceImpl usersServiceImpl;
@@ -30,7 +29,7 @@ public class UsersController {
 
     @GetMapping("/{id}")
     public Users getById(@PathVariable Integer id) throws NoRecordWithIdException{
-       return usersServiceImpl.getUserById(id);
+        return usersServiceImpl.getUserById(id);
     }
 
     @PostMapping

@@ -4,12 +4,13 @@ import com.petAdopt.backend.dao.entity.Pets;
 import com.petAdopt.backend.exception.NoRecordWithIdException;
 import com.petAdopt.backend.service.impl.PetsServiceImpl;
 import org.springframework.web.bind.annotation.*;
+
 import java.util.List;
 
 @RestController
 @CrossOrigin
 @RequestMapping("/pets")
-// Doczytać o ResponseEntity<> !
+
 public class PetsController {
     private final PetsServiceImpl petsServiceImpl;
 
@@ -24,12 +25,12 @@ public class PetsController {
     }
 
     @GetMapping("/withNoHome")
-    public List<Pets> getPetsWithNoHome() {
+    public List<Pets> getPetsWithNoHome(){
         return petsServiceImpl.getAllPetsWithNoHome();
     }
 
     @GetMapping("/withHome")
-    public List<Pets> getPetsWithHome() {
+    public List<Pets> getPetsWithHome(){
         return petsServiceImpl.getAllPetsWithHome();
     }
 

@@ -2,6 +2,7 @@ package com.petAdopt.backend.dao.entity;
 
 import com.petAdopt.backend.dao.enums.Role;
 import lombok.Data;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;

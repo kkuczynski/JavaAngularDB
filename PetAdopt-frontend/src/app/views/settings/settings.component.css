@@ -1,0 +1,27 @@
+.settings{
+    transform: translateX(13%);
+    width: 80%;
+    height: 80%;
+}
+button {    
+    background: none;
+    border-style: solid;    
+    border-color: gray;
+    border-width: 5px;
+    color: gray;
+    min-width: 30%;
+    min-height: 30%;
+    padding: 20px 5px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 100px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    border-radius: 10px;  
+    cursor: pointer;
+}
+
+button:hover{
+    border-color: rgb(69, 39, 160);
+    color: rgb(69, 39, 160);
+}

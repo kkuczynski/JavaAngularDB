@@ -11,11 +11,11 @@ public interface AdoptionHousesService {
 
     List<AdoptionHouses> getAllAdoptionHouses();
 
-    AdoptionHouses saveAdoptionHouse (AdoptionHouses adoptionHouses);
+    AdoptionHouses saveAdoptionHouse(AdoptionHouses adoptionHouses);
 
-    void deleteAdoptionHouseById (Integer id) throws NoRecordWithIdException;
+    void deleteAdoptionHouseById(Integer id) throws NoRecordWithIdException;
 
     AdoptionHouses updateAdoptionHouse(AdoptionHouses adoptionHouses) throws NoRecordWithIdException;
 
-    void deleteAdoptionHouseByUserId (Integer id) throws NoRecordWithIdException;
+    void deleteAdoptionHouseByUserId(Integer id) throws NoRecordWithIdException;
 }

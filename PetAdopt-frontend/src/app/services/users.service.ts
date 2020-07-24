@@ -26,15 +26,15 @@ export class UsersService {
   getUser(id: number): Observable<UsersExternal> {
     return this.http.get<UsersExternal>(environment.urlUsers + '/' + id);
   }
-  // HALO TYP ZWRACANY
-  postNewUser(user: UsersExternal) {
+
+  postNewUser(user: UsersExternal): Observable<UsersExternal> {
     return this.http.post<UsersExternal>(environment.urlUsers, user, httpOptions);
   }
-  // HALO TYP ZWRACANY
+
   putUser(user: UsersExternal): Observable<UsersExternal> {
     return this.http.put<UsersExternal>(environment.urlUsers, user, httpOptions);
   }
-  // HALO TYP ZWRACANY
+
   deleteUser(id: number): Observable<string> {
     return this.http.delete<string>(environment.urlUsers + '/' + id, httpOptions);
   }

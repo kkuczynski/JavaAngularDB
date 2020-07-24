@@ -1,6 +1,7 @@
 package com.petAdopt.backend.dao.entity;
 
 import lombok.Data;
+
 import javax.persistence.*;
 
 @Data
